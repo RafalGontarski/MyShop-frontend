@@ -1,22 +1,23 @@
-import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 
-const CategoryNavbar = () => {
+const CategoryMenu = () => {
     return (
-        <List component="nav" aria-label="main mailbox folders">
-            <ListItem button>
-                <ListItemText primary="Kategoria 1" />
-            </ListItem>
-            <ListItem button>
-                <ListItemText primary="Kategoria 2" />
-            </ListItem>
-            <ListItem button>
-                <ListItemText primary="Kategoria 3" />
-            </ListItem>
-        </List>
+        <AppBar position="static" style={{ backgroundColor: '#fff' }}>
+            <Toolbar style={{ display: 'flex', justifyContent: 'center' }}>
+                <Button style={{ color: '#000' }}>Wędkarstwo Spinningowe</Button>
+                <Button style={{ color: '#000' }}>Morskie</Button>
+                <Button style={{ color: '#000' }}>Sumowe</Button>
+                <Button style={{ color: '#000' }}>Biwak</Button>
+                <Button style={{ color: '#000' }}>Łodzie i akcesoria</Button>
+                <Button style={{ color: '#000' }}>Ubrania</Button>
+                <Button style={{ color: '#000' }}>Gatunki</Button>
+                <Button style={{ color: '#000' }}>Pozostałe</Button>
+            </Toolbar>
+        </AppBar>
     );
 }
 
-export default CategoryNavbar;
+export default CategoryMenu;
+
