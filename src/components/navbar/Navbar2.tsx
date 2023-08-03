@@ -18,6 +18,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TikTokIcon from '@mui/icons-material/MusicNote';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Logo from "../../resources/img/mainlogo.png";
 
@@ -42,24 +44,44 @@ const Navbar = () => {
         },
     })(TextField);
 
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down(1350));
+
+    const isSmallScreenForLink = useMediaQuery(theme.breakpoints.down(1516));
+    const isSmallScreenForInstagram = useMediaQuery(theme.breakpoints.down(1396));
+    const isSmallScreenForTopSellerLink = useMediaQuery(theme.breakpoints.down(1369));
+    const isSmallScreenForGuaranteeLink = useMediaQuery(theme.breakpoints.down(1200));
+    const isSmallScreenForIconSize = useMediaQuery(theme.breakpoints.down(1180));
+
     return (
         <>
             <AppBar position="static" style={{ backgroundColor: '#F8F8F8' }} elevation={0}>
                 <Toolbar style={{
                     display: 'flex',
+                    flexDirection: 'row',
                     justifyContent: 'space-between',
-                    marginLeft: '10%',
-                    marginRight: '10%',
                     marginTop: '1%',
-                    marginBottom: '1%'
+                    marginBottom: '1%',
+                    maxWidth: '1880px',
+                    marginLeft: isSmallScreen ? '4rem' : '10rem',
+                    marginRight: isSmallScreen ? '4rem' : '10rem',
                 }}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={4}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '25px'}}>
+                    <Grid container spacing={23}>
+                        <Grid item xs={12} sm={5}>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flexWrap: 'nowrap',
+                                gap: isSmallScreenForIconSize ? '13px' : '25px',
+                            }}>
                                 <div>
                                     <Link
                                         href="#"
-                                        style={{ color: '#000', marginRight: '20px', textDecoration: 'none', fontSize: '0.8rem' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: '20px',
+                                            textDecoration: 'none',
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem' }}
                                         underline="none"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -74,7 +96,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <FacebookIcon />
+                                        <FacebookIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                     <IconButton
                                         edge="end"
@@ -84,8 +106,9 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <YouTubeIcon />
+                                        <YouTubeIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
+                                    {!isSmallScreenForInstagram && (
                                     <IconButton
                                         edge="end"
                                         style={{ color: '#000', marginRight: '10px' }}
@@ -96,21 +119,27 @@ const Navbar = () => {
                                     >
                                         <InstagramIcon />
                                     </IconButton>
-                                    <IconButton
-                                        edge="end"
-                                        style={{ color: '#000', marginRight: '10px' }}
-                                        aria-label="tiktok"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                                        disableRipple
-                                    >
-                                        <TikTokIcon />
-                                    </IconButton>
+                                    )}
+                                    {!isSmallScreenForLink && (
+                                        <IconButton
+                                            edge="end"
+                                            style={{ color: '#000', marginRight: '10px' }}
+                                            aria-label="tiktok"
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
+                                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                            disableRipple
+                                        >
+                                            <TikTokIcon />
+                                        </IconButton>
+                                    )}
                                 </div>
                                 <div>
                                     <IconButton
                                         edge="start"
-                                        style={{ color: '#000', marginRight: '20px' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: '20px',
+                                        }}
                                         aria-label="menu"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -120,7 +149,13 @@ const Navbar = () => {
                                     </IconButton>
                                     <Link
                                         href="#"
-                                        style={{ color: '#000', marginRight: '20px', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 'bold' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: '20px',
+                                            textDecoration: 'none',
+                                            fontSize: isSmallScreenForIconSize ? '0.7rem' : '0.9rem',
+                                            fontWeight: 'bold'
+                                        }}
                                         underline="none"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -129,35 +164,56 @@ const Navbar = () => {
                                     </Link>
                                     <Link
                                         href="#"
-                                        style={{ color: '#000', marginRight: '20px', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 'bold' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: '20px',
+                                            textDecoration: 'none',
+                                            fontSize: isSmallScreenForIconSize ? '0.7rem' : '0.9rem',
+                                            fontWeight: 'bold'
+                                        }}
                                         underline="none"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Nowości
                                     </Link>
-                                    <Link
-                                        href="#"
-                                        style={{ color: '#000', marginRight: '20px', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 'bold' }}
-                                        underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                                    >
-                                        Top-Seller
-                                    </Link>
-                                    <Link
-                                        href="#"
-                                        style={{ color: '#000', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 'bold' }}
-                                        underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                                    >
-                                        Okazje
-                                    </Link>
+                                    {!isSmallScreenForTopSellerLink && (
+                                        <Link
+                                            href="#"
+                                            style={{
+                                                color: '#000',
+                                                marginRight: '20px',
+                                                textDecoration: 'none',
+                                                fontSize: isSmallScreenForIconSize ? '0.7rem' : '0.9rem',
+                                                fontWeight: 'bold'
+                                            }}
+                                            underline="none"
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                        >
+                                            Top-Seller
+                                        </Link>
+                                    )}
+                                    {!isSmallScreenForLink && (
+                                        <Link
+                                            href="#"
+                                            style={{
+                                                color: '#000',
+                                                textDecoration: 'none',
+                                                fontSize: isSmallScreenForIconSize ? '0.7rem' : '0.9rem',
+                                                fontWeight: 'bold'
+                                            }}
+                                            underline="none"
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                        >
+                                            Okazje
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid item xs={12} sm={2}>
                             <div
                                 style={{
                                     display: 'flex',
@@ -166,6 +222,7 @@ const Navbar = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     marginTop: '0.8rem',
+                                    // flexGrow: 1,
                                 }}>
                                 <div>
                                     <img
@@ -201,42 +258,68 @@ const Navbar = () => {
                                 </div>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '35px', alignItems: 'flex-end', marginTop: '0.8rem' }}>
+                        <Grid item xs={12} sm={5}>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: isSmallScreenForIconSize ? '18px' : '35px',
+                                alignItems: 'flex-end',
+                                marginTop: '0.8rem',
+                                // flexGrow: 1,
+                            }}>
                                 <div>
                                     <Link
                                         href="#"
-                                        style={{ color: '#000', marginRight: '20px', textDecoration: 'none', fontSize: '0.8rem' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: isSmallScreenForGuaranteeLink ? '0px' : '20px',
+                                            textDecoration: 'none',
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'  }}
                                         underline="none"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Darmowa wysyłka od 900 zł
                                     </Link>
-                                    <Link
-                                        href="#"
-                                        style={{ color: '#000', textDecoration: 'none', fontSize: '0.8rem' }}
-                                        underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                                    >
-                                        2 lata gwarancji
-                                    </Link>
+                                    {!isSmallScreenForGuaranteeLink && (
+                                        <Link
+                                            href="#"
+                                            style={{
+                                                color: '#000',
+                                                textDecoration: 'none',
+                                                fontSize: '0.8rem' }}
+                                            underline="none"
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                        >
+                                            2 lata gwarancji
+                                        </Link>
+                                    )}
                                 </div>
                                 <div style={{ display: 'flex' }}>
                                     <IconButton
                                         edge="end"
-                                        style={{ color: '#000', marginRight: '20px' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: isSmallScreenForIconSize ? '10px' : '20px',
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'
+                                        }}
                                         aria-label="language"
                                         onClick={handleClick}
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <Typography variant="body1" style={{ marginRight: '5px' }}>
+                                        <Typography
+                                            variant="body1"
+                                            style={{
+                                                marginRight: '5px',
+                                                fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'
+                                            }}
+                                        >
                                             EN / USD
                                         </Typography>
-                                        <LanguageIcon />
+                                        <LanguageIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                     <Menu
                                         id="simple-menu"
@@ -251,33 +334,40 @@ const Navbar = () => {
                                     </Menu>
                                     <IconButton
                                         edge="end"
-                                        style={{ color: '#000', marginRight: '20px' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: isSmallScreenForIconSize ? '10px' : '20px',
+                                        }}
                                         aria-label="profile"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <AccountCircle />
+                                        <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                     <IconButton
                                         edge="end"
-                                        style={{ color: '#000', marginRight: '20px' }}
+                                        style={{
+                                            color: '#000',
+                                            marginRight: isSmallScreenForIconSize ? '10px' : '20px',
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'
+                                        }}
                                         aria-label="favorites"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <FavoriteIcon />
+                                        <FavoriteIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                     <IconButton
                                         edge="end"
-                                        style={{ color: '#000' }}
+                                        style={{ color: '#000', fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem' }}
                                         aria-label="cart"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <ShoppingCartIcon />
+                                        <ShoppingCartIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                 </div>
                             </div>
