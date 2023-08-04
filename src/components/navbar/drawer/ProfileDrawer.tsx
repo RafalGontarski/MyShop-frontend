@@ -77,11 +77,13 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                 >
 
 
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'left' }}>
                         <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold' }}>
                             Cześć
                         </Typography>
-                        <HandIcon />
+                        <HandIcon
+                            style={{ color: '#008000'}}
+                        />
                     </Box>
 
                     <TextField
@@ -102,7 +104,8 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                                 },
                             },
                             '& .MuiInputLabel-root': {
-                                fontFamily: 'Arial, sans-serif',
+                                fontSize: '12px',
+                                transform: 'translate(14px, 12px) scale(1)', // Adjust this value to center the label
                                 '&.Mui-focused': {
                                     color: '#000000', // Change this to the color you want
                                     fontSize: '12px',
@@ -134,9 +137,12 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                                 },
                             },
                             '& .MuiInputLabel-root': {
+                                fontSize: '12px',
+                                transform: 'translate(14px, 12px) scale(1)', // Adjust this value to center the label
+                                '&:hover': { backgroundColor: '#fff' },
                                 '&.Mui-focused': {
                                     color: '#000000', // Change this to the color you want
-                                    fontSize: '12px'
+
                                 },
                             },
                             '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
@@ -164,14 +170,61 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                             ),
                         }}
                     />
-                    <FormControlLabel
-                        control={<Checkbox disableRipple />}
-                        label="Zapamiętaj hasło"
-                    />
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            alignSelf: 'flex-start',
+                            marginLeft: '2.25rem',
+                        }}
+                    >
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    disableRipple
+                                    sx={{
+                                        '& .MuiSvgIcon-root': {
+                                            fontSize: '1rem',
+                                        },
+                                        '&.Mui-checked': {
+                                            color: '#008000', // This changes the checkmark color
+                                        },
+                                        '& .MuiIconButton-root': {
+                                            borderWidth: '0.5px',
+                                            borderColor: '#000',
+                                            '&:hover': {
+                                                borderColor: '#000',
+                                            },
+                                        },
+                                        '& .MuiCheckbox-colorSecondary.Mui-checked': {
+                                            color: '#000', // This changes the checkmark color
+                                        },
+                                        '& .MuiCheckbox-colorSecondary.Mui-checked:hover': {
+                                            backgroundColor: 'transparent', // This makes the checkbox transparent when checked and hovered
+                                        },
+                                    }}
+                                />
+                            }
+                            label="Zapamiętaj mnie"
+                            sx={{
+                                '& .MuiTypography-root': {
+                                    // fontFamily: 'Arial, sans-serif',
+                                    marginTop: '1px',
+                                    fontSize: '0.7rem'
+                                    // Add other font styles as needed
+                                },
+                            }}
+                        />
+                    </Box>
+
+
+
+
                     <Button
                         variant="contained"
                         color="primary"
                         fullWidth
+                        style={{ fontWeight: 'bold' }}
                         sx={{
                             marginTop: '1rem',
                             backgroundColor: '#000',
@@ -179,7 +232,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                             width: '150px',
                             position: 'relative',
                             '&:hover': {
-                                backgroundColor: '#008000',
+                                backgroundImage: 'linear-gradient(to right, blue, green)', // This sets the gradient background
                                 '&::after': {
                                     content: '""',
                                     position: 'absolute',
@@ -192,18 +245,50 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                     >
                         Zaloguj
                     </Button>
+
                 </Box>
-                <Link href="#" variant="body2" style={{ display: 'block', textAlign: 'center', marginTop: '1rem', color: '#000', textDecoration: 'none' }}
-                      underline="hover"
+                <Link
+                    href="#"
+                    variant="body2"
+                    style={{
+                        display: 'block',
+                        textAlign: 'center',
+                        marginTop: '1rem',
+                        // color: '#000',
+                        textDecoration: 'none' }}
+                    underline="hover"
+                    sx={{
+                        color: '#000000',
+                        '&:hover': { color: '#008000' } }}
                 >
                     Zapomniałeś hasła?
                 </Link>
-                <Divider style={{ margin: '2rem 0' }} />
+
+                <Divider
+                    style={{
+                        margin: '2rem 0',
+                        marginRight: '2rem',
+                        marginLeft: '2rem',
+                        borderWidth: '0.1rem',
+                        borderColor: '#000000',
+                    }}
+                />
+
                 <Typography variant="body1" gutterBottom style={{ textAlign: 'center' }}>
                     Czy jesteś tutaj nowy?
                 </Typography>
-                <Link href="#" variant="body2" style={{ display: 'block', textAlign: 'center', color: '#000', textDecoration: 'none' }}
-                      underline="hover"
+                <Link
+                    href="#"
+                    variant="body2"
+                    style={{
+                        display: 'block',
+                        textAlign: 'center',
+                        // color: '#000',
+                        textDecoration: 'none' }}
+                    underline="hover"
+                    sx={{
+                        color: '#000000',
+                        '&:hover': { color: '#008000' } }}
                 >
                     Rejestracja
                 </Link>

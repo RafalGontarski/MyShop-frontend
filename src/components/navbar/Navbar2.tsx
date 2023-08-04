@@ -310,7 +310,7 @@ const Navbar = () => {
                                             textDecoration: 'none',
                                             fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'  }}
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Darmowa wysyłka od 900 zł
@@ -323,7 +323,7 @@ const Navbar = () => {
                                                 textDecoration: 'none',
                                                 fontSize: '0.8rem' }}
                                             underline="none"
-                                            onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
                                             2 lata gwarancji
