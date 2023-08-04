@@ -21,7 +21,7 @@ import TikTokIcon from '@mui/icons-material/MusicNote';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import Logo from "../../resources/img/mainlogo.png";
+import Logo from "../../resources/img/jedziemy.png";
 
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -51,7 +51,7 @@ const Navbar = () => {
     const isSmallScreenForInstagram = useMediaQuery(theme.breakpoints.down(1396));
     const isSmallScreenForTopSellerLink = useMediaQuery(theme.breakpoints.down(1369));
     const isSmallScreenForGuaranteeLink = useMediaQuery(theme.breakpoints.down(1200));
-    const isSmallScreenForIconSize = useMediaQuery(theme.breakpoints.down(1180));
+    const isSmallScreenForIconSize = useMediaQuery(theme.breakpoints.down(1250));
 
     return (
         <>
@@ -145,7 +145,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <MenuIcon />
+                                        <MenuIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                     <Link
                                         href="#"
@@ -218,19 +218,18 @@ const Navbar = () => {
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    gap: '20px',
+                                    gap: isSmallScreenForIconSize ? '12px' : '20px',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     marginTop: '0.8rem',
-                                    // flexGrow: 1,
                                 }}>
                                 <div>
                                     <img
                                         src={Logo}
                                         alt="Logo"
                                         style={{
-                                            width: '150px',
-                                            height: '30px',
+                                            width: isSmallScreenForIconSize ? '120px' : '170px',
+                                            height: isSmallScreenForIconSize ? '27px' : '35px',
                                             transition: 'transform 0.3s ease-in-out',
                                         }}
                                         onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
@@ -242,8 +241,17 @@ const Navbar = () => {
                                         id="search"
                                         // label="Szukaj"
                                         variant="outlined"
-                                        size="small"
-                                        sx={{ width: '400px', backgroundColor: '#fff', borderRadius: 10 }}
+                                        size='small'
+                                        sx={{
+                                            width: isSmallScreenForIconSize ? '320px' : '400px',
+                                            backgroundColor: '#fff',
+                                            borderRadius: 10,
+                                            '& .MuiInputBase-root': {
+                                                fontSize: isSmallScreenForIconSize ? '0.65rem' : '0.9rem',
+                                                padding: isSmallScreenForIconSize ? '16px' : '12px',
+                                                height: isSmallScreenForIconSize ? '25px' : '40px',
+                                            },
+                                        }}
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
@@ -252,7 +260,10 @@ const Navbar = () => {
                                             ),
                                         }}
                                         InputLabelProps={{
-                                            style: { textAlign: 'center' },
+                                            style: {
+                                                textAlign: 'center',
+                                                fontSize: isSmallScreenForIconSize ? '0.7rem' : '0.8rem',
+                                            },
                                         }}
                                     />
                                 </div>
