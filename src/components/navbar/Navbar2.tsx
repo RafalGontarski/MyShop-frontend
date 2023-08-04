@@ -23,15 +23,16 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Logo from "../../resources/img/jedziemy.png";
 
-import { TemporaryDrawer } from './drawer/Drawer';
+import { TemporaryDrawer } from './drawer/MenuDrawer';
+import { ProfileDrawer } from './drawer/ProfileDrawer';
 
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
+    const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -47,13 +48,18 @@ const Navbar = () => {
     })(TextField);
 
     // Drawer
-
-    const handleDrawerOpen = () => {
-        setDrawerOpen(true);
+    const handleMenuDrawerOpen = () => {
+        setMenuDrawerOpen(true);
+    };
+    const handleMenuDrawerClose = () => {
+        setMenuDrawerOpen(false);
     };
 
-    const handleDrawerClose = () => {
-        setDrawerOpen(false);
+    const handleProfileDrawerOpen = () => {
+        setProfileDrawerOpen(true);
+    };
+    const handleProfileDrawerClose = () => {
+        setProfileDrawerOpen(false);
     };
 
 
@@ -157,11 +163,11 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
-                                        onClick={handleDrawerOpen}
+                                        onClick={handleMenuDrawerOpen}
                                     >
                                         <MenuIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
-                                    <TemporaryDrawer open={drawerOpen} onClose={handleDrawerClose} />
+                                    <TemporaryDrawer open={menuDrawerOpen} onClose={handleMenuDrawerClose} />
                                     <Link
                                         href="#"
                                         style={{
@@ -368,9 +374,11 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
+                                        onClick={handleProfileDrawerOpen}
                                     >
                                         <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
+                                    <ProfileDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />
                                     <IconButton
                                         edge="end"
                                         style={{
