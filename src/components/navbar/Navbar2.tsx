@@ -27,9 +27,11 @@ import { TemporaryDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
 
 const Navbar = () => {
+
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
     const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -361,7 +363,7 @@ const Navbar = () => {
                                         onClose={handleClose}
                                     >
                                         <MenuItem onClick={handleClose}>English</MenuItem>
-                                        <MenuItem onClick={handleClose}>Deutsch</MenuItem>
+                                        {/*<MenuItem onClick={handleClose}>Deutsch</MenuItem>*/}
                                         <MenuItem onClick={handleClose}>Polski</MenuItem>
                                     </Menu>
                                     <IconButton
