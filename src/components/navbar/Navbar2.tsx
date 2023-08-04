@@ -25,13 +25,14 @@ import Logo from "../../resources/img/jedziemy.png";
 
 import { TemporaryDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
+import { RegistrationDrawer } from './drawer/RegistrationDrawer';
 
 const Navbar = () => {
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
     const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
-
+    const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -62,6 +63,11 @@ const Navbar = () => {
     };
     const handleProfileDrawerClose = () => {
         setProfileDrawerOpen(false);
+    };
+
+    const handleRegistrationClick = () => {
+        setProfileDrawerOpen(false);
+        setRegistrationDrawerOpen(true);
     };
 
 
@@ -380,7 +386,20 @@ const Navbar = () => {
                                     >
                                         <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
-                                    <ProfileDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />
+                                    {/*<ProfileDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />*/}
+                                    <ProfileDrawer
+                                        open={profileDrawerOpen}
+                                        onClose={() => setProfileDrawerOpen(false)}
+                                        onRegisterClick={() => {
+                                            handleRegistrationClick();
+                                        }}
+                                    />
+                                    <RegistrationDrawer open={registrationDrawerOpen}
+                                                        onClose={() => setRegistrationDrawerOpen(false)}
+                                                        onLoginClick={function (): void {
+                                                            throw new Error('Function not implemented.');
+                                                        }} />
+
                                     <IconButton
                                         edge="end"
                                         style={{

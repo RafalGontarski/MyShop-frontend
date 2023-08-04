@@ -18,9 +18,10 @@ import HandIcon from '@mui/icons-material/PanTool';
 type DrawerProps = {
     open: boolean;
     onClose: () => void;
+    onRegisterClick: () => void;
 };
 
-export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
+export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegisterClick }) => {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleMouseDownPassword = (event: React.MouseEvent) => {
@@ -289,6 +290,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                     sx={{
                         color: '#000000',
                         '&:hover': { color: '#008000' } }}
+                    onClick={onRegisterClick}
                 >
                     Rejestracja
                 </Link>
