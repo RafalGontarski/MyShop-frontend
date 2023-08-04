@@ -23,9 +23,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Logo from "../../resources/img/jedziemy.png";
 
+import { TemporaryDrawer } from './drawer/Drawer';
+
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
+    const [drawerOpen, setDrawerOpen] = useState(false);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -44,9 +46,20 @@ const Navbar = () => {
         },
     })(TextField);
 
+    // Drawer
+
+    const handleDrawerOpen = () => {
+        setDrawerOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setDrawerOpen(false);
+    };
+
+
+
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down(1350));
-
     const isSmallScreenForLink = useMediaQuery(theme.breakpoints.down(1516));
     const isSmallScreenForInstagram = useMediaQuery(theme.breakpoints.down(1396));
     const isSmallScreenForTopSellerLink = useMediaQuery(theme.breakpoints.down(1369));
@@ -144,9 +157,11 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
+                                        onClick={handleDrawerOpen}
                                     >
                                         <MenuIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
+                                    <TemporaryDrawer open={drawerOpen} onClose={handleDrawerClose} />
                                     <Link
                                         href="#"
                                         style={{
