@@ -4,16 +4,12 @@ import Drawer from '@mui/material/Drawer';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import HandIcon from '@mui/icons-material/PanTool';
 
 type DrawerProps = {
     open: boolean;
@@ -384,7 +380,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                             marginTop: '1rem',
                             backgroundColor: '#000',
                             height: '40px',
-                            width: '150px',
+                            width: '180px',
                             position: 'relative',
                             '&:hover': {
                                 backgroundImage: 'linear-gradient(to right, blue, green)', // This sets the gradient background

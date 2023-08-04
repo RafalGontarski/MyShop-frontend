@@ -70,6 +70,11 @@ const Navbar = () => {
         setRegistrationDrawerOpen(true);
     };
 
+    const handleLoginClick = () => {
+        setRegistrationDrawerOpen(false);
+        setProfileDrawerOpen(true);
+    };
+
 
 
     const theme = useTheme();
@@ -394,11 +399,13 @@ const Navbar = () => {
                                             handleRegistrationClick();
                                         }}
                                     />
-                                    <RegistrationDrawer open={registrationDrawerOpen}
-                                                        onClose={() => setRegistrationDrawerOpen(false)}
-                                                        onLoginClick={function (): void {
-                                                            throw new Error('Function not implemented.');
-                                                        }} />
+                                    <RegistrationDrawer
+                                        open={registrationDrawerOpen}
+                                        onClose={() => setRegistrationDrawerOpen(false)}
+                                        onLoginClick={() => {
+                                            handleLoginClick();
+                                        }}
+                                    />
 
                                     <IconButton
                                         edge="end"
