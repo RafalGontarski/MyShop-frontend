@@ -104,7 +104,7 @@ const Navbar = () => {
                                             textDecoration: 'none',
                                             fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem' }}
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Kontakt   +48 511 670 859
@@ -162,7 +162,7 @@ const Navbar = () => {
                                             marginRight: '20px',
                                         }}
                                         aria-label="menu"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                         onClick={handleMenuDrawerOpen}
@@ -180,7 +180,7 @@ const Navbar = () => {
                                             fontWeight: 'bold'
                                         }}
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Hot Deals
@@ -195,7 +195,7 @@ const Navbar = () => {
                                             fontWeight: 'bold'
                                         }}
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Nowości
@@ -211,7 +211,7 @@ const Navbar = () => {
                                                 fontWeight: 'bold'
                                             }}
                                             underline="none"
-                                            onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
                                             Top-Seller
@@ -227,7 +227,7 @@ const Navbar = () => {
                                                 fontWeight: 'bold'
                                             }}
                                             underline="none"
-                                            onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
                                             Okazje
@@ -340,7 +340,7 @@ const Navbar = () => {
                                         }}
                                         aria-label="language"
                                         onClick={handleClick}
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
@@ -373,7 +373,7 @@ const Navbar = () => {
                                             marginRight: isSmallScreenForIconSize ? '10px' : '20px',
                                         }}
                                         aria-label="profile"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                         onClick={handleProfileDrawerOpen}
@@ -389,7 +389,7 @@ const Navbar = () => {
                                             fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'
                                         }}
                                         aria-label="favorites"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
@@ -399,7 +399,7 @@ const Navbar = () => {
                                         edge="end"
                                         style={{ color: '#000', fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem' }}
                                         aria-label="cart"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#7100D3'}}
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >

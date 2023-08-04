@@ -23,9 +23,17 @@ type DrawerProps = {
 export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
     const [showPassword, setShowPassword] = React.useState(false);
 
-    const handleClickShowPassword = () => {
-        setShowPassword(!showPassword);
+    const handleMouseDownPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowPassword(true);
     };
+
+    const handleMouseUpPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowPassword(false);
+    };
+
+
 
     return (
         <Drawer
@@ -45,10 +53,16 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                         justifyContent: 'flex-end',
                     }}
                 >
-                    <IconButton onClick={onClose} disableRipple
-                                sx={{ '&:hover': { color: '#7100D3' } }}
+                    <IconButton
+                        onClick={onClose}
+                        disableRipple
+                        sx={{
+                            color: '#000000',
+                            '&:hover': { color: '#008000' } }}
                     >
-                        <CloseIcon style={{ fontSize: 30, fontWeight: 'bold' }} />
+                        <CloseIcon style={{
+                            fontSize: 30,
+                            fontWeight: 'bold' }} />
                     </IconButton>
                 </Box>
 
@@ -81,12 +95,14 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                             '&:hover': { backgroundColor: '#fff' },
                             '&:focus': { backgroundColor: '#fff' },
                             '& .MuiOutlinedInput-root': {
+                                fontFamily: 'Arial, sans-serif',
                                 '&.Mui-focused fieldset': {
                                     borderColor: '#000000',
                                     borderWidth: '1px',
                                 },
                             },
                             '& .MuiInputLabel-root': {
+                                fontFamily: 'Arial, sans-serif',
                                 '&.Mui-focused': {
                                     color: '#000000', // Change this to the color you want
                                     fontSize: '12px',
@@ -132,11 +148,19 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                                 <InputAdornment position="end">
                                     <IconButton
                                         aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword} // Pokaż hasło
+                                        onMouseUp={handleMouseUpPassword} // Ukryj hasło
+                                        disableRipple
+                                        sx={{
+                                            '& svg': {
+                                                fontSize: '1rem', // Adjust this value to change the size of the icon
+                                            },
+                                        }}
                                     >
                                         {showPassword ? <Visibility /> : <VisibilityOff />}
                                     </IconButton>
                                 </InputAdornment>
+
                             ),
                         }}
                     />
@@ -155,7 +179,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                             width: '150px',
                             position: 'relative',
                             '&:hover': {
-                                backgroundColor: '#7100D3',
+                                backgroundColor: '#008000',
                                 '&::after': {
                                     content: '""',
                                     position: 'absolute',
