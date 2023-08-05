@@ -223,22 +223,12 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                     <CustomButton label={"ZALOGUJ"}/>
 
                 </Box>
-                <Link
-                    href="#"
-                    variant="body2"
-                    style={{
-                        display: 'block',
-                        textAlign: 'center',
-                        marginTop: '1rem',
-                        // color: '#000',
-                        textDecoration: 'none' }}
-                    underline="hover"
-                    sx={{
-                        color: '#000000',
-                        '&:hover': { color: '#008000' } }}
-                >
-                    Zapomniałeś hasła?
-                </Link>
+                <Box style={{
+                    marginTop: '1rem',
+                }}>
+                    <CustomLink label={"Zapomniałeś hasła?"} onClick={undefined}/>
+                </Box>
+
 
                 <Divider
                     style={{
@@ -253,6 +243,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                 <Typography variant="body1" gutterBottom style={{ textAlign: 'center' }}>
                     Czy jesteś tutaj nowy?
                 </Typography>
+
                 <CustomLink label={"Rejestracja"} onClick={onRegisterClick}/>
             </Box>
         </Drawer>
