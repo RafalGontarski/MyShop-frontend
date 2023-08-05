@@ -7,9 +7,8 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from '@mui/material';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import CountrySelector from './countrySelect/CountrySelect';
+
 
 type DrawerProps = {
     open: boolean;
@@ -18,18 +17,6 @@ type DrawerProps = {
 };
 
 export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLoginClick }) => {
-    const [showPassword, setShowPassword] = React.useState(false);
-
-    const handleMouseDownPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowPassword(true);
-    };
-
-    const handleMouseUpPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowPassword(false);
-    };
-
 
 
     return (
@@ -86,6 +73,20 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         variant="outlined"
                         fullWidth
                         margin="normal"
+                        helperText="OPCJONALNIE"
+                        FormHelperTextProps={{
+                            style: {
+                                textAlign: 'right',
+                                marginTop: '-27px',
+                                fontSize: '0.6rem',
+                                color: '#808080', // Ustawienie koloru tekstu na biały
+                                // backgroundColor: '#d3d3d3', // Ustawienie tła na jasnoszary
+                                // padding: '2px 5px', // Dodanie wewnętrznego marginesu dla lepszego wyglądu
+                                // borderRadius: '3px', // Dodanie zaokrąglenia rogów dla lepszego wyglądu
+                                // width: 'auto', // Aby tło nie rozciągało się na całą szerokość
+                                display: 'inline-block' // Aby tło dostosowywało się do szerokości tekstu
+                            }
+                        }}
                         sx={{
                             width: '350px',
                             '&:hover': { backgroundColor: '#fff' },
@@ -266,9 +267,12 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         }}
                     />
 
+                    <CountrySelector />
+
+
                     <TextField
                         size={"small"}
-                        label="Kraj"
+                        label="E-mail"
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -294,60 +298,6 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                             '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
                                 transform: 'translate(18px, -5px) scale(0.7)', // Adjust this value to center the label
                             },
-                        }}
-                    />
-
-
-                    <TextField
-                        size={"small"}
-                        label="E-mail"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        type={showPassword ? 'text' : 'password'}
-                        sx={{
-                            display: 'centre',
-                            width: '350px',
-                            '&:hover': { backgroundColor: '#fff' },
-                            '&:focus': { backgroundColor: '#fff' },
-                            '& .MuiOutlinedInput-root': {
-                                '&.Mui-focused fieldset': {
-                                    borderColor: '#000000',
-                                    borderWidth: '1px',
-                                },
-                            },
-                            '& .MuiInputLabel-root': {
-                                fontSize: '12px',
-                                transform: 'translate(14px, 12px) scale(1)', // Adjust this value to center the label
-                                '&:hover': { backgroundColor: '#fff' },
-                                '&.Mui-focused': {
-                                    color: '#000000', // Change this to the color you want
-
-                                },
-                            },
-                            '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
-                                transform: 'translate(18px, -5px) scale(0.7)', // Adjust this value to center the label
-                            },
-                        }}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onMouseDown={handleMouseDownPassword} // Pokaż hasło
-                                        onMouseUp={handleMouseUpPassword} // Ukryj hasło
-                                        disableRipple
-                                        sx={{
-                                            '& svg': {
-                                                fontSize: '1rem', // Adjust this value to change the size of the icon
-                                            },
-                                        }}
-                                    >
-                                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-
-                            ),
                         }}
                     />
                     <Box
