@@ -9,6 +9,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link } from '@mui/material';
 import CountrySelector from './countrySelect/CountrySelect';
 
+import CustomButton from '../../buttons/button/Button';
+import CustomLink from '../../links/link/Link';
 
 type DrawerProps = {
     open: boolean;
@@ -119,6 +121,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         fullWidth
                         margin="normal"
                         sx={{
+                            marginTop: '1.8rem',
                             width: '350px',
                             '&:hover': { backgroundColor: '#fff' },
                             '&:focus': { backgroundColor: '#fff' },
@@ -318,56 +321,20 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         </Typography>
                     </Box>
 
-
-
-
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        style={{ fontWeight: 'bold' }}
-                        sx={{
-                            marginTop: '1rem',
-                            backgroundColor: '#000',
-                            height: '40px',
-                            width: '180px',
-                            position: 'relative',
-                            '&:hover': {
-                                backgroundImage: 'linear-gradient(to right, blue, green)', // This sets the gradient background
-                                '&::after': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                },
-                            },
-                        }}
-                    >
-                        Utwórz konto
-                    </Button>
+                    <CustomButton label={"Utwórz konto"}/>
 
                 </Box>
 
-                <Typography variant="body1" gutterBottom style={{ textAlign: 'center' }}>
+                <Typography
+                    variant="body1"
+                    gutterBottom
+                    style={{
+                        textAlign: 'center',
+                        marginTop: '20px',
+                    }}>
                     Czy robiłeś już kiedyś u nas zakupy?
                 </Typography>
-                <Link
-                    href="#"
-                    variant="body2"
-                    style={{
-                        display: 'block',
-                        textAlign: 'center',
-                        // color: '#000',
-                        textDecoration: 'none' }}
-                    underline="hover"
-                    sx={{
-                        color: '#000000',
-                        '&:hover': { color: '#008000' } }}
-                    onClick={onLoginClick}
-                >
-                    Zaloguj
-                </Link>
+                <CustomLink label={"Zaloguj"} onClick={onLoginClick}/>
             </Box>
         </Drawer>
     );

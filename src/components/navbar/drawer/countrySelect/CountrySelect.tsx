@@ -51,6 +51,7 @@ function CountrySelect() {
                 fullWidth
                 sx={{
                     width: '350px',
+                    height: '40px',
                     '&:hover': { backgroundColor: '#fff' },
                     '& .MuiOutlinedInput-root': {
                         fontFamily: 'Arial, sans-serif',
@@ -124,24 +125,55 @@ function CountrySelect() {
                     />
                 }
             >
-                <MenuItem value="Polska">
+                <MenuItem
+                    value="Polska"
+                    sx={{
+                        '& .MuiTypography-root': {
+                            fontSize: '13px', // Ustaw rozmiar czcionki
+                        },
+                        '&.Mui-focused': {
+                            backgroundColor: '#808080', // Ustaw kolor tła w stanie focused na szary
+                        },
+                    }}
+                >
                     <ListItemIcon>
                         <PolandFlag fontSize="small" />
                     </ListItemIcon>
                     <Typography variant="inherit">Polska</Typography>
                 </MenuItem>
-                <MenuItem value="Niemcy">
+                <MenuItem
+                    value="Niemcy"
+                    sx={{
+                        '& .MuiTypography-root': {
+                            fontSize: '13px', // Ustaw rozmiar czcionki
+                        },
+                        '&.Mui-focused': {
+                            backgroundColor: '#d3d3d3', // Ustaw kolor tła w stanie focused na szary
+                        },
+                    }}
+                >
                     <ListItemIcon>
                         <GermanyFlag fontSize="small" />
                     </ListItemIcon>
                     <Typography variant="inherit">Niemcy</Typography>
                 </MenuItem>
-                <MenuItem value="Francja">
+                <MenuItem
+                    value="Francja"
+                    sx={{
+                        '& .MuiTypography-root': {
+                            fontSize: '13px', // Ustaw rozmiar czcionki
+                        },
+                        '&.Mui-focused': {
+                            backgroundColor: '#d3d3d3', // Ustaw kolor tła w stanie focused na szary
+                        },
+                    }}
+                >
                     <ListItemIcon>
                         <FranceFlag fontSize="small" />
                     </ListItemIcon>
                     <Typography variant="inherit">Francja</Typography>
                 </MenuItem>
+
             </Select>
         </FormControl>
     );

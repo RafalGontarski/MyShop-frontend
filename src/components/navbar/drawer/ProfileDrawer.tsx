@@ -14,6 +14,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import HandIcon from '@mui/icons-material/PanTool';
+import CustomButton from "../../buttons/button/Button";
+import CustomLink from '../../links/link/Link';
 
 type DrawerProps = {
     open: boolean;
@@ -218,34 +220,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                         />
                     </Box>
 
-
-
-
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        style={{ fontWeight: 'bold' }}
-                        sx={{
-                            marginTop: '1rem',
-                            backgroundColor: '#000',
-                            height: '40px',
-                            width: '150px',
-                            position: 'relative',
-                            '&:hover': {
-                                backgroundImage: 'linear-gradient(to right, blue, green)', // This sets the gradient background
-                                '&::after': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                },
-                            },
-                        }}
-                    >
-                        Zaloguj
-                    </Button>
+                    <CustomButton label={"ZALOGUJ"}/>
 
                 </Box>
                 <Link
@@ -278,22 +253,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                 <Typography variant="body1" gutterBottom style={{ textAlign: 'center' }}>
                     Czy jesteś tutaj nowy?
                 </Typography>
-                <Link
-                    href="#"
-                    variant="body2"
-                    style={{
-                        display: 'block',
-                        textAlign: 'center',
-                        // color: '#000',
-                        textDecoration: 'none' }}
-                    underline="hover"
-                    sx={{
-                        color: '#000000',
-                        '&:hover': { color: '#008000' } }}
-                    onClick={onRegisterClick}
-                >
-                    Rejestracja
-                </Link>
+                <CustomLink label={"Rejestracja"} onClick={onRegisterClick}/>
             </Box>
         </Drawer>
     );
