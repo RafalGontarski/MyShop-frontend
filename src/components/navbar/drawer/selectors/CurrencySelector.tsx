@@ -3,7 +3,7 @@ import { FormControl, InputLabel, OutlinedInput, Select, MenuItem, ListItemIcon,
 import { Flag as PolandFlag, Flag as GermanyFlag, Flag as FranceFlag } from '@mui/icons-material'; // Zaimportuj odpowiednie ikony flag
 import Box from '@mui/material/Box';
 function CurrencySelector() {
-    const [country, setCountry] = React.useState('Polska');
+    const [country, setCountry] = React.useState('PLN · zł · Polish złoty');
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setCountry(event.target.value);
