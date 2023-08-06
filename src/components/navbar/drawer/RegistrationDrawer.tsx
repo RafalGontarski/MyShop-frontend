@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from '@mui/material';
-import CountrySelector from './countrySelect/CountrySelect';
+import CountrySelector from './selectors/CountrySelect';
 
 import CustomButton from '../../buttons/button/Button';
 import CustomLink from '../../links/link/Link';

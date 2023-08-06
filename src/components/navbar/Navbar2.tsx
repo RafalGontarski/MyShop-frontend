@@ -26,6 +26,7 @@ import Logo from "../../resources/img/jedziemy.png";
 import { TemporaryDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
 import { RegistrationDrawer } from './drawer/RegistrationDrawer';
+import { LanguageDrawer } from './drawer/LanguageDrawer';
 
 const Navbar = () => {
 
@@ -33,6 +34,8 @@ const Navbar = () => {
     const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
     const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
+    const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -73,6 +76,13 @@ const Navbar = () => {
     const handleLoginClick = () => {
         setRegistrationDrawerOpen(false);
         setProfileDrawerOpen(true);
+    };
+
+    const handleLanguageDrawerOpen = () => {
+        setLanguageDrawerOpen(true);
+    };
+    const handleLanguageDrawerClose = () => {
+        setLanguageDrawerOpen(false);
     };
 
 
@@ -347,36 +357,25 @@ const Navbar = () => {
                                         style={{
                                             color: '#000',
                                             marginRight: isSmallScreenForIconSize ? '10px' : '20px',
-                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem',
                                         }}
-                                        aria-label="language"
-                                        onClick={handleClick}
+                                        aria-label="profile"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
+                                        onClick={handleLanguageDrawerOpen}
                                     >
                                         <Typography
                                             variant="body1"
                                             style={{
                                                 marginRight: '5px',
-                                                fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem'
+                                                fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem',
                                             }}
                                         >
                                             EN / USD
                                         </Typography>
-                                        <LanguageIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <LanguageIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }} />
                                     </IconButton>
-                                    <Menu
-                                        id="simple-menu"
-                                        anchorEl={anchorEl}
-                                        keepMounted
-                                        open={Boolean(anchorEl)}
-                                        onClose={handleClose}
-                                    >
-                                        <MenuItem onClick={handleClose}>English</MenuItem>
-                                        {/*<MenuItem onClick={handleClose}>Deutsch</MenuItem>*/}
-                                        <MenuItem onClick={handleClose}>Polski</MenuItem>
-                                    </Menu>
                                     <IconButton
                                         edge="end"
                                         style={{
@@ -392,6 +391,10 @@ const Navbar = () => {
                                         <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
                                     </IconButton>
                                     {/*<ProfileDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />*/}
+                                    <LanguageDrawer
+                                        open={languageDrawerOpen}
+                                        onClose={handleLanguageDrawerClose}
+                                    />
                                     <ProfileDrawer
                                         open={profileDrawerOpen}
                                         onClose={() => setProfileDrawerOpen(false)}
