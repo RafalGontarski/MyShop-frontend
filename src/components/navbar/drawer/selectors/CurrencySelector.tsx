@@ -181,6 +181,20 @@ function CurrencySelector() {
 
                     <Typography variant="inherit">GPB · £ · British pound</Typography>
                 </MenuItem>
+                <MenuItem
+                    value="UAH · ₴ · Hrywna"
+                    sx={{
+                        '& .MuiTypography-root': {
+                            fontSize: '13px', // Ustaw rozmiar czcionki
+                        },
+                        '&.Mui-focused': {
+                            backgroundColor: '#d3d3d3', // Ustaw kolor tła w stanie focused na szary
+                        },
+                    }}
+                >
+
+                    <Typography variant="inherit">UAH · ₴ · Hrywna</Typography>
+                </MenuItem>
 
             </Select>
         </FormControl>

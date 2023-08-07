@@ -15,7 +15,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import HandIcon from '@mui/icons-material/PanTool';
 import CustomButton from "../../buttons/button/Button";
-import CustomLink from '../../links/link/Link';
+import CustomLink from '../../links/link/CustomLink';
 
 type DrawerProps = {
     open: boolean;
@@ -226,7 +226,10 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                 <Box style={{
                     marginTop: '1rem',
                 }}>
-                    <CustomLink label={"Zapomniałeś hasła?"} onClick={undefined}/>
+                    <CustomLink
+                        href={"#"}
+                        label={"Zapomniałeś hasła?"}
+                        onClick={undefined}/>
                 </Box>
 
 
@@ -244,7 +247,10 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                     Czy jesteś tutaj nowy?
                 </Typography>
 
-                <CustomLink label={"Rejestracja"} onClick={onRegisterClick}/>
+                <CustomLink
+                    href={"#"}
+                    label={"Rejestracja"}
+                    onClick={onRegisterClick}/>
             </Box>
         </Drawer>
     );

@@ -1,35 +1,27 @@
-import React, { useState } from 'react';
-import Link from '@mui/material/Link';
-import FlagIcon from '@mui/icons-material/Flag';
-import CheckIcon from '@mui/icons-material/Check';
+import React from 'react';
+import {Country} from "./links.styles";
+import CheckIcon from "@mui/icons-material/Check";
 
-interface CustomLinkProps {
+interface CountryLinkProps {
     label: string;
     selected: boolean;
-    onClick?: () => void;
+    onClick?: () => void; // Oznacza, że onClick jest opcjonalny
 }
 
-const CountryLink: React.FC<CustomLinkProps> = ({ label, selected, onClick }) => {
+const CountryLink: React.FC<CountryLinkProps> = ({ label, selected, onClick }) => {
     return (
-        <Link
+        <Country
             href="#"
-            style={{
-                color: '#000',
-                textDecoration: 'none',
-                fontSize: '0.8rem',
-                display: 'block'}}
             underline="none"
             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
             onClick={onClick}
         >
-            <FlagIcon />
             {label}
             {selected && <CheckIcon />}
-        </Link>
+        </Country>
     );
 };
-
 
 export default CountryLink;
 

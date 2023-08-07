@@ -10,7 +10,7 @@ import { Link } from '@mui/material';
 import CountrySelector from './selectors/CountrySelect';
 
 import CustomButton from '../../buttons/button/Button';
-import CustomLink from '../../links/link/Link';
+import CustomLink from '../../links/link/CustomLink';
 
 type DrawerProps = {
     open: boolean;
@@ -334,7 +334,10 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                     }}>
                     Czy robiłeś już kiedyś u nas zakupy?
                 </Typography>
-                <CustomLink label={"Zaloguj"} onClick={onLoginClick}/>
+                <CustomLink
+                    href={"#"}
+                    label={"Zaloguj"}
+                    onClick={onLoginClick}/>
             </Box>
         </Drawer>
     );
