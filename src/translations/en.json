@@ -1,3 +1,11 @@
 {
-  "save": "SAVE"
+  "save": "SAVE",
+  "countries": {
+    "Poland": "Poland",
+    "Germany": "Germany",
+    "Ukraine": "Ukraine",
+    "England": "England",
+    "Italy": "Italy",
+    "France": "France"
+  }
 }

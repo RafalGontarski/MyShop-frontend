@@ -1,3 +1,11 @@
 {
-  "save": "ZAPISZ"
+  "save": "ZAPISZ",
+  "countries": {
+    "Poland": "Polska",
+    "Germany": "Niemcy",
+    "Ukraine": "Ukraina",
+    "England": "Anglia",
+    "Italy": "Włochy",
+    "France": "Francja"
+  }
 }

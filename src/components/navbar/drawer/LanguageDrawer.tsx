@@ -92,17 +92,17 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                                     alignItems: 'center'}}>
                                     <FlagCountryLink
                                         href={"#"}
-                                        label={"Polska"}
+                                        label={t(`countries.Polska`)}
                                         selected={selectedCountry === "Polska"}
                                         onClick={() => setSelectedCountry("Polska")} />
                                     <FlagCountryLink
                                         href={"#"}
-                                        label={"Niemcy"}
+                                        label={t(`countries.Niemcy`)}
                                         selected={selectedCountry === "Niemcy"}
                                         onClick={() => setSelectedCountry("Niemcy")} />
                                     <FlagCountryLink
                                         href={"#"}
-                                        label={"Ukraina"}
+                                        label={t(`countries.Ukraina`)}
                                         selected={selectedCountry === "Ukraina"}
                                         onClick={() => setSelectedCountry("Ukraina")} />
                                 </Box>
@@ -115,17 +115,17 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                                     alignItems: 'center'}}>
                                     <FlagCountryLink
                                         href={"#"}
-                                        label={"Anglia"}
+                                        label={t(`countries.Anglia`)}
                                         selected={selectedCountry === "Anglia"}
                                         onClick={() => setSelectedCountry("Anglia")} />
                                     <FlagCountryLink
                                         href={"#"}
-                                        label={"Włochy"}
+                                        label={t(`countries.Włochy`)}
                                         selected={selectedCountry === "Włochy"}
                                         onClick={() => setSelectedCountry("Włochy")} />
                                     <FlagCountryLink
                                         href={"#"}
-                                        label={"Francja"}
+                                        label={t(`countries.Francja`)}
                                         selected={selectedCountry === "Francja"}
                                         onClick={() => setSelectedCountry("Francja")} />
                                 </Box>
