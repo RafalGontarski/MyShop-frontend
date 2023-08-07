@@ -35,6 +35,18 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             case "England":
                 i18n.changeLanguage('en');
                 break;
+            case "France":
+                i18n.changeLanguage('fr');
+                break;
+            case "Italy":
+                i18n.changeLanguage('it');
+                break;
+            case "Germany":
+                i18n.changeLanguage('de');
+                break;
+            case "Ukraine":
+                i18n.changeLanguage('ua');
+                break;
             // Dodaj tutaj inne przypadki dla innych krajów
             default:
                 i18n.changeLanguage('en');

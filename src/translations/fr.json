@@ -1,0 +1,11 @@
+{
+  "save": "Enregistrer",
+  "countries": {
+    "Poland": "Pologne",
+    "Germany": "Allemagne",
+    "Ukraine": "Ukraine",
+    "England": "Angleterre",
+    "Italy": "Italie",
+    "France": "France"
+  }
+}
