@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -27,7 +27,7 @@ import { TemporaryDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
 import { RegistrationDrawer } from './drawer/RegistrationDrawer';
 import { LanguageDrawer } from './drawer/LanguageDrawer';
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { makeStyles } from '@material-ui/core/styles';
 
 // icons
@@ -59,8 +59,23 @@ const Navbar = () => {
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('EN');
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const [currentLanguage, setCurrentLanguage] = useState(t.language);
     const classes = useStyles();
+
+    useEffect(() => {
+        // Nasłuchuj na zmiany języka
+        i18n.on('languageChanged', (lang: string) => {
+            setCurrentLanguage(lang);
+        });
+
+        // Wyłącz nasłuchiwanie na zmiany języka, gdy komponent jest odmontowywany
+        return () => {
+            i18n.off('languageChanged');
+        };
+    }, [i18n]);
+
+
 
     let countryIcon;
     switch (t.language) {
@@ -71,16 +86,16 @@ const Navbar = () => {
             countryIcon = <img src={UnitedKingdomIcon} alt="England" width={30} height={30}/>;
             break;
         case 'de':
-            countryIcon = <img src={DeutschlandIcon} alt="England" width={30} height={30}/>;
+            countryIcon = <img src={DeutschlandIcon} alt="Germany" width={30} height={30}/>;
             break;
         case 'fr':
-            countryIcon = <img src={FranceIcon} alt="England" width={30} height={30}/>;
+            countryIcon = <img src={FranceIcon} alt="France" width={30} height={30}/>;
             break;
         case 'it':
-            countryIcon = <img src={ItalyIcon} alt="England" width={30} height={30}/>;
+            countryIcon = <img src={ItalyIcon} alt="Italy" width={30} height={30}/>;
             break;
         case 'ua':
-            countryIcon = <img src={UcraineIcon} alt="England" width={30} height={30}/>;
+            countryIcon = <img src={UcraineIcon} alt="Ucraine" width={30} height={30}/>;
             break;
         // Dodaj tutaj inne przypadki dla innych krajów
         default:
