@@ -28,6 +28,28 @@ import { ProfileDrawer } from './drawer/ProfileDrawer';
 import { RegistrationDrawer } from './drawer/RegistrationDrawer';
 import { LanguageDrawer } from './drawer/LanguageDrawer';
 import {useTranslation} from "react-i18next";
+import { makeStyles } from '@material-ui/core/styles';
+
+// icons
+import PolishIcon from '../../resources/icons/polandFlagIcon.png';
+import UnitedKingdomIcon from '../../resources/icons/unitedKingdomFlagIcon.png';
+import DeutschlandIcon from '../../resources/icons/deutschlandFlagIcon.png';
+import FranceIcon from '../../resources/icons/franceFlagIcon.png';
+import ItalyIcon from '../../resources/icons/italyFlagIcon.png';
+import UcraineIcon from '../../resources/icons/ukraineFlagIcon.png';
+import {Box} from "@mui/system";
+
+const useStyles = makeStyles((theme) => ({
+    iconContainer: {
+        borderRadius: '50%',
+        width: '32px',
+        height: '32px',
+        backgroundColor: 'white',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+}));
 
 const Navbar = () => {
 
@@ -38,6 +60,32 @@ const Navbar = () => {
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('EN');
     const { t } = useTranslation();
+    const classes = useStyles();
+
+    let countryIcon;
+    switch (t.language) {
+        case 'pl':
+            countryIcon = <img src={PolishIcon} alt="Poland" width={30} height={30}/>;
+            break;
+        case 'en':
+            countryIcon = <img src={UnitedKingdomIcon} alt="England" width={30} height={30}/>;
+            break;
+        case 'de':
+            countryIcon = <img src={DeutschlandIcon} alt="England" width={30} height={30}/>;
+            break;
+        case 'fr':
+            countryIcon = <img src={FranceIcon} alt="England" width={30} height={30}/>;
+            break;
+        case 'it':
+            countryIcon = <img src={ItalyIcon} alt="England" width={30} height={30}/>;
+            break;
+        case 'ua':
+            countryIcon = <img src={UcraineIcon} alt="England" width={30} height={30}/>;
+            break;
+        // Dodaj tutaj inne przypadki dla innych krajów
+        default:
+            countryIcon = <img src={PolishIcon} alt="Poland" width={30} height={30}/>;
+    }
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -377,7 +425,10 @@ const Navbar = () => {
                                         >
                                             {`${languageCode} · USD`}
                                         </Typography>
-                                        <LanguageIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }} />
+                                        <Box className={classes.iconContainer}>
+                                            {countryIcon}
+                                        </Box>
+                                        {/*<LanguageIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }} />*/}
                                     </IconButton>
                                     <IconButton
                                         edge="end"
