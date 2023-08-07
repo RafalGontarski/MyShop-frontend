@@ -27,6 +27,7 @@ import { TemporaryDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
 import { RegistrationDrawer } from './drawer/RegistrationDrawer';
 import { LanguageDrawer } from './drawer/LanguageDrawer';
+import {useTranslation} from "react-i18next";
 
 const Navbar = () => {
 
@@ -36,7 +37,7 @@ const Navbar = () => {
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('EN');
-
+    const { t } = useTranslation();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -221,7 +222,7 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
-                                        Nowości
+                                        {t('navbar.new')}
                                     </Link>
                                     {!isSmallScreenForTopSellerLink && (
                                         <Link
@@ -253,7 +254,7 @@ const Navbar = () => {
                                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
-                                            Okazje
+                                            {t('navbar.bargains')}
                                         </Link>
                                     )}
                                 </div>

@@ -17,5 +17,9 @@
     "forgotPassword": "Zapomniałeś hasła?",
     "newHere": "Czy jest tutaj nowy?",
     "register": "Rejestracja"
+  },
+  "navbar": {
+    "new": "Nowości",
+    "bargains": "Okazje"
   }
 }
