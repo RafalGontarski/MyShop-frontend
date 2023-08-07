@@ -12,6 +12,8 @@ import CountryLink from "../../links/link/CountryLink";
 import FlagCountryLink from "../../links/link/FlagCountryLink";
 import Grid from '@mui/material/Grid';
 
+import { useTranslation } from 'react-i18next';
+
 
 
 type DrawerProps = {
@@ -22,7 +24,7 @@ type DrawerProps = {
 export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
 
     const [selectedCountry, setSelectedCountry] = useState("Polska");
-
+    const { t } = useTranslation();
 
     return (
         <Drawer
@@ -297,7 +299,7 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                     }}
                 >
 
-                    <CustomButton label={"ZAPISZ"}/>
+                    <CustomButton label={t('save')} />
 
                 </Box>
 
