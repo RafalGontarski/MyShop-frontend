@@ -13,6 +13,7 @@ import FlagCountryLink from "../../links/link/FlagCountryLink";
 import Grid from '@mui/material/Grid';
 
 import { useTranslation } from 'react-i18next';
+import i18n from '../../../i18n';
 
 
 
@@ -25,6 +26,20 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
 
     const [selectedCountry, setSelectedCountry] = useState("Polska");
     const { t } = useTranslation();
+
+    const handleSave = () => {
+        switch (selectedCountry) {
+            case "Polska":
+                i18n.changeLanguage('pl');
+                break;
+            case "Anglia":
+                i18n.changeLanguage('en');
+                break;
+            // Dodaj tutaj inne przypadki dla innych krajów
+            default:
+                i18n.changeLanguage('en');
+        }
+    };
 
     return (
         <Drawer
@@ -299,7 +314,7 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                     }}
                 >
 
-                    <CustomButton label={t('save')} />
+                    <CustomButton label={t('save')} onClick={handleSave}/>
 
                 </Box>
 
