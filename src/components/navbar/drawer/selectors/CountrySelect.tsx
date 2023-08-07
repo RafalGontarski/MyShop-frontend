@@ -1,7 +1,19 @@
 import React from 'react';
-import { FormControl, InputLabel, OutlinedInput, Select, MenuItem, ListItemIcon, Typography, InputAdornment } from '@mui/material';
-import { Flag as PolandFlag, Flag as GermanyFlag, Flag as FranceFlag } from '@mui/icons-material'; // Zaimportuj odpowiednie ikony flag
+import {
+    Select,
+    MenuItem,
+    ListItemIcon,
+    Typography,
+    OutlinedInput
+}
+    from '@mui/material';
+import {
+    Flag as PolandFlag,
+    Flag as GermanyFlag,
+    Flag as FranceFlag }
+    from '@mui/icons-material';
 import Box from '@mui/material/Box';
+import {SelectorFormControlStyle} from "./selectors.styles";
 function CountrySelect() {
     const [country, setCountry] = React.useState('Polska');
 
@@ -23,27 +35,10 @@ function CountrySelect() {
     };
 
     return (
-        <FormControl
+        <SelectorFormControlStyle
             variant="outlined"
             fullWidth
-            margin="normal"
-            sx={{
-                width: '350px',
-                '&:hover': { backgroundColor: '#fff' },
-                '&:focus': { backgroundColor: '#fff' },
-            }}
-        >
-            <InputLabel
-                sx={{
-                    fontSize: '12px',
-                    transform: 'translate(14px, 12px) scale(1)', // Adjust this value to center the label
-                    '&.Mui-focused': {
-                        color: '#000000', // Change this to the color you want
-                        fontSize: '12px',
-                    },
-                }}
-            >
-            </InputLabel>
+            margin="normal">
             <Select
                 label="Kraj"
                 value={country}
@@ -173,9 +168,8 @@ function CountrySelect() {
                     </ListItemIcon>
                     <Typography variant="inherit">Francja</Typography>
                 </MenuItem>
-
             </Select>
-        </FormControl>
+        </SelectorFormControlStyle>
     );
 }
 
