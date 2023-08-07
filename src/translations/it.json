@@ -7,5 +7,15 @@
     "England": "Inghilterra",
     "Italy": "Italia",
     "France": "Francia"
+  },
+  "profileDrawer": {
+    "greeting": "Ciao",
+    "email": "E-mail",
+    "password": "Password",
+    "rememberMe": "Ricordami",
+    "login": "ACCESSO",
+    "forgotPassword": "Hai dimenticato la password?",
+    "newHere": "Sei nuovo qui?",
+    "register": "Registrati"
   }
 }

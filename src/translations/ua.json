@@ -7,5 +7,15 @@
     "England": "Англія",
     "Italy": "Італія",
     "France": "Франція"
+  },
+  "profileDrawer": {
+    "greeting": "Привіт",
+    "email": "Електронна пошта",
+    "password": "Пароль",
+    "rememberMe": "Пам'ятай мене",
+    "login": "УВІЙТИ",
+    "forgotPassword": "Забули пароль?",
+    "newHere": "Ти тут новий?",
+    "register": "Реєстрація"
   }
 }

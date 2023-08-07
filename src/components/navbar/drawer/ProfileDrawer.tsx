@@ -16,6 +16,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import HandIcon from '@mui/icons-material/PanTool';
 import CustomButton from "../../buttons/button/Button";
 import CustomLink from '../../links/link/CustomLink';
+import {useTranslation} from "react-i18next";
 
 type DrawerProps = {
     open: boolean;
@@ -25,7 +26,7 @@ type DrawerProps = {
 
 export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegisterClick }) => {
     const [showPassword, setShowPassword] = React.useState(false);
-
+    const { t } = useTranslation();
     const handleMouseDownPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowPassword(true);
@@ -82,7 +83,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
 
                     <Box sx={{ display: 'flex', alignItems: 'left' }}>
                         <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold' }}>
-                            Cześć
+                            {t('profileDrawer.greeting')}
                         </Typography>
                         <HandIcon
                             style={{ color: '#008000'}}
@@ -91,7 +92,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
 
                     <TextField
                         size={"small"}
-                        label="Email"
+                        label={t('profileDrawer.email')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -123,7 +124,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
 
                     <TextField
                         size={"small"}
-                        label="Hasło"
+                        label={t('profileDrawer.password')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -208,7 +209,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                                     }}
                                 />
                             }
-                            label="Zapamiętaj mnie"
+                            label={t('profileDrawer.rememberMe')}
                             sx={{
                                 '& .MuiTypography-root': {
                                     // fontFamily: 'Arial, sans-serif',
@@ -220,7 +221,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                         />
                     </Box>
 
-                    <CustomButton label={"ZALOGUJ"}/>
+                    <CustomButton label={t('profileDrawer.login')}/>
 
                 </Box>
                 <Box style={{
@@ -228,7 +229,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                 }}>
                     <CustomLink
                         href={"#"}
-                        label={"Zapomniałeś hasła?"}
+                        label={t('profileDrawer.forgotPassword')}
                         onClick={undefined}/>
                 </Box>
 
@@ -244,12 +245,12 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                 />
 
                 <Typography variant="body1" gutterBottom style={{ textAlign: 'center' }}>
-                    Czy jesteś tutaj nowy?
+                    {t('profileDrawer.newHere')}
                 </Typography>
 
                 <CustomLink
                     href={"#"}
-                    label={"Rejestracja"}
+                    label={t('profileDrawer.register')}
                     onClick={onRegisterClick}/>
             </Box>
         </Drawer>
