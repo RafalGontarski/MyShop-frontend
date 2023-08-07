@@ -12,6 +12,14 @@ import CountryLink from "../../links/link/CountryLink";
 import FlagCountryLink from "../../links/link/FlagCountryLink";
 import Grid from '@mui/material/Grid';
 
+import PolishFlag from '../../../resources/flags/polandFlag.png';
+import UnitedKingdomFlag from '../../../resources/flags/unitedKingdomFlag.png';
+import DeutschlandFlag from '../../../resources/flags/deutschlandFlag.png';
+import FranceFlag from '../../../resources/flags/franceFlag.png';
+import ItalianFlag from '../../../resources/flags/italyFlag.png';
+import UcraineFlag from '../../../resources/flags/ucraineFlag.png';
+
+
 import { useTranslation } from 'react-i18next';
 import i18n from '../../../i18n';
 
@@ -130,17 +138,22 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                         href={"#"}
                                         label={t(`countriesFlag.Poland`)}
                                         selected={selectedCountry === "Poland"}
-                                        onClick={() => setSelectedCountry("Poland")} />
+                                        onClick={() => setSelectedCountry("Poland")}
+                                        flag={PolishFlag}/>
+
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.Germany`)}
                                         selected={selectedCountry === "Germany"}
-                                        onClick={() => setSelectedCountry("Germany")} />
+                                        onClick={() => setSelectedCountry("Germany")}
+                                        flag={DeutschlandFlag}/>
+
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.Ukraine`)}
                                         selected={selectedCountry === "Ukraine"}
-                                        onClick={() => setSelectedCountry("Ukraine")} />
+                                        onClick={() => setSelectedCountry("Ukraine")}
+                                        flag={UcraineFlag}/>
                                 </Box>
                             </Grid>
                             <Grid item xs={6}>
@@ -153,17 +166,21 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                         href={"#"}
                                         label={t(`countriesFlag.England`)}
                                         selected={selectedCountry === "England"}
-                                        onClick={() => setSelectedCountry("England")} />
+                                        onClick={() => setSelectedCountry("England")}
+                                        flag={UnitedKingdomFlag} />
+
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.Italy`)}
                                         selected={selectedCountry === "Italy"}
-                                        onClick={() => setSelectedCountry("Italy")} />
+                                        onClick={() => setSelectedCountry("Italy")}
+                                        flag={ItalianFlag}/>
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.France`)}
                                         selected={selectedCountry === "France"}
-                                        onClick={() => setSelectedCountry("France")} />
+                                        onClick={() => setSelectedCountry("France")}
+                                        flag={FranceFlag}/>
                                 </Box>
                             </Grid>
                         </Grid>

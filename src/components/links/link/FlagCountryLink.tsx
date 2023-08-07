@@ -8,9 +8,10 @@ interface FlagCountryLinkProps {
     label: string;
     selected: boolean;
     onClick?: () => void;
+    flag: string;
 }
 
-const FlagCountryLink: React.FC<FlagCountryLinkProps> = ({ href, label, selected, onClick }) => {
+const FlagCountryLink: React.FC<FlagCountryLinkProps> = ({ href, label, selected, onClick, flag }) => {
     return (
         <FlagCountry
             href={href}
@@ -19,7 +20,7 @@ const FlagCountryLink: React.FC<FlagCountryLinkProps> = ({ href, label, selected
             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
             onClick={onClick}
         >
-            <FlagIcon />
+            <img src={flag} alt="Flag" width="32" height="24"/>
             {label}
             {selected && <CheckIcon />}
         </FlagCountry>
