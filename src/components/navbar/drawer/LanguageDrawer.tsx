@@ -20,9 +20,10 @@ import i18n from '../../../i18n';
 type DrawerProps = {
     open: boolean;
     onClose: () => void;
+    onLanguageChange: (lang: string) => void;
 };
 
-export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
+export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguageChange }) => {
 
     const [selectedCountry, setSelectedCountry] = useState("Polska");
     const { t } = useTranslation();
@@ -31,26 +32,33 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
         switch (selectedCountry) {
             case "Poland":
                 i18n.changeLanguage('pl');
+                onLanguageChange('PL');
                 break;
             case "England":
                 i18n.changeLanguage('en');
+                onLanguageChange('EN');
                 break;
             case "France":
                 i18n.changeLanguage('fr');
+                onLanguageChange('FR');
                 break;
             case "Italy":
                 i18n.changeLanguage('it');
+                onLanguageChange('IT');
                 break;
             case "Germany":
                 i18n.changeLanguage('de');
+                onLanguageChange('DE');
                 break;
             case "Ukraine":
                 i18n.changeLanguage('ua');
+                onLanguageChange('UA');
                 break;
             // Dodaj tutaj inne przypadki dla innych krajów
             default:
                 i18n.changeLanguage('en');
         }
+        onClose();
     };
 
 

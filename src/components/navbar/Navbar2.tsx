@@ -35,6 +35,8 @@ const Navbar = () => {
     const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
+    const [languageCode, setLanguageCode] = useState('EN');
+
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -372,7 +374,7 @@ const Navbar = () => {
                                                 fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem',
                                             }}
                                         >
-                                            EN / USD
+                                            {`${languageCode} · USD`}
                                         </Typography>
                                         <LanguageIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }} />
                                     </IconButton>
@@ -394,6 +396,7 @@ const Navbar = () => {
                                     <LanguageDrawer
                                         open={languageDrawerOpen}
                                         onClose={handleLanguageDrawerClose}
+                                        onLanguageChange={setLanguageCode}
                                     />
                                     <ProfileDrawer
                                         open={profileDrawerOpen}
