@@ -1,6 +1,11 @@
 {
   "save": "ZAPISZ",
-  "countries": {
+  "languageDrawer": {
+    "country": "Kraj · Country",
+    "language": "Język · Language",
+    "currency": "Waluta · Currency"
+  },
+  "countriesFlag": {
     "Poland": "Polska",
     "Germany": "Niemcy",
     "Ukraine": "Ukraina",

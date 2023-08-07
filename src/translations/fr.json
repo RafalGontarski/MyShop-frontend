@@ -1,6 +1,11 @@
 {
   "save": "Enregistrer",
-  "countries": {
+  "languageDrawer": {
+    "country": "Pays · Country",
+    "language": "Langue · Language",
+    "currency": "Devise · Currency"
+  },
+  "countriesFlag": {
     "Poland": "Pologne",
     "Germany": "Allemagne",
     "Ukraine": "Ukraine",

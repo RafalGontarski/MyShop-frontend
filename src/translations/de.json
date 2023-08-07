@@ -1,5 +1,18 @@
 {
   "save": "Speichern",
+  "languageDrawer": {
+    "country": "Land · Country",
+    "language": "Sprache · Language",
+    "currency": "Währung · Currency"
+  },
+  "countriesFlag": {
+    "Poland": "Polen",
+    "Germany": "Deutschland",
+    "Ukraine": "Ukraine",
+    "England": "England",
+    "Italy": "Italien",
+    "France": "Frankreich"
+  },
   "countries": {
     "Poland": "Polen",
     "Germany": "Deutschland",
