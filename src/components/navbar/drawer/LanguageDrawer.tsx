@@ -29,15 +29,41 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onLanguageChange: (lang: string) => void;
+    onCountryChange: (lang: string) => void;
 };
 
-export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguageChange }) => {
+export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguageChange, onCountryChange }) => {
 
     const [selectedCountry, setSelectedCountry] = useState("Polska");
+    const [selectedLanguage, setSelectedLanguage] = useState("Polska");
     const { t } = useTranslation();
 
     const handleSave = () => {
         switch (selectedCountry) {
+            case "Poland":
+                onCountryChange('pl');
+                break;
+            case "England":
+                onCountryChange('en');
+                break;
+            case "France":
+                onCountryChange('fr');
+                break;
+            case "Italy":
+                onCountryChange('it');
+                break;
+            case "Germany":
+                onCountryChange('de');
+                break;
+            case "Ukraine":
+                onCountryChange('ua');
+                break;
+            default:
+                onCountryChange('pl');
+        }
+
+
+        switch (selectedLanguage) {
             case "Poland":
                 i18n.changeLanguage('pl');
                 onLanguageChange('PL');
@@ -232,13 +258,13 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
 
                             <CountryLink
                                 label={t(`countriesFlag.Poland`)}
-                                selected={selectedCountry === "Poland"}
-                                onClick={() => setSelectedCountry("Poland")}
+                                selected={selectedLanguage === "Poland"}
+                                onClick={() => setSelectedLanguage("Poland")}
                             />
                             <CountryLink
                                 label={t(`countriesFlag.England`)}
-                                selected={selectedCountry === "England"}
-                                onClick={() => setSelectedCountry("England")}
+                                selected={selectedLanguage === "England"}
+                                onClick={() => setSelectedLanguage("England")}
                             />
                         </Box>
                     </Grid>
@@ -251,13 +277,13 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                             alignItems: 'center'}}>
                             <CountryLink
                                 label={t(`countriesFlag.Germany`)}
-                                selected={selectedCountry === "Germany"}
-                                onClick={() => setSelectedCountry("Germany")}
+                                selected={selectedLanguage === "Germany"}
+                                onClick={() => setSelectedLanguage("Germany")}
                             />
                             <CountryLink
                                 label={t(`countriesFlag.Italy`)}
-                                selected={selectedCountry === "Italy"}
-                                onClick={() => setSelectedCountry("Italy")}
+                                selected={selectedLanguage === "Italy"}
+                                onClick={() => setSelectedLanguage("Italy")}
                             />
                         </Box>
                     </Grid>
@@ -270,13 +296,13 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                             alignItems: 'center'}}>
                             <CountryLink
                                 label={t(`countriesFlag.Ukraine`)}
-                                selected={selectedCountry === "Ukraine"}
-                                onClick={() => setSelectedCountry("Ukraine")}
+                                selected={selectedLanguage === "Ukraine"}
+                                onClick={() => setSelectedLanguage("Ukraine")}
                             />
                             <CountryLink
                                 label={t(`countriesFlag.France`)}
-                                selected={selectedCountry === "France"}
-                                onClick={() => setSelectedCountry("France")}
+                                selected={selectedLanguage === "France"}
+                                onClick={() => setSelectedLanguage("France")}
                             />
                         </Box>
                     </Grid>

@@ -59,6 +59,8 @@ const Navbar = () => {
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('EN');
+    const [countryCode, setCountryCode] = useState('pl');
+
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(t.language);
     const classes = useStyles();
@@ -78,7 +80,7 @@ const Navbar = () => {
 
 
     let countryIcon;
-    switch (t.language) {
+    switch (countryCode) {
         case 'pl':
             countryIcon = <img src={PolishIcon} alt="Poland" width={30} height={30}/>;
             break;
@@ -464,6 +466,7 @@ const Navbar = () => {
                                         open={languageDrawerOpen}
                                         onClose={handleLanguageDrawerClose}
                                         onLanguageChange={setLanguageCode}
+                                        onCountryChange={setCountryCode}
                                     />
                                     <ProfileDrawer
                                         open={profileDrawerOpen}
