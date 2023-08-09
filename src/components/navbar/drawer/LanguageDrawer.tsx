@@ -7,7 +7,6 @@ import { Box } from '@mui/system';
 import CustomButton from "../../buttons/button/Button";
 import { IconButton } from '@mui/material';
 import CurrencySelector from "./selectors/CurrencySelector";
-import { InputAdornment, Link } from "@mui/material";
 import CountryLink from "../../links/link/CountryLink";
 import FlagCountryLink from "../../links/link/FlagCountryLink";
 import Grid from '@mui/material/Grid';
@@ -23,22 +22,36 @@ import UcraineFlag from '../../../resources/flags/ucraineFlag.png';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../../i18n';
 
+type CurrencyMap = {
+    [key: string]: string;
+};
 
+const currencyMapping: CurrencyMap = {
+    "PLN · zł · Polish złoty": "zł",
+    "EUR · € · Euro": "€",
+    "USD · $ · Dolar": "$",
+    "GPB · £ · British pound": "£",
+    "UAH · ₴ · Hrywna": "₴"
+};
 
 type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onLanguageChange: (lang: string) => void;
     onCountryChange: (lang: string) => void;
+    onCurrencyChange?: (currencySymbol: string) => void;
 };
 
-export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguageChange, onCountryChange }) => {
+export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguageChange, onCountryChange, onCurrencyChange }) => {
 
     const [selectedCountry, setSelectedCountry] = useState("Polska");
     const [selectedLanguage, setSelectedLanguage] = useState("Polska");
+    const [selectedCurrencyValue, setSelectedCurrencyValue] = useState<string>('PLN · zł · Polish złoty');
     const { t } = useTranslation();
 
     const handleSave = () => {
+        // onCurrencyChange(selectedCurrency.short);
+
         switch (selectedCountry) {
             case "Poland":
                 onCountryChange('pl');
@@ -95,6 +108,12 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
         onClose();
     };
 
+    const updateSelectedCurrencyValue = (currencySymbol: string) => {
+        const selectedValue = Object.keys(currencyMapping).find(key => currencyMapping[key] === currencySymbol);
+        if (selectedValue) {
+            setSelectedCurrencyValue(selectedValue);
+        }
+    };
 
     return (
         <Drawer
@@ -345,7 +364,16 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                         </Typography>
                     </Box>
 
-                    <CurrencySelector />
+                    <CurrencySelector
+                        selectedValue={selectedCurrencyValue}
+                        onCurrencyChange={(currencySymbol) => {
+                            if (onCurrencyChange) {
+                                onCurrencyChange(currencySymbol);
+                            }
+                            updateSelectedCurrencyValue(currencySymbol);
+                        }}
+                    />
+
 
 
                 </Box>

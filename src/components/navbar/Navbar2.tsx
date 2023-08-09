@@ -1,56 +1,57 @@
 import React, {useEffect, useState} from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import TextField from '@mui/material/TextField';
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import LanguageIcon from "@mui/icons-material/Language";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import {AccountCircle} from "@mui/icons-material";
-import {InputAdornment, Link, Typography} from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
-import Grid from '@mui/material/Grid';
-import SearchIcon from '@mui/icons-material/Search';
 import { withStyles } from '@mui/styles';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import TikTokIcon from '@mui/icons-material/MusicNote';
+import { useTranslation } from "react-i18next";
 import { useTheme } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import Logo from "../../resources/img/jedziemy.png";
+import {Box} from "@mui/system";
+import Grid from '@mui/material/Grid';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import MenuIcon from '@mui/icons-material/Menu';
+import {AccountCircle} from "@mui/icons-material";
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import {InputAdornment, Link, Typography} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
+// components
 import { TemporaryDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
-import { RegistrationDrawer } from './drawer/RegistrationDrawer';
 import { LanguageDrawer } from './drawer/LanguageDrawer';
-import { useTranslation } from "react-i18next";
-import { makeStyles } from '@material-ui/core/styles';
+import { RegistrationDrawer } from './drawer/RegistrationDrawer';
 
 // icons
+import ItalyIcon from '../../resources/icons/italyFlagIcon.png';
+import FranceIcon from '../../resources/icons/franceFlagIcon.png';
 import PolishIcon from '../../resources/icons/polandFlagIcon.png';
+import UcraineIcon from '../../resources/icons/ukraineFlagIcon.png';
 import UnitedKingdomIcon from '../../resources/icons/unitedKingdomFlagIcon.png';
 import DeutschlandIcon from '../../resources/icons/deutschlandFlagIcon.png';
-import FranceIcon from '../../resources/icons/franceFlagIcon.png';
-import ItalyIcon from '../../resources/icons/italyFlagIcon.png';
-import UcraineIcon from '../../resources/icons/ukraineFlagIcon.png';
-import {Box} from "@mui/system";
+
+import SearchIcon from '@mui/icons-material/Search';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import TikTokIcon from '@mui/icons-material/MusicNote';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
+// img
+import Logo from "../../resources/img/jedziemy.png";
 
 const useStyles = makeStyles((theme) => ({
     iconContainer: {
         borderRadius: '50%',
-        width: '32px',
-        height: '32px',
-        backgroundColor: 'white',
+        border: '0.15rem solid black',
+        width: '28px',
+        height: '28px',
+        backgroundColor: '#F8F8F8',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
     },
 }));
-
 const Navbar = () => {
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -60,6 +61,8 @@ const Navbar = () => {
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('EN');
     const [countryCode, setCountryCode] = useState('pl');
+    const [currencyCode, setCurrencyCode] = useState('zł');
+    const [selectedCurrencySymbol, setSelectedCurrencySymbol] = useState<string>('zł');
 
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(t.language);
@@ -77,31 +80,51 @@ const Navbar = () => {
         };
     }, [i18n]);
 
-
+    let currencySymbol;
+    switch (currencyCode) {
+        case 'zł':
+            currencySymbol = 'zł';
+            break;
+        case 'EUR':
+            currencySymbol = '€';
+            break;
+        case 'GPB':
+            currencySymbol = '£';
+            break;
+        case 'USD':
+            currencySymbol = '$';
+            break;
+        case 'UAH':
+            currencySymbol = '₴';
+            break;
+        // Dodaj tutaj inne przypadki dla innych walut
+        default:
+            currencySymbol = 'zł';
+    }
 
     let countryIcon;
     switch (countryCode) {
         case 'pl':
-            countryIcon = <img src={PolishIcon} alt="Poland" width={30} height={30}/>;
+            countryIcon = <img src={PolishIcon} alt="Poland" width={24} height={24}/>;
             break;
         case 'en':
-            countryIcon = <img src={UnitedKingdomIcon} alt="England" width={30} height={30}/>;
+            countryIcon = <img src={UnitedKingdomIcon} alt="England" width={24} height={24}/>;
             break;
         case 'de':
-            countryIcon = <img src={DeutschlandIcon} alt="Germany" width={30} height={30}/>;
+            countryIcon = <img src={DeutschlandIcon} alt="Germany" width={24} height={24}/>;
             break;
         case 'fr':
-            countryIcon = <img src={FranceIcon} alt="France" width={30} height={30}/>;
+            countryIcon = <img src={FranceIcon} alt="France" width={24} height={24}/>;
             break;
         case 'it':
-            countryIcon = <img src={ItalyIcon} alt="Italy" width={30} height={30}/>;
+            countryIcon = <img src={ItalyIcon} alt="Italy" width={24} height={24}/>;
             break;
         case 'ua':
-            countryIcon = <img src={UcraineIcon} alt="Ucraine" width={30} height={30}/>;
+            countryIcon = <img src={UcraineIcon} alt="Ucraine" width={24} height={24}/>;
             break;
         // Dodaj tutaj inne przypadki dla innych krajów
         default:
-            countryIcon = <img src={PolishIcon} alt="Poland" width={30} height={30}/>;
+            countryIcon = <img src={PolishIcon} alt="Poland" width={24} height={24}/>;
     }
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -120,6 +143,9 @@ const Navbar = () => {
             },
         },
     })(TextField);
+    const handleCurrencyChange = (currencySymbol: string) => {
+        setSelectedCurrencySymbol(currencySymbol);
+    };
 
     // Drawer
     const handleMenuDrawerOpen = () => {
@@ -128,32 +154,26 @@ const Navbar = () => {
     const handleMenuDrawerClose = () => {
         setMenuDrawerOpen(false);
     };
-
     const handleProfileDrawerOpen = () => {
         setProfileDrawerOpen(true);
     };
     const handleProfileDrawerClose = () => {
         setProfileDrawerOpen(false);
     };
-
     const handleRegistrationClick = () => {
         setProfileDrawerOpen(false);
         setRegistrationDrawerOpen(true);
     };
-
     const handleLoginClick = () => {
         setRegistrationDrawerOpen(false);
         setProfileDrawerOpen(true);
     };
-
     const handleLanguageDrawerOpen = () => {
         setLanguageDrawerOpen(true);
     };
     const handleLanguageDrawerClose = () => {
         setLanguageDrawerOpen(false);
     };
-
-
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down(1350));
@@ -382,7 +402,8 @@ const Navbar = () => {
                             </div>
                         </Grid>
                         <Grid item xs={12} sm={5}>
-                            <div style={{
+                            <div
+                                style={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 gap: isSmallScreenForIconSize ? '18px' : '35px',
@@ -440,7 +461,7 @@ const Navbar = () => {
                                                 fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem',
                                             }}
                                         >
-                                            {`${languageCode} · USD`}
+                                            {`${languageCode} · ${selectedCurrencySymbol}  `}
                                         </Typography>
                                         <Box className={classes.iconContainer}>
                                             {countryIcon}
@@ -467,6 +488,8 @@ const Navbar = () => {
                                         onClose={handleLanguageDrawerClose}
                                         onLanguageChange={setLanguageCode}
                                         onCountryChange={setCountryCode}
+                                        // onCurrencyChange={setCurrencyCode}
+                                        onCurrencyChange={handleCurrencyChange}
                                     />
                                     <ProfileDrawer
                                         open={profileDrawerOpen}

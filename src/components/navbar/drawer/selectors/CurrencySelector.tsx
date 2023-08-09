@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormControl, InputLabel, OutlinedInput, Select, MenuItem, ListItemIcon, Typography, InputAdornment } from '@mui/material';
 import { Flag as PolandFlag, Flag as GermanyFlag, Flag as FranceFlag } from '@mui/icons-material'; // Zaimportuj odpowiednie ikony flag
 import Box from '@mui/material/Box';
-function CurrencySelector() {
-    const [country, setCountry] = React.useState('PLN · zł · Polish złoty');
+import { SelectChangeEvent } from '@mui/material';
 
-    const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setCountry(event.target.value);
-    };
 
-    const getFlagIcon = (countryName: any) => {
-        switch (countryName) {
-            case 'zł':
-                return <PolandFlag fontSize="small" />;
-            case '$':
-                return <GermanyFlag fontSize="small" />;
-            case '€':
-                return <FranceFlag fontSize="small" />;
-            case '£':
-                return <FranceFlag fontSize="small" />;
-            default:
-                return null;
+interface CurrencySelectorProps {
+    selectedValue: string;
+    onCurrencyChange?: (currencySymbol: string) => void;
+}
+
+type CurrencyMap = {
+    [key: string]: string;
+};
+
+const currencyMapping: CurrencyMap = {
+    "PLN · zł · Polish złoty": "zł",
+    "EUR · € · Euro": "€",
+    "USD · $ · Dolar": "$",
+    "GPB · £ · British pound": "£",
+    "UAH · ₴ · Hrywna": "₴"
+};
+
+const CurrencySelector: React.FC<CurrencySelectorProps> = (props) => {
+    const [country, setCountry] = useState<string>(props.selectedValue);
+
+    const handleChange = (event: SelectChangeEvent<string>) => {
+        const selectedCurrency = event.target.value;
+        setCountry(selectedCurrency);
+        if (props.onCurrencyChange && currencyMapping[selectedCurrency]) {
+            props.onCurrencyChange(currencyMapping[selectedCurrency]);
         }
     };
 
