@@ -18,7 +18,7 @@ const CountryLink: React.FC<CountryLinkProps> = ({ label, selected, onClick }) =
             onClick={onClick}
         >
             {label}
-            {selected && <CheckIcon />}
+            {selected && <CheckIcon style={{ width: 17, height: 17 }}/>}
         </Country>
     );
 };

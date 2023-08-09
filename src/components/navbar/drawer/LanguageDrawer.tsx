@@ -44,13 +44,12 @@ type DrawerProps = {
 
 export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguageChange, onCountryChange, onCurrencyChange }) => {
 
-    const [selectedCountry, setSelectedCountry] = useState("Polska");
-    const [selectedLanguage, setSelectedLanguage] = useState("Polska");
+    const [selectedCountry, setSelectedCountry] = useState("Poland");
+    const [selectedLanguage, setSelectedLanguage] = useState("Poland");
     const [selectedCurrencyValue, setSelectedCurrencyValue] = useState<string>('PLN · zł · Polish złoty');
     const { t } = useTranslation();
 
     const handleSave = () => {
-        // onCurrencyChange(selectedCurrency.short);
 
         switch (selectedCountry) {
             case "Poland":
@@ -74,7 +73,6 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
             default:
                 onCountryChange('pl');
         }
-
 
         switch (selectedLanguage) {
             case "Poland":
@@ -103,7 +101,8 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                 break;
             // Dodaj tutaj inne przypadki dla innych krajów
             default:
-                i18n.changeLanguage('en');
+                i18n.changeLanguage('pl');
+                onLanguageChange('PL');
         }
         onClose();
     };
@@ -128,8 +127,6 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                 }}
                 role="presentation"
             >
-
-
                 <Box
                     sx={{
                         display: 'flex',
@@ -148,10 +145,7 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                             fontWeight: 'bold'
                         }} />
                     </IconButton>
-
                 </Box>
-
-
 
                 <Box
                     sx={{
@@ -161,30 +155,40 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                         flexDirection: 'column',
                     }}
                 >
-                    <Box sx={{ display: 'flex', alignItems: 'left' }}>
-                        <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
+                    <Box
+                        sx={{ display: 'flex', alignItems: 'left' }}>
+                        <Typography
+                            variant="h5"
+                            gutterBottom
+                            style={{ fontWeight: 'bold' }}>
                             {`${t('languageDrawer.country')}`}
                         </Typography>
                     </Box>
 
-                    <Box sx={{
+                    <Box
+                        sx={{
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         width: '100%' }}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={6}>
-                                <Box sx={{
+                        <Grid
+                            container
+                            spacing={2}
+                            sx={{
+                                marginTop: '1px',
+                                marginLeft: '1.1rem',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                            <Grid
+                                item
+                                xs={6}>
+                                <Box
+                                    sx={{
                                     flexDirection: 'column',
                                     display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center'}}>
-                                    <FlagCountryLink
-                                        href={"#"}
-                                        label={t(`countriesFlag.Poland`)}
-                                        selected={selectedCountry === "Poland"}
-                                        onClick={() => setSelectedCountry("Poland")}
-                                        flag={PolishFlag}/>
+                                    justifyContent: 'left',
+                                    alignItems: 'left'}}>
 
                                     <FlagCountryLink
                                         href={"#"}
@@ -195,18 +199,28 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
 
                                     <FlagCountryLink
                                         href={"#"}
+                                        label={t(`countriesFlag.Poland`)}
+                                        selected={selectedCountry === "Poland"}
+                                        onClick={() => setSelectedCountry("Poland")}
+                                        flag={PolishFlag}
+                                    />
+
+                                    <FlagCountryLink
+                                        href={"#"}
                                         label={t(`countriesFlag.Ukraine`)}
                                         selected={selectedCountry === "Ukraine"}
                                         onClick={() => setSelectedCountry("Ukraine")}
                                         flag={UcraineFlag}/>
                                 </Box>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid
+                                item
+                                xs={6}>
                                 <Box sx={{
                                     flexDirection: 'column',
                                     display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center'}}>
+                                    justifyContent: 'left',
+                                    alignItems: 'left'}}>
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.England`)}
@@ -268,64 +282,73 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                         </Typography>
                     </Box>
 
-                    <Grid item xs={6}>
-                        <Box sx={{
-                            flexDirection: 'column',
-                            display: 'flex',
+                    <Grid
+                        container
+                        spacing={2}
+                        sx={{
+                            marginTop: '1px',
+                            // marginLeft: '3.3rem',
                             justifyContent: 'center',
-                            alignItems: 'center'}}>
+                            alignItems: 'center'
+                        }}>
+                        <Grid item xs={3}>
+                            <Box sx={{
+                                flexDirection: 'column',
+                                display: 'flex',
+                                justifyContent: 'left',
+                                alignItems: 'left'}}>
 
-                            <CountryLink
-                                label={t(`countriesFlag.Poland`)}
-                                selected={selectedLanguage === "Poland"}
-                                onClick={() => setSelectedLanguage("Poland")}
-                            />
-                            <CountryLink
-                                label={t(`countriesFlag.England`)}
-                                selected={selectedLanguage === "England"}
-                                onClick={() => setSelectedLanguage("England")}
-                            />
-                        </Box>
+                                <CountryLink
+                                    label={t(`countriesFlag.Poland`)}
+                                    selected={selectedLanguage === "Poland"}
+                                    onClick={() => setSelectedLanguage("Poland")}
+                                />
+                                <CountryLink
+                                    label={t(`countriesFlag.England`)}
+                                    selected={selectedLanguage === "England"}
+                                    onClick={() => setSelectedLanguage("England")}
+                                />
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={3}>
+                            <Box sx={{
+                                flexDirection: 'column',
+                                display: 'flex',
+                                justifyContent: 'left',
+                                alignItems: 'left'}}>
+                                <CountryLink
+                                    label={t(`countriesFlag.Germany`)}
+                                    selected={selectedLanguage === "Germany"}
+                                    onClick={() => setSelectedLanguage("Germany")}
+                                />
+                                <CountryLink
+                                    label={t(`countriesFlag.Italy`)}
+                                    selected={selectedLanguage === "Italy"}
+                                    onClick={() => setSelectedLanguage("Italy")}
+                                />
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={3}>
+                            <Box sx={{
+                                flexDirection: 'column',
+                                display: 'flex',
+                                justifyContent: 'left',
+                                alignItems: 'left'}}>
+                                <CountryLink
+                                    label={t(`countriesFlag.Ukraine`)}
+                                    selected={selectedLanguage === "Ukraine"}
+                                    onClick={() => setSelectedLanguage("Ukraine")}
+                                />
+                                <CountryLink
+                                    label={t(`countriesFlag.France`)}
+                                    selected={selectedLanguage === "France"}
+                                    onClick={() => setSelectedLanguage("France")}
+                                />
+                            </Box>
+                        </Grid>
                     </Grid>
-
-                    <Grid item xs={6}>
-                        <Box sx={{
-                            flexDirection: 'column',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'}}>
-                            <CountryLink
-                                label={t(`countriesFlag.Germany`)}
-                                selected={selectedLanguage === "Germany"}
-                                onClick={() => setSelectedLanguage("Germany")}
-                            />
-                            <CountryLink
-                                label={t(`countriesFlag.Italy`)}
-                                selected={selectedLanguage === "Italy"}
-                                onClick={() => setSelectedLanguage("Italy")}
-                            />
-                        </Box>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Box sx={{
-                            flexDirection: 'column',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'}}>
-                            <CountryLink
-                                label={t(`countriesFlag.Ukraine`)}
-                                selected={selectedLanguage === "Ukraine"}
-                                onClick={() => setSelectedLanguage("Ukraine")}
-                            />
-                            <CountryLink
-                                label={t(`countriesFlag.France`)}
-                                selected={selectedLanguage === "France"}
-                                onClick={() => setSelectedLanguage("France")}
-                            />
-                        </Box>
-                    </Grid>
-
 
 
                 </Box>

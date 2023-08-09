@@ -1,5 +1,4 @@
 import React from 'react';
-import FlagIcon from '@mui/icons-material/Flag';
 import CheckIcon from '@mui/icons-material/Check';
 import { FlagCountry } from './links.styles';
 
@@ -22,7 +21,7 @@ const FlagCountryLink: React.FC<FlagCountryLinkProps> = ({ href, label, selected
         >
             <img src={flag} alt="Flag" width="32" height="24"/>
             {label}
-            {selected && <CheckIcon />}
+            {selected && <CheckIcon style={{ width: 17, height: 17 }}/>}
         </FlagCountry>
     );
 };

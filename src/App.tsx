@@ -1,12 +1,10 @@
 import React from 'react';
-import Navbar2 from './components/navbar/Navbar2';
-import CategoryMenu from "./components/navbar/CategoryMenu";
+import Navbar from './components/navbar/Navbar';
+
 const App = () => {
     return (
         <div>
-            <Navbar2 />
-            {/*<CategoryMenu />*/}
-            {/* reszta Twojej aplikacji */}
+            <Navbar />
         </div>
     );
 }

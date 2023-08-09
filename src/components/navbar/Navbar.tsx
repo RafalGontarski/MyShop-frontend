@@ -44,12 +44,24 @@ const useStyles = makeStyles((theme) => ({
     iconContainer: {
         borderRadius: '50%',
         border: '0.15rem solid black',
-        width: '28px',
-        height: '28px',
+        width: '23px',
+        height: '23px',
         backgroundColor: '#F8F8F8',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        marginLeft: '5px',
+    },
+    hoverEffect: {
+        '&:hover $iconContainer': {
+            borderColor: '#008000',
+        },
+        '&:hover $hoverText': {
+            color: '#008000',
+        },
+    },
+    hoverText: {
+        marginRight: '5px',
     },
 }));
 const Navbar = () => {
@@ -59,7 +71,7 @@ const Navbar = () => {
     const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
-    const [languageCode, setLanguageCode] = useState('EN');
+    const [languageCode, setLanguageCode] = useState('PL');
     const [countryCode, setCountryCode] = useState('pl');
     const [currencyCode, setCurrencyCode] = useState('zł');
     const [selectedCurrencySymbol, setSelectedCurrencySymbol] = useState<string>('zł');
@@ -105,26 +117,26 @@ const Navbar = () => {
     let countryIcon;
     switch (countryCode) {
         case 'pl':
-            countryIcon = <img src={PolishIcon} alt="Poland" width={24} height={24}/>;
+            countryIcon = <img src={PolishIcon} alt="Poland" width={19} height={19}/>;
             break;
         case 'en':
-            countryIcon = <img src={UnitedKingdomIcon} alt="England" width={24} height={24}/>;
+            countryIcon = <img src={UnitedKingdomIcon} alt="England" width={19} height={19}/>;
             break;
         case 'de':
-            countryIcon = <img src={DeutschlandIcon} alt="Germany" width={24} height={24}/>;
+            countryIcon = <img src={DeutschlandIcon} alt="Germany" width={19} height={19}/>;
             break;
         case 'fr':
-            countryIcon = <img src={FranceIcon} alt="France" width={24} height={24}/>;
+            countryIcon = <img src={FranceIcon} alt="France" width={19} height={19}/>;
             break;
         case 'it':
-            countryIcon = <img src={ItalyIcon} alt="Italy" width={24} height={24}/>;
+            countryIcon = <img src={ItalyIcon} alt="Italy" width={19} height={19}/>;
             break;
         case 'ua':
-            countryIcon = <img src={UcraineIcon} alt="Ucraine" width={24} height={24}/>;
+            countryIcon = <img src={UcraineIcon} alt="Ucraine" width={19} height={19}/>;
             break;
         // Dodaj tutaj inne przypadki dla innych krajów
         default:
-            countryIcon = <img src={PolishIcon} alt="Poland" width={24} height={24}/>;
+            countryIcon = <img src={PolishIcon} alt="Poland" width={19} height={19}/>;
     }
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -216,7 +228,7 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
-                                        Kontakt   +48 511 670 859
+                                        Kontakt +48 511 670 859
                                     </Link>
                                     <IconButton
                                         edge="end"
@@ -226,7 +238,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <FacebookIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <FacebookIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                     <IconButton
                                         edge="end"
@@ -236,7 +248,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <YouTubeIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <YouTubeIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                     {!isSmallScreenForInstagram && (
                                     <IconButton
@@ -247,7 +259,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <InstagramIcon />
+                                        <InstagramIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                     )}
                                     {!isSmallScreenForLink && (
@@ -259,7 +271,7 @@ const Navbar = () => {
                                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                             disableRipple
                                         >
-                                            <TikTokIcon />
+                                            <TikTokIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                         </IconButton>
                                     )}
                                 </div>
@@ -276,7 +288,7 @@ const Navbar = () => {
                                         disableRipple
                                         onClick={handleMenuDrawerOpen}
                                     >
-                                        <MenuIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <MenuIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                     <TemporaryDrawer open={menuDrawerOpen} onClose={handleMenuDrawerClose} />
                                     <Link
@@ -449,17 +461,14 @@ const Navbar = () => {
                                             fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem',
                                         }}
                                         aria-label="profile"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                         onClick={handleLanguageDrawerOpen}
+                                        className={classes.hoverEffect}
                                     >
                                         <Typography
                                             variant="body1"
-                                            style={{
-                                                marginRight: '5px',
-                                                fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem',
-                                            }}
+                                            className={classes.hoverText}
+                                            fontStyle={{ fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem', }}
                                         >
                                             {`${languageCode} · ${selectedCurrencySymbol}  `}
                                         </Typography>
@@ -480,7 +489,7 @@ const Navbar = () => {
                                         disableRipple
                                         onClick={handleProfileDrawerOpen}
                                     >
-                                        <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                     {/*<ProfileDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />*/}
                                     <LanguageDrawer
@@ -518,7 +527,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <FavoriteIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <FavoriteIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                     <IconButton
                                         edge="end"
@@ -528,7 +537,7 @@ const Navbar = () => {
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
-                                        <ShoppingCartIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 24 }}/>
+                                        <ShoppingCartIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
                                 </div>
                             </div>

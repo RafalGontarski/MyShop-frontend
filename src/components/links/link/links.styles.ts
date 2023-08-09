@@ -5,18 +5,25 @@ import Link from '@mui/material/Link';
 export const FlagCountry = styled(Link)`
     color: #000;
     text-decoration: none;
-    font-size: 0.8rem;
-    display: block;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: flex; // Używamy flexboxa
+    align-items: center; // Wyśrodkowanie poziome
+    gap: 8px; // Odstęp między elementami wewnątrz flexboxa
     '&:hover': {
         color: #008000;
     },
-    `;
+`;
 
 export const Country = styled(Link)`
     color: #000;
     text-decoration: none;
-    font-size: 0.8rem;
-    `;
+    font-size: 0.9rem;
+    display: flex; // Używamy flexboxa
+    align-items: center; // Wyśrodkowanie poziome
+    gap: 8px;
+    margin-top: 0.5rem;
+`;
 
 export const Custom = styled(Link)`
     display: block;
