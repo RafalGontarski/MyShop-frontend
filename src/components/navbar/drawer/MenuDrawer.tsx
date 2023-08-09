@@ -1,57 +1,20 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuLink from '../../links/link/CustomLink';
+import {useTranslation} from "react-i18next";
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+
 
 type DrawerProps = {
     open: boolean;
     onClose: () => void;
 };
 
-export const TemporaryDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
-    const list = (anchor: Anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-            role="presentation"
-            onClick={onClose}
-            onKeyDown={onClose}
-        >
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
+export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
+    const { t } = useTranslation();
 
     return (
         <Drawer
@@ -59,7 +22,49 @@ export const TemporaryDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             open={open}
             onClose={onClose}
         >
-            {list('left')}
+            <Box
+                sx={{ width: 420, padding: 2 }}
+                role="presentation"
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                    }}
+                >
+                    <IconButton
+                        onClick={onClose}
+                        disableRipple
+                        sx={{
+                            color: '#000000',
+                            '&:hover': { color: '#008000' } }}
+                    >
+                        <CloseIcon style={{
+                            fontSize: 30,
+                            fontWeight: 'bold' }} />
+                    </IconButton>
+                </Box>
+
+                <Box
+                    display="flex"
+                    justifyContent="flex-start"
+                    marginLeft={5}>
+                    <MenuLink
+                        href={"#"}
+                        label={t('menu.products.label')}
+                        onClick={undefined}
+                    />
+                    <MenuLink
+                        href={"#"}
+                        label={t('menu.service.label')}
+                        onClick={undefined}
+                    />
+                    <MenuLink
+                        href={"#"}
+                        label={t('menu.about.label')}
+                        onClick={undefined}/>
+                </Box>
+            </Box>
         </Drawer>
     );
 }

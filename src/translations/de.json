@@ -13,6 +13,14 @@
     "Italy": "Italien",
     "France": "Frankreich"
   },
+  "languages": {
+    "Poland": "Polnisch",
+    "Germany": "Deutsch",
+    "Ukraine": "Ukrainisch",
+    "England": "Englisch",
+    "Italy": "Italienisch",
+    "France": "Französisch"
+  },
   "countries": {
     "Poland": "Polen",
     "Germany": "Deutschland",
@@ -31,8 +39,31 @@
     "newHere": "Bist du neu hier?",
     "register": "Registrieren"
   },
+  "registrationDrawer": {
+    "createAccount": "Konto erstellen",
+    "companyInstitution": "Firma/Institution",
+    "optional": "OPTIONAL",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "streetAndNumber": "Straße und Nummer",
+    "postalCode": "Postleitzahl",
+    "city": "Stadt",
+    "email": "E-Mail",
+    "postRegistrationInfo": "Nach der Registrierung erhalten Sie eine E-Mail mit einem Link zum Festlegen Ihres Passworts.",
+    "createAccountButton": "Konto erstellen",
+    "previousShoppingQuestion": "Haben Sie schon einmal bei uns eingekauft?",
+    "login": "Anmelden"
+  },
   "navbar": {
-    "new": "Neu",
-    "bargains": "Schnäppchen"
+    "service": "Dienst",
+    "contact": "Kontakt",
+    "about": "Über uns",
+    "new": "Neuheiten",
+    "bargains": "Angebote",
+    "freeShipping": "Kostenloser Versand ab 200 €",
+    "guarantee": "Zufriedenheitsgarantie",
+    "repairService": "Reparaturdienst",
+    "refund": "30-Tage Geld-zurück-Garantie"
   }
+
 }

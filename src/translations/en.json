@@ -13,6 +13,14 @@
     "Italy": "Italy",
     "France": "France"
   },
+  "languages": {
+    "Poland": "Polish",
+    "Germany": "German",
+    "Ukraine": "Ukrainian",
+    "England": "English",
+    "Italy": "Italian",
+    "France": "French"
+  },
   "profileDrawer": {
     "greeting": "Hello",
     "email": "Email",
@@ -23,8 +31,30 @@
     "newHere": "Are you new here?",
     "register": "Register"
   },
+  "registrationDrawer": {
+    "createAccount": "Create Account",
+    "companyInstitution": "Company/Institution",
+    "optional": "OPTIONAL",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "streetAndNumber": "Street and Number",
+    "postalCode": "Postal Code",
+    "city": "City",
+    "email": "Email",
+    "postRegistrationInfo": "After registration, you will receive an email with a link to set your password.",
+    "createAccountButton": "Create Account",
+    "previousShoppingQuestion": "Have you shopped with us before?",
+    "login": "Login"
+  },
   "navbar": {
+    "service": "Service",
+    "contact": "contact",
+    "about": "About us",
     "new": "New",
-    "bargains": "Bargains"
+    "bargains": "Deals",
+    "freeShipping": "Free shipping from 200 £",
+    "guarantee": "Satisfaction Guarantee",
+    "repairService": "Repair Service",
+    "refund": "30-Day Money Back Guarantee"
   }
 }

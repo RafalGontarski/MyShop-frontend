@@ -299,12 +299,12 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                 alignItems: 'left'}}>
 
                                 <CountryLink
-                                    label={t(`countriesFlag.Poland`)}
+                                    label={t(`languages.Poland`)}
                                     selected={selectedLanguage === "Poland"}
                                     onClick={() => setSelectedLanguage("Poland")}
                                 />
                                 <CountryLink
-                                    label={t(`countriesFlag.England`)}
+                                    label={t(`languages.England`)}
                                     selected={selectedLanguage === "England"}
                                     onClick={() => setSelectedLanguage("England")}
                                 />
@@ -318,12 +318,12 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                 justifyContent: 'left',
                                 alignItems: 'left'}}>
                                 <CountryLink
-                                    label={t(`countriesFlag.Germany`)}
+                                    label={t(`languages.Germany`)}
                                     selected={selectedLanguage === "Germany"}
                                     onClick={() => setSelectedLanguage("Germany")}
                                 />
                                 <CountryLink
-                                    label={t(`countriesFlag.Italy`)}
+                                    label={t(`languages.Italy`)}
                                     selected={selectedLanguage === "Italy"}
                                     onClick={() => setSelectedLanguage("Italy")}
                                 />
@@ -337,12 +337,12 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                 justifyContent: 'left',
                                 alignItems: 'left'}}>
                                 <CountryLink
-                                    label={t(`countriesFlag.Ukraine`)}
+                                    label={t(`languages.Ukraine`)}
                                     selected={selectedLanguage === "Ukraine"}
                                     onClick={() => setSelectedLanguage("Ukraine")}
                                 />
                                 <CountryLink
-                                    label={t(`countriesFlag.France`)}
+                                    label={t(`languages.France`)}
                                     selected={selectedLanguage === "France"}
                                     onClick={() => setSelectedLanguage("France")}
                                 />

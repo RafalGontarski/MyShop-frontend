@@ -13,6 +13,14 @@
     "Italy": "Італія",
     "France": "Франція"
   },
+  "languages": {
+    "Poland": "Польська",
+    "Germany": "Німецька",
+    "Ukraine": "Українська",
+    "England": "Англійська",
+    "Italy": "Італійська",
+    "France": "Французька"
+  },
   "profileDrawer": {
     "greeting": "Привіт",
     "email": "Електронна пошта",
@@ -23,8 +31,31 @@
     "newHere": "Ти тут новий?",
     "register": "Реєстрація"
   },
+  "registrationDrawer": {
+    "createAccount": "Створити обліковий запис",
+    "companyInstitution": "Компанія/Інституція",
+    "optional": "ОПЦІОНАЛЬНО",
+    "firstName": "Ім'я",
+    "lastName": "Прізвище",
+    "streetAndNumber": "Вулиця та номер",
+    "postalCode": "Поштовий індекс",
+    "city": "Місто",
+    "email": "Електронна пошта",
+    "postRegistrationInfo": "Після реєстрації ви отримаєте електронний лист із посиланням для встановлення вашого пароля.",
+    "createAccountButton": "Створити обліковий запис",
+    "previousShoppingQuestion": "Ви вже робили у нас покупки?",
+    "login": "Увійти"
+  },
   "navbar": {
+    "service": "Сервіс",
+    "contact": "контакт",
+    "about": "Про нас",
     "new": "Новинки",
-    "bargains": "Вигідні пропозиції"
+    "bargains": "Спецпропозиції",
+    "freeShipping": "Безкоштовна доставка від 1800 ₴",
+    "guarantee": "Гарантія задоволення",
+    "repairService": "Сервісний центр",
+    "refund": "30-денна гарантія повернення грошей"
   }
+
 }

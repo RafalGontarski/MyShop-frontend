@@ -18,7 +18,7 @@ import {InputAdornment, Link, Typography} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 // components
-import { TemporaryDrawer } from './drawer/MenuDrawer';
+import { MenuDrawer } from './drawer/MenuDrawer';
 import { ProfileDrawer } from './drawer/ProfileDrawer';
 import { LanguageDrawer } from './drawer/LanguageDrawer';
 import { RegistrationDrawer } from './drawer/RegistrationDrawer';
@@ -229,7 +229,33 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
-                                        Kontakt +48 511 670 859
+                                        {t('navbar.service')}
+                                    </Link>
+                                    <Link
+                                        href="#"
+                                        style={{
+                                            color: '#000',
+                                            marginRight: '20px',
+                                            textDecoration: 'none',
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem' }}
+                                        underline="none"
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                    >
+                                        {t('navbar.contact')}
+                                    </Link>
+                                    <Link
+                                        href="#"
+                                        style={{
+                                            color: '#000',
+                                            marginRight: '20px',
+                                            textDecoration: 'none',
+                                            fontSize: isSmallScreenForIconSize ? '0.6rem' : '0.8rem' }}
+                                        underline="none"
+                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                    >
+                                        {t('navbar.about')}
                                     </Link>
                                     <IconButton
                                         edge="end"
@@ -291,7 +317,7 @@ const Navbar = () => {
                                     >
                                         <MenuIcon style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
-                                    <TemporaryDrawer open={menuDrawerOpen} onClose={handleMenuDrawerClose} />
+                                    <MenuDrawer open={menuDrawerOpen} onClose={handleMenuDrawerClose} />
                                     <Link
                                         href="#"
                                         style={{
@@ -436,7 +462,7 @@ const Navbar = () => {
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
-                                        Darmowa wysyłka od 900 zł
+                                        {t('navbar.freeShipping')}
                                     </Link>
                                     {!isSmallScreenForGuaranteeLink && (
                                         <Link
@@ -449,7 +475,7 @@ const Navbar = () => {
                                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
-                                            2 lata gwarancji
+                                            {t('navbar.guarantee')}
                                         </Link>
                                     )}
                                 </div>

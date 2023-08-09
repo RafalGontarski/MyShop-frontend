@@ -13,6 +13,14 @@
     "Italy": "Włochy",
     "France": "Francja"
   },
+  "languages": {
+    "Poland": "Polski",
+    "Germany": "Niemiecki",
+    "Ukraine": "Ukraiński",
+    "England": "Angielski",
+    "Italy": "Włoski",
+    "France": "Francuski"
+  },
   "profileDrawer": {
     "greeting": "Cześć",
     "email": "E-mail",
@@ -23,8 +31,57 @@
     "newHere": "Czy jest tutaj nowy?",
     "register": "Rejestracja"
   },
+  "registrationDrawer": {
+    "createAccount": "Utwórz konto",
+    "companyInstitution": "Firma/Instytucja",
+    "optional": "OPCJONALNIE",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "streetAndNumber": "Ulica i numer",
+    "postalCode": "Kod pocztowy",
+    "city": "Miejscowość",
+    "email": "E-mail",
+    "postRegistrationInfo": "Po rejestracji otrzymasz email z linkiem do ustawienia hasła.",
+    "createAccountButton": "Utwórz konto",
+    "previousShoppingQuestion": "Czy robiłeś już kiedyś u nas zakupy?",
+    "login": "Zaloguj"
+  },
   "navbar": {
+    "service": "Serwis",
+    "contact": "kontakt",
+    "about": "O nas",
     "new": "Nowości",
-    "bargains": "Okazje"
+    "bargains": "Okazje",
+    "freeShipping": "Darmowa wysyłka od 300 zł",
+    "guarantee": "Gwarancja Satysfakcji",
+    "repairService": "Serwis Naprawczy",
+    "refund": "30-Dniowa Gwarancja Zwrotu Pieniędzy"
+  },
+  "menu": {
+    "products": {
+      "label": "Produkty",
+      "subcategories": {
+        "electronics": "Elektronika",
+        "clothing": "Odzież",
+        "home": "Dom i ogród"
+      }
+    },
+    "service": {
+      "label": "Serwis",
+      "subcategories": {
+        "repair": "Naprawa",
+        "warranty": "Gwarancja",
+        "support": "Wsparcie techniczne"
+      }
+    },
+    "about": {
+      "label": "O nas",
+      "subcategories": {
+        "history": "Historia firmy",
+        "team": "Nasz zespół",
+        "values": "Nasze wartości"
+      }
+    }
   }
+
 }

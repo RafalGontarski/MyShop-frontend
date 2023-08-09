@@ -11,6 +11,7 @@ import CountrySelector from './selectors/CountrySelect';
 
 import CustomButton from '../../buttons/button/Button';
 import CustomLink from '../../links/link/CustomLink';
+import {useTranslation} from "react-i18next";
 
 type DrawerProps = {
     open: boolean;
@@ -18,8 +19,11 @@ type DrawerProps = {
     onLoginClick: () => void;
 };
 
-export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLoginClick }) => {
 
+
+
+export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLoginClick }) => {
+    const { t } = useTranslation();
 
     return (
         <Drawer
@@ -65,17 +69,17 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <Box sx={{ display: 'flex', alignItems: 'left' }}>
                         <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold' }}>
-                            Utwórz konto
+                            {t('registrationDrawer.createAccount')}
                         </Typography>
                     </Box>
 
                     <TextField
                         size={"small"}
-                        label="Firma/Instytucja"
+                        label={t('registrationDrawer.companyInstitution')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
-                        helperText="OPCJONALNIE"
+                        helperText={t('registrationDrawer.optional')}
                         FormHelperTextProps={{
                             style: {
                                 textAlign: 'right',
@@ -116,7 +120,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
-                        label="Imię"
+                        label={t('registrationDrawer.firstName')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -148,7 +152,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
-                        label="Nazwisko"
+                        label={t('registrationDrawer.lastName')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -179,7 +183,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
-                        label="Ulica i numer"
+                        label={t('registrationDrawer.streetAndNumber')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -210,7 +214,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
-                        label="Kod pocztowy"
+                        label={t('registrationDrawer.postalCode')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -241,7 +245,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
-                        label="Miejscowość"
+                        label={t('registrationDrawer.city')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -275,7 +279,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
-                        label="E-mail"
+                        label={t('registrationDrawer.email')}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -317,11 +321,11 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                                 fontSize: '10px',
                             }}
                         >
-                            Po rejestracji otrzymasz email z linkiem do ustawienia hasła.
+                            {t('registrationDrawer.postRegistrationInfo')}
                         </Typography>
                     </Box>
 
-                    <CustomButton label={"Utwórz konto"}/>
+                    <CustomButton label={t('registrationDrawer.createAccountButton')}/>
 
                 </Box>
 
@@ -332,11 +336,11 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         textAlign: 'center',
                         marginTop: '20px',
                     }}>
-                    Czy robiłeś już kiedyś u nas zakupy?
+                    {t('registrationDrawer.previousShoppingQuestion')}
                 </Typography>
                 <CustomLink
                     href={"#"}
-                    label={"Zaloguj"}
+                    label={t('registrationDrawer.login')}
                     onClick={onLoginClick}/>
             </Box>
         </Drawer>
