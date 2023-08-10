@@ -14,6 +14,7 @@ const defaultSettings: NavbarContextType = {
 
 export const NavbarContext = createContext<NavbarContextType>(defaultSettings);
 
+
 export const NavbarContextProvider = ({ children }: React.PropsWithChildren) => {
     const [currentPages, setCurrentPages] = useState<link[] >([]);
     const {currentUser} = useContext(UserContext);
