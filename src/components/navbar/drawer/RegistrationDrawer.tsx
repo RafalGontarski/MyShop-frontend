@@ -12,6 +12,11 @@ import CountrySelector from './selectors/CountrySelect';
 import CustomButton from '../../buttons/button/Button';
 import CustomLink from '../../links/link/CustomLink';
 import {useTranslation} from "react-i18next";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {UserRegistrationData} from "../../../models/api/UserRegistrationData";
+import {UserApi} from "../../../api/UserApi";
+import {toast} from "react-toastify";
 
 type DrawerProps = {
     open: boolean;
@@ -20,10 +25,82 @@ type DrawerProps = {
 };
 
 
-
-
 export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLoginClick }) => {
     const { t } = useTranslation();
+    const [company, setCompany] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [address, setAddress] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [email, setEmail] = useState('');
+    const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
+    const [isDataValid, setIsDataValid] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = () => {
+        try{
+            let user: UserRegistrationData = {
+                company: company,
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                postalCode: postalCode,
+                city: city,
+                country: country,
+                email: email,
+            }
+            UserApi.registerUser(user).then(r => {
+            })
+            toast.success("Poprawnie zarejestrowano");
+            navigate("/login");
+        }catch (error){
+            toast.error("Bład serwera")
+        }
+    }
+    useEffect(() => {
+        setIsEmailValid(validateEmail(email));
+        setIsDataValid(isEmailValid);
+    }, [firstName, lastName, email, isEmailValid ]);
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const onCompanyChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCompany(event.target.value)
+    }
+
+    const onFirstnameChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setFirstName(event.target.value)
+    }
+
+    const onLastnameChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setLastName(event.target.value)
+    }
+
+    const onAddressChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setAddress(event.target.value)
+    }
+
+    const onPostalCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setPostalCode(event.target.value)
+    }
+
+    const onCityChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setCity(event.target.value)
+    }
+
+    const onCountryChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        setCountry(event.target.value);
+    }
+
+    const onEmailChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setEmail(event.target.value)
+    }
+
 
     return (
         <Drawer
@@ -68,13 +145,17 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
 
                     <Box sx={{ display: 'flex', alignItems: 'left' }}>
-                        <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold' }}>
+                        <Typography
+                            variant="h4"
+                            gutterBottom
+                            style={{ fontWeight: 'bold' }}>
                             {t('registrationDrawer.createAccount')}
                         </Typography>
                     </Box>
 
                     <TextField
                         size={"small"}
+                        onChange={onCompanyChange}
                         label={t('registrationDrawer.companyInstitution')}
                         variant="outlined"
                         fullWidth
@@ -120,6 +201,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
+                        onChange={onFirstnameChange}
                         label={t('registrationDrawer.firstName')}
                         variant="outlined"
                         fullWidth
@@ -152,6 +234,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
+                        onChange={onLastnameChange}
                         label={t('registrationDrawer.lastName')}
                         variant="outlined"
                         fullWidth
@@ -183,6 +266,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
+                        onChange={onAddressChange}
                         label={t('registrationDrawer.streetAndNumber')}
                         variant="outlined"
                         fullWidth
@@ -214,6 +298,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
+                        onChange={onPostalCodeChange}
                         label={t('registrationDrawer.postalCode')}
                         variant="outlined"
                         fullWidth
@@ -245,6 +330,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
                     <TextField
                         size={"small"}
+                        onChange={onCityChange}
                         label={t('registrationDrawer.city')}
                         variant="outlined"
                         fullWidth
@@ -274,11 +360,12 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         }}
                     />
 
-                    <CountrySelector />
+                    <CountrySelector onChange={onCountryChange}/>
 
 
                     <TextField
                         size={"small"}
+                        onChange={onEmailChange}
                         label={t('registrationDrawer.email')}
                         variant="outlined"
                         fullWidth

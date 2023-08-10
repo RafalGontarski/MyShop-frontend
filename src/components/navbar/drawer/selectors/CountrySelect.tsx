@@ -16,13 +16,16 @@ import Box from '@mui/material/Box';
 import {SelectorFormControlStyle} from "./selectors.styles";
 
 
+type CountrySelectProps = {
+    onChange: (event: { target: { value: React.SetStateAction<string>; }; }) => void;
+}
 
-
-function CountrySelect() {
+const CountrySelect: React.FC<CountrySelectProps> = ({ onChange }) => {
     const [country, setCountry] = React.useState('Polska');
 
     const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setCountry(event.target.value);
+        onChange(event);
     };
 
     const getFlagIcon = (countryName: any) => {

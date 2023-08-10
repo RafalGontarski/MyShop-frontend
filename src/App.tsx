@@ -1,13 +1,17 @@
 import React from 'react';
 import Navbar from './components/navbar/Navbar';
+import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
+import {UserContextProvider} from "./context/UserContext";
 
 const App = () => {
     return (
         <div>
-            <Navbar />
+            <UserContextProvider>
+                <Navbar />
+            </UserContextProvider>
         </div>
     );
 }
 
-export default App;
+export default withAxiosIntercepted(App);
 
