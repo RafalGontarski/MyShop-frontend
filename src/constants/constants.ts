@@ -4,3 +4,5 @@ export const CLINIC_NAME = 'CLINIC_NAME';
 export const CLINIC_PHONE = 'CLINIC_PHONE';
 export const NOS = 'NOS';
 
+export const BaseUrl = "http://localhost:8080";
+

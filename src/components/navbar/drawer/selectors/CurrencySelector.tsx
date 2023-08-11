@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, OutlinedInput, Select, MenuItem, ListItemIcon, Typography, InputAdornment } from '@mui/material';
-import { Flag as PolandFlag, Flag as GermanyFlag, Flag as FranceFlag } from '@mui/icons-material'; // Zaimportuj odpowiednie ikony flag
+import { FormControl, InputLabel, OutlinedInput, Select, MenuItem, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { SelectChangeEvent } from '@mui/material';
 

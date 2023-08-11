@@ -29,7 +29,8 @@
     "login": "УВІЙТИ",
     "forgotPassword": "Забули пароль?",
     "newHere": "Ти тут новий?",
-    "register": "Реєстрація"
+    "register": "Реєстрація",
+    "googleLogin": "Продовжити з Google"
   },
   "registrationDrawer": {
     "createAccount": "Створити обліковий запис",

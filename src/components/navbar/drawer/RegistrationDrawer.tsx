@@ -2,11 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from '@mui/material';
 import CountrySelector from './selectors/CountrySelect';
 
 import CustomButton from '../../buttons/button/Button';
@@ -51,10 +49,15 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                 country: country,
                 email: email,
             }
-            UserApi.registerUser(user).then(r => {
-            })
-            toast.success("Poprawnie zarejestrowano");
-            navigate("/login");
+            UserApi.registerUser(user)
+                .then(response => {
+                    if (response.data.success) { // Upewnij się, że backend zwraca odpowiednią wartość
+                        toast.success("Poprawnie zarejestrowano");
+                        navigate("/login");
+                    } else {
+                        toast.error(response.data.message); // Wyświetl błąd zwrócony przez backend
+                    }
+                })
         }catch (error){
             toast.error("Bład serwera")
         }
@@ -412,7 +415,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                         </Typography>
                     </Box>
 
-                    <CustomButton label={t('registrationDrawer.createAccountButton')}/>
+                    <CustomButton onClick={handleSubmit} label={t('registrationDrawer.createAccountButton')}/>
 
                 </Box>
 

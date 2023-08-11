@@ -8,7 +8,9 @@ interface CustomButtonProps {
 
 const CustomButton: React.FC<CustomButtonProps> = ({ label, onClick }) => {
     return (
-        <StyledButton variant="contained" color="primary" onClick={onClick}>
+        <StyledButton
+            variant="contained"
+            color="primary" onClick={onClick}>
             {label}
         </StyledButton>
     );

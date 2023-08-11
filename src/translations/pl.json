@@ -29,7 +29,8 @@
     "login": "ZALOGUJ",
     "forgotPassword": "Zapomniałeś hasła?",
     "newHere": "Czy jest tutaj nowy?",
-    "register": "Rejestracja"
+    "register": "Rejestracja",
+    "googleLogin": "Kontynuuj przez Google"
   },
   "registrationDrawer": {
     "createAccount": "Utwórz konto",

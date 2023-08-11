@@ -17,6 +17,7 @@ import HandIcon from '@mui/icons-material/PanTool';
 import CustomButton from "../../buttons/button/Button";
 import CustomLink from '../../links/link/CustomLink';
 import {useTranslation} from "react-i18next";
+import GoogleLoginButton from '../../buttons/button/GoogleLoginButton';
 
 type DrawerProps = {
     open: boolean;
@@ -35,6 +36,16 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
     const handleMouseUpPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowPassword(false);
+    };
+
+    const handleSuccess = (response: any) => {
+        console.log(response);
+        // Tutaj przetwarzaj dane po pomyślnym logowaniu
+    };
+
+    const handleFailure = (error: any) => {
+        console.error(error);
+        // Obsługa błędów logowania
     };
 
 
@@ -252,6 +263,15 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                     href={"#"}
                     label={t('profileDrawer.register')}
                     onClick={onRegisterClick}/>
+
+
+            </Box>
+            <Box>
+                <GoogleLoginButton
+                    clientId="YOUR_GOOGLE_CLIENT_ID"
+                    onSuccess={handleSuccess}
+                    onFailure={handleFailure}
+                />
             </Box>
         </Drawer>
     );

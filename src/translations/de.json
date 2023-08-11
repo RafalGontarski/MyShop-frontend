@@ -37,7 +37,8 @@
     "login": "EINLOGGEN",
     "forgotPassword": "Passwort vergessen?",
     "newHere": "Bist du neu hier?",
-    "register": "Registrieren"
+    "register": "Registrieren",
+    "googleLogin": "Weiter mit Google"
   },
   "registrationDrawer": {
     "createAccount": "Konto erstellen",

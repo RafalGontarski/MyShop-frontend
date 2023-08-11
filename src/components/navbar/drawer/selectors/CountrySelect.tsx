@@ -7,13 +7,15 @@ import {
     OutlinedInput
 }
     from '@mui/material';
-import {
-    Flag as PolandFlag,
-    Flag as GermanyFlag,
-    Flag as FranceFlag }
-    from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import {SelectorFormControlStyle} from "./selectors.styles";
+
+import PolishFlag from '../../../../resources/flags/polandFlag.png';
+import UnitedKingdomFlag from '../../../../resources/flags/unitedKingdomFlag.png';
+import DeutschlandFlag from '../../../../resources/flags/deutschlandFlag.png';
+import FranceFlag from '../../../../resources/flags/franceFlag.png';
+import ItalianFlag from '../../../../resources/flags/italyFlag.png';
+import UcraineFlag from '../../../../resources/flags/ucraineFlag.png';
 
 
 type CountrySelectProps = {
@@ -31,11 +33,11 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange }) => {
     const getFlagIcon = (countryName: any) => {
         switch (countryName) {
             case 'Polska':
-                return <PolandFlag fontSize="small" />;
+                return <img src={PolishFlag} alt="Flag" width="26" height="20"/>;
             case 'Niemcy':
-                return <GermanyFlag fontSize="small" />;
+                return <img src={DeutschlandFlag} alt="Flag" width="26" height="20"/>;
             case 'Francja':
-                return <FranceFlag fontSize="small" />;
+                return <img src={FranceFlag} alt="Flag" width="26" height="20"/>;
             default:
                 return null;
         }
@@ -139,7 +141,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange }) => {
                     }}
                 >
                     <ListItemIcon>
-                        <PolandFlag fontSize="small" />
+                        <img src={PolishFlag} alt="Flag" width="26" height="20"/>
                     </ListItemIcon>
                     <Typography variant="inherit">Polska</Typography>
                 </MenuItem>
@@ -155,7 +157,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange }) => {
                     }}
                 >
                     <ListItemIcon>
-                        <GermanyFlag fontSize="small" />
+                        <img src={DeutschlandFlag} alt="Flag" width="26" height="20"/>
                     </ListItemIcon>
                     <Typography variant="inherit">Niemcy</Typography>
                 </MenuItem>
@@ -171,7 +173,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange }) => {
                     }}
                 >
                     <ListItemIcon>
-                        <FranceFlag fontSize="small" />
+                        <img src={FranceFlag} alt="Flag" width="26" height="20"/>
                     </ListItemIcon>
                     <Typography variant="inherit">Francja</Typography>
                 </MenuItem>
