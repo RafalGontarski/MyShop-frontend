@@ -18,10 +18,10 @@ import {InputAdornment, Link, Typography} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 // components
-import { MenuDrawer } from './drawer/MenuDrawer';
-import { ProfileDrawer } from './drawer/ProfileDrawer';
-import { LanguageDrawer } from './drawer/LanguageDrawer';
-import { RegistrationDrawer } from './drawer/RegistrationDrawer';
+import { MenuDrawer } from '../drawer/MenuDrawer';
+import { ProfileDrawer } from '../drawer/ProfileDrawer';
+import { LanguageDrawer } from '../drawer/LanguageDrawer';
+import { RegistrationDrawer } from '../drawer/RegistrationDrawer';
 
 // icons
 import ItalyIcon from '../../resources/icons/italyFlagIcon.png';

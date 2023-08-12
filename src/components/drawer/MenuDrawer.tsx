@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import MenuLink from '../../links/link/CustomLink';
+import MenuLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 
 

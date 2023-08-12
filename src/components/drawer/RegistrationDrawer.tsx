@@ -5,15 +5,15 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import CountrySelector from './selectors/CountrySelect';
+import CountrySelector from '../selectors/CountrySelect';
 
-import CustomButton from '../../buttons/button/Button';
-import CustomLink from '../../links/link/CustomLink';
+import CustomButton from '../button/Button';
+import CustomLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {UserRegistrationData} from "../../../models/api/UserRegistrationData";
-import {UserApi} from "../../../api/UserApi";
+import {UserRegistrationData} from "../../models/api/UserRegistrationData";
+import {UserApi} from "../../api/UserApi";
 import {toast} from "react-toastify";
 
 type DrawerProps = {
@@ -53,6 +53,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                 .then(response => {
                     if (response.data.success) { // Upewnij się, że backend zwraca odpowiednią wartość
                         toast.success("Poprawnie zarejestrowano");
+                        sendWelcomeEmail(email);
                     } else {
                         toast.error(response.data.message); // Wyświetl błąd zwrócony przez backend
                     }
@@ -61,6 +62,35 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
             toast.error("Bład serwera")
         }
     }
+
+    const sendWelcomeEmail = (email: string) => {
+        // Wywołaj punkt końcowy backendu, aby wysłać e-mail
+        // Zastąp rzeczywistym punktem końcowym i metodą do wysyłania e-maila
+        fetch('/api/setupPassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                subject: "Witaj w MyShop!",
+                body: "Dziękujemy za rejestrację w MyShop. Cieszymy się, że jesteś z nami!"
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    toast.success("Wiadomość powitalna została wysłana pomyślnie!");
+                } else {
+                    toast.error("Nie udało się wysłać wiadomości powitalnej.");
+                }
+            })
+            .catch(error => {
+                toast.error("Błąd podczas wysyłania wiadomości powitalnej.");
+            });
+    }
+
+
     useEffect(() => {
         setIsEmailValid(validateEmail(email));
         setIsDataValid(isEmailValid);

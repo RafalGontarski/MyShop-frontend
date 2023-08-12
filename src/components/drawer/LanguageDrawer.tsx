@@ -4,23 +4,23 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { Box } from '@mui/system';
-import CustomButton from "../../buttons/button/Button";
+import CustomButton from "../button/Button";
 import { IconButton } from '@mui/material';
-import CurrencySelector from "./selectors/CurrencySelector";
-import CountryLink from "../../links/link/CountryLink";
-import FlagCountryLink from "../../links/link/FlagCountryLink";
+import CurrencySelector from "../selectors/CurrencySelector";
+import CountryLink from "../link/CountryLink";
+import FlagCountryLink from "../link/FlagCountryLink";
 import Grid from '@mui/material/Grid';
 
-import PolishFlag from '../../../resources/flags/polandFlag.png';
-import UnitedKingdomFlag from '../../../resources/flags/unitedKingdomFlag.png';
-import DeutschlandFlag from '../../../resources/flags/deutschlandFlag.png';
-import FranceFlag from '../../../resources/flags/franceFlag.png';
-import ItalianFlag from '../../../resources/flags/italyFlag.png';
-import UcraineFlag from '../../../resources/flags/ucraineFlag.png';
+import PolishFlag from '../../resources/flags/polandFlag.png';
+import UnitedKingdomFlag from '../../resources/flags/unitedKingdomFlag.png';
+import DeutschlandFlag from '../../resources/flags/deutschlandFlag.png';
+import FranceFlag from '../../resources/flags/franceFlag.png';
+import ItalianFlag from '../../resources/flags/italyFlag.png';
+import UcraineFlag from '../../resources/flags/ucraineFlag.png';
 
 
 import { useTranslation } from 'react-i18next';
-import i18n from '../../../i18n';
+import i18n from '../../i18n';
 
 type CurrencyMap = {
     [key: string]: string;

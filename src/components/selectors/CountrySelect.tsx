@@ -10,12 +10,12 @@ import {
 import Box from '@mui/material/Box';
 import {SelectorFormControlStyle} from "./selectors.styles";
 
-import PolishFlag from '../../../../resources/flags/polandFlag.png';
-import UnitedKingdomFlag from '../../../../resources/flags/unitedKingdomFlag.png';
-import DeutschlandFlag from '../../../../resources/flags/deutschlandFlag.png';
-import FranceFlag from '../../../../resources/flags/franceFlag.png';
-import ItalianFlag from '../../../../resources/flags/italyFlag.png';
-import UcraineFlag from '../../../../resources/flags/ucraineFlag.png';
+import PolishFlag from '../../resources/flags/polandFlag.png';
+import UnitedKingdomFlag from '../../resources/flags/unitedKingdomFlag.png';
+import DeutschlandFlag from '../../resources/flags/deutschlandFlag.png';
+import FranceFlag from '../../resources/flags/franceFlag.png';
+import ItalianFlag from '../../resources/flags/italyFlag.png';
+import UcraineFlag from '../../resources/flags/ucraineFlag.png';
 
 
 type CountrySelectProps = {

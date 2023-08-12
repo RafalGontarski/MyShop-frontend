@@ -14,10 +14,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import HandIcon from '@mui/icons-material/PanTool';
-import CustomButton from "../../buttons/button/Button";
-import CustomLink from '../../links/link/CustomLink';
+import CustomButton from "../button/Button";
+import CustomLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
-import GoogleLoginButton from '../../buttons/button/GoogleLoginButton';
+import GoogleLoginButton from '../button/GoogleLoginButton';
 
 type DrawerProps = {
     open: boolean;
