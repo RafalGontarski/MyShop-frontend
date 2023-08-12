@@ -267,11 +267,11 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
 
             </Box>
             <Box>
-                <GoogleLoginButton
-                    clientId="YOUR_GOOGLE_CLIENT_ID"
-                    onSuccess={handleSuccess}
-                    onFailure={handleFailure}
-                />
+                {/*<GoogleLoginButton*/}
+                {/*    clientId="YOUR_GOOGLE_CLIENT_ID"*/}
+                {/*    onSuccess={handleSuccess}*/}
+                {/*    onFailure={handleFailure}*/}
+                {/*/>*/}
             </Box>
         </Drawer>
     );

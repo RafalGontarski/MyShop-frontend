@@ -53,7 +53,6 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                 .then(response => {
                     if (response.data.success) { // Upewnij się, że backend zwraca odpowiednią wartość
                         toast.success("Poprawnie zarejestrowano");
-                        navigate("/login");
                     } else {
                         toast.error(response.data.message); // Wyświetl błąd zwrócony przez backend
                     }
