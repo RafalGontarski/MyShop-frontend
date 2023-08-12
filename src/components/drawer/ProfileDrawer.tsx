@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import TextField from '@mui/material/TextField';
@@ -18,6 +18,12 @@ import CustomButton from "../button/Button";
 import CustomLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 import GoogleLoginButton from '../button/GoogleLoginButton';
+import {useNavigate} from "react-router-dom";
+import {AuthApi} from "../../api/AuthApi";
+import {ACCESS_TOKEN} from "../../constants/constants";
+import { toast } from 'react-toastify';
+import {ValidationError} from "./Drawer.styles";
+import {UserContext} from "../../context/UserContexts";
 
 type DrawerProps = {
     open: boolean;
@@ -26,8 +32,69 @@ type DrawerProps = {
 };
 
 export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegisterClick }) => {
+
     const [showPassword, setShowPassword] = React.useState(false);
     const { t } = useTranslation();
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
+    const [isPasswordValid, setIsPasswordValid] = useState<boolean>(true);
+    const {userModifier} = useContext(UserContext);
+    const navigate = useNavigate();
+
+
+    const handleLogin = useCallback(async () => {
+        try {
+            const user = await AuthApi.signIn({
+                email: email,
+                password: password,
+            });
+            userModifier({
+                email: user.data.email,
+                roles: user.data.roles,
+            });
+            localStorage.setItem(ACCESS_TOKEN, user.data.token);
+            navigate("/");
+            onClose();
+        } catch (error: any) {
+            let errorMessage;
+
+            if (error.response && error.response.status === 401) {
+                errorMessage = "Podałeś błędne dane, spróbuj ponownie.";
+            } else {
+                errorMessage = "Wystąpił błąd podczas połączenia z serwerem.";
+            }
+
+            toast.error(errorMessage, {
+                position: toast.POSITION.TOP_LEFT,
+            });
+        }
+    }, [email, password, navigate]);
+
+    useEffect(() => {
+        setIsEmailValid(validateEmail(email));
+    }, [email]);
+
+    useEffect(() => {
+        setIsPasswordValid(password.length > 0);
+    }, [password]);
+
+    const onEmailChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        setEmail(event.target.value);
+    };
+
+    const onPasswordChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        setPassword(event.target.value);
+    };
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+
+
+
     const handleMouseDownPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowPassword(true);
@@ -120,7 +187,9 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                                 transform: 'translate(18px, -5px) scale(0.7)', // Adjust this value to center the label
                             },
                         }}
+                        onChange={(e) => onEmailChange(e)}
                     />
+                    {!isEmailValid && email.length !== 0 && (<ValidationError>Podaj poprawny adres email</ValidationError>)}
 
 
                     <TextField
@@ -154,6 +223,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                                 transform: 'translate(18px, -5px) scale(0.7)', // Adjust this value to center the label
                             },
                         }}
+                        onChange={(e) => onPasswordChange(e)}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
@@ -175,6 +245,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                             ),
                         }}
                     />
+                    {!isPasswordValid && password.length != 0 && <ValidationError>Podaj hasło</ValidationError>}
                     <Box
                         sx={{
                             display: 'flex',
@@ -222,7 +293,11 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
                         />
                     </Box>
 
-                    <CustomButton label={t('profileDrawer.login')}/>
+                    <CustomButton
+                        label={t('profileDrawer.login')}
+                        // disabled={!isEmailValid || !isPasswordValid}
+                        onClick={handleLogin}
+                    />
 
                 </Box>
                 <Box style={{
