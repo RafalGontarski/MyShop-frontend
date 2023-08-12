@@ -38,16 +38,6 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onRegister
         setShowPassword(false);
     };
 
-    const handleSuccess = (response: any) => {
-        console.log(response);
-        // Tutaj przetwarzaj dane po pomyślnym logowaniu
-    };
-
-    const handleFailure = (error: any) => {
-        console.error(error);
-        // Obsługa błędów logowania
-    };
-
 
 
     return (

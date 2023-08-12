@@ -15,6 +15,10 @@ import {useNavigate} from "react-router-dom";
 import {UserRegistrationData} from "../../models/api/UserRegistrationData";
 import {UserApi} from "../../api/UserApi";
 import {toast} from "react-toastify";
+import Divider from "@mui/material/Divider";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 type DrawerProps = {
     open: boolean;
@@ -25,6 +29,8 @@ type DrawerProps = {
 
 export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLoginClick }) => {
     const { t } = useTranslation();
+    const [showPassword, setShowPassword] = React.useState(false);
+    const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
     const [company, setCompany] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -33,6 +39,8 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
     const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
     const [isDataValid, setIsDataValid] = useState<boolean>(false);
     const navigate = useNavigate();
@@ -48,12 +56,16 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                 city: city,
                 country: country,
                 email: email,
+                password: password,
+                repeatPassword: repeatPassword,
             }
             UserApi.registerUser(user)
                 .then(response => {
+                    console.log(response);
                     if (response.data.success) { // Upewnij się, że backend zwraca odpowiednią wartość
                         toast.success("Poprawnie zarejestrowano");
                         sendWelcomeEmail(email);
+                        toast.success("Poprawnie zarejestrowano");
                     } else {
                         toast.error(response.data.message); // Wyświetl błąd zwrócony przez backend
                     }
@@ -96,6 +108,27 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
         setIsDataValid(isEmailValid);
     }, [firstName, lastName, email, isEmailValid ]);
 
+    const handleMouseDownPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowPassword(true);
+    };
+
+    const handleMouseUpPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowPassword(false);
+    };
+
+    const handleMouseDownRepeatPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowRepeatPassword(true);
+    };
+
+    const handleMouseUpRepeatPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowRepeatPassword(false);
+    };
+
+
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -131,6 +164,14 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
 
     const onEmailChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setEmail(event.target.value)
+    }
+
+    const onPasswordChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setPassword(event.target.value)
+    }
+
+    const onRepeatPasswordChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setRepeatPassword(event.target.value)
     }
 
 
@@ -426,27 +467,147 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                             },
                         }}
                     />
-                    <Box
+
+                    <TextField
+                        size={"small"}
+                        label={t('registrationDrawer.password')}
+                        onChange={onPasswordChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        type={showPassword ? 'text' : 'password'}
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'centre',
+                            display: 'centre',
+                            width: '350px',
+                            '&:hover': { backgroundColor: '#fff' },
+                            '&:focus': { backgroundColor: '#fff' },
+                            '& .MuiOutlinedInput-root': {
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#000000',
+                                    borderWidth: '1px',
+                                },
+                            },
+                            '& .MuiInputLabel-root': {
+                                fontSize: '12px',
+                                transform: 'translate(14px, 12px) scale(1)', // Adjust this value to center the label
+                                '&:hover': { backgroundColor: '#fff' },
+                                '&.Mui-focused': {
+                                    color: '#000000', // Change this to the color you want
+
+                                },
+                            },
+                            '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
+                                transform: 'translate(18px, -5px) scale(0.7)', // Adjust this value to center the label
+                            },
                         }}
-                    >
-                        <Typography
-                            variant="body1"
-                            gutterBottom
-                            style={{
-                                textAlign: 'center',
-                                fontSize: '10px',
-                            }}
-                        >
-                            {t('registrationDrawer.postRegistrationInfo')}
-                        </Typography>
-                    </Box>
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onMouseDown={handleMouseDownPassword} // Pokaż hasło
+                                        onMouseUp={handleMouseUpPassword} // Ukryj hasło
+                                        disableRipple
+                                        sx={{
+                                            '& svg': {
+                                                fontSize: '1rem', // Adjust this value to change the size of the icon
+                                            },
+                                        }}
+                                    >
+                                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+
+                            ),
+                        }}
+                    />
+
+                    <TextField
+                        size={"small"}
+                        label={t('registrationDrawer.repeatPassword')}
+                        onChange={onRepeatPasswordChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        type={showRepeatPassword ? 'text' : 'password'}
+                        sx={{
+                            display: 'centre',
+                            width: '350px',
+                            '&:hover': { backgroundColor: '#fff' },
+                            '&:focus': { backgroundColor: '#fff' },
+                            '& .MuiOutlinedInput-root': {
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#000000',
+                                    borderWidth: '1px',
+                                },
+                            },
+                            '& .MuiInputLabel-root': {
+                                fontSize: '12px',
+                                transform: 'translate(14px, 12px) scale(1)', // Adjust this value to center the label
+                                '&:hover': { backgroundColor: '#fff' },
+                                '&.Mui-focused': {
+                                    color: '#000000', // Change this to the color you want
+
+                                },
+                            },
+                            '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
+                                transform: 'translate(18px, -5px) scale(0.7)', // Adjust this value to center the label
+                            },
+                        }}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onMouseDown={handleMouseDownRepeatPassword} // Pokaż hasło
+                                        onMouseUp={handleMouseUpRepeatPassword} // Ukryj hasło
+                                        disableRipple
+                                        sx={{
+                                            '& svg': {
+                                                fontSize: '1rem', // Adjust this value to change the size of the icon
+                                            },
+                                        }}
+                                    >
+                                        {showRepeatPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+
+                            ),
+                        }}
+                    />
+
+
+                    {/*<Box*/}
+                    {/*    sx={{*/}
+                    {/*        display: 'flex',*/}
+                    {/*        justifyContent: 'centre',*/}
+                    {/*    }}*/}
+                    {/*>*/}
+                    {/*    <Typography*/}
+                    {/*        variant="body1"*/}
+                    {/*        gutterBottom*/}
+                    {/*        style={{*/}
+                    {/*            textAlign: 'center',*/}
+                    {/*            fontSize: '10px',*/}
+                    {/*        }}*/}
+                    {/*    >*/}
+                    {/*        {t('registrationDrawer.postRegistrationInfo')}*/}
+                    {/*    </Typography>*/}
+                    {/*</Box>*/}
 
                     <CustomButton onClick={handleSubmit} label={t('registrationDrawer.createAccountButton')}/>
 
                 </Box>
+
+                <Divider
+                    style={{
+                        margin: '2rem 0',
+                        marginRight: '2rem',
+                        marginLeft: '2rem',
+                        borderWidth: '0.1rem',
+                        borderColor: '#000000',
+                    }}
+                />
 
                 <Typography
                     variant="body1"

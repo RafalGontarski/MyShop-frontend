@@ -7,6 +7,7 @@ export type UserRegistrationData = {
     city: string,
     country: string,
     email: string,
-    // password: string,
+    password: string,
+    repeatPassword: string,
     // phoneNumber?: string
 }

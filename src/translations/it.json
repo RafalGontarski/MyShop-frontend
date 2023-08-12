@@ -42,6 +42,8 @@
     "postalCode": "CAP",
     "city": "Città",
     "email": "E-mail",
+    "password": "Password",
+    "repeatPassword": "Ripeti la password",
     "postRegistrationInfo": "Dopo la registrazione, riceverai un'e-mail con un link per impostare la tua password.",
     "createAccountButton": "Crea un account",
     "previousShoppingQuestion": "Hai già fatto acquisti da noi?",

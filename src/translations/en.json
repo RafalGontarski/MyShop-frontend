@@ -42,6 +42,8 @@
     "postalCode": "Postal Code",
     "city": "City",
     "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat password",
     "postRegistrationInfo": "After registration, you will receive an email with a link to set your password.",
     "createAccountButton": "Create Account",
     "previousShoppingQuestion": "Have you shopped with us before?",

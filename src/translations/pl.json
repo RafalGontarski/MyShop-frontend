@@ -42,6 +42,8 @@
     "postalCode": "Kod pocztowy",
     "city": "Miejscowość",
     "email": "E-mail",
+    "password": "Hasło",
+    "repeatPassword": "Powtórz hasło",
     "postRegistrationInfo": "Po rejestracji otrzymasz email z linkiem do ustawienia hasła.",
     "createAccountButton": "Utwórz konto",
     "previousShoppingQuestion": "Czy robiłeś już kiedyś u nas zakupy?",

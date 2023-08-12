@@ -50,6 +50,8 @@
     "postalCode": "Postleitzahl",
     "city": "Stadt",
     "email": "E-Mail",
+    "password": "Passwort",
+    "repeatPassword": "Passwort wiederholen",
     "postRegistrationInfo": "Nach der Registrierung erhalten Sie eine E-Mail mit einem Link zum Festlegen Ihres Passworts.",
     "createAccountButton": "Konto erstellen",
     "previousShoppingQuestion": "Haben Sie schon einmal bei uns eingekauft?",
