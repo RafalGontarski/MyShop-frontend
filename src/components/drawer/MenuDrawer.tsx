@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
+import {IconClose, StyledIconClose} from "./Drawer.styles";
 
 
 
@@ -26,12 +27,7 @@ export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                 sx={{ width: 420, padding: 2 }}
                 role="presentation"
             >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                    }}
-                >
+                <IconClose>
                     <IconButton
                         onClick={onClose}
                         disableRipple
@@ -39,11 +35,9 @@ export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                             color: '#000000',
                             '&:hover': { color: '#008000' } }}
                     >
-                        <CloseIcon style={{
-                            fontSize: 30,
-                            fontWeight: 'bold' }} />
+                        <StyledIconClose />
                     </IconButton>
-                </Box>
+                </IconClose>
 
                 <Box
                     display="flex"

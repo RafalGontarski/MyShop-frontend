@@ -21,7 +21,7 @@
     "Italy": "Italiano",
     "France": "Francese"
   },
-  "profileDrawer": {
+  "loginDrawer": {
     "greeting": "Ciao",
     "email": "E-mail",
     "password": "Password",
@@ -59,6 +59,33 @@
     "guarantee": "Garanzia di soddisfazione",
     "repairService": "Servizio di riparazione",
     "refund": "Garanzia di rimborso di 30 giorni"
+  },
+  "menu": {
+    "products": {
+      "label": "Prodotti",
+      "subcategories": {
+        "electronics": "Elettronica",
+        "clothing": "Abbigliamento",
+        "home": "Casa & Giardino"
+      }
+    },
+    "service": {
+      "label": "Servizio",
+      "subcategories": {
+        "repair": "Riparazione",
+        "warranty": "Garanzia",
+        "support": "Supporto tecnico"
+      }
+    },
+    "about": {
+      "label": "Chi siamo",
+      "subcategories": {
+        "history": "Storia dell'azienda",
+        "team": "Il nostro team",
+        "values": "I nostri valori"
+      }
+    }
   }
+
 
 }

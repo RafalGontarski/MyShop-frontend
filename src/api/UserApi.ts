@@ -6,8 +6,6 @@ import {authorizedApi} from "../hooks/withAxiosIntercepted";
 export class UserApi {
     static registerUser = async (request: UserRegistrationData) =>
         await axios.post(`${BaseUrl}/api/auth/register`, request);
-
-
     static getUser = async () =>
         await authorizedApi.get<UserResponse>(`${BaseUrl}/api/users/getUser`);
 }

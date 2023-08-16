@@ -19,6 +19,7 @@ import Divider from "@mui/material/Divider";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import {IconClose, StyledIconClose} from "./Drawer.styles";
 
 type DrawerProps = {
     open: boolean;
@@ -187,12 +188,7 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
             >
 
 
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                    }}
-                >
+                <IconClose>
                     <IconButton
                         onClick={onClose}
                         disableRipple
@@ -200,11 +196,9 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                             color: '#000000',
                             '&:hover': { color: '#008000' } }}
                     >
-                        <CloseIcon style={{
-                            fontSize: 30,
-                            fontWeight: 'bold' }} />
+                        <StyledIconClose />
                     </IconButton>
-                </Box>
+                </IconClose>
 
 
                 <Box

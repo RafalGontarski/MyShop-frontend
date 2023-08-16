@@ -29,7 +29,7 @@
     "Italy": "Italien",
     "France": "Frankreich"
   },
-  "profileDrawer": {
+  "loginDrawer": {
     "greeting": "Hallo",
     "email": "Email",
     "password": "Passwort",
@@ -67,6 +67,33 @@
     "guarantee": "Zufriedenheitsgarantie",
     "repairService": "Reparaturdienst",
     "refund": "30-Tage Geld-zurück-Garantie"
+  },
+  "menu": {
+    "products": {
+      "label": "Produkte",
+      "subcategories": {
+        "electronics": "Elektronik",
+        "clothing": "Kleidung",
+        "home": "Haus & Garten"
+      }
+    },
+    "service": {
+      "label": "Service",
+      "subcategories": {
+        "repair": "Reparatur",
+        "warranty": "Garantie",
+        "support": "Technischer Support"
+      }
+    },
+    "about": {
+      "label": "Über uns",
+      "subcategories": {
+        "history": "Firmengeschichte",
+        "team": "Unser Team",
+        "values": "Unsere Werte"
+      }
+    }
   }
+
 
 }

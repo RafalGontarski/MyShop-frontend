@@ -21,7 +21,7 @@
     "Italy": "Італійська",
     "France": "Французька"
   },
-  "profileDrawer": {
+  "loginDrawer": {
     "greeting": "Привіт",
     "email": "Електронна пошта",
     "password": "Пароль",
@@ -59,6 +59,33 @@
     "guarantee": "Гарантія задоволення",
     "repairService": "Сервісний центр",
     "refund": "30-денна гарантія повернення грошей"
+  },
+  "menu": {
+    "products": {
+      "label": "Продукти",
+      "subcategories": {
+        "electronics": "Електроніка",
+        "clothing": "Одяг",
+        "home": "Дім і сад"
+      }
+    },
+    "service": {
+      "label": "Сервіс",
+      "subcategories": {
+        "repair": "Ремонт",
+        "warranty": "Гарантія",
+        "support": "Технічна підтримка"
+      }
+    },
+    "about": {
+      "label": "Про нас",
+      "subcategories": {
+        "history": "Історія компанії",
+        "team": "Наша команда",
+        "values": "Наші цінності"
+      }
+    }
   }
+
 
 }

@@ -19,7 +19,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 // components
 import { MenuDrawer } from '../drawer/MenuDrawer';
-import { ProfileDrawer } from '../drawer/ProfileDrawer';
+import { LoginDrawer } from '../drawer/LoginDrawer';
 import { LanguageDrawer } from '../drawer/LanguageDrawer';
 import { RegistrationDrawer } from '../drawer/RegistrationDrawer';
 
@@ -64,7 +64,13 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '5px',
     },
 }));
-const Navbar = () => {
+
+type NavbarProps = {
+    isLoggedIn: boolean;
+    onLogin: () => void;
+    onLogout: () => void;
+};
+const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
 
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -186,6 +192,14 @@ const Navbar = () => {
     };
     const handleLanguageDrawerClose = () => {
         setLanguageDrawerOpen(false);
+    };
+
+    const handleProfileClick = () => {
+        if (isLoggedIn) {
+            onLogout();
+        } else {
+            onLogin();
+        }
     };
 
     const theme = useTheme();
@@ -518,7 +532,7 @@ const Navbar = () => {
                                     >
                                         <AccountCircle style={{ fontSize: isSmallScreenForIconSize ? 20 : 30 }}/>
                                     </IconButton>
-                                    {/*<ProfileDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />*/}
+                                    {/*<LoginDrawer open={profileDrawerOpen} onClose={handleProfileDrawerClose} />*/}
                                     <LanguageDrawer
                                         open={languageDrawerOpen}
                                         onClose={handleLanguageDrawerClose}
@@ -527,7 +541,7 @@ const Navbar = () => {
                                         // onCurrencyChange={setCurrencyCode}
                                         onCurrencyChange={handleCurrencyChange}
                                     />
-                                    <ProfileDrawer
+                                    <LoginDrawer
                                         open={profileDrawerOpen}
                                         onClose={() => setProfileDrawerOpen(false)}
                                         onRegisterClick={() => {
