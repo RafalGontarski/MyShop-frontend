@@ -32,6 +32,9 @@
     "register": "Registrati",
     "googleLogin": "Continua con Google"
   },
+  "profileDrawer": {
+    "logout": "DISCONNETTI"
+  },
   "registrationDrawer": {
     "createAccount": "Crea un account",
     "companyInstitution": "Azienda/Istituzione",

@@ -32,6 +32,9 @@
     "register": "Реєстрація",
     "googleLogin": "Продовжити з Google"
   },
+  "profileDrawer": {
+    "logout": "ВИХІД"
+  },
   "registrationDrawer": {
     "createAccount": "Створити обліковий запис",
     "companyInstitution": "Компанія/Інституція",

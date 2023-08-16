@@ -32,6 +32,9 @@
     "register": "S'inscrire",
     "googleLogin": "Continuer avec Google"
   },
+  "profileDrawer": {
+    "logout": "DÉCONNEXION"
+  },
   "registrationDrawer": {
     "createAccount": "Créer un compte",
     "companyInstitution": "Entreprise/Institution",

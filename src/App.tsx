@@ -3,7 +3,6 @@ import Navbar from './components/navbar/Navbar';
 import {LoginDrawer} from "./components/drawer/LoginDrawer";
 import {ProfileDrawer} from "./components/drawer/ProfileDrawer";
 import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
-import {AccountCircle} from "@mui/icons-material";
 
 const UserContext = createContext<{ isLoggedIn: boolean; handleLogin: () => void } | undefined>(undefined);
 
@@ -48,7 +47,6 @@ const App = () => {
                     onClose={() => setIsProfileDrawerOpen(false)}
                     onLogoutClick={() => handleLogout()}
                 />}
-            <AccountCircle onClick={openProfileDrawer} />
         </UserContext.Provider>
 
         // <div>

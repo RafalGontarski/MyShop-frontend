@@ -40,6 +40,9 @@
     "register": "Registrieren",
     "googleLogin": "Weiter mit Google"
   },
+  "profileDrawer": {
+    "logout": "ABMELDEN"
+  },
   "registrationDrawer": {
     "createAccount": "Konto erstellen",
     "companyInstitution": "Firma/Institution",

@@ -1,11 +1,26 @@
 import { Drawer } from "@mui/material";
 import React from "react";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import Typography from "@mui/material/Typography";
-import HandIcon from "@mui/icons-material/PanTool";
 import {useTranslation} from "react-i18next";
+import CustomButton from "../button/Button";
+
+// styled component
+import {
+    Welcome,
+    IconClose,
+    RememberMe,
+    WelcomeText,
+    ButtonClose,
+    MainContainer,
+    StyledHandIcon,
+    StyledIconClose,
+    RememberMeCheckBox,
+    LoginFormContainer,
+    StyledFormControlLabel,
+
+}
+    from "./Drawer.styles";
+
+
 
 
 type DrawerProps = {
@@ -17,58 +32,53 @@ type DrawerProps = {
 export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick }) => {
     const { t } = useTranslation();
 
+    function handleLogout() {
+        console.log("logout")
+    }
+
     return (
         <Drawer
             anchor={'right'}
             open={open}
             onClose={onClose}
         >
-            <Box
-                sx={{ width: 420, padding: 2 }}
-                role="presentation"
-            >
-
-
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                    }}
-                >
-                    <IconButton
+            <MainContainer role="presentation">
+                <IconClose>
+                    <ButtonClose
                         onClick={onClose}
                         disableRipple
-                        sx={{
-                            color: '#000000',
-                            '&:hover': { color: '#008000' } }}
                     >
-                        <CloseIcon style={{
-                            fontSize: 30,
-                            fontWeight: 'bold' }} />
-                    </IconButton>
-                </Box>
+                        <StyledIconClose/>
+                    </ButtonClose>
+                </IconClose>
+                <LoginFormContainer>
 
+                    <Welcome>
+                        <WelcomeText variant="h4" gutterBottom>
+                            {t('loginDrawer.greeting')}
+                        </WelcomeText>
+                        <StyledHandIcon/>
+                    </Welcome>
 
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                    }}
-                >
-
-
-                    <Box sx={{ display: 'flex', alignItems: 'left' }}>
-                        <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold' }}>
-                            {t('profileDrawer.greeting')}
-                        </Typography>
-                        <HandIcon
-                            style={{ color: '#008000'}}
+                    <RememberMe>
+                        <StyledFormControlLabel
+                            control={
+                                <RememberMeCheckBox
+                                    disableRipple
+                                />
+                            }
+                            label={t('loginDrawer.rememberMe')}
                         />
-                    </Box>
-                </Box>
-            </Box>
+                    </RememberMe>
+
+                    <CustomButton
+                        label={t('profileDrawer.logout')}
+                        // disabled={!isEmailValid || !isPasswordValid}
+                        onClick={handleLogout}
+                    />
+
+                </LoginFormContainer>
+            </MainContainer>
         </Drawer>
     )
 
