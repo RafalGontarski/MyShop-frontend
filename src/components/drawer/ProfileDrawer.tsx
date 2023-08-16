@@ -33,7 +33,9 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
     const { t } = useTranslation();
 
     function handleLogout() {
-        console.log("logout")
+        console.log("logout xd");
+        onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
+        onClose(); // Zamknij szufladę
     }
 
     return (

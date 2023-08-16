@@ -65,21 +65,27 @@ import {
     StyledRightSideLastIcon,
     StyledRightSideMiddleIcon,
     StyledRightSideGuaranteeLink,
-    StyledRightSideFreeShippingLink,
+    StyledRightSideFreeShippingLink, ProfileImagePlaceholder,
 } from "./navbar.styles";
+import {ProfileDrawer} from "../drawer/ProfileDrawer";
 
 type NavbarProps = {
     isLoggedIn: boolean;
     onLogin: () => void;
     onLogout: () => void;
+    openProfileDrawer: () => void;
+    openLoginDrawer: () => void;
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsProfileDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
+const Navbar: React.FC<NavbarProps> = (props) => {
 
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
-    const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
+    const [loginDrawerOpen, setLoginDrawerOpen] = useState(false);
     const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
+    const [profileDrawerOpen, setProfileDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('PL');
     const [countryCode, setCountryCode] = useState('pl');
@@ -168,18 +174,18 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
         setMenuDrawerOpen(false);
     };
     const handleProfileDrawerOpen = () => {
-        setProfileDrawerOpen(true);
+        setLoginDrawerOpen(true);
     };
     const handleProfileDrawerClose = () => {
-        setProfileDrawerOpen(false);
+        setLoginDrawerOpen(false);
     };
     const handleRegistrationClick = () => {
-        setProfileDrawerOpen(false);
+        setLoginDrawerOpen(false);
         setRegistrationDrawerOpen(true);
     };
     const handleLoginClick = () => {
         setRegistrationDrawerOpen(false);
-        setProfileDrawerOpen(true);
+        setLoginDrawerOpen(true);
     };
     const handleLanguageDrawerOpen = () => {
         setLanguageDrawerOpen(true);
@@ -188,13 +194,28 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
         setLanguageDrawerOpen(false);
     };
 
-    const handleProfileClick = () => {
-        if (isLoggedIn) {
-            onLogout();
+    // const handleProfileClick = () => {
+    //     if (isLoggedIn) {
+    //         onLogout();
+    //     } else {
+    //         onLogin();
+    //     }
+    // };
+
+    function handleLogout() {
+        console.log("logout");
+        props.setIsLoggedIn(false);
+        props.setIsProfileDrawerOpen(false);
+    }
+
+    function handleIconClick() {
+        if (props.isLoggedIn) {
+            props.openProfileDrawer();
         } else {
-            onLogin();
+            props.openLoginDrawer();
         }
-    };
+    }
+
 
     const theme = useTheme();
     const isSmallScreenForLink = useMediaQuery(theme.breakpoints.down(1516));
@@ -384,9 +405,9 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
                                         edge="end"
                                         aria-label="profile"
                                         disableRipple
-                                        onClick={handleProfileDrawerOpen}
+                                        onClick={handleIconClick}
                                     >
-                                        <StyledAccountCircle />
+                                        {props.isLoggedIn ? <ProfileImagePlaceholder /> : <StyledAccountCircle />}
                                     </StyledRightSideMiddleIcon>
 
                                     <LanguageDrawer
@@ -397,8 +418,11 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
                                         onCurrencyChange={handleCurrencyChange}
                                     />
                                     <LoginDrawer
-                                        open={profileDrawerOpen}
-                                        onClose={() => setProfileDrawerOpen(false)}
+                                        open={loginDrawerOpen}
+                                        onClose={() => setLoginDrawerOpen(false)}
+                                        handleLogin={() => {
+                                            handleLoginClick();
+                                        }}
                                         onRegisterClick={() => {
                                             handleRegistrationClick();
                                         }}
@@ -408,6 +432,13 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogin, onLogout }) => {
                                         onClose={() => setRegistrationDrawerOpen(false)}
                                         onLoginClick={() => {
                                             handleLoginClick();
+                                        }}
+                                    />
+                                    <ProfileDrawer
+                                        open={profileDrawerOpen}
+                                        onClose={() => setProfileDrawerOpen(false)}
+                                        onLogoutClick={() => {
+                                            handleLogout();
                                         }}
                                     />
 

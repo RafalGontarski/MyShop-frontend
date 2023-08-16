@@ -47,9 +47,10 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onRegisterClick: () => void;
+    handleLogin: () => void;
 };
 
-export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterClick}) => {
+export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterClick, handleLogin}) => {
 
     const [showPassword, setShowPassword] = React.useState(false);
     const {t} = useTranslation();
@@ -61,7 +62,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
     const navigate = useNavigate();
 
 
-    const handleLogin = useCallback(async () => {
+    const localHandleLogin = useCallback(async () => {
         try {
             const user = await AuthApi.signIn({
                 email: email,
@@ -186,7 +187,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                     <CustomButton
                         label={t('loginDrawer.login')}
                         // disabled={!isEmailValid || !isPasswordValid}
-                        onClick={handleLogin}
+                        onClick={localHandleLogin}
                     />
 
                 </LoginFormContainer>

@@ -405,6 +405,15 @@ export const StyledRightSideLastIcon = styled(RightSideLastIcon)`
     }
   }
 `;
+export const ProfileImagePlaceholder = styled.div`
+  && {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #000; // Możesz dostosować kolor obramowania według własnych potrzeb
+    background-color: #fff; // Możesz dostosować kolor tła według własnych potrzeb
+  }
+`
 
 
 

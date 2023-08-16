@@ -18,34 +18,54 @@ const App = () => {
         setIsProfileDrawerOpen(true);
     }
 
+    function handleIconClick() {
+        if (isLoggedIn) {
+            setIsProfileDrawerOpen(true);
+        } else {
+            setIsLoginDrawerOpen(true);
+        }
+    }
+    function openProfileDrawer() {
+        setIsProfileDrawerOpen(true);
+    }
+
+    function openLoginDrawer() {
+        setIsLoginDrawerOpen(true);
+    }
 
     function handleLogout() {
         setIsLoggedIn(false);
         setIsProfileDrawerOpen(false);
     }
 
-    function openProfileDrawer() {
-        if (isLoggedIn) {
-            setIsProfileDrawerOpen(true);
-        }
-    }
-
     return (
         <UserContext.Provider value={{ isLoggedIn, handleLogin }}>
-            <Navbar isLoggedIn={isLoggedIn} onLogin={handleLogin} onLogout={handleLogout} />
+            <Navbar
+                isLoggedIn={isLoggedIn}
+                onLogin={handleLogin}
+                onLogout={handleLogout}
+                openProfileDrawer={openProfileDrawer}
+                openLoginDrawer={openLoginDrawer}
+                setIsLoggedIn={setIsLoggedIn}
+                setIsProfileDrawerOpen={setIsProfileDrawerOpen}
+                />
             {isLoginDrawerOpen &&
                 <LoginDrawer
                     open={isLoginDrawerOpen}
                     onClose={() => setIsLoginDrawerOpen(false)}
-                    onRegisterClick={() => {
+                    handleLogin={() => {
                         handleLogin();
+                    }}
+                    onRegisterClick={() => {
+                        // handleLogin();
+                        console.log("login");
                     }}
                 />}
             {isProfileDrawerOpen &&
                 <ProfileDrawer
                     open={isProfileDrawerOpen}
                     onClose={() => setIsProfileDrawerOpen(false)}
-                    onLogoutClick={() => handleLogout()}
+                    onLogoutClick={handleLogout}
                 />}
         </UserContext.Provider>
 
