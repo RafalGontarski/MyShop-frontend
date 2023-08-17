@@ -4,11 +4,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Grid from '@mui/material/Grid';
-import {AccountCircle} from "@mui/icons-material";
-import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import {InputAdornment} from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 // components
 import { MenuDrawer } from '../drawer/MenuDrawer';
@@ -52,16 +48,12 @@ import {
     RightSideFullScreenNavbar,
     RightSideLinksContainer,
     RightSideIconsContainer,
-    RightSideFreeShippingLink,
-    RightSideGuaranteeLink,
     RightSideLanguageIconStyled,
     RightSideLanguageTypographyStyled,
     IconContainer,
-    RightSideMiddleIcon,
     StyledAccountCircle,
     StyledFavoriteIcon,
     StyledShoppingCartIcon,
-    RightSideLastIcon,
     StyledRightSideLastIcon,
     StyledRightSideMiddleIcon,
     StyledRightSideGuaranteeLink,
@@ -71,7 +63,7 @@ import {ProfileDrawer} from "../drawer/ProfileDrawer";
 
 type NavbarProps = {
     isLoggedIn: boolean;
-    onLogin: () => void;
+    onLogin: (userName: string) => void;
     onLogout: () => void;
     openProfileDrawer: () => void;
     openLoginDrawer: () => void;
@@ -193,14 +185,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     const handleLanguageDrawerClose = () => {
         setLanguageDrawerOpen(false);
     };
-
-    // const handleProfileClick = () => {
-    //     if (isLoggedIn) {
-    //         onLogout();
-    //     } else {
-    //         onLogin();
-    //     }
-    // };
 
     function handleLogout() {
         console.log("logout");
@@ -417,30 +401,30 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         onCountryChange={setCountryCode}
                                         onCurrencyChange={handleCurrencyChange}
                                     />
-                                    <LoginDrawer
-                                        open={loginDrawerOpen}
-                                        onClose={() => setLoginDrawerOpen(false)}
-                                        handleLogin={() => {
-                                            handleLoginClick();
-                                        }}
-                                        onRegisterClick={() => {
-                                            handleRegistrationClick();
-                                        }}
-                                    />
-                                    <RegistrationDrawer
-                                        open={registrationDrawerOpen}
-                                        onClose={() => setRegistrationDrawerOpen(false)}
-                                        onLoginClick={() => {
-                                            handleLoginClick();
-                                        }}
-                                    />
-                                    <ProfileDrawer
-                                        open={profileDrawerOpen}
-                                        onClose={() => setProfileDrawerOpen(false)}
-                                        onLogoutClick={() => {
-                                            handleLogout();
-                                        }}
-                                    />
+                                    {/*<LoginDrawer*/}
+                                    {/*    open={loginDrawerOpen}*/}
+                                    {/*    onClose={() => setLoginDrawerOpen(false)}*/}
+                                    {/*    handleLogin={() => {*/}
+                                    {/*        handleLoginClick();*/}
+                                    {/*    }}*/}
+                                    {/*    onRegisterClick={() => {*/}
+                                    {/*        handleRegistrationClick();*/}
+                                    {/*    }}*/}
+                                    {/*/>*/}
+                                    {/*<RegistrationDrawer*/}
+                                    {/*    open={registrationDrawerOpen}*/}
+                                    {/*    onClose={() => setRegistrationDrawerOpen(false)}*/}
+                                    {/*    onLoginClick={() => {*/}
+                                    {/*        handleLoginClick();*/}
+                                    {/*    }}*/}
+                                    {/*/>*/}
+                                    {/*<ProfileDrawer*/}
+                                    {/*    open={profileDrawerOpen}*/}
+                                    {/*    onClose={() => setProfileDrawerOpen(false)}*/}
+                                    {/*    onLogoutClick={() => {*/}
+                                    {/*        handleLogout();*/}
+                                    {/*    }}*/}
+                                    {/*/>*/}
 
                                     <StyledRightSideMiddleIcon
                                         edge="end"

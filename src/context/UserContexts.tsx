@@ -29,6 +29,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     const fetchUser = useCallback(async () => {
         const user = await UserApi.getUser();
         userModifier({
+            firstName: user.data.firstName,
             email: user.data.email,
             roles: user.data.roles,
         });

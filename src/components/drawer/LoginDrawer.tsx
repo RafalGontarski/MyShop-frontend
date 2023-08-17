@@ -47,7 +47,8 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onRegisterClick: () => void;
-    handleLogin: () => void;
+    handleLogin: (userName: string) => void;
+    // handleLogin: () => void;
 };
 
 export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterClick, handleLogin}) => {
@@ -69,12 +70,16 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 password: password,
             });
             userModifier({
+                firstName: user.data.firstName,
                 email: user.data.email,
                 roles: user.data.roles,
             });
+            console.log(user.data.firstName);
             localStorage.setItem(ACCESS_TOKEN, user.data.token);
             navigate("/");
             onClose();
+            // return true;
+            return user.data.firstName;
         } catch (error: any) {
             let errorMessage;
 
@@ -87,6 +92,8 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
             toast.error(errorMessage, {
                 position: toast.POSITION.TOP_LEFT,
             });
+
+            return false;
         }
     }, [email, password, navigate]);
 
@@ -114,6 +121,16 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
         event.preventDefault();
         setShowPassword(false);
     };
+
+    const combinedHandleLogin = async () => {
+        const userName = await localHandleLogin();
+        if (userName) {
+            handleLogin(userName);
+        }
+    };
+
+
+
 
     return (
         <Drawer anchor={'right'} open={open} onClose={onClose}>
@@ -187,7 +204,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                     <CustomButton
                         label={t('loginDrawer.login')}
                         // disabled={!isEmailValid || !isPasswordValid}
-                        onClick={localHandleLogin}
+                        onClick={combinedHandleLogin}
                     />
 
                 </LoginFormContainer>
@@ -198,7 +215,11 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 <RegisterLink variant="body1" gutterBottom>
                     {t('loginDrawer.newHere')}
                 </RegisterLink>
-                <CustomLink href={"#"} label={t('loginDrawer.register')} onClick={onRegisterClick}/>
+                <CustomLink href={"#"} label={t('loginDrawer.register')}
+                            onClick={() => {
+                                onClose();  // zamknij LoginDrawer
+                                onRegisterClick();  // otwórz RegistrationDrawer
+                            }}/>
             </MainContainer>
             <Box>
                 {/*<GoogleLoginButton*/}

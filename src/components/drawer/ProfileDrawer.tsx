@@ -27,9 +27,10 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
+    userName: string | null;
 };
 
-export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick }) => {
+export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userName }) => {
     const { t } = useTranslation();
 
     function handleLogout() {
@@ -57,7 +58,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
 
                     <Welcome>
                         <WelcomeText variant="h4" gutterBottom>
-                            {t('loginDrawer.greeting')}
+                            {t('loginDrawer.greeting')} {userName}
                         </WelcomeText>
                         <StyledHandIcon/>
                     </Welcome>
