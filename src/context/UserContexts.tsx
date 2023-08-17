@@ -15,11 +15,12 @@ const defaultSettings: UserContextType = {
     userModifier: (user: User | null) => {},
 };
 
-export const UserContext = createContext<UserContextType>(defaultSettings);
+export const UserContext =
+    createContext<UserContextType>(defaultSettings);
 
 export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
-    const {pagesModifier } = useContext(NavbarContext);
+    const { pagesModifier } = useContext(NavbarContext);
     const navigate = useNavigate();
 
     const userModifier = (user: User | null) => {
@@ -29,7 +30,9 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     const fetchUser = useCallback(async () => {
         const user = await UserApi.getUser();
         userModifier({
+            id: user.data.id,
             firstName: user.data.firstName,
+            lastName: user.data.lastName,
             email: user.data.email,
             roles: user.data.roles,
         });

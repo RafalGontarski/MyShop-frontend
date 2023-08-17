@@ -47,7 +47,12 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onRegisterClick: () => void;
-    handleLogin: (userName: string, userRole: string[] ) => void;
+    handleLogin: (
+        userId: number,
+        userName: string,
+        userSurname: string,
+        userEmail: string,
+        userRole: string[] ) => void;
     // handleLogin: () => void;
 };
 
@@ -70,7 +75,9 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 password: password,
             });
             userModifier({
+                id: user.data.id,
                 firstName: user.data.firstName,
+                lastName: user.data.lastName,
                 email: user.data.email,
                 roles: user.data.roles,
             });
@@ -80,8 +87,11 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
             onClose();
             // return true;
             return {
+                userId: user.data.id,
                 firstName: user.data.firstName,
-                roles: user.data.roles
+                lastName: user.data.lastName,
+                email: user.data.email,
+                roles: user.data.roles,
             };
         } catch (error: any) {
             let errorMessage;
@@ -128,7 +138,12 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
     const combinedHandleLogin = async () => {
         const userData = await localHandleLogin();
         if (userData) {
-            handleLogin(userData.firstName, userData.roles);
+            handleLogin(
+                userData.userId,
+                userData.firstName,
+                userData.lastName,
+                userData.email,
+                userData.roles);
             console.log("Role użytkownika:", userData.roles);
         }
     };

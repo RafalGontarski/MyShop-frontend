@@ -1,5 +1,7 @@
 export type UserResponse = {
-    firstName: string
-    email: string
-    roles: string[]
+    id: number;
+    firstName: string;
+    lastName: string;
+    email:string;
+    roles: string[];
 }

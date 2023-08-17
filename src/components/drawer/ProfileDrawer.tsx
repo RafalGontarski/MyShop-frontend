@@ -21,7 +21,14 @@ import {
 }
     from "./Drawer.styles";
 
-import {LinksContainer, ProfileContainer, ProfileDrawerLink, ProfileLine} from "./ProfileDrawer.styles";
+import {
+    LineContainer, LineText,
+    LinksContainer,
+    ProfileContainer,
+    ProfileDrawerLink,
+    ProfileLine, ProfileMainContainer, ProfileWelcome,
+    ProfileWelcomeText, UserData, UserDataContainer
+} from "./ProfileDrawer.styles";
 
 
 
@@ -29,11 +36,14 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
+    userId: number | null;
     userName: string | null;
+    userSurname: string | null;
+    userEmail: string | null;
     userRole: string[] | null;
 };
 
-export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userName, userRole }) => {
+export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userId, userName,userSurname, userEmail, userRole }) => {
     const { t } = useTranslation();
 
     function handleLogout() {
@@ -55,7 +65,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
             open={open}
             onClose={onClose}
         >
-            <MainContainer role="presentation">
+            <ProfileMainContainer role="presentation">
 
 
                 <IconClose>
@@ -74,27 +84,55 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                 <ProfileContainer>
 
                     <Welcome>
-                        <WelcomeText variant="h4" gutterBottom>
+                        <ProfileWelcomeText variant="h4" gutterBottom>
                             {t('loginDrawer.greeting')} {userName}
-                        </WelcomeText>
+                        </ProfileWelcomeText>
                         <StyledHandIcon/>
                     </Welcome>
                     <Welcome>
-                        <WelcomeText variant="h6" gutterBottom>
+                        <ProfileWelcomeText variant="h6" gutterBottom>
                             {rolesString}
-                        </WelcomeText>
+                        </ProfileWelcomeText>
                     </Welcome>
 
-                    <LinksContainer>
-                        {userRole && (userRole.includes("ADMIN")) && (
-                            <ProfileDrawerLink
-                                href="#"
-                                underline="none"
-                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                    <UserDataContainer>
+                        <ProfileWelcome>
+                            <UserData variant="body1" gutterBottom
+                                 style={{ marginRight: '4px' }}
                             >
-                                Zatrudnij pracownika
-                            </ProfileDrawerLink>
+                                {userName}
+                            </UserData>
+                            <UserData variant="body1" gutterBottom>
+                                {userSurname}
+                            </UserData>
+                        </ProfileWelcome>
+                        <ProfileWelcome>
+                            <UserData variant="body1" gutterBottom>
+                                {userEmail}
+                            </UserData>
+                        </ProfileWelcome>
+                        <ProfileWelcome>
+                            <UserData variant="body1" gutterBottom>
+                                Number klienta {userId}
+                            </UserData>
+                        </ProfileWelcome>
+                    </UserDataContainer>
+
+                    <LinksContainer>
+
+                        <ProfileDrawerLink
+                            href="#"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Edytuj Konto
+                        </ProfileDrawerLink>
+
+                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                            <LineContainer>
+                                <LineText>Panel Managera</LineText>
+                            </LineContainer>
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <ProfileDrawerLink
@@ -106,14 +144,22 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 Dodaj Produkt
                             </ProfileDrawerLink>
                         )}
-                        <ProfileDrawerLink
-                            href="#"
-                            underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                        >
-                            Edytuj Konto
-                        </ProfileDrawerLink>
+                        {userRole && (userRole.includes("ADMIN")) && (
+                            <LineContainer>
+                                <LineText>Panel Właściciela</LineText>
+                            </LineContainer>
+                        )}
+                        {userRole && (userRole.includes("ADMIN")) && (
+
+                            <ProfileDrawerLink
+                                href="#"
+                                underline="none"
+                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            >
+                                Zatrudnij pracownika
+                            </ProfileDrawerLink>
+                        )}
 
                         <ProfileLine/>
 
@@ -130,7 +176,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                     </LinksContainer>
 
                 </ProfileContainer>
-            </MainContainer>
+            </ProfileMainContainer>
         </Drawer>
     )
 
