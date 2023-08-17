@@ -63,7 +63,7 @@ import {ProfileDrawer} from "../drawer/ProfileDrawer";
 
 type NavbarProps = {
     isLoggedIn: boolean;
-    onLogin: (userName: string) => void;
+    onLogin: (userName: string, userRole: string[]) => void;
     onLogout: () => void;
     openProfileDrawer: () => void;
     openLoginDrawer: () => void;

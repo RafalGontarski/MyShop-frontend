@@ -47,7 +47,7 @@ type DrawerProps = {
     open: boolean;
     onClose: () => void;
     onRegisterClick: () => void;
-    handleLogin: (userName: string) => void;
+    handleLogin: (userName: string, userRole: string[] ) => void;
     // handleLogin: () => void;
 };
 
@@ -79,7 +79,10 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
             navigate("/");
             onClose();
             // return true;
-            return user.data.firstName;
+            return {
+                firstName: user.data.firstName,
+                roles: user.data.roles
+            };
         } catch (error: any) {
             let errorMessage;
 
@@ -123,11 +126,13 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
     };
 
     const combinedHandleLogin = async () => {
-        const userName = await localHandleLogin();
-        if (userName) {
-            handleLogin(userName);
+        const userData = await localHandleLogin();
+        if (userData) {
+            handleLogin(userData.firstName, userData.roles);
+            console.log("Role użytkownika:", userData.roles);
         }
     };
+
 
 
 

@@ -9,23 +9,25 @@ import {MyComponent} from "./api/TestApi";
 const UserContext =
     createContext<{
     isLoggedIn: boolean,
-        handleLogin: (userName: string) => void;
+        handleLogin: (userName: string, userRole: string[]) => void;
     } | undefined>(undefined);
 
 const App = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState<string | null>(null);
+    const [userRole, setUserRole] = useState<string[] | null>(null);
     const [isLoginDrawerOpen, setIsLoginDrawerOpen] = useState(false);
     const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false);
     const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
 
-    function handleLogin(userNameFromServer: string) {
+    function handleLogin(userNameFromServer: string, userRoleFromServer: string[]) {
     // function handleLogin() {
         setIsLoggedIn(true);
         setIsLoginDrawerOpen(false);
         setIsProfileDrawerOpen(true);
         setUserName(userNameFromServer);
+        setUserRole(userRoleFromServer);
     }
     function openProfileDrawer() {
         setIsProfileDrawerOpen(true);
@@ -55,9 +57,11 @@ const App = () => {
                 <LoginDrawer
                     open={isLoginDrawerOpen}
                     onClose={() => setIsLoginDrawerOpen(false)}
-                    handleLogin={(userNameFromServer) => {
+                    handleLogin={(
+                        userNameFromServer,
+                        userRoleFromServer) => {
                     // handleLogin={() => {
-                        handleLogin(userNameFromServer);
+                        handleLogin(userNameFromServer, userRoleFromServer);
                         // handleLogin();
                     }}
                     onRegisterClick={() => {
@@ -72,6 +76,7 @@ const App = () => {
                     onClose={() => setIsProfileDrawerOpen(false)}
                     onLogoutClick={handleLogout}
                     userName={userName}
+                    userRole={userRole}
                 />}
             {isRegistrationDrawerOpen &&
                 <RegistrationDrawer

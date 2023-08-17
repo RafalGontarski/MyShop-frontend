@@ -28,9 +28,10 @@ type DrawerProps = {
     onClose: () => void;
     onLogoutClick: () => void;
     userName: string | null;
+    userRole: string[] | null;
 };
 
-export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userName }) => {
+export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userName, userRole }) => {
     const { t } = useTranslation();
 
     function handleLogout() {
@@ -60,19 +61,11 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                         <WelcomeText variant="h4" gutterBottom>
                             {t('loginDrawer.greeting')} {userName}
                         </WelcomeText>
+                        <WelcomeText variant="h6" gutterBottom>
+                            {userRole}
+                        </WelcomeText>
                         <StyledHandIcon/>
                     </Welcome>
-
-                    <RememberMe>
-                        <StyledFormControlLabel
-                            control={
-                                <RememberMeCheckBox
-                                    disableRipple
-                                />
-                            }
-                            label={t('loginDrawer.rememberMe')}
-                        />
-                    </RememberMe>
 
                     <CustomButton
                         label={t('profileDrawer.logout')}
