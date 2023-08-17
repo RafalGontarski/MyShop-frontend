@@ -1,4 +1,4 @@
-import { Drawer } from "@mui/material";
+import { Drawer, Link } from "@mui/material";
 import React from "react";
 import {useTranslation} from "react-i18next";
 import CustomButton from "../button/Button";
@@ -121,7 +121,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                     <LinksContainer>
 
                         <ProfileDrawerLink
-                            href="#"
+                            href="/edit-profile"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -158,6 +158,17 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                             >
                                 Zatrudnij pracownika
+                            </ProfileDrawerLink>
+                        )}
+                        {userRole && (userRole.includes("ADMIN")) && (
+
+                            <ProfileDrawerLink
+                                href="#"
+                                underline="none"
+                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            >
+                                Dodaj Kategorię
                             </ProfileDrawerLink>
                         )}
 

@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Grid from '@mui/material/Grid';
-import {InputAdornment} from "@mui/material";
+import {InputAdornment, Link} from "@mui/material";
 
 // components
 import { MenuDrawer } from '../drawer/MenuDrawer';
@@ -333,12 +333,14 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                         <Grid item xs={12} sm={2}>
                             <MiddleSideFullScreenNavbar>
                                 <MiddleSideLogoContainer>
-                                    <MiddleSideImageContainer
-                                        src={Logo}
-                                        alt="Logo"
-                                        onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
-                                    />
+                                    <Link href="/">
+                                        <MiddleSideImageContainer
+                                            src={Logo}
+                                            alt="Logo"
+                                            onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
+                                            onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
+                                        />
+                                    </Link>
                                 </MiddleSideLogoContainer>
                                 <MiddleSideSearchContainer>
                                     <StyledTextField
