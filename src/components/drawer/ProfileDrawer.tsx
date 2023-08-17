@@ -5,6 +5,7 @@ import CustomButton from "../button/Button";
 
 // styled component
 import {
+    Line,
     Welcome,
     IconClose,
     RememberMe,
@@ -15,11 +16,12 @@ import {
     StyledIconClose,
     RememberMeCheckBox,
     LoginFormContainer,
+    CustomerCenterText,
     StyledFormControlLabel,
-
 }
     from "./Drawer.styles";
 
+import {LinksContainer, ProfileContainer, ProfileDrawerLink, ProfileLine} from "./ProfileDrawer.styles";
 
 
 
@@ -40,6 +42,13 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
         onClose(); // Zamknij szufladę
     }
 
+
+    let rolesString = "";
+    if (userRole) {
+        rolesString = userRole.join(', ');
+    }
+
+
     return (
         <Drawer
             anchor={'right'}
@@ -47,33 +56,70 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
             onClose={onClose}
         >
             <MainContainer role="presentation">
+
+
                 <IconClose>
+                    <CustomerCenterText>Centrum Klienta</CustomerCenterText>
                     <ButtonClose
                         onClick={onClose}
                         disableRipple
                     >
+
                         <StyledIconClose/>
                     </ButtonClose>
                 </IconClose>
-                <LoginFormContainer>
+
+
+
+                <ProfileContainer>
 
                     <Welcome>
                         <WelcomeText variant="h4" gutterBottom>
                             {t('loginDrawer.greeting')} {userName}
                         </WelcomeText>
-                        <WelcomeText variant="h6" gutterBottom>
-                            {userRole}
-                        </WelcomeText>
                         <StyledHandIcon/>
                     </Welcome>
+                    <Welcome>
+                        <WelcomeText variant="h6" gutterBottom>
+                            {rolesString}
+                        </WelcomeText>
+                    </Welcome>
 
-                    <CustomButton
-                        label={t('profileDrawer.logout')}
-                        // disabled={!isEmailValid || !isPasswordValid}
-                        onClick={handleLogout}
-                    />
+                    <LinksContainer>
 
-                </LoginFormContainer>
+                        <ProfileDrawerLink
+                            href="#"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Zatrudnij pracownika
+                        </ProfileDrawerLink>
+
+                        <ProfileDrawerLink
+                            href="#"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Edytuj Konto
+                        </ProfileDrawerLink>
+
+                        <ProfileLine/>
+
+                        <ProfileDrawerLink
+                            href="#"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            onClick={handleLogout}
+                        >
+                            Wyloguj
+                        </ProfileDrawerLink>
+
+                    </LinksContainer>
+
+                </ProfileContainer>
             </MainContainer>
         </Drawer>
     )

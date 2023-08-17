@@ -392,6 +392,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         onClick={handleIconClick}
                                     >
                                         {props.isLoggedIn ? <ProfileImagePlaceholder /> : <StyledAccountCircle />}
+                                        {/*<StyledAccountCircle />*/}
                                     </StyledRightSideMiddleIcon>
 
                                     <LanguageDrawer

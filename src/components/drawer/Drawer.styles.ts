@@ -30,6 +30,7 @@ export const IconClose = styled(Box)`
   && {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
 `
 export const StyledIconClose = styled(CloseIcon)`
@@ -220,4 +221,11 @@ export const RegisterLink = styled(Typography)`
   && {
     text-align: center;
   }
+`
+export const CustomerCenterText = styled.div`
+    flex-grow: 1; // pozwala na rozciągnięcie tekstu, aby wypełnić dostępną przestrzeń
+    text-align: left; // wyrównuje tekst do lewej strony
+    padding-left: 20px; // dodaje trochę odstępu od lewej krawędzi
+    font-size: 1.5rem; // możesz dostosować rozmiar czcionki według potrzeb
+    font-weight: bold;
 `

@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import {AccountCircle} from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import noPhotoUserIcon from "../../resources/icons/noPhotoUserIcon.png";
 
 
 // icons
@@ -407,11 +408,17 @@ export const StyledRightSideLastIcon = styled(RightSideLastIcon)`
 `;
 export const ProfileImagePlaceholder = styled.div`
   && {
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 2px solid #000; // Możesz dostosować kolor obramowania według własnych potrzeb
-    background-color: #fff; // Możesz dostosować kolor tła według własnych potrzeb
+    background-color: #F8F8F8; // Możesz dostosować kolor tła według własnych potrzeb
+    background-image: url(${noPhotoUserIcon});
+    background-size: cover;
+    background-position: center;
+    &:hover {
+      border: 2px solid #008000;
+    }
   }
 `
 

@@ -10,7 +10,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({ label, onClick }) => {
     return (
         <StyledButton
             variant="contained"
-            color="primary" onClick={onClick}>
+            color="primary"
+            onClick={onClick}>
             {label}
         </StyledButton>
     );
