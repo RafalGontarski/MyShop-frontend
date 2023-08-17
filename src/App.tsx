@@ -6,7 +6,7 @@ import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
 import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
 import MainPage from "./pages/MainPage";
 import {Route, Routes} from "react-router-dom";
-import ProfileEdit from "./pages/ProfileEdit";
+import MyProfile from "./pages/MyProfile";
 
 
 const UserContext =
@@ -99,7 +99,16 @@ const App = () => {
 
             <Routes>
                 <Route path="/" element={<MainPage />} />
-                <Route path="/edit-profile" element={<ProfileEdit />} />
+                <Route path="/edit-profile"
+                       element={<MyProfile
+                           open={isProfileDrawerOpen}
+                           onClose={() => setIsProfileDrawerOpen(false)}
+                           onLogoutClick={handleLogout}
+                           userId={userId}
+                           userName={userName}
+                           userSurname={userSurname}
+                           userEmail={userEmail}
+                           userRole={userRole}/>} />
                 {/* Możesz dodać więcej ścieżek tutaj */}
             </Routes>
 
