@@ -1,10 +1,13 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import Navbar from './components/navbar/Navbar';
 import {LoginDrawer} from "./components/drawer/LoginDrawer";
 import {ProfileDrawer} from "./components/drawer/ProfileDrawer";
 import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
 import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
-import {MyComponent} from "./api/TestApi";
+import MainPage from "./pages/MainPage";
+import {Route, Routes} from "react-router-dom";
+import ProfileEdit from "./pages/ProfileEdit";
+
 
 const UserContext =
     createContext<{
@@ -44,7 +47,29 @@ const App = () => {
         setUserSurname(userSurnameFromServer);
         setUserEmail(userEmailFromServer);
         setUserRole(userRoleFromServer);
+
+        // Zapisz dane użytkownika w localStorage
+        localStorage.setItem('user', JSON.stringify({
+            userId: userIdFromServer,
+            userName: userNameFromServer,
+            userSurname: userSurnameFromServer,
+            userEmail: userEmailFromServer,
+            userRole: userRoleFromServer
+        }))
     }
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            const user = JSON.parse(storedUser);
+            setIsLoggedIn(true);
+            setUserId(user.userId);
+            setUserName(user.userName);
+            setUserSurname(user.userSurname);
+            setUserEmail(user.userEmail);
+            setUserRole(user.userRole);
+        }
+    }, []);
     function openProfileDrawer() {
         setIsProfileDrawerOpen(true);
     }
@@ -54,6 +79,8 @@ const App = () => {
     function handleLogout() {
         setIsLoggedIn(false);
         setIsProfileDrawerOpen(false);
+        // Usuń dane użytkownika z localStorage
+        localStorage.removeItem('user');
     }
 
 
@@ -69,6 +96,13 @@ const App = () => {
                 setIsLoggedIn={setIsLoggedIn}
                 setIsProfileDrawerOpen={setIsProfileDrawerOpen}
                 />
+
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/edit-profile" element={<ProfileEdit />} />
+                {/* Możesz dodać więcej ścieżek tutaj */}
+            </Routes>
+
             {isLoginDrawerOpen &&
                 <LoginDrawer
                     open={isLoginDrawerOpen}
@@ -115,6 +149,7 @@ const App = () => {
                     }}
                 />}
         </UserContext.Provider>
+
     );
 }
 

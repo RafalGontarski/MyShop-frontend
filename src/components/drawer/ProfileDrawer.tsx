@@ -175,7 +175,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                         <ProfileLine/>
 
                         <ProfileDrawerLink
-                            href="#"
+                            href="/"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
