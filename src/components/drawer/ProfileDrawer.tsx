@@ -86,16 +86,26 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                     </Welcome>
 
                     <LinksContainer>
-
-                        <ProfileDrawerLink
-                            href="#"
-                            underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                        >
-                            Zatrudnij pracownika
-                        </ProfileDrawerLink>
-
+                        {userRole && (userRole.includes("ADMIN")) && (
+                            <ProfileDrawerLink
+                                href="#"
+                                underline="none"
+                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            >
+                                Zatrudnij pracownika
+                            </ProfileDrawerLink>
+                        )}
+                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                            <ProfileDrawerLink
+                                href="#"
+                                underline="none"
+                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            >
+                                Dodaj Produkt
+                            </ProfileDrawerLink>
+                        )}
                         <ProfileDrawerLink
                             href="#"
                             underline="none"
