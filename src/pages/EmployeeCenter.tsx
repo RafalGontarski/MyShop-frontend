@@ -5,7 +5,7 @@ import {
     MyProfileComponents,
     MyProfileContainer,
     MyProfileLeftContainer
-} from "./editProfile/myprofile.styles";
+} from "./myprofile.styles";
 import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
 import {
     LineContainer, LineText,

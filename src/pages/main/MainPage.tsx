@@ -3,10 +3,16 @@
 import React from 'react';
 import {MainPageContainer} from "./mainPage.styles";
 
-const MainPage: React.FC = () => {
+type MainPageProps = {
+    userName: string | null;
+};
+
+const MainPage: React.FC<MainPageProps> = ({userName}) => {
     return (
         <MainPageContainer>
-            <h1>Witaj na głównej stronie!</h1>
+
+            {userName && <h1>Witaj, {userName}!</h1>}
+
             {/* ... reszta zawartości strony ... */}
         </MainPageContainer>
     );

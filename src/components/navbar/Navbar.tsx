@@ -8,9 +8,7 @@ import {InputAdornment, Link} from "@mui/material";
 
 // components
 import { MenuDrawer } from '../drawer/MenuDrawer';
-import { LoginDrawer } from '../drawer/LoginDrawer';
 import { LanguageDrawer } from '../drawer/LanguageDrawer';
-import { RegistrationDrawer } from '../drawer/RegistrationDrawer';
 
 // icons
 import ItalyIcon from '../../resources/icons/italyFlagIcon.png';
@@ -25,11 +23,13 @@ import SearchIcon from '@mui/icons-material/Search';
 // img
 import Logo from "../../resources/img/jedziemy.png";
 import {
+    LeftElement,
+    RightElement,
+    StyledMainGrid,
     LeftSideStyledLink,
     StyledToolbar,
     LeftSideLinksAndIcons,
     NavbarContainer,
-    LeftSideStyledIconButton,
     StyledFaceBookIcon,
     LeftSideFullScreenNavbar,
     StyledYouTubeIcon,
@@ -63,9 +63,12 @@ import {
     InstagramIconButton,
     YouTubeIconButton,
     FaceBookIconButton,
-    SmallScreenNavbar, UpNavWraperContainer, DownNavWraperContainer, LeftElement, RightElement, StyledMainGrid,
+    SmallScreenNavbar,
+    UpNavWraperContainer,
+    DownNavWraperContainer,
+
 } from "./navbar.styles";
-import {ProfileDrawer} from "../drawer/ProfileDrawer";
+
 
 type NavbarProps = {
     isLoggedIn: boolean;
@@ -84,11 +87,7 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = (props) => {
 
 
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
-    const [loginDrawerOpen, setLoginDrawerOpen] = useState(false);
-    const [registrationDrawerOpen, setRegistrationDrawerOpen] = React.useState(false);
-    const [profileDrawerOpen, setProfileDrawerOpen] = React.useState(false);
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('PL');
     const [countryCode, setCountryCode] = useState('pl');
@@ -158,12 +157,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             countryIcon = <img src={PolishIcon} alt="Poland" width={19} height={19}/>;
     }
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     const handleCurrencyChange = (currencySymbol: string) => {
         setSelectedCurrencySymbol(currencySymbol);
@@ -176,32 +169,12 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     const handleMenuDrawerClose = () => {
         setMenuDrawerOpen(false);
     };
-    const handleProfileDrawerOpen = () => {
-        setLoginDrawerOpen(true);
-    };
-    const handleProfileDrawerClose = () => {
-        setLoginDrawerOpen(false);
-    };
-    const handleRegistrationClick = () => {
-        setLoginDrawerOpen(false);
-        setRegistrationDrawerOpen(true);
-    };
-    const handleLoginClick = () => {
-        setRegistrationDrawerOpen(false);
-        setLoginDrawerOpen(true);
-    };
     const handleLanguageDrawerOpen = () => {
         setLanguageDrawerOpen(true);
     };
     const handleLanguageDrawerClose = () => {
         setLanguageDrawerOpen(false);
     };
-
-    function handleLogout() {
-        console.log("logout");
-        props.setIsLoggedIn(false);
-        props.setIsProfileDrawerOpen(false);
-    }
 
     function handleIconClick() {
         if (props.isLoggedIn) {
@@ -215,7 +188,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     const theme = useTheme();
     const isSmallScreenForLink = useMediaQuery(theme.breakpoints.down(1555));
     const isSmallScreenForTopSellerLink = useMediaQuery(theme.breakpoints.down(1385));
-    const isSmallScreenForNewestLink = useMediaQuery(theme.breakpoints.down(700));
 
     return (
         <>

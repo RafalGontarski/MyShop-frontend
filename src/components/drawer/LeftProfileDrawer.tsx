@@ -43,7 +43,7 @@ type DrawerProps = {
     userRole: string[] | null;
 };
 
-export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userId, userName,userSurname, userEmail, userRole }) => {
+export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userId, userName,userSurname, userEmail, userRole }) => {
     const { t } = useTranslation();
 
     function handleLogout() {
@@ -61,7 +61,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
 
     return (
         <Drawer
-            anchor={'right'}
+            anchor={'left'}
             open={open}
             onClose={onClose}
         >
@@ -98,7 +98,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                     <UserDataContainer>
                         <ProfileWelcome>
                             <UserData variant="body1" gutterBottom
-                                 style={{ marginRight: '4px' }}
+                                      style={{ marginRight: '4px' }}
                             >
                                 {userName}
                             </UserData>

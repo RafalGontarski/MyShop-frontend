@@ -4,6 +4,7 @@ import {LoginDrawer} from "./components/drawer/LoginDrawer";
 import {ProfileDrawer} from "./components/drawer/ProfileDrawer";
 import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
 import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
+import {LeftProfileDrawer} from "./components/drawer/LeftProfileDrawer"
 import MainPage from "./pages/main/MainPage";
 import {Route, Routes} from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -34,6 +35,7 @@ const App = () => {
     const [userRole, setUserRole] = useState<string[] | null>(null);
     const [isLoginDrawerOpen, setIsLoginDrawerOpen] = useState(false);
     const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false);
+    const [isLeftProfileDrawerOpen, setIsLeftProfileDrawerOpen] = useState(false);
     const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
 
     function handleLogin(
@@ -46,6 +48,7 @@ const App = () => {
         setIsLoggedIn(true);
         setIsLoginDrawerOpen(false);
         setIsProfileDrawerOpen(true);
+        // setIsLeftProfileDrawerOpen(true);
         setUserId(userIdFromServer);
         setUserName(userNameFromServer);
         setUserSurname(userSurnameFromServer);
@@ -80,6 +83,9 @@ const App = () => {
     function openLoginDrawer() {
         setIsLoginDrawerOpen(true);
     }
+    function openLeftProfileDrawer(){
+        setIsLeftProfileDrawerOpen(true);
+    }
     function handleLogout() {
         setIsLoggedIn(false);
         setIsProfileDrawerOpen(false);
@@ -102,11 +108,15 @@ const App = () => {
                 />
 
             <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/edit-profile" element={<EditProfile
+                <Route path="/" element={<MainPage
+                            userName={userName}
+                />} />
+                <Route path="/edit-profile"
+                       element={<EditProfile
                             open={isProfileDrawerOpen}
                             onClose={() => setIsProfileDrawerOpen(false)}
                             onLogoutClick={handleLogout}
+                            openLeftProfileDrawer={openLeftProfileDrawer}
                             userId={userId}
                             userName={userName}
                             userSurname={userSurname}
@@ -189,6 +199,18 @@ const App = () => {
                         setIsLoginDrawerOpen(true);
                         setIsRegistrationDrawerOpen(false);
                     }}
+                />}
+            {isLeftProfileDrawerOpen &&
+                <LeftProfileDrawer
+                    open={isLeftProfileDrawerOpen}
+                    onClose={() => setIsLeftProfileDrawerOpen(false)}
+                    onLogoutClick={handleLogout}
+                    userId={userId}
+                    userName={userName}
+                    userSurname={userSurname}
+                    userEmail={userEmail}
+                    userRole={userRole}
+
                 />}
         </UserContext.Provider>
 

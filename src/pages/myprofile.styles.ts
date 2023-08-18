@@ -21,8 +21,14 @@ export const MyProfileLeftContainer = styled(Box)`
     @media (max-width: 1100px) {
       margin-left: 3.5%;
     }
+
+    @media (max-width: 940px) {
+      display: none;
+    }
   }
 `
+
+
 
 export const MyProfileComponents = styled.div`
 

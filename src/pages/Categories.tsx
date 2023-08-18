@@ -5,7 +5,7 @@ import {
     MyProfileComponents,
     MyProfileContainer,
     MyProfileLeftContainer
-} from "./editProfile/myprofile.styles";
+} from "./myprofile.styles";
 import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
 import {
     LineContainer, LineText,
@@ -116,19 +116,40 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
+                            href="/product-center"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Grafiki
+                        </ProfileDrawerLink>
+                    )}
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                        <ProfileDrawerLink
                             as={Link}
                             to="/product-center"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zarządzaj Produktami
+                            Produkty
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
                         <LineContainer>
                             <LineText>Panel Właściciela</LineText>
                         </LineContainer>
+                    )}
+                    {userRole && (userRole.includes("ADMIN")) && (
+                        <ProfileDrawerLink
+                            as={Link}
+                            to="/categories-center"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Kategorie
+                        </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
 
@@ -139,22 +160,9 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zarządzaj pracownikami
+                            Pracownicy
                         </ProfileDrawerLink>
                     )}
-                    {userRole && (userRole.includes("ADMIN")) && (
-
-                        <ProfileDrawerLink
-                            as={Link}
-                            to="/categories-center"
-                            underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                        >
-                            Zarządzaj kategoriami
-                        </ProfileDrawerLink>
-                    )}
-
                     <ProfileLine/>
 
                     <ProfileDrawerLink
