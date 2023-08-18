@@ -201,32 +201,24 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <LeftSideStyledLink
                                         href="#"
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         {t('navbar.service')}
                                     </LeftSideStyledLink>
                                     <LeftSideStyledLink
                                         href="#"
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         {t('navbar.contact')}
                                     </LeftSideStyledLink>
                                     <LeftSideStyledLink
                                         href="#"
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         {t('navbar.about')}
                                     </LeftSideStyledLink>
                                     <FaceBookIconButton
                                         edge="end"
                                         aria-label="facebook"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#ff0000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
                                         <StyledFaceBookIcon />
@@ -234,8 +226,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <YouTubeIconButton
                                         edge="end"
                                         aria-label="youtube"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
                                         <StyledYouTubeIcon />
@@ -243,8 +233,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <InstagramIconButton
                                         edge="end"
                                         aria-label="instagram"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
                                         <StyledInstagramIcon />
@@ -252,8 +240,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <TikTokIconButton
                                         edge="end"
                                         aria-label="tiktok"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                     >
                                         <StyledTikTokIcon />
@@ -263,8 +249,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <StyledMenuButton
                                         edge="start"
                                         aria-label="menu"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         disableRipple
                                         onClick={handleMenuDrawerOpen}
                                     >
@@ -274,8 +258,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <LeftSideStyledBoldLink
                                         href="#"
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         Hot Deals
                                     </LeftSideStyledBoldLink>
@@ -283,8 +265,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <LeftSideStyledBoldLink
                                         href="#"
                                         underline="none"
-                                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     >
                                         {t('navbar.new')}
                                     </LeftSideStyledBoldLink>
@@ -293,8 +273,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         <LeftSideStyledBoldLink
                                             href="#"
                                             underline="none"
-                                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
                                             Top-Seller
                                         </LeftSideStyledBoldLink>
@@ -303,8 +281,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         <LeftSideStyledBoldLink
                                             href="#"
                                             underline="none"
-                                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                         >
                                             {t('navbar.bargains')}
                                         </LeftSideStyledBoldLink>
@@ -319,8 +295,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         <MiddleSideImageContainer
                                             src={Logo}
                                             alt="Logo"
-                                            onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
-                                            onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
                                         />
                                     </LogoLink>
                                 </MiddleSideLogoContainer>
@@ -419,8 +393,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     <MiddleSideImageContainer
                                         src={Logo}
                                         alt="Logo"
-                                        onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
-                                        onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
                                     />
                                 </LogoLink>
                             </LeftElement>
@@ -496,8 +468,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                 <StyledMenuButton
                                     edge="start"
                                     aria-label="menu"
-                                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                     disableRipple
                                     onClick={handleMenuDrawerOpen}
                                 >

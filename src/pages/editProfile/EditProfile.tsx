@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
-import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
 
 import {
     Title,
@@ -24,7 +23,6 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-    ProfileWelcomeText,
 } from "../../components/drawer/ProfileDrawer.styles";
 
 
@@ -54,22 +52,15 @@ export const EditProfile: React.FC<EditProfileProps> = ({
 
     const { t } = useTranslation();
 
-
     function handleIconClick() {
         openLeftProfileDrawer();
     }
 
     function handleLogout() {
-        console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
     }
 
-
-    let rolesString = "";
-    if (userRole) {
-        rolesString = userRole.join(', ');
-    }
 
     return (
         <MyProfileContainer>
@@ -77,17 +68,6 @@ export const EditProfile: React.FC<EditProfileProps> = ({
 
             <MyProfileLeftContainer>
                 <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
-                <Welcome>
-                    <ProfileWelcomeText variant="h4" gutterBottom>
-                        {t('loginDrawer.greeting')} {userName}
-                    </ProfileWelcomeText>
-                    <StyledHandIcon/>
-                </Welcome>
-                {/*<Welcome>*/}
-                {/*    <ProfileWelcomeText variant="h6" gutterBottom>*/}
-                {/*        {rolesString}*/}
-                {/*    </ProfileWelcomeText>*/}
-                {/*</Welcome>*/}
 
                 <UserDataContainer>
                     <ProfileWelcome>

@@ -1,30 +1,31 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {GraphicContainer} from "./Graphic.styles";
 import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
-import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
+
 
 
 import {
     Title,
+    Container,
+    MenuWrapper,
     TitleContainer,
+    WrapperMenuButton,
     MyProfileContainer,
     MyProfileCenterText,
-    MyProfileLeftContainer, MenuWrapper, WrapperMenuButton, Container,
+    MyProfileLeftContainer,
 } from "../myprofile.styles";
 
 import {
-    LineContainer, LineText,
-    LinksContainer, ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    ProfileWelcomeText,
+    LineText,
     UserData,
-    UserDataContainer
+    ProfileLine,
+    LineContainer,
+    LinksContainer,
+    ProfileWelcome,
+    UserDataContainer,
+    ProfileDrawerLink,
 } from "../../components/drawer/ProfileDrawer.styles";
-
-
-
 
 type GraphicProps = {
     open: boolean;
@@ -49,12 +50,10 @@ export const Graphics: React.FC<GraphicProps> = ({
                                 userEmail,
                                 userRole
                             }) => {
-    console.log("Renderowanie komponentu EditProfile");
 
     const { t } = useTranslation();
 
     function handleLogout() {
-        console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
     }
@@ -64,28 +63,13 @@ export const Graphics: React.FC<GraphicProps> = ({
     }
 
 
-    let rolesString = "";
-    if (userRole) {
-        rolesString = userRole.join(', ');
-    }
-
     return (
         <MyProfileContainer>
 
 
             <MyProfileLeftContainer>
                 <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
-                <Welcome>
-                    <ProfileWelcomeText variant="h4" gutterBottom>
-                        {t('loginDrawer.greeting')} {userName}
-                    </ProfileWelcomeText>
-                    <StyledHandIcon/>
-                </Welcome>
-                {/*<Welcome>*/}
-                {/*    <ProfileWelcomeText variant="h6" gutterBottom>*/}
-                {/*        {rolesString}*/}
-                {/*    </ProfileWelcomeText>*/}
-                {/*</Welcome>*/}
+
 
                 <UserDataContainer>
                     <ProfileWelcome>
@@ -213,6 +197,13 @@ export const Graphics: React.FC<GraphicProps> = ({
                 <TitleContainer>
                     <Title>Grafiki</Title>
                 </TitleContainer>
+
+                <div>
+                    <div>
+
+                    </div>
+                </div>
+
             </Container>
 
             {/* Tutaj możesz dodać formularz edycji profilu i inne elementy */}

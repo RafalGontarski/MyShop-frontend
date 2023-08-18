@@ -125,8 +125,6 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                             as={Link}
                             to="/edit-profile"
                             underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                             onClick={onClose}
                         >
                             Edytuj Konto
@@ -142,8 +140,6 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 as={Link}
                                 to="/graphic"
                                 underline="none"
-                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                 onClick={onClose}
                             >
                                 Grafiki
@@ -154,8 +150,6 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 as={Link}
                                 to="/product-center"
                                 underline="none"
-                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                 onClick={onClose}
                             >
                                 Produkty
@@ -172,8 +166,6 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 as={Link}
                                 to="/employee-center"
                                 underline="none"
-                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                 onClick={onClose}
                             >
                                 Pracownicy
@@ -185,8 +177,6 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 as={Link}
                                 to="/categories-center"
                                 underline="none"
-                                onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                                onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                                 onClick={onClose}
                             >
                                 Kategorie

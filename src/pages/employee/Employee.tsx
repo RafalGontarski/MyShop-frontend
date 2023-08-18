@@ -1,25 +1,30 @@
 import React from "react";
-import {useTranslation} from "react-i18next";
-import {
-    Container,
-    MenuWrapper,
-    MyProfileCenterText,
-    MyProfileComponents,
-    MyProfileContainer,
-    MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
-} from "../myprofile.styles";
-import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
-import {
-    LineContainer, LineText,
-    LinksContainer, ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    ProfileWelcomeText,
-    UserData,
-    UserDataContainer
-} from "../../components/drawer/ProfileDrawer.styles";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
 
+import {
+    Title,
+    Container,
+    MenuWrapper,
+    TitleContainer,
+    WrapperMenuButton,
+    MyProfileContainer,
+    MyProfileCenterText,
+    MyProfileLeftContainer,
+
+} from "../myprofile.styles";
+
+import {
+    UserData,
+    LineText,
+    ProfileLine,
+    LineContainer,
+    LinksContainer,
+    ProfileWelcome,
+    UserDataContainer,
+    ProfileDrawerLink,
+} from "../../components/drawer/ProfileDrawer.styles";
 
 
 type EditEmployeeProps = {
@@ -45,12 +50,10 @@ export const Employee: React.FC<EditEmployeeProps> = ({
                                 userEmail,
                                 userRole
                             }) => {
-    console.log("Renderowanie komponentu CategoriesCenter");
 
     const { t } = useTranslation();
 
     function handleLogout() {
-        console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
     }
@@ -60,28 +63,13 @@ export const Employee: React.FC<EditEmployeeProps> = ({
     }
 
 
-    let rolesString = "";
-    if (userRole) {
-        rolesString = userRole.join(', ');
-    }
-
     return (
         <MyProfileContainer>
 
 
             <MyProfileLeftContainer>
                 <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
-                <Welcome>
-                    <ProfileWelcomeText variant="h4" gutterBottom>
-                        {t('loginDrawer.greeting')} {userName}
-                    </ProfileWelcomeText>
-                    <StyledHandIcon/>
-                </Welcome>
-                {/*<Welcome>*/}
-                {/*    <ProfileWelcomeText variant="h6" gutterBottom>*/}
-                {/*        {rolesString}*/}
-                {/*    </ProfileWelcomeText>*/}
-                {/*</Welcome>*/}
+
 
                 <UserDataContainer>
                     <ProfileWelcome>

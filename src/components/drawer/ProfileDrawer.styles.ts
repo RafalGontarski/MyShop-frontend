@@ -13,6 +13,10 @@ export const ProfileDrawerLink = styled(Link)`
     font-size: 1.2rem;
     font-weight: bold;
 
+    &:hover {
+      color: #008000;
+    }
+
     @media (max-width: 1250px) {
       font-size: 0.6rem;
     }

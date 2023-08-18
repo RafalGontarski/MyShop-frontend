@@ -39,14 +39,20 @@ export const MyProfileCenterText = styled.div`
     margin-bottom: 1rem;
 `
 export const Container = styled.div`
-
+  && {
+    display: flex;
+    margin-left: 5%;
+    //margin-right: 5%;
+    border: 1px solid #000;
+    border-radius: 1px;
+  }
 `
 export const TitleContainer = styled.div`
-    margin-top: 1.5rem;
-  margin-left: 2rem;
+    //margin-top: 1%;
+    margin-left: 20%;
 `
 export const Title = styled.h1`
-  
+    font-size: xxx-large;
 `
 
 // wrapper

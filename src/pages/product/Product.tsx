@@ -1,28 +1,26 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
+import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
 
 import {
     Container,
     MenuWrapper,
     MyProfileCenterText,
-    MyProfileComponents,
     MyProfileContainer,
     MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
 } from "../myprofile.styles";
 
-
 import {
-    LineContainer, LineText,
-    LinksContainer, ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    ProfileWelcomeText,
+    LineText,
     UserData,
-    UserDataContainer
+    ProfileLine,
+    LineContainer,
+    LinksContainer,
+    ProfileWelcome,
+    UserDataContainer,
+    ProfileDrawerLink,
 } from "../../components/drawer/ProfileDrawer.styles";
-import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
-
 
 
 type EditProductProps = {
@@ -48,12 +46,10 @@ export const Product: React.FC<EditProductProps> = ({
                                 userEmail,
                                 userRole
                             }) => {
-    console.log("Renderowanie komponentu EditProfile");
 
     const { t } = useTranslation();
 
     function handleLogout() {
-        console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
     }
@@ -63,28 +59,12 @@ export const Product: React.FC<EditProductProps> = ({
     }
 
 
-    let rolesString = "";
-    if (userRole) {
-        rolesString = userRole.join(', ');
-    }
-
     return (
         <MyProfileContainer>
 
 
             <MyProfileLeftContainer>
                 <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
-                <Welcome>
-                    <ProfileWelcomeText variant="h4" gutterBottom>
-                        {t('loginDrawer.greeting')} {userName}
-                    </ProfileWelcomeText>
-                    <StyledHandIcon/>
-                </Welcome>
-                {/*<Welcome>*/}
-                {/*    <ProfileWelcomeText variant="h6" gutterBottom>*/}
-                {/*        {rolesString}*/}
-                {/*    </ProfileWelcomeText>*/}
-                {/*</Welcome>*/}
 
                 <UserDataContainer>
                     <ProfileWelcome>
@@ -195,20 +175,21 @@ export const Product: React.FC<EditProductProps> = ({
 
             </MyProfileLeftContainer>
 
-            <MenuWrapper>
-                <WrapperMenuButton
-                    edge="start"
-                    aria-label="menu"
-                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                    disableRipple
-                    onClick={handleIconClick}
-                >
-                    <StyledMenuIcon />
-                </WrapperMenuButton>
-            </MenuWrapper>
+
 
             <Container>
+                <MenuWrapper>
+                    <WrapperMenuButton
+                        edge="start"
+                        aria-label="menu"
+                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        disableRipple
+                        onClick={handleIconClick}
+                    >
+                        <StyledMenuIcon />
+                    </WrapperMenuButton>
+                </MenuWrapper>
                 <TitleContainer>
                     <Title>Produkty</Title>
                 </TitleContainer>

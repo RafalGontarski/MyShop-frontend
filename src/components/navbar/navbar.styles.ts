@@ -75,6 +75,10 @@ export const TikTokIconButton = styled(IconButton)`
   && {
     color: #000;
     margin-right: 10px;
+
+    &:hover {
+      color: #C13584;
+    }
     
     @media (max-width: 1521px) {
       display: none;
@@ -85,6 +89,10 @@ export const InstagramIconButton = styled(IconButton)`
   && {
     color: #000;
     margin-right: 10px;
+
+    &:hover {
+      color: #C13584;
+    }
     
     @media (max-width: 1386px) {
       display: none;
@@ -96,6 +104,10 @@ export const YouTubeIconButton = styled(IconButton)`
   && {
     color: #000;
     margin-right: 10px;
+
+    &:hover {
+      color: #ff0000;
+    }
     
     @media (max-width: 1131px) {
       display: none;
@@ -107,6 +119,10 @@ export const FaceBookIconButton = styled(IconButton)`
   && {
     color: #000;
     margin-right: 10px;
+
+    &:hover {
+      color: #3b5998;
+    }
     
     @media (max-width: 750px) {
       display: none;
@@ -212,6 +228,10 @@ export const LeftSideStyledLink = styled(Link)`
     text-decoration: none;
     font-size: 0.8rem;
 
+    &:hover {
+      color: #008000;
+    }
+
     @media (max-width: 750px) {
       font-size: 0.6rem;
     }
@@ -224,6 +244,10 @@ export const LeftSideStyledBoldLink = styled(Link)`
     margin-right: 20px;
     text-decoration: none;
     font-size: 0.9rem;
+
+    &:hover {
+      color: #008000;
+    }
 
     //@media (max-width: 1547px) {
     //  font-size: 0.7rem;
@@ -248,6 +272,12 @@ export const StyledMenuButton = styled(IconButton)`
   && {
     color: #000;
     margin-right: 20px;
+
+    &:hover {
+      color: #008000;
+    }
+    
+    
     @media (max-width: 600px) {
       margin-right: 0;
     }
@@ -294,6 +324,11 @@ export const MiddleSideImageContainer = styled.img`
     transition: transform 0.3s ease-in-out;
     width: 170px;
     height: 35px;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     @media (max-width: 750px) {
       width: 120px;
