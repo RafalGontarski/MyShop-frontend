@@ -136,12 +136,12 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <ProfileDrawerLink
-                                href="#"
+                                href="/product-center"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                             >
-                                Dodaj Produkt
+                                Zarządzaj Produktami
                             </ProfileDrawerLink>
                         )}
                         {userRole && (userRole.includes("ADMIN")) && (
@@ -152,23 +152,23 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                         {userRole && (userRole.includes("ADMIN")) && (
 
                             <ProfileDrawerLink
-                                href="#"
+                                href="/employee-center"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                             >
-                                Zatrudnij pracownika
+                                Zarządzaj pracownikami
                             </ProfileDrawerLink>
                         )}
                         {userRole && (userRole.includes("ADMIN")) && (
 
                             <ProfileDrawerLink
-                                href="#"
+                                href="/categories-center"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                             >
-                                Dodaj Kategorię
+                                Zarządzaj Kategoriami
                             </ProfileDrawerLink>
                         )}
 

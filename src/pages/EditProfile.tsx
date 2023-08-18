@@ -1,18 +1,24 @@
-// MyProfile.tsx
-import React from 'react';
-import {CustomerCenterText, StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
+import React from "react";
+import {
+    MyProfileCenterText,
+    MyProfileComponents,
+    MyProfileContainer,
+    MyProfileLeftContainer
+} from "./myProfile/myprofile.styles";
+import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
 import {
     LineContainer, LineText,
-    LinksContainer, ProfileContainer, ProfileDrawerLink, ProfileLine,
+    LinksContainer, ProfileDrawerLink, ProfileLine,
     ProfileWelcome,
     ProfileWelcomeText,
     UserData,
     UserDataContainer
 } from "../components/drawer/ProfileDrawer.styles";
+import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 
-type UserEditProps = {
+type EditProfileProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
@@ -23,12 +29,22 @@ type UserEditProps = {
     userRole: string[] | null;
 };
 
+export const EditProfile: React.FC<EditProfileProps> = ({
+                        open,
+                        onClose,
+                        onLogoutClick,
+                        userId,
+                        userName,
+                        userSurname,
+                        userEmail,
+                        userRole
+                    }) => {
+    console.log("Renderowanie komponentu EditProfile");
 
-const MyProfile: React.FC<UserEditProps> = ({ open, onClose, onLogoutClick, userId, userName,userSurname, userEmail, userRole }) => {
     const { t } = useTranslation();
 
     function handleLogout() {
-        console.log("logout xd");
+        console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
     }
@@ -40,22 +56,22 @@ const MyProfile: React.FC<UserEditProps> = ({ open, onClose, onLogoutClick, user
     }
 
     return (
-        <div>
-            <h1>Witaj w edycji profilu</h1>
-            <CustomerCenterText>Centrum Klienta</CustomerCenterText>
-            <ProfileContainer>
+        <MyProfileContainer>
 
+
+            <MyProfileLeftContainer>
+                <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
                 <Welcome>
                     <ProfileWelcomeText variant="h4" gutterBottom>
                         {t('loginDrawer.greeting')} {userName}
                     </ProfileWelcomeText>
                     <StyledHandIcon/>
                 </Welcome>
-                <Welcome>
-                    <ProfileWelcomeText variant="h6" gutterBottom>
-                        {rolesString}
-                    </ProfileWelcomeText>
-                </Welcome>
+                {/*<Welcome>*/}
+                {/*    <ProfileWelcomeText variant="h6" gutterBottom>*/}
+                {/*        {rolesString}*/}
+                {/*    </ProfileWelcomeText>*/}
+                {/*</Welcome>*/}
 
                 <UserDataContainer>
                     <ProfileWelcome>
@@ -83,7 +99,8 @@ const MyProfile: React.FC<UserEditProps> = ({ open, onClose, onLogoutClick, user
                 <LinksContainer>
 
                     <ProfileDrawerLink
-                        href="/edit-profile"
+                        as={Link}
+                        to="/edit-profile"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -98,12 +115,13 @@ const MyProfile: React.FC<UserEditProps> = ({ open, onClose, onLogoutClick, user
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
-                            href="#"
+                            as={Link}
+                            to="/product-center"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Dodaj Produkt
+                            Zarządzaj Produktami
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
@@ -114,30 +132,33 @@ const MyProfile: React.FC<UserEditProps> = ({ open, onClose, onLogoutClick, user
                     {userRole && (userRole.includes("ADMIN")) && (
 
                         <ProfileDrawerLink
-                            href="#"
+                            as={Link}
+                            to="/employee-center"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zatrudnij pracownika
+                            Zarządzaj pracownikami
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
 
                         <ProfileDrawerLink
-                            href="#"
+                            as={Link}
+                            to="/categories-center"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Dodaj Kategorię
+                            Zarządzaj kategoriami
                         </ProfileDrawerLink>
                     )}
 
                     <ProfileLine/>
 
                     <ProfileDrawerLink
-                        href="/"
+                        as={Link}
+                        to="/"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -148,11 +169,16 @@ const MyProfile: React.FC<UserEditProps> = ({ open, onClose, onLogoutClick, user
 
                 </LinksContainer>
 
-            </ProfileContainer>
+            </MyProfileLeftContainer>
+
+            <MyProfileComponents>
+                <div>
+                    <h1>Witaj w edycji profilu</h1>
+                </div>
+            </MyProfileComponents>
 
             {/* Tutaj możesz dodać formularz edycji profilu i inne elementy */}
-        </div>
-    );
-}
+        </MyProfileContainer>
 
-export default MyProfile;
+    )
+}

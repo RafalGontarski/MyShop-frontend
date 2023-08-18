@@ -6,7 +6,11 @@ import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
 import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
 import MainPage from "./pages/MainPage";
 import {Route, Routes} from "react-router-dom";
-import MyProfile from "./pages/MyProfile";
+import { Link } from 'react-router-dom';
+import {EditProfile} from "./pages/EditProfile";
+import {ProductCenter} from "./pages/ProductCenter";
+import {EmployeeCenter} from "./pages/EmployeeCenter";
+import {CategoriesCenter} from "./pages/Categories";
 
 
 const UserContext =
@@ -99,17 +103,46 @@ const App = () => {
 
             <Routes>
                 <Route path="/" element={<MainPage />} />
-                <Route path="/edit-profile"
-                       element={<MyProfile
-                           open={isProfileDrawerOpen}
-                           onClose={() => setIsProfileDrawerOpen(false)}
-                           onLogoutClick={handleLogout}
-                           userId={userId}
-                           userName={userName}
-                           userSurname={userSurname}
-                           userEmail={userEmail}
-                           userRole={userRole}/>} />
-                {/* Możesz dodać więcej ścieżek tutaj */}
+                <Route path="/edit-profile" element={<EditProfile
+                            open={isProfileDrawerOpen}
+                            onClose={() => setIsProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
+                />} />
+                <Route path="/product-center" element={<ProductCenter
+                            open={isProfileDrawerOpen}
+                            onClose={() => setIsProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
+                />} />
+                <Route path="/employee-center" element={<EmployeeCenter
+                            open={isProfileDrawerOpen}
+                            onClose={() => setIsProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
+                />} />
+                <Route path="/categories-center" element={<CategoriesCenter
+                            open={isProfileDrawerOpen}
+                            onClose={() => setIsProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
+                />} />
             </Routes>
 
             {isLoginDrawerOpen &&
