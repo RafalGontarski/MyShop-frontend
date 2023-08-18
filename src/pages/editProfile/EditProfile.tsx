@@ -4,8 +4,8 @@ import {
     MyProfileComponents,
     MyProfileContainer,
     MyProfileLeftContainer
-} from "./myProfile/myprofile.styles";
-import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
+} from "./myprofile.styles";
+import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
 import {
     LineContainer, LineText,
     LinksContainer, ProfileDrawerLink, ProfileLine,
@@ -13,7 +13,7 @@ import {
     ProfileWelcomeText,
     UserData,
     UserDataContainer
-} from "../components/drawer/ProfileDrawer.styles";
+} from "../../components/drawer/ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 

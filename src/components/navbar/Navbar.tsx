@@ -57,7 +57,13 @@ import {
     StyledRightSideLastIcon,
     StyledRightSideMiddleIcon,
     StyledRightSideGuaranteeLink,
-    StyledRightSideFreeShippingLink, ProfileImagePlaceholder,
+    StyledRightSideFreeShippingLink,
+    ProfileImagePlaceholder,
+    TikTokIconButton,
+    InstagramIconButton,
+    YouTubeIconButton,
+    FaceBookIconButton,
+    SmallScreenNavbar, UpNavWraperContainer, DownNavWraperContainer, LeftElement, RightElement, StyledMainGrid,
 } from "./navbar.styles";
 import {ProfileDrawer} from "../drawer/ProfileDrawer";
 
@@ -207,15 +213,16 @@ const Navbar: React.FC<NavbarProps> = (props) => {
 
 
     const theme = useTheme();
-    const isSmallScreenForLink = useMediaQuery(theme.breakpoints.down(1516));
-    const isSmallScreenForTopSellerLink = useMediaQuery(theme.breakpoints.down(1369));
+    const isSmallScreenForLink = useMediaQuery(theme.breakpoints.down(1555));
+    const isSmallScreenForTopSellerLink = useMediaQuery(theme.breakpoints.down(1385));
+    const isSmallScreenForNewestLink = useMediaQuery(theme.breakpoints.down(700));
 
     return (
         <>
             <NavbarContainer position="static" elevation={0}>
                 <StyledToolbar >
-                    <Grid container spacing={23}>
-                        <Grid item xs={12} sm={5}>
+                    <StyledMainGrid container spacing={1}>
+                        <Grid item xs={5} sm={5}>
                             <LeftSideFullScreenNavbar>
                                 <LeftSideLinksAndIcons>
                                     <LeftSideStyledLink
@@ -242,7 +249,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     >
                                         {t('navbar.about')}
                                     </LeftSideStyledLink>
-                                    <LeftSideStyledIconButton
+                                    <FaceBookIconButton
                                         edge="end"
                                         aria-label="facebook"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#ff0000'}}
@@ -250,8 +257,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         disableRipple
                                     >
                                         <StyledFaceBookIcon />
-                                    </LeftSideStyledIconButton>
-                                    <LeftSideStyledIconButton
+                                    </FaceBookIconButton>
+                                    <YouTubeIconButton
                                         edge="end"
                                         aria-label="youtube"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
@@ -259,8 +266,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         disableRipple
                                     >
                                         <StyledYouTubeIcon />
-                                    </LeftSideStyledIconButton>
-                                    <LeftSideStyledIconButton
+                                    </YouTubeIconButton>
+                                    <InstagramIconButton
                                         edge="end"
                                         aria-label="instagram"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
@@ -268,8 +275,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         disableRipple
                                     >
                                         <StyledInstagramIcon />
-                                    </LeftSideStyledIconButton>
-                                    <LeftSideStyledIconButton
+                                    </InstagramIconButton>
+                                    <TikTokIconButton
                                         edge="end"
                                         aria-label="tiktok"
                                         onMouseOver={(event) => {event.currentTarget.style.color = '#C13584'}}
@@ -277,7 +284,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         disableRipple
                                     >
                                         <StyledTikTokIcon />
-                                    </LeftSideStyledIconButton>
+                                    </TikTokIconButton>
                                 </LeftSideLinksAndIcons>
                                 <LeftSideMenuIconAndLinks>
                                     <StyledMenuButton
@@ -299,6 +306,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     >
                                         Hot Deals
                                     </LeftSideStyledBoldLink>
+                                    {/*{!isSmallScreenForNewestLink && (*/}
                                     <LeftSideStyledBoldLink
                                         href="#"
                                         underline="none"
@@ -307,6 +315,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                     >
                                         {t('navbar.new')}
                                     </LeftSideStyledBoldLink>
+                                    {/*)}*/}
                                     {!isSmallScreenForTopSellerLink && (
                                         <LeftSideStyledBoldLink
                                             href="#"
@@ -388,7 +397,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         <RightSideLanguageTypographyStyled variant="body1">
                                             {`${languageCode} · ${selectedCurrencySymbol}  `}
                                         </RightSideLanguageTypographyStyled>
-                                        <IconContainer>
+                                        <IconContainer >
                                             {countryIcon}
                                         </IconContainer>
                                     </RightSideLanguageIconStyled>
@@ -409,30 +418,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                         onCountryChange={setCountryCode}
                                         onCurrencyChange={handleCurrencyChange}
                                     />
-                                    {/*<LoginDrawer*/}
-                                    {/*    open={loginDrawerOpen}*/}
-                                    {/*    onClose={() => setLoginDrawerOpen(false)}*/}
-                                    {/*    handleLogin={() => {*/}
-                                    {/*        handleLoginClick();*/}
-                                    {/*    }}*/}
-                                    {/*    onRegisterClick={() => {*/}
-                                    {/*        handleRegistrationClick();*/}
-                                    {/*    }}*/}
-                                    {/*/>*/}
-                                    {/*<RegistrationDrawer*/}
-                                    {/*    open={registrationDrawerOpen}*/}
-                                    {/*    onClose={() => setRegistrationDrawerOpen(false)}*/}
-                                    {/*    onLoginClick={() => {*/}
-                                    {/*        handleLoginClick();*/}
-                                    {/*    }}*/}
-                                    {/*/>*/}
-                                    {/*<ProfileDrawer*/}
-                                    {/*    open={profileDrawerOpen}*/}
-                                    {/*    onClose={() => setProfileDrawerOpen(false)}*/}
-                                    {/*    onLogoutClick={() => {*/}
-                                    {/*        handleLogout();*/}
-                                    {/*    }}*/}
-                                    {/*/>*/}
 
                                     <StyledRightSideMiddleIcon
                                         edge="end"
@@ -451,7 +436,103 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                                 </RightSideIconsContainer>
                             </RightSideFullScreenNavbar>
                         </Grid>
-                    </Grid>
+                    </StyledMainGrid>
+
+
+                    <SmallScreenNavbar>
+                        <UpNavWraperContainer>
+                            <LeftElement>
+                                <Link href="/">
+                                    <MiddleSideImageContainer
+                                        src={Logo}
+                                        alt="Logo"
+                                        onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
+                                        onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
+                                    />
+                                </Link>
+                            </LeftElement>
+                            <RightElement>
+                                <RightSideLanguageIconStyled
+                                    edge="end"
+                                    aria-label="profile"
+                                    disableRipple
+                                    onClick={handleLanguageDrawerOpen}
+                                >
+                                    <RightSideLanguageTypographyStyled variant="body1">
+                                        {`${languageCode} · ${selectedCurrencySymbol}  `}
+                                    </RightSideLanguageTypographyStyled>
+                                    <IconContainer >
+                                        {countryIcon}
+                                    </IconContainer>
+                                </RightSideLanguageIconStyled>
+                                <StyledRightSideMiddleIcon
+                                    edge="end"
+                                    aria-label="profile"
+                                    disableRipple
+                                    onClick={handleIconClick}
+                                >
+                                    {props.isLoggedIn ? <ProfileImagePlaceholder /> : <StyledAccountCircle />}
+                                    {/*<StyledAccountCircle />*/}
+                                </StyledRightSideMiddleIcon>
+
+                                <LanguageDrawer
+                                    open={languageDrawerOpen}
+                                    onClose={handleLanguageDrawerClose}
+                                    onLanguageChange={setLanguageCode}
+                                    onCountryChange={setCountryCode}
+                                    onCurrencyChange={handleCurrencyChange}
+                                />
+
+                                <StyledRightSideMiddleIcon
+                                    edge="end"
+                                    aria-label="favorites"
+                                    disableRipple
+                                >
+                                    <StyledFavoriteIcon />
+                                </StyledRightSideMiddleIcon>
+                                <StyledRightSideLastIcon
+                                    edge="end"
+                                    aria-label="cart"
+                                    disableRipple
+                                >
+                                    <StyledShoppingCartIcon />
+                                </StyledRightSideLastIcon>
+                            </RightElement>
+                        </UpNavWraperContainer>
+
+                        <DownNavWraperContainer>
+                            <LeftElement>
+                                <StyledTextField
+                                    id="search"
+                                    // label="Szukaj"
+                                    variant="outlined"
+                                    size='small'
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <SearchIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                    InputLabelProps={{
+                                        component: StyledInputLabel
+                                    }}
+                                />
+                            </LeftElement>
+                            <RightElement>
+                                <StyledMenuButton
+                                    edge="start"
+                                    aria-label="menu"
+                                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                    disableRipple
+                                    onClick={handleMenuDrawerOpen}
+                                >
+                                    <StyledMenuIcon />
+                                </StyledMenuButton>
+                            </RightElement>
+                        </DownNavWraperContainer>
+                    </SmallScreenNavbar>
                 </StyledToolbar>
             </NavbarContainer>
         </>

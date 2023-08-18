@@ -13,6 +13,14 @@ export const MyProfileLeftContainer = styled(Box)`
     flex-direction: column;
     margin-left: 9%;
     margin-top: 1.5rem;
+
+
+    @media (max-width: 1350px) {
+      margin-left: 6.3%;
+    }
+    @media (max-width: 1100px) {
+      margin-left: 3.5%;
+    }
   }
 `
 
