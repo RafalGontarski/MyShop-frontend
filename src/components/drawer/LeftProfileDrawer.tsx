@@ -1,7 +1,7 @@
-import { Drawer, Link } from "@mui/material";
+import { Drawer } from "@mui/material";
 import React from "react";
 import {useTranslation} from "react-i18next";
-import CustomButton from "../button/Button";
+import {Link} from "react-router-dom";
 
 // styled component
 import {
@@ -121,10 +121,12 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                     <LinksContainer>
 
                         <ProfileDrawerLink
-                            href="/edit-profile"
+                            as={Link}
+                            to="/edit-profile"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            onClick={onClose}
                         >
                             Edytuj Konto
                         </ProfileDrawerLink>
@@ -136,20 +138,24 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <ProfileDrawerLink
-                                href="/product-center"
+                                as={Link}
+                                to="/graphic"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                onClick={onClose}
                             >
                                 Grafiki
                             </ProfileDrawerLink>
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <ProfileDrawerLink
-                                href="/product-center"
+                                as={Link}
+                                to="/product-center"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                onClick={onClose}
                             >
                                 Produkty
                             </ProfileDrawerLink>
@@ -162,10 +168,12 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                         {userRole && (userRole.includes("ADMIN")) && (
 
                             <ProfileDrawerLink
-                                href="/employee-center"
+                                as={Link}
+                                to="/employee-center"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                onClick={onClose}
                             >
                                 Pracownicy
                             </ProfileDrawerLink>
@@ -173,10 +181,12 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                         {userRole && (userRole.includes("ADMIN")) && (
 
                             <ProfileDrawerLink
-                                href="/categories-center"
+                                as={Link}
+                                to="/categories-center"
                                 underline="none"
                                 onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                                 onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                                onClick={onClose}
                             >
                                 Kategorie
                             </ProfileDrawerLink>
@@ -185,6 +195,7 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                         <ProfileLine/>
 
                         <ProfileDrawerLink
+                            // as={Link}
                             href="/"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}

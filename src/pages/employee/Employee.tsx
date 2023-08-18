@@ -1,12 +1,14 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
 import {
+    Container,
+    MenuWrapper,
     MyProfileCenterText,
     MyProfileComponents,
     MyProfileContainer,
-    MyProfileLeftContainer
-} from "./myprofile.styles";
-import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
+    MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
+} from "../myprofile.styles";
+import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
 import {
     LineContainer, LineText,
     LinksContainer, ProfileDrawerLink, ProfileLine,
@@ -14,14 +16,17 @@ import {
     ProfileWelcomeText,
     UserData,
     UserDataContainer
-} from "../components/drawer/ProfileDrawer.styles";
+} from "../../components/drawer/ProfileDrawer.styles";
 import {Link} from "react-router-dom";
+import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
 
 
-type EditProductProps = {
+
+type EditEmployeeProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
+    openLeftProfileDrawer: () => void;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -29,17 +34,18 @@ type EditProductProps = {
     userRole: string[] | null;
 };
 
-export const ProductCenter: React.FC<EditProductProps> = ({
+export const Employee: React.FC<EditEmployeeProps> = ({
                                 open,
                                 onClose,
                                 onLogoutClick,
+                                openLeftProfileDrawer,
                                 userId,
                                 userName,
                                 userSurname,
                                 userEmail,
                                 userRole
                             }) => {
-    console.log("Renderowanie komponentu EditProfile");
+    console.log("Renderowanie komponentu CategoriesCenter");
 
     const { t } = useTranslation();
 
@@ -47,6 +53,10 @@ export const ProductCenter: React.FC<EditProductProps> = ({
         console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
+    }
+
+    function handleIconClick() {
+        openLeftProfileDrawer();
     }
 
 
@@ -116,18 +126,42 @@ export const ProductCenter: React.FC<EditProductProps> = ({
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
                             as={Link}
+                            to="/graphic"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Grafiki
+                        </ProfileDrawerLink>
+                    )}
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                        <ProfileDrawerLink
+                            as={Link}
                             to="/product-center"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zarządzaj Produktami
+                            Produkty
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
                         <LineContainer>
                             <LineText>Panel Właściciela</LineText>
                         </LineContainer>
+                    )}
+
+                    {userRole && (userRole.includes("ADMIN")) && (
+
+                        <ProfileDrawerLink
+                            as={Link}
+                            to="/categories-center"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Kategorie
+                        </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
 
@@ -138,27 +172,14 @@ export const ProductCenter: React.FC<EditProductProps> = ({
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zarządzaj pracownikami
-                        </ProfileDrawerLink>
-                    )}
-                    {userRole && (userRole.includes("ADMIN")) && (
-
-                        <ProfileDrawerLink
-                            as={Link}
-                            to="/categories-center"
-                            underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                        >
-                            Zarządzaj kategoriami
+                            Pracownicy
                         </ProfileDrawerLink>
                     )}
 
                     <ProfileLine/>
 
                     <ProfileDrawerLink
-                        as={Link}
-                        to="/"
+                        href="/"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -171,11 +192,24 @@ export const ProductCenter: React.FC<EditProductProps> = ({
 
             </MyProfileLeftContainer>
 
-            <MyProfileComponents>
-                <div>
-                    <h1>Zarządzaj produktami</h1>
-                </div>
-            </MyProfileComponents>
+            <MenuWrapper>
+                <WrapperMenuButton
+                    edge="start"
+                    aria-label="menu"
+                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                    disableRipple
+                    onClick={handleIconClick}
+                >
+                    <StyledMenuIcon />
+                </WrapperMenuButton>
+            </MenuWrapper>
+
+            <Container>
+                <TitleContainer>
+                    <Title>Pracownicy</Title>
+                </TitleContainer>
+            </Container>
 
             {/* Tutaj możesz dodać formularz edycji profilu i inne elementy */}
         </MyProfileContainer>

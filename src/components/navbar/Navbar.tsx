@@ -4,7 +4,8 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Grid from '@mui/material/Grid';
-import {InputAdornment, Link} from "@mui/material";
+import {InputAdornment} from "@mui/material";
+import {Link} from "react-router-dom";
 
 // components
 import { MenuDrawer } from '../drawer/MenuDrawer';
@@ -65,7 +66,7 @@ import {
     FaceBookIconButton,
     SmallScreenNavbar,
     UpNavWraperContainer,
-    DownNavWraperContainer,
+    DownNavWraperContainer, LogoLink,
 
 } from "./navbar.styles";
 
@@ -314,14 +315,14 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                         <Grid item xs={12} sm={2}>
                             <MiddleSideFullScreenNavbar>
                                 <MiddleSideLogoContainer>
-                                    <Link href="/">
+                                    <LogoLink as={Link} to="/">
                                         <MiddleSideImageContainer
                                             src={Logo}
                                             alt="Logo"
                                             onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
                                             onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
                                         />
-                                    </Link>
+                                    </LogoLink>
                                 </MiddleSideLogoContainer>
                                 <MiddleSideSearchContainer>
                                     <StyledTextField
@@ -414,14 +415,14 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                     <SmallScreenNavbar>
                         <UpNavWraperContainer>
                             <LeftElement>
-                                <Link href="/">
+                                <LogoLink as={Link} to="/">
                                     <MiddleSideImageContainer
                                         src={Logo}
                                         alt="Logo"
                                         onMouseOver={(event) => {event.currentTarget.style.transform = 'scale(1.1)'}}
                                         onMouseOut={(event) => {event.currentTarget.style.transform = 'scale(1)'}}
                                     />
-                                </Link>
+                                </LogoLink>
                             </LeftElement>
                             <RightElement>
                                 <RightSideLanguageIconStyled

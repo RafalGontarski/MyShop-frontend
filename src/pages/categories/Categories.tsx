@@ -1,34 +1,28 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
-import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
-
 import {
-    Title,
     Container,
     MenuWrapper,
-    TitleContainer,
-    WrapperMenuButton,
-    MyProfileContainer,
     MyProfileCenterText,
-    MyProfileLeftContainer,
+    MyProfileComponents,
+    MyProfileContainer,
+    MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
 } from "../myprofile.styles";
-
+import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
 import {
-    UserData,
-    LineText,
-    ProfileLine,
-    LineContainer,
-    LinksContainer,
+    LineContainer, LineText,
+    LinksContainer, ProfileDrawerLink, ProfileLine,
     ProfileWelcome,
-    UserDataContainer,
-    ProfileDrawerLink,
     ProfileWelcomeText,
+    UserData,
+    UserDataContainer
 } from "../../components/drawer/ProfileDrawer.styles";
+import {Link} from "react-router-dom";
+import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
 
 
-type EditProfileProps = {
+
+type EditCategoriesProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
@@ -40,29 +34,29 @@ type EditProfileProps = {
     userRole: string[] | null;
 };
 
-export const EditProfile: React.FC<EditProfileProps> = ({
-                        open,
-                        onClose,
-                        onLogoutClick,
-                        openLeftProfileDrawer,
-                        userId,
-                        userName,
-                        userSurname,
-                        userEmail,
-                        userRole
-                    }) => {
+export const Categories: React.FC<EditCategoriesProps> = ({
+                                    open,
+                                    onClose,
+                                    onLogoutClick,
+                                    openLeftProfileDrawer,
+                                    userId,
+                                    userName,
+                                    userSurname,
+                                    userEmail,
+                                    userRole
+                                }) => {
+    console.log("Renderowanie komponentu CategoriesCenter");
 
     const { t } = useTranslation();
-
-
-    function handleIconClick() {
-        openLeftProfileDrawer();
-    }
 
     function handleLogout() {
         console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
+    }
+
+    function handleIconClick() {
+        openLeftProfileDrawer();
     }
 
 
@@ -179,7 +173,6 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             Pracownicy
                         </ProfileDrawerLink>
                     )}
-
                     <ProfileLine/>
 
                     <ProfileDrawerLink
@@ -211,7 +204,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
 
             <Container>
                 <TitleContainer>
-                    <Title>Edytuj konto klienta</Title>
+                    <Title>Kategorie</Title>
                 </TitleContainer>
             </Container>
 

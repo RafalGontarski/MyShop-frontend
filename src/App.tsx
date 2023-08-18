@@ -9,9 +9,10 @@ import MainPage from "./pages/main/MainPage";
 import {Route, Routes} from "react-router-dom";
 import { Link } from 'react-router-dom';
 import {EditProfile} from "./pages/editProfile/EditProfile";
-import {ProductCenter} from "./pages/ProductCenter";
-import {EmployeeCenter} from "./pages/EmployeeCenter";
-import {CategoriesCenter} from "./pages/Categories";
+import {Product} from "./pages/product/Product";
+import {Employee} from "./pages/employee/Employee";
+import {Categories} from "./pages/categories/Categories";
+import {Graphics} from "./pages/graphic/Graphic";
 
 
 const UserContext =
@@ -47,7 +48,7 @@ const App = () => {
     ) {
         setIsLoggedIn(true);
         setIsLoginDrawerOpen(false);
-        setIsProfileDrawerOpen(true);
+        // setIsProfileDrawerOpen(true);
         // setIsLeftProfileDrawerOpen(true);
         setUserId(userIdFromServer);
         setUserName(userNameFromServer);
@@ -123,30 +124,44 @@ const App = () => {
                             userEmail={userEmail}
                             userRole={userRole}
                 />} />
-                <Route path="/product-center" element={<ProductCenter
+                <Route path="/product-center" element={<Product
                             open={isProfileDrawerOpen}
                             onClose={() => setIsProfileDrawerOpen(false)}
                             onLogoutClick={handleLogout}
+                            openLeftProfileDrawer={openLeftProfileDrawer}
                             userId={userId}
                             userName={userName}
                             userSurname={userSurname}
                             userEmail={userEmail}
                             userRole={userRole}
                 />} />
-                <Route path="/employee-center" element={<EmployeeCenter
+                <Route path="/employee-center" element={<Employee
                             open={isProfileDrawerOpen}
                             onClose={() => setIsProfileDrawerOpen(false)}
                             onLogoutClick={handleLogout}
+                            openLeftProfileDrawer={openLeftProfileDrawer}
                             userId={userId}
                             userName={userName}
                             userSurname={userSurname}
                             userEmail={userEmail}
                             userRole={userRole}
                 />} />
-                <Route path="/categories-center" element={<CategoriesCenter
+                <Route path="/categories-center" element={<Categories
                             open={isProfileDrawerOpen}
                             onClose={() => setIsProfileDrawerOpen(false)}
                             onLogoutClick={handleLogout}
+                            openLeftProfileDrawer={openLeftProfileDrawer}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
+                />} />
+                <Route path="/graphic" element={<Graphics
+                            open={isProfileDrawerOpen}
+                            onClose={() => setIsProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            openLeftProfileDrawer={openLeftProfileDrawer}
                             userId={userId}
                             userName={userName}
                             userSurname={userSurname}

@@ -1,12 +1,18 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
+
 import {
+    Container,
+    MenuWrapper,
     MyProfileCenterText,
     MyProfileComponents,
     MyProfileContainer,
-    MyProfileLeftContainer
-} from "./myprofile.styles";
-import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
+    MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
+} from "../myprofile.styles";
+
+
 import {
     LineContainer, LineText,
     LinksContainer, ProfileDrawerLink, ProfileLine,
@@ -14,15 +20,16 @@ import {
     ProfileWelcomeText,
     UserData,
     UserDataContainer
-} from "../components/drawer/ProfileDrawer.styles";
-import {Link} from "react-router-dom";
+} from "../../components/drawer/ProfileDrawer.styles";
+import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
 
 
 
-type EditEmployeeProps = {
+type EditProductProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
+    openLeftProfileDrawer: () => void;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -30,17 +37,18 @@ type EditEmployeeProps = {
     userRole: string[] | null;
 };
 
-export const EmployeeCenter: React.FC<EditEmployeeProps> = ({
-                                                                    open,
-                                                                    onClose,
-                                                                    onLogoutClick,
-                                                                    userId,
-                                                                    userName,
-                                                                    userSurname,
-                                                                    userEmail,
-                                                                    userRole
-                                                                }) => {
-    console.log("Renderowanie komponentu CategoriesCenter");
+export const Product: React.FC<EditProductProps> = ({
+                                open,
+                                onClose,
+                                onLogoutClick,
+                                openLeftProfileDrawer,
+                                userId,
+                                userName,
+                                userSurname,
+                                userEmail,
+                                userRole
+                            }) => {
+    console.log("Renderowanie komponentu EditProfile");
 
     const { t } = useTranslation();
 
@@ -48,6 +56,10 @@ export const EmployeeCenter: React.FC<EditEmployeeProps> = ({
         console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
+    }
+
+    function handleIconClick() {
+        openLeftProfileDrawer();
     }
 
 
@@ -117,18 +129,42 @@ export const EmployeeCenter: React.FC<EditEmployeeProps> = ({
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
                             as={Link}
+                            to="/graphic"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Grafiki
+                        </ProfileDrawerLink>
+                    )}
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                        <ProfileDrawerLink
+                            as={Link}
                             to="/product-center"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zarządzaj Produktami
+                            Produkty
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
                         <LineContainer>
                             <LineText>Panel Właściciela</LineText>
                         </LineContainer>
+                    )}
+
+                    {userRole && (userRole.includes("ADMIN")) && (
+
+                        <ProfileDrawerLink
+                            as={Link}
+                            to="/categories-center"
+                            underline="none"
+                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        >
+                            Kategorie
+                        </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN")) && (
 
@@ -139,27 +175,14 @@ export const EmployeeCenter: React.FC<EditEmployeeProps> = ({
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         >
-                            Zarządzaj pracownikami
-                        </ProfileDrawerLink>
-                    )}
-                    {userRole && (userRole.includes("ADMIN")) && (
-
-                        <ProfileDrawerLink
-                            as={Link}
-                            to="/categories-center"
-                            underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                        >
-                            Zarządzaj kategoriami
+                            Pracownicy
                         </ProfileDrawerLink>
                     )}
 
                     <ProfileLine/>
 
                     <ProfileDrawerLink
-                        as={Link}
-                        to="/"
+                        href="/"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -172,11 +195,24 @@ export const EmployeeCenter: React.FC<EditEmployeeProps> = ({
 
             </MyProfileLeftContainer>
 
-            <MyProfileComponents>
-                <div>
-                    <h1>Zarządzaj pracownikami</h1>
-                </div>
-            </MyProfileComponents>
+            <MenuWrapper>
+                <WrapperMenuButton
+                    edge="start"
+                    aria-label="menu"
+                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                    disableRipple
+                    onClick={handleIconClick}
+                >
+                    <StyledMenuIcon />
+                </WrapperMenuButton>
+            </MenuWrapper>
+
+            <Container>
+                <TitleContainer>
+                    <Title>Produkty</Title>
+                </TitleContainer>
+            </Container>
 
             {/* Tutaj możesz dodać formularz edycji profilu i inne elementy */}
         </MyProfileContainer>

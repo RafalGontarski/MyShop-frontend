@@ -1,12 +1,19 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {GraphicContainer} from "./Graphic.styles";
+import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
+import {StyledHandIcon, Welcome} from "../../components/drawer/Drawer.styles";
+
+
 import {
-    MyProfileCenterText,
-    MyProfileComponents,
+    Title,
+    TitleContainer,
     MyProfileContainer,
-    MyProfileLeftContainer
-} from "./myprofile.styles";
-import {StyledHandIcon, Welcome} from "../components/drawer/Drawer.styles";
+    MyProfileCenterText,
+    MyProfileLeftContainer, MenuWrapper, WrapperMenuButton, Container,
+} from "../myprofile.styles";
+
 import {
     LineContainer, LineText,
     LinksContainer, ProfileDrawerLink, ProfileLine,
@@ -14,15 +21,16 @@ import {
     ProfileWelcomeText,
     UserData,
     UserDataContainer
-} from "../components/drawer/ProfileDrawer.styles";
-import {Link} from "react-router-dom";
+} from "../../components/drawer/ProfileDrawer.styles";
 
 
 
-type EditCategoriesProps = {
+
+type GraphicProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
+    openLeftProfileDrawer: () => void;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -30,17 +38,18 @@ type EditCategoriesProps = {
     userRole: string[] | null;
 };
 
-export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
-                                                            open,
-                                                            onClose,
-                                                            onLogoutClick,
-                                                            userId,
-                                                            userName,
-                                                            userSurname,
-                                                            userEmail,
-                                                            userRole
-                                                        }) => {
-    console.log("Renderowanie komponentu CategoriesCenter");
+export const Graphics: React.FC<GraphicProps> = ({
+                                open,
+                                onClose,
+                                onLogoutClick,
+                                openLeftProfileDrawer,
+                                userId,
+                                userName,
+                                userSurname,
+                                userEmail,
+                                userRole
+                            }) => {
+    console.log("Renderowanie komponentu EditProfile");
 
     const { t } = useTranslation();
 
@@ -48,6 +57,10 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
         console.log("logout");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
+    }
+
+    function handleIconClick() {
+        openLeftProfileDrawer();
     }
 
 
@@ -116,7 +129,8 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
-                            href="/product-center"
+                            as={Link}
+                            to="/graphic"
                             underline="none"
                             onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -140,7 +154,9 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
                             <LineText>Panel Właściciela</LineText>
                         </LineContainer>
                     )}
+
                     {userRole && (userRole.includes("ADMIN")) && (
+
                         <ProfileDrawerLink
                             as={Link}
                             to="/categories-center"
@@ -163,11 +179,11 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
                             Pracownicy
                         </ProfileDrawerLink>
                     )}
+
                     <ProfileLine/>
 
                     <ProfileDrawerLink
-                        as={Link}
-                        to="/"
+                        href="/"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
@@ -180,11 +196,24 @@ export const CategoriesCenter: React.FC<EditCategoriesProps> = ({
 
             </MyProfileLeftContainer>
 
-            <MyProfileComponents>
-                <div>
-                    <h1>Zarządzaj kategoriami</h1>
-                </div>
-            </MyProfileComponents>
+            <MenuWrapper>
+                <WrapperMenuButton
+                    edge="start"
+                    aria-label="menu"
+                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                    disableRipple
+                    onClick={handleIconClick}
+                >
+                    <StyledMenuIcon />
+                </WrapperMenuButton>
+            </MenuWrapper>
+
+            <Container>
+                <TitleContainer>
+                    <Title>Grafiki</Title>
+                </TitleContainer>
+            </Container>
 
             {/* Tutaj możesz dodać formularz edycji profilu i inne elementy */}
         </MyProfileContainer>

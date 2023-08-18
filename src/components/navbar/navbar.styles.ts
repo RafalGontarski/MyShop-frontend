@@ -287,6 +287,7 @@ export const MiddleSideFullScreenNavbar = styled.div`
   }
 `
 export const MiddleSideLogoContainer = styled.div``
+export const LogoLink = styled(Link)``
 export const MiddleSideSearchContainer = styled.div``
 export const MiddleSideImageContainer = styled.img`
   && {
