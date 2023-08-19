@@ -51,7 +51,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CountrySelector from "../../components/selectors/CountrySelect";
 
 
-type EditProfileProps = {
+type AddressProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
@@ -59,11 +59,15 @@ type EditProfileProps = {
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
+    userAddress: string | null;
+    userPostalCode: string | null;
+    userCity: string | null;
+    userCountry: string | null;
     userEmail: string | null;
     userRole: string[] | null;
 };
 
-export const Address: React.FC<EditProfileProps> = ({
+export const Address: React.FC<AddressProps> = ({
                         open,
                         onClose,
                         onLogoutClick,
@@ -71,21 +75,21 @@ export const Address: React.FC<EditProfileProps> = ({
                         userId,
                         userName,
                         userSurname,
+                        userAddress,
+                        userPostalCode,
+                        userCity,
+                        userCountry,
                         userEmail,
                         userRole
                     }) => {
 
-    const [showActualPassword, setShowActualShowPassword] = React.useState(false);
-    const [showPassword, setShowPassword] = React.useState(false);
-    const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
-    const [localProfileImage, setLocalProfileImage] = useState(''); // domyślny URL zdjęcia profilowego
-    const [localEmail, setLocalEmail] = useState('');
-    const [localPassword, setLocalPassword] = useState('');
-    const [localRepeatPassword, setLocalRepeatPassword] = useState('');
-    const [localName, setLocalName] = useState('');
-    const [localSurname, setLocalSurname] = useState('');
-    const [localAddress, setLocalAddress] = useState('');
-    const [country, setCountry] = useState('');
+
+    const [localFirstName, setLocalFirstName] = useState(userName || '');
+    const [localLastName, setLocalLastName] = useState(userSurname || '');
+    const [localAddress, setLocalAddress] = useState(userAddress || '');
+    const [localPostalCode, setLocalPostalCode] = useState(userPostalCode || '');
+    const [localCity, setLocalCity] = useState(userCity || '');
+    const [locatlCountry, setLocalCountry] = useState(userCountry || '');
     const { t } = useTranslation();
 
     function handleIconClick() {
@@ -99,99 +103,41 @@ export const Address: React.FC<EditProfileProps> = ({
 
 
 
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocalEmail(e.target.value);
-    }
-
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocalPassword(e.target.value);
-    }
-
-    const onShowActualPassword = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        // setActualShowPassword(event.target.value);
-    };
-
-    const onPasswordChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        setLocalPassword(event.target.value);
-    };
-
-    const onRepeatPasswordChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        setLocalRepeatPassword(e.target.value);
-    }
-
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocalName(e.target.value);
+        setLocalFirstName(e.target.value);
     }
 
     const handleSurnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocalSurname(e.target.value);
+        setLocalLastName(e.target.value);
     }
 
     const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalAddress(e.target.value);
     }
 
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files && e.target.files[0];
-        const reader = new FileReader();
+    const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLocalPostalCode(e.target.value);
+    }
 
-        reader.onloadend = () => {
-            setLocalProfileImage(reader.result as string);
-
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            setLocalProfileImage('');
-        }
+    const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLocalCity(e.target.value);
     }
 
 
     const onCountryChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setCountry(event.target.value);
+        setLocalCountry(event.target.value);
     }
 
-    const handleMouseDownRepeatActualPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowActualShowPassword(true);
-    };
 
-    const handleMouseUpRepeatActualPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowActualShowPassword(false);
-    };
-
-    const handleMouseDownPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowPassword(true);
-    };
-    const handleMouseUpPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowPassword(false);
-    };
-
-    const handleMouseDownRepeatPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowRepeatPassword(true);
-    };
-
-    const handleMouseUpRepeatPassword = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setShowRepeatPassword(false);
-    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Tutaj możesz przesłać dane do serwera lub przetworzyć je w inny sposób
         console.log({
-            localEmail,
-            localPassword,
-            localName,
-            localSurname,
+            localName: localFirstName,
+            localSurname: localLastName,
             localAddress,
-            localProfileImage
         });
     }
 
@@ -361,8 +307,8 @@ export const Address: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={localEmail}
-                            onChange={handleEmailChange}
+                            value={localFirstName}
+                            onChange={handleNameChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 
@@ -372,8 +318,8 @@ export const Address: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={localEmail}
-                            onChange={handleEmailChange}
+                            value={localLastName}
+                            onChange={handleSurnameChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 
@@ -383,8 +329,8 @@ export const Address: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={localEmail}
-                            onChange={handleEmailChange}
+                            value={localAddress}
+                            onChange={handleAddressChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 
@@ -394,8 +340,8 @@ export const Address: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={localEmail}
-                            onChange={handleEmailChange}
+                            value={localPostalCode}
+                            onChange={handlePostalCodeChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 
@@ -405,8 +351,8 @@ export const Address: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={localEmail}
-                            onChange={handleEmailChange}
+                            value={localCity}
+                            onChange={handleCityChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 

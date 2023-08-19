@@ -23,6 +23,10 @@ const UserContext = createContext<{
         userId: number,
         userName: string,
         userSurname: string,
+        userAddress: string,
+        userPostalCode: string,
+        userCity: string,
+        userCountry: string,
         userEmail: string,
         userPassword: string,
         userRole: string[]
@@ -41,6 +45,10 @@ const App = () => {
     const [userId, setUserId] = useState<number | null>(null);
     const [userName, setUserName] = useState<string | null>(null);
     const [userSurname, setUserSurname] = useState<string | null>(null);
+    const [userAddress, setUserAddress] = useState<string | null>(null);
+    const [userPostalCode, setUserPostalCode] = useState<string | null>(null);
+    const [userCity, setUserCity] = useState<string | null>(null);
+    const [userCountry, setUserCountry] = useState<string | null>(null);
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const [userPassword, setUserPassword] = useState<string | null>(null);
     const [userRole, setUserRole] = useState<string[] | null>(null);
@@ -53,6 +61,10 @@ const App = () => {
         userIdFromServer: number,
         userNameFromServer: string,
         userSurnameFromServer: string,
+        userAddressFromServer: string,
+        userPostalCodeFromServer: string,
+        userCityFromServer: string,
+        userCountryFromServer: string,
         userEmailFromServer: string,
         userPasswordFromServer: string,
         userRoleFromServer: string[]
@@ -62,6 +74,10 @@ const App = () => {
         setUserId(userIdFromServer);
         setUserName(userNameFromServer);
         setUserSurname(userSurnameFromServer);
+        setUserAddress(userAddressFromServer);
+        setUserPostalCode(userPostalCodeFromServer);
+        setUserCity(userCityFromServer);
+        setUserCountry(userCountryFromServer);
         setUserEmail(userEmailFromServer);
         setUserPassword(userPasswordFromServer);
         setUserRole(userRoleFromServer);
@@ -71,6 +87,10 @@ const App = () => {
             userId: userIdFromServer,
             userName: userNameFromServer,
             userSurname: userSurnameFromServer,
+            userAddress: userAddressFromServer,
+            userPostalCode: userPostalCodeFromServer,
+            userCity: userCityFromServer,
+            userCountry: userCountryFromServer,
             userEmail: userEmailFromServer,
             userPassword: userPasswordFromServer,
             userRole: userRoleFromServer
@@ -84,7 +104,11 @@ const App = () => {
             setIsLoggedIn(true);
             setUserId(user.userId);
             setUserName(user.userName);
+            setUserAddress(user.userAddress);
             setUserSurname(user.userSurname);
+            setUserPostalCode(user.userPostalCode);
+            setUserCity(user.userCity);
+            setUserCountry(user.userCountry);
             setUserEmail(user.userEmail);
             setUserPassword(user.userPassword);
             setUserRole(user.userRole);
@@ -197,6 +221,10 @@ const App = () => {
                                userId={userId}
                                userName={userName}
                                userSurname={userSurname}
+                               userAddress={userAddress}
+                               userPostalCode={userPostalCode}
+                               userCity={userCity}
+                               userCountry={userCountry}
                                userEmail={userEmail}
                                userRole={userRole}
                            />} />
@@ -270,6 +298,10 @@ const App = () => {
                             userIdFromServer,
                             userNameFromServer,
                             userSurnameFromServer,
+                            userAddressFromServer,
+                            userPostalCodeFromServer,
+                            userCityFromServer,
+                            userCountryFromServer,
                             userEmailFromServer,
                             userPasswordFromServer,
                             userRoleFromServer
@@ -278,6 +310,10 @@ const App = () => {
                                 userIdFromServer,
                                 userNameFromServer,
                                 userSurnameFromServer,
+                                userAddressFromServer,
+                                userPostalCodeFromServer,
+                                userCityFromServer,
+                                userCountryFromServer,
                                 userEmailFromServer,
                                 userPasswordFromServer,
                                 userRoleFromServer);

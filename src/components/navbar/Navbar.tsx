@@ -77,6 +77,10 @@ type NavbarProps = {
         userId: number,
         userName: string,
         userSurname: string,
+        userAddress: string,
+        userPostalCode: string,
+        userCity: string,
+        userCountry: string,
         userEmail: string,
         userPassword: string,
         userRole: string[]) => void;
