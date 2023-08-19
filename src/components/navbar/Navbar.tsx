@@ -78,6 +78,7 @@ type NavbarProps = {
         userName: string,
         userSurname: string,
         userEmail: string,
+        userPassword: string,
         userRole: string[]) => void;
     onLogout: () => void;
     openProfileDrawer: () => void;

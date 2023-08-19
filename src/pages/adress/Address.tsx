@@ -25,6 +25,7 @@ import {
     ProfileDrawerLink,
 } from "../../components/drawer/ProfileDrawer.styles";
 import {
+    AddressTitleContainer,
     EditLine,
     FormContainer,
     InputContainer,
@@ -34,7 +35,7 @@ import {
     ProfileImageContainer, ProfilePageWelcome,
     SubmitButton,
     UploadButton
-} from "./EditProfile.styles";
+} from "./Adress.styles";
 import CustomButton from "../../components/button/Button";
 import {
     HiddenStyledTextField,
@@ -47,7 +48,7 @@ import {
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import LinkButton from "../../components/button/LinkButton";
+import CountrySelector from "../../components/selectors/CountrySelect";
 
 
 type EditProfileProps = {
@@ -59,11 +60,10 @@ type EditProfileProps = {
     userName: string | null;
     userSurname: string | null;
     userEmail: string | null;
-    userPassword: string | null;
     userRole: string[] | null;
 };
 
-export const EditProfile: React.FC<EditProfileProps> = ({
+export const Address: React.FC<EditProfileProps> = ({
                         open,
                         onClose,
                         onLogoutClick,
@@ -72,12 +72,8 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         userName,
                         userSurname,
                         userEmail,
-                        userPassword,
                         userRole
                     }) => {
-
-
-    console.log(userEmail);
 
     const [showActualPassword, setShowActualShowPassword] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
@@ -89,6 +85,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
     const [localName, setLocalName] = useState('');
     const [localSurname, setLocalSurname] = useState('');
     const [localAddress, setLocalAddress] = useState('');
+    const [country, setCountry] = useState('');
     const { t } = useTranslation();
 
     function handleIconClick() {
@@ -148,6 +145,11 @@ export const EditProfile: React.FC<EditProfileProps> = ({
         } else {
             setLocalProfileImage('');
         }
+    }
+
+
+    const onCountryChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        setCountry(event.target.value);
     }
 
     const handleMouseDownRepeatActualPassword = (event: React.MouseEvent) => {
@@ -334,230 +336,85 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         <StyledMenuIcon />
                     </WrapperMenuButton>
                 </MenuWrapper>
-                <TitleContainer>
-                    <Title>Edytuj konto klienta</Title>
-                </TitleContainer>
+                <AddressTitleContainer>
+                    <Title>Książka adresowa</Title>
+                    {/*<CustomButton*/}
+                    {/*    label={"Dodaj adres"}*/}
+                    {/*    // disabled={!isEmailValid || !isPasswordValid}*/}
+                    {/*    // onClick={combinedHandleLogin}*/}
+                    {/*/>*/}
+                </AddressTitleContainer>
 
                 <FormContainer onSubmit={handleSubmit}>
 
                     <ProfileImageContainer>
-                        {/*<ProfilePageWelcome>*/}
-                        {/*    <WelcomeText variant="h4" gutterBottom>*/}
-                        {/*        Zmień zdjęcie profilowe*/}
-                        {/*    </WelcomeText>*/}
-                        {/*    <WelcomeText variant="subtitle1" gutterBottom>*/}
-                        {/*        Tutaj możesz zmienić zdjęcie profilowe*/}
-                        {/*    </WelcomeText>*/}
-                        {/*    /!*<StyledHandIcon/>*!/*/}
-                        {/*</ProfilePageWelcome>*/}
-
-                        {/*<ProfileImage src={localProfileImage} alt="Zdjęcie profilowe" />*/}
-                        {/*<input type="file" id="profileImage" onChange={handleImageChange} style={{ display: 'none' }} />*/}
-                        {/*<label htmlFor="profileImage">*/}
-                        {/*    <UploadButton as="span">Zmień zdjęcie</UploadButton>*/}
-                        {/*</label>*/}
-
-
-                        {/*<CustomButton*/}
-                        {/*    label={"Zapisz zdjęcie"}*/}
-                        {/*    // disabled={!isEmailValid || !isPasswordValid}*/}
-                        {/*    // onClick={combinedHandleLogin}*/}
-                        {/*/>*/}
-
-                        {/*<EditLine/>*/}
-
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Zmień e-mail
-                            </WelcomeText>
-                            <WelcomeText variant="subtitle1" gutterBottom>
-                                Tutaj możesz zmienić e-mail
-                            </WelcomeText>
-                            {/*<StyledHandIcon/>*/}
-                        </ProfilePageWelcome>
-
-                        <HiddenStyledTextField
-                            size={"small"}
-                            label={'Dotychczasowe hasło'}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            type={showPassword ? 'text' : 'password'}
-                            value={userPassword}
-                            onChange={(e) => onShowActualPassword(e)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <TogglePasswordVisibility
-                                            aria-label="toggle password visibility"
-                                            onMouseDown={handleMouseDownPassword} // Pokaż hasło
-                                            onMouseUp={handleMouseUpPassword} // Ukryj hasło
-                                            disableRipple
-                                        >
-                                            {showPassword ? <Visibility/> : <VisibilityOff/>}
-                                        </TogglePasswordVisibility>
-                                    </InputAdornment>
-
-                                ),
-                            }}
-                        />
-
-                        <StyledTextField
-                            size={"small"}
-                            label={t('loginDrawer.email')}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            value={userEmail}
-                            onChange={handleEmailChange}
-                            // onChange={(e) => onEmailChange(e)}
-                        />
-
-                        <CustomButton
-                            label={"Zapisz e-mail"}
-                            // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
-                        />
-
-                        <EditLine/>
-
-                        <ProfilePageWelcome>
-                            <WelcomeText variant="h4" gutterBottom>
-                                Zmień hasło
-                            </WelcomeText>
-                            <WelcomeText variant="subtitle1" gutterBottom>
-                                Tutaj możesz zmienić hasło
-                            </WelcomeText>
-                            {/*<StyledHandIcon/>*/}
-                        </ProfilePageWelcome>
-
-                        <HiddenStyledTextField
-                            size={"small"}
-                            label={'Dotychczasowe hasło'}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            type={showActualPassword ? 'text' : 'password'}
-                            value={userPassword}
-                            onChange={(e) => onShowActualPassword(e)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <TogglePasswordVisibility
-                                            aria-label="toggle password visibility"
-                                            onMouseDown={handleMouseDownRepeatActualPassword} // Pokaż hasło
-                                            onMouseUp={handleMouseUpRepeatActualPassword} // Ukryj hasło
-                                            disableRipple
-                                        >
-                                            {showActualPassword ? <Visibility/> : <VisibilityOff/>}
-                                        </TogglePasswordVisibility>
-                                    </InputAdornment>
-
-                                ),
-                            }}
-                        />
-
-                        <HiddenStyledTextField
-                            size={"small"}
-                            label={'Nowe hasło'}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            type={showPassword ? 'text' : 'password'}
-                            onChange={(e) => onPasswordChange(e)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <TogglePasswordVisibility
-                                            aria-label="toggle password visibility"
-                                            onMouseDown={handleMouseDownPassword} // Pokaż hasło
-                                            onMouseUp={handleMouseUpPassword} // Ukryj hasło
-                                            disableRipple
-                                        >
-                                            {showPassword ? <Visibility/> : <VisibilityOff/>}
-                                        </TogglePasswordVisibility>
-                                    </InputAdornment>
-
-                                ),
-                            }}
-                        />
-
-                        <HiddenStyledTextField
-                            size={"small"}
-                            label={'Powtórz nowe hasło'}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            type={showRepeatPassword ? 'text' : 'password'}
-                            onChange={(e) => onRepeatPasswordChange(e)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <TogglePasswordVisibility
-                                            aria-label="toggle password visibility"
-                                            onMouseDown={handleMouseDownRepeatPassword} // Pokaż hasło
-                                            onMouseUp={handleMouseUpRepeatPassword} // Ukryj hasło
-                                            disableRipple
-                                        >
-                                            {showRepeatPassword ? <Visibility/> : <VisibilityOff/>}
-                                        </TogglePasswordVisibility>
-                                    </InputAdornment>
-
-                                ),
-                            }}
-                        />
-
-                        <CustomButton
-                            label={"Zapisz hasło"}
-                            // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
-                        />
-
-                        <EditLine/>
-
-                        <ProfilePageWelcome>
-                            <WelcomeText variant="h4" gutterBottom>
-                                Zmień nazwę
-                            </WelcomeText>
-                            <WelcomeText variant="subtitle1" gutterBottom>
-                                Tutaj możesz zmienić nazwę użytkownika
+                                Zmień adres faktury
                             </WelcomeText>
                             {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
 
                         <StyledTextField
                             size={"small"}
-                            label={'Imię'}
+                            label={t('registrationDrawer.firstName')}
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={userName}
+                            value={localEmail}
                             onChange={handleEmailChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 
-                        <CustomButton
-                            label={"Zapisz nazwę"}
-                            // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
+                        <StyledTextField
+                            size={"small"}
+                            label={t('registrationDrawer.lastName')}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            value={localEmail}
+                            onChange={handleEmailChange}
+                            // onChange={(e) => onEmailChange(e)}
                         />
 
-                        <EditLine/>
+                        <StyledTextField
+                            size={"small"}
+                            label={t('registrationDrawer.streetAndNumber')}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            value={localEmail}
+                            onChange={handleEmailChange}
+                            // onChange={(e) => onEmailChange(e)}
+                        />
 
-                        <ProfilePageWelcome>
-                            <WelcomeText variant="h4" gutterBottom>
-                                Zmień adres
-                            </WelcomeText>
-                            <WelcomeText variant="subtitle1" gutterBottom>
-                                Przejdź do książki adresowej
-                            </WelcomeText>
-                            {/*<StyledHandIcon/>*/}
-                        </ProfilePageWelcome>
+                        <StyledTextField
+                            size={"small"}
+                            label={t('registrationDrawer.postalCode')}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            value={localEmail}
+                            onChange={handleEmailChange}
+                            // onChange={(e) => onEmailChange(e)}
+                        />
 
-                        <LinkButton
-                            as={Link}
-                            to={'/address-book'}
-                            label={'KSIĄŻKA ADRESOWA'}
+                        <StyledTextField
+                            size={"small"}
+                            label={t('registrationDrawer.city')}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            value={localEmail}
+                            onChange={handleEmailChange}
+                            // onChange={(e) => onEmailChange(e)}
+                        />
+
+                        <CountrySelector onChange={onCountryChange}/>
+
+
+                        <CustomButton
+                            label={"Zapisz"}
                             // disabled={!isEmailValid || !isPasswordValid}
                             // onClick={combinedHandleLogin}
                         />

@@ -7,6 +7,7 @@ export const MyProfileContainer = styled.div`
 `
 export const MyProfileLeftContainer = styled(Box)`
   && {
+    width: 30%;
     display: flex;
     justify-content: left;
     align-items: flex-start;
@@ -40,16 +41,25 @@ export const MyProfileCenterText = styled.div`
 `
 export const Container = styled.div`
   && {
+    width: 100%;
     display: flex;
-    margin-left: 5%;
+    
+    flex-direction: column;
     //margin-right: 5%;
-    border: 1px solid #000;
-    border-radius: 1px;
+    //border: 1px solid #000;
+    //border-radius: 1px;
+    
+    @media (max-width: 940px) {
+      margin-left: 5%;
+    }
   }
 `
 export const TitleContainer = styled.div`
     //margin-top: 1%;
-    margin-left: 20%;
+    //margin-left: 20%;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
 `
 export const Title = styled.h1`
     font-size: xxx-large;

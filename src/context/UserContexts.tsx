@@ -34,6 +34,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
             firstName: user.data.firstName,
             lastName: user.data.lastName,
             email: user.data.email,
+            password: user.data.password,
             roles: user.data.roles,
         });
     }, []);

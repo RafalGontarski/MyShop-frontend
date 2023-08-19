@@ -13,6 +13,7 @@ import {Product} from "./pages/product/Product";
 import {Employee} from "./pages/employee/Employee";
 import {Categories} from "./pages/categories/Categories";
 import {Graphics} from "./pages/graphic/Graphic";
+import {Address} from "./pages/adress/Address";
 
 
 const UserContext =
@@ -23,6 +24,7 @@ const UserContext =
         userName: string,
         userSurname: string,
         userEmail: string,
+        userPassword: string,
         userRole: string[]) => void;
     } | undefined>(undefined);
 
@@ -33,6 +35,7 @@ const App = () => {
     const [userName, setUserName] = useState<string | null>(null);
     const [userSurname, setUserSurname] = useState<string | null>(null);
     const [userEmail, setUserEmail] = useState<string | null>(null);
+    const [userPassword, setUserPassword] = useState<string | null>(null);
     const [userRole, setUserRole] = useState<string[] | null>(null);
     const [isLoginDrawerOpen, setIsLoginDrawerOpen] = useState(false);
     const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false);
@@ -44,6 +47,7 @@ const App = () => {
         userNameFromServer: string,
         userSurnameFromServer: string,
         userEmailFromServer: string,
+        userPasswordFromServer: string,
         userRoleFromServer: string[]
     ) {
         setIsLoggedIn(true);
@@ -54,6 +58,7 @@ const App = () => {
         setUserName(userNameFromServer);
         setUserSurname(userSurnameFromServer);
         setUserEmail(userEmailFromServer);
+        setUserPassword(userPasswordFromServer);
         setUserRole(userRoleFromServer);
 
         // Zapisz dane użytkownika w localStorage
@@ -62,8 +67,11 @@ const App = () => {
             userName: userNameFromServer,
             userSurname: userSurnameFromServer,
             userEmail: userEmailFromServer,
+            userPassword: userPasswordFromServer,
             userRole: userRoleFromServer
         }))
+
+        console.log(userPasswordFromServer);
     }
 
     useEffect(() => {
@@ -75,6 +83,7 @@ const App = () => {
             setUserName(user.userName);
             setUserSurname(user.userSurname);
             setUserEmail(user.userEmail);
+            setUserPassword(user.userPassword);
             setUserRole(user.userRole);
         }
     }, []);
@@ -112,6 +121,18 @@ const App = () => {
                 <Route path="/" element={<MainPage
                             userName={userName}
                 />} />
+                <Route path="/address-book"
+                       element={<Address
+                           open={isProfileDrawerOpen}
+                           onClose={() => setIsProfileDrawerOpen(false)}
+                           onLogoutClick={handleLogout}
+                           openLeftProfileDrawer={openLeftProfileDrawer}
+                           userId={userId}
+                           userName={userName}
+                           userSurname={userSurname}
+                           userEmail={userEmail}
+                           userRole={userRole}
+                       />} />
                 <Route path="/edit-profile"
                        element={<EditProfile
                             open={isProfileDrawerOpen}
@@ -122,6 +143,7 @@ const App = () => {
                             userName={userName}
                             userSurname={userSurname}
                             userEmail={userEmail}
+                            userPassword={userPassword}
                             userRole={userRole}
                 />} />
                 <Route path="/product-center" element={<Product
@@ -179,6 +201,7 @@ const App = () => {
                         userNameFromServer,
                         userSurnameFromServer,
                         userEmailFromServer,
+                        userPasswordFromServer,
                         userRoleFromServer
                     ) => {
                         handleLogin(
@@ -186,6 +209,7 @@ const App = () => {
                             userNameFromServer,
                             userSurnameFromServer,
                             userEmailFromServer,
+                            userPasswordFromServer,
                             userRoleFromServer);
                     }}
                     onRegisterClick={() => {

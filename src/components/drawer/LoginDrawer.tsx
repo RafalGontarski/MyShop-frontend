@@ -52,6 +52,7 @@ type DrawerProps = {
         userName: string,
         userSurname: string,
         userEmail: string,
+        userPassword: string,
         userRole: string[] ) => void;
     // handleLogin: () => void;
 };
@@ -79,9 +80,10 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 firstName: user.data.firstName,
                 lastName: user.data.lastName,
                 email: user.data.email,
+                password: user.data.password,
                 roles: user.data.roles,
             });
-            console.log(user.data.firstName);
+            console.log(user.data.password);
             localStorage.setItem(ACCESS_TOKEN, user.data.token);
             navigate("/");
             onClose();
@@ -91,6 +93,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 firstName: user.data.firstName,
                 lastName: user.data.lastName,
                 email: user.data.email,
+                password: user.data.password,
                 roles: user.data.roles,
             };
         } catch (error: any) {
@@ -143,8 +146,9 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 userData.firstName,
                 userData.lastName,
                 userData.email,
+                userData.password,
                 userData.roles);
-            console.log("Role użytkownika:", userData.roles);
+            // console.log("Role użytkownika:", userData.roles);
         }
     };
 

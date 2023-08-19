@@ -2,6 +2,18 @@ import styled from "styled-components";
 import Divider from "@mui/material/Divider";
 import {Box} from "@mui/system";
 
+
+export const AddressTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-right: 14%;
+`;
+
+
+
+
 export const EditProfileContainer = styled.div`
 
 `

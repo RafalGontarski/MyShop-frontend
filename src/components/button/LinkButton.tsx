@@ -1,23 +1,23 @@
 import React from 'react';
-import { StyledButton } from './buttons.styles';
+import {StyledButton, StyledLinkButton} from './buttons.styles';
 
 interface CustomButtonProps {
     label: string;
     onClick?: () => void;
 }
 
-const CustomButton: React.FC<CustomButtonProps & { as?: React.ElementType; to?: string }> = ({ label, onClick, ...props }) => {
+const LinkButton: React.FC<CustomButtonProps & { as?: React.ElementType; to?: string }> = ({ label, onClick, ...props }) => {
     return (
-        <StyledButton
+        <StyledLinkButton
             variant="contained"
             color="primary"
             onClick={onClick}
             {...props} // przekazuje wszystkie pozostałe atrybuty do StyledButton
         >
             {label}
-        </StyledButton>
+        </StyledLinkButton>
     );
 };
 
-export default CustomButton;
+export default LinkButton;
 

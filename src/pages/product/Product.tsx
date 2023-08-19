@@ -64,9 +64,9 @@ export const Product: React.FC<EditProductProps> = ({
 
 
             <MyProfileLeftContainer>
-                <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
 
                 <UserDataContainer>
+                    <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom
                                   style={{ marginRight: '4px' }}
@@ -93,12 +93,21 @@ export const Product: React.FC<EditProductProps> = ({
 
                     <ProfileDrawerLink
                         as={Link}
+                        to="/address-book"
+                        underline="none"
+                        onClick={onClose}
+                    >
+                        Książka adresowa
+                    </ProfileDrawerLink>
+
+                    <ProfileDrawerLink
+                        as={Link}
                         to="/edit-profile"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                     >
-                        Edytuj Konto
+                        Edytuj konto
                     </ProfileDrawerLink>
 
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (

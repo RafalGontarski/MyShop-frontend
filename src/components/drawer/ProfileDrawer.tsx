@@ -123,11 +123,20 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
 
                         <ProfileDrawerLink
                             as={Link}
+                            to="/address-book"
+                            underline="none"
+                            onClick={onClose}
+                        >
+                            Książka adresowa
+                        </ProfileDrawerLink>
+
+                        <ProfileDrawerLink
+                            as={Link}
                             to="/edit-profile"
                             underline="none"
                             onClick={onClose}
                         >
-                            Edytuj Konto
+                            Edytuj konto
                         </ProfileDrawerLink>
 
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (

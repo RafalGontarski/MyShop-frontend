@@ -17,9 +17,9 @@ export const ProfileDrawerLink = styled(Link)`
       color: #008000;
     }
 
-    @media (max-width: 1250px) {
-      font-size: 0.6rem;
-    }
+    //@media (max-width: 1250px) {
+    //  font-size: 0.6rem;
+    //}
   }
 `
 
