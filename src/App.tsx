@@ -29,6 +29,7 @@ const UserContext = createContext<{
     ) => void,
     updateUserEmail: (userId: number, newEmail: string) => Promise<void>;
     updatePassword: (userId: number, newPassword: string) => Promise<void>;
+    updateFirstName: (userId: number, newFirstName: string) => Promise<void>;
 } | undefined>(undefined);
 
 
@@ -135,6 +136,24 @@ const App = () => {
         }
     }
 
+    const updateFirstName = async (userId: number, newFirstName: string) => {
+        try {
+            // Sprawdzamy, czy userId istnieje
+            if (!userId) {
+                throw new Error("User ID is missing");
+            }
+            // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
+            await UserApi.updateFirstName(userId, newFirstName);
+            console.log('Password updated successfully');
+
+            // Aktualizujemy stan lokalny po pomyślnej aktualizacji
+            setUserName(newFirstName);
+        } catch (error) {
+            console.error("Błąd podczas aktualizacji e-maila:", error);
+            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+        }
+    }
+
 
 
     function handleLogout() {
@@ -152,7 +171,9 @@ const App = () => {
                 isLoggedIn,
                 handleLogin,
                 updateUserEmail,
-                updatePassword }}>
+                updatePassword,
+                updateFirstName
+            }}>
                 <Navbar
                     isLoggedIn={isLoggedIn}
                     onLogin={handleLogin}
@@ -187,6 +208,7 @@ const App = () => {
                                 openLeftProfileDrawer={openLeftProfileDrawer}
                                 updateUserEmail={updateUserEmail}
                                 updatePassword={updatePassword}
+                                updateFirstName={updateFirstName}
                                 userId={userId}
                                 userName={userName}
                                 userSurname={userSurname}

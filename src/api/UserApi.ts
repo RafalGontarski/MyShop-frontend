@@ -18,6 +18,6 @@ export class UserApi {
     static updateAddress = async (userId: number, addressRequest: AddressUpdateRequest) =>
         await authorizedApi.patch(`${BaseUrl}/api/users/${userId}/address`, addressRequest);
 
-    static updateFirstName = async (userId: number, firstName: string) =>
-        await authorizedApi.patch(`${BaseUrl}/api/users/${userId}/firstName`, { firstName });
+    static updateFirstName = async (userId: number, newFirstName: string) =>
+        await axios.patch(`${BaseUrl}/api/users/${userId}/firstName`, { firstName: newFirstName });
 }

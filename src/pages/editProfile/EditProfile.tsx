@@ -56,6 +56,7 @@ type EditProfileProps = {
     openLeftProfileDrawer: () => void;
     updateUserEmail: (userId: number, newEmail: string) => Promise<void>;
     updatePassword: (userId: number, newPassword: string) => Promise<void>;
+    updateFirstName: (userId: number, newFirstName: string) => Promise<void>;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -71,6 +72,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         openLeftProfileDrawer,
                         updateUserEmail,
                         updatePassword,
+                        updateFirstName,
                         userId,
                         userName,
                         userSurname,
@@ -78,6 +80,9 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         userPassword,
                         userRole
                     }) => {
+
+    console.log(userName);
+    console.log(userId);
 
     const [showActualPassword, setShowActualShowPassword] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
@@ -87,10 +92,11 @@ export const EditProfile: React.FC<EditProfileProps> = ({
     const [localEmail, setLocalEmail] = useState(userEmail || '');
     const [localPassword, setLocalPassword] = useState<string>(userPassword || "");
     const [localRepeatPassword, setLocalRepeatPassword] = useState('');
-    const [localName, setLocalName] = useState('');
+    const [localName, setLocalName] = useState(userName || '');
     const [localId, setLocalId] = useState<number>(userId || 0);
     const [localSurname, setLocalSurname] = useState('');
     const [localAddress, setLocalAddress] = useState('');
+
 
 
     // update user
@@ -136,21 +142,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
     const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalAddress(e.target.value);
     }
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files && e.target.files[0];
-        const reader = new FileReader();
 
-        reader.onloadend = () => {
-            setLocalProfileImage(reader.result as string);
-
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            setLocalProfileImage('');
-        }
-    }
     const handleMouseDownRepeatActualPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowActualShowPassword(true);
@@ -199,6 +191,15 @@ export const EditProfile: React.FC<EditProfileProps> = ({
             // Możesz dodać tu dodatkowe akcje, np. wyświetlenie komunikatu o powodzeniu
         }
     };
+
+    const handleUpdateFirstName = async () => {
+        console.log(localName);
+        console.log(localId);
+        if (localName && localId) {
+            console.log(localId);
+            await updateFirstName(localId, localName);
+        }
+    }
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -529,15 +530,15 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={userName}
-                            onChange={handleEmailChange}
+                            value={localName}
+                            onChange={handleNameChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
 
                         <CustomButton
                             label={"Zapisz nazwę"}
                             // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
+                            onClick={handleUpdateFirstName}
                         />
 
                         <EditLine/>
