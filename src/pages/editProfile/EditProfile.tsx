@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
@@ -27,27 +27,26 @@ import {
 import {
     EditLine,
     FormContainer,
-    InputContainer,
-    InputField,
-    InputLabel,
-    ProfileImage,
-    ProfileImageContainer, ProfilePageWelcome,
-    SubmitButton,
-    UploadButton
+    ProfilePageWelcome,
+    ProfileImageContainer,
 } from "./EditProfile.styles";
-import CustomButton from "../../components/button/Button";
+
 import {
-    HiddenStyledTextField,
-    StyledHandIcon,
+    WelcomeText,
     StyledTextField,
+    HiddenStyledTextField,
     TogglePasswordVisibility,
-    Welcome,
-    WelcomeText
 } from "../../components/drawer/Drawer.styles";
-import InputAdornment from "@mui/material/InputAdornment";
+
+
 import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { UserContext } from "../../context/UserContexts";
+import InputAdornment from "@mui/material/InputAdornment";
+import CustomButton from "../../components/button/Button";
 import LinkButton from "../../components/button/LinkButton";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
+
 
 
 type EditProfileProps = {
@@ -55,6 +54,7 @@ type EditProfileProps = {
     onClose: () => void;
     onLogoutClick: () => void;
     openLeftProfileDrawer: () => void;
+    updateUserEmail: (userId: number, newEmail: string) => Promise<void>;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -68,6 +68,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         onClose,
                         onLogoutClick,
                         openLeftProfileDrawer,
+                        updateUserEmail,
                         userId,
                         userName,
                         userSurname,
@@ -76,48 +77,49 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         userRole
                     }) => {
 
-
-    console.log(userEmail);
-
     const [showActualPassword, setShowActualShowPassword] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
-    const [localProfileImage, setLocalProfileImage] = useState(''); // domyślny URL zdjęcia profilowego
-    const [localEmail, setLocalEmail] = useState('');
-    const [localPassword, setLocalPassword] = useState('');
+    const [localProfileImage, setLocalProfileImage] = useState('');
+    const [localEmail, setLocalEmail] = useState(userEmail || '');
+    const [localPassword, setLocalPassword] = useState<string>(userPassword || "");
     const [localRepeatPassword, setLocalRepeatPassword] = useState('');
     const [localName, setLocalName] = useState('');
+    const [localId, setLocalId] = useState<number>(userId || 0);
     const [localSurname, setLocalSurname] = useState('');
     const [localAddress, setLocalAddress] = useState('');
+
+
+    // update user
+
+    const [newEmail, setNewEmail] = useState<string>("");
+
+    // translator
     const { t } = useTranslation();
 
     function handleIconClick() {
         openLeftProfileDrawer();
     }
-
     function handleLogout() {
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
     }
-
-
-
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocalEmail(e.target.value);
-    }
+    const handleNewEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewEmail(e.target.value);
+    };
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setLocalEmail(event.target.value);
+    };
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalPassword(e.target.value);
     }
-
     const onShowActualPassword = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         // setActualShowPassword(event.target.value);
     };
-
     const onPasswordChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setLocalPassword(event.target.value);
     };
-
     const onRepeatPasswordChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setLocalRepeatPassword(e.target.value);
     }
@@ -125,15 +127,12 @@ export const EditProfile: React.FC<EditProfileProps> = ({
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalName(e.target.value);
     }
-
     const handleSurnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalSurname(e.target.value);
     }
-
     const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalAddress(e.target.value);
     }
-
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
         const reader = new FileReader();
@@ -149,17 +148,14 @@ export const EditProfile: React.FC<EditProfileProps> = ({
             setLocalProfileImage('');
         }
     }
-
     const handleMouseDownRepeatActualPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowActualShowPassword(true);
     };
-
     const handleMouseUpRepeatActualPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowActualShowPassword(false);
     };
-
     const handleMouseDownPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowPassword(true);
@@ -168,15 +164,20 @@ export const EditProfile: React.FC<EditProfileProps> = ({
         event.preventDefault();
         setShowPassword(false);
     };
-
     const handleMouseDownRepeatPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowRepeatPassword(true);
     };
-
     const handleMouseUpRepeatPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowRepeatPassword(false);
+    };
+
+    const handleUpdateEmail = async () => {
+        if (localPassword && localEmail && localId) {
+            await updateUserEmail(localId, localEmail);
+            // Możesz dodać tu dodatkowe akcje, np. wyświetlenie komunikatu o powodzeniu
+        }
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -192,6 +193,8 @@ export const EditProfile: React.FC<EditProfileProps> = ({
             localProfileImage
         });
     }
+
+
 
 // ...
 
@@ -221,7 +224,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                     </ProfileWelcome>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom>
-                            Number klienta {userId}
+                            Numer klienta {userId}
                         </UserData>
                     </ProfileWelcome>
                 </UserDataContainer>
@@ -319,8 +322,6 @@ export const EditProfile: React.FC<EditProfileProps> = ({
 
             </MyProfileLeftContainer>
 
-
-
             <Container>
                 <MenuWrapper>
                     <WrapperMenuButton
@@ -383,8 +384,8 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             fullWidth
                             margin="normal"
                             type={showPassword ? 'text' : 'password'}
-                            value={userPassword}
-                            onChange={(e) => onShowActualPassword(e)}
+                            value={localPassword}
+                            onChange={handlePasswordChange}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
@@ -408,7 +409,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            value={userEmail}
+                            value={localEmail}
                             onChange={handleEmailChange}
                             // onChange={(e) => onEmailChange(e)}
                         />
@@ -416,7 +417,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         <CustomButton
                             label={"Zapisz e-mail"}
                             // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
+                            onClick={handleUpdateEmail}
                         />
 
                         <EditLine/>

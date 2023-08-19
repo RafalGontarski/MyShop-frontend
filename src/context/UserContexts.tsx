@@ -13,15 +13,35 @@ import jwt_decode from "jwt-decode";
 const defaultSettings: UserContextType = {
     currentUser: null,
     userModifier: (user: User | null) => {},
+    updateUserEmail: async (userId: number, email: string) => {},
 };
 
 export const UserContext =
     createContext<UserContextType>(defaultSettings);
 
+
+
 export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
     const { pagesModifier } = useContext(NavbarContext);
     const navigate = useNavigate();
+
+
+    const updateUserEmail = async (userId: number, newEmail: string) => {
+        try {
+            // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
+            await UserApi.updateUserEmail(userId, newEmail);
+            console.log('UserContext test');
+        } catch (error) {
+            console.error("Błąd podczas aktualizacji e-maila:", error);
+            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+        }
+    };
+
+
+
+
+
 
     const userModifier = (user: User | null) => {
         setCurrentUser(user);
@@ -59,7 +79,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     }, [fetchUser, currentUser,pagesModifier,navigate]);
 
     return (
-        <UserContext.Provider value={{ currentUser, userModifier }}>
+        <UserContext.Provider value={{ currentUser, userModifier, updateUserEmail }}>
             {children}
         </UserContext.Provider>
     );

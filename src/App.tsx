@@ -14,10 +14,10 @@ import {Employee} from "./pages/employee/Employee";
 import {Categories} from "./pages/categories/Categories";
 import {Graphics} from "./pages/graphic/Graphic";
 import {Address} from "./pages/adress/Address";
+import {UserApi} from "./api/UserApi";
 
 
-const UserContext =
-    createContext<{
+const UserContext = createContext<{
     isLoggedIn: boolean,
     handleLogin: (
         userId: number,
@@ -25,8 +25,13 @@ const UserContext =
         userSurname: string,
         userEmail: string,
         userPassword: string,
-        userRole: string[]) => void;
-    } | undefined>(undefined);
+        userRole: string[]
+    ) => void,
+    updateUserEmail: (userId: number, newEmail: string) => Promise<void>;
+} | undefined>(undefined);
+
+
+
 
 const App = () => {
 
@@ -96,6 +101,27 @@ const App = () => {
     function openLeftProfileDrawer(){
         setIsLeftProfileDrawerOpen(true);
     }
+
+    const updateUserEmail = async (userId: number, newEmail: string) => {
+        try {
+            // Sprawdzamy, czy userId istnieje
+            if (!userId) {
+                throw new Error("User ID is missing");
+            }
+            // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
+            await UserApi.updateUserEmail(userId, newEmail);
+            console.log('Email updated successfully');
+
+            // Aktualizujemy stan lokalny po pomyślnej aktualizacji
+            setUserEmail(newEmail);
+        } catch (error) {
+            console.error("Błąd podczas aktualizacji e-maila:", error);
+            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+        }
+    }
+
+
+
     function handleLogout() {
         setIsLoggedIn(false);
         setIsProfileDrawerOpen(false);
@@ -106,7 +132,7 @@ const App = () => {
 
 
     return (
-        <UserContext.Provider value={{ isLoggedIn, handleLogin }}>
+        <UserContext.Provider value={{ isLoggedIn, handleLogin, updateUserEmail }}>
             <Navbar
                 isLoggedIn={isLoggedIn}
                 onLogin={handleLogin}
@@ -139,6 +165,7 @@ const App = () => {
                             onClose={() => setIsProfileDrawerOpen(false)}
                             onLogoutClick={handleLogout}
                             openLeftProfileDrawer={openLeftProfileDrawer}
+                            updateUserEmail={updateUserEmail}
                             userId={userId}
                             userName={userName}
                             userSurname={userSurname}
