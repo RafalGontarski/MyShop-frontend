@@ -86,7 +86,7 @@ export const Categories: React.FC<EditCategoriesProps> = ({
                     </ProfileWelcome>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom>
-                            Number klienta {userId}
+                            Numer klienta {userId}
                         </UserData>
                     </ProfileWelcome>
                 </UserDataContainer>

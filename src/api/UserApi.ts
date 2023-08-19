@@ -12,6 +12,9 @@ export class UserApi {
     static updateUserEmail = async (userId: number, newEmail: string) =>
         await axios.patch(`${BaseUrl}/api/users/${userId}/email`, { email: newEmail });
 
+    static updatePassword = async (userId: number, newPassword: string) =>
+        await axios.patch(`${BaseUrl}/api/users/${userId}/password`, {password: newPassword});
+
     static updateAddress = async (userId: number, addressRequest: AddressUpdateRequest) =>
         await authorizedApi.patch(`${BaseUrl}/api/users/${userId}/address`, addressRequest);
 

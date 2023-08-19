@@ -35,6 +35,7 @@ export const IconClose = styled(Box)`
 `
 export const StyledIconClose = styled(CloseIcon)`
   && {
+    margin: 1rem;
     font-size: 30px;
     font-weight: bold;
   }

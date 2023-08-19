@@ -159,6 +159,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
     return (
         <Drawer anchor={'right'} open={open} onClose={onClose}>
             <MainContainer role="presentation">
+
                 <IconClose>
                     <ButtonClose
                         onClick={onClose}
@@ -167,6 +168,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                         <StyledIconClose/>
                     </ButtonClose>
                 </IconClose>
+
                 <LoginFormContainer>
 
                     <Welcome>

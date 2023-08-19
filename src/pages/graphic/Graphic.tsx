@@ -88,7 +88,7 @@ export const Graphics: React.FC<GraphicProps> = ({
                     </ProfileWelcome>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom>
-                            Number klienta {userId}
+                            Numer klienta {userId}
                         </UserData>
                     </ProfileWelcome>
                 </UserDataContainer>

@@ -88,7 +88,7 @@ export const Employee: React.FC<EditEmployeeProps> = ({
                     </ProfileWelcome>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom>
-                            Number klienta {userId}
+                            Numer klienta {userId}
                         </UserData>
                     </ProfileWelcome>
                 </UserDataContainer>

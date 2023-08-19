@@ -55,6 +55,7 @@ type EditProfileProps = {
     onLogoutClick: () => void;
     openLeftProfileDrawer: () => void;
     updateUserEmail: (userId: number, newEmail: string) => Promise<void>;
+    updatePassword: (userId: number, newPassword: string) => Promise<void>;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -69,6 +70,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         onLogoutClick,
                         openLeftProfileDrawer,
                         updateUserEmail,
+                        updatePassword,
                         userId,
                         userName,
                         userSurname,
@@ -79,6 +81,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
 
     const [showActualPassword, setShowActualShowPassword] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
+    const [showNewPassword, setShowNewPassword] = React.useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = React.useState(false);
     const [localProfileImage, setLocalProfileImage] = useState('');
     const [localEmail, setLocalEmail] = useState(userEmail || '');
@@ -164,6 +167,15 @@ export const EditProfile: React.FC<EditProfileProps> = ({
         event.preventDefault();
         setShowPassword(false);
     };
+
+    const handleMouseDownNewPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowNewPassword(true);
+    };
+    const handleMouseUpNewPassword = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setShowNewPassword(false);
+    };
     const handleMouseDownRepeatPassword = (event: React.MouseEvent) => {
         event.preventDefault();
         setShowRepeatPassword(true);
@@ -176,9 +188,18 @@ export const EditProfile: React.FC<EditProfileProps> = ({
     const handleUpdateEmail = async () => {
         if (localPassword && localEmail && localId) {
             await updateUserEmail(localId, localEmail);
+            // await updatePassword(localId, localPassword);
             // Możesz dodać tu dodatkowe akcje, np. wyświetlenie komunikatu o powodzeniu
         }
     };
+
+    const handleUpdatePassword = async () => {
+        if (localPassword && localId) {
+            await updatePassword(localId, localPassword);
+            // Możesz dodać tu dodatkowe akcje, np. wyświetlenie komunikatu o powodzeniu
+        }
+    };
+
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -342,30 +363,6 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                 <FormContainer onSubmit={handleSubmit}>
 
                     <ProfileImageContainer>
-                        {/*<ProfilePageWelcome>*/}
-                        {/*    <WelcomeText variant="h4" gutterBottom>*/}
-                        {/*        Zmień zdjęcie profilowe*/}
-                        {/*    </WelcomeText>*/}
-                        {/*    <WelcomeText variant="subtitle1" gutterBottom>*/}
-                        {/*        Tutaj możesz zmienić zdjęcie profilowe*/}
-                        {/*    </WelcomeText>*/}
-                        {/*    /!*<StyledHandIcon/>*!/*/}
-                        {/*</ProfilePageWelcome>*/}
-
-                        {/*<ProfileImage src={localProfileImage} alt="Zdjęcie profilowe" />*/}
-                        {/*<input type="file" id="profileImage" onChange={handleImageChange} style={{ display: 'none' }} />*/}
-                        {/*<label htmlFor="profileImage">*/}
-                        {/*    <UploadButton as="span">Zmień zdjęcie</UploadButton>*/}
-                        {/*</label>*/}
-
-
-                        {/*<CustomButton*/}
-                        {/*    label={"Zapisz zdjęcie"}*/}
-                        {/*    // disabled={!isEmailValid || !isPasswordValid}*/}
-                        {/*    // onClick={combinedHandleLogin}*/}
-                        {/*/>*/}
-
-                        {/*<EditLine/>*/}
 
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
@@ -384,7 +381,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             fullWidth
                             margin="normal"
                             type={showPassword ? 'text' : 'password'}
-                            value={localPassword}
+                            value={userPassword}
                             onChange={handlePasswordChange}
                             InputProps={{
                                 endAdornment: (
@@ -464,18 +461,18 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             variant="outlined"
                             fullWidth
                             margin="normal"
-                            type={showPassword ? 'text' : 'password'}
+                            type={showNewPassword ? 'text' : 'password'}
                             onChange={(e) => onPasswordChange(e)}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
                                         <TogglePasswordVisibility
                                             aria-label="toggle password visibility"
-                                            onMouseDown={handleMouseDownPassword} // Pokaż hasło
-                                            onMouseUp={handleMouseUpPassword} // Ukryj hasło
+                                            onMouseDown={handleMouseDownNewPassword} // Pokaż hasło
+                                            onMouseUp={handleMouseUpNewPassword} // Ukryj hasło
                                             disableRipple
                                         >
-                                            {showPassword ? <Visibility/> : <VisibilityOff/>}
+                                            {showNewPassword ? <Visibility/> : <VisibilityOff/>}
                                         </TogglePasswordVisibility>
                                     </InputAdornment>
 
@@ -511,7 +508,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                         <CustomButton
                             label={"Zapisz hasło"}
                             // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
+                            onClick={handleUpdatePassword}
                         />
 
                         <EditLine/>

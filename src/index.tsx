@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
 import {BrowserRouter} from "react-router-dom";
-import {UserContextProvider} from "./context/UserContexts";
 
 
 const root = ReactDOM.createRoot(
@@ -14,9 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-          <UserContextProvider>
               <App />
-          </UserContextProvider>
           {/*<Footer />*/}
       </BrowserRouter>
   </React.StrictMode>
