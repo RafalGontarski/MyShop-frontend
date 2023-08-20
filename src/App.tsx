@@ -15,6 +15,7 @@ import {Categories} from "./pages/categories/Categories";
 import {Graphics} from "./pages/graphic/Graphic";
 import {Address} from "./pages/adress/Address";
 import {UserApi} from "./api/UserApi";
+import {AddressBookUpdateRequest} from "./models/api/AddressBookUpdateRequest";
 
 
 const UserContext = createContext<{
@@ -34,6 +35,15 @@ const UserContext = createContext<{
     updateUserEmail: (userId: number, newEmail: string) => Promise<void>;
     updatePassword: (userId: number, newPassword: string) => Promise<void>;
     updateFirstName: (userId: number, newFirstName: string) => Promise<void>;
+    updateAddressBook: (
+        userId: number,
+        newFirstName: string,
+        newLastName: string,
+        newAddress: string,
+        newPostalCode: string,
+        newCity: string,
+        newCountry: string
+    ) => Promise<void>;
 } | undefined>(undefined);
 
 
@@ -178,6 +188,44 @@ const App = () => {
         }
     }
 
+    const updateAddressBook = async (
+        userId: number,
+        newFirstName: string,
+        newLastName: string,
+        newAddress: string,
+        newPostalCode: string,
+        newCity: string,
+        newCountry: string)=> {
+        try {
+            if (!userId) {
+                throw new Error("User ID is missing");
+            }
+            await UserApi
+                .updateAddressBook(
+                    userId,
+                    newFirstName,
+                    newLastName,
+                    newAddress,
+                    newPostalCode,
+                    newCity,
+                    newCountry
+                );
+            console.log('Address updated successfully');
+            setUserName(newFirstName);
+            setUserSurname(newLastName);
+            setUserAddress(newAddress);
+            setUserPostalCode(newPostalCode);
+            setUserCity(newCity);
+            setUserCountry(newCountry);
+
+
+        }
+        catch (error) {
+            console.error("Błąd podczas aktualizacji książki adresowej:", error);
+            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+        }
+    }
+
 
 
     function handleLogout() {
@@ -196,7 +244,8 @@ const App = () => {
                 handleLogin,
                 updateUserEmail,
                 updatePassword,
-                updateFirstName
+                updateFirstName,
+                updateAddressBook
             }}>
                 <Navbar
                     isLoggedIn={isLoggedIn}
@@ -218,6 +267,7 @@ const App = () => {
                                onClose={() => setIsProfileDrawerOpen(false)}
                                onLogoutClick={handleLogout}
                                openLeftProfileDrawer={openLeftProfileDrawer}
+                               updateAddressBook={updateAddressBook}
                                userId={userId}
                                userName={userName}
                                userSurname={userSurname}

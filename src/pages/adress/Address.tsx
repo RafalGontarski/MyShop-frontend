@@ -49,6 +49,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CountrySelector from "../../components/selectors/CountrySelect";
+import {AddressBookUpdateRequest} from "../../models/api/AddressBookUpdateRequest";
 
 
 type AddressProps = {
@@ -56,6 +57,15 @@ type AddressProps = {
     onClose: () => void;
     onLogoutClick: () => void;
     openLeftProfileDrawer: () => void;
+    updateAddressBook: (
+        userId: number,
+        newFirstName: string,
+        newLastName: string,
+        newAddress: string,
+        newPostalCode: string,
+        newCity: string,
+        newCountry: string
+    ) => Promise<void>;
     userId: number | null;
     userName: string | null;
     userSurname: string | null;
@@ -72,6 +82,7 @@ export const Address: React.FC<AddressProps> = ({
                         onClose,
                         onLogoutClick,
                         openLeftProfileDrawer,
+                        updateAddressBook,
                         userId,
                         userName,
                         userSurname,
@@ -84,12 +95,14 @@ export const Address: React.FC<AddressProps> = ({
                     }) => {
 
 
+
+    const [localId, setLocalId] = useState<number>(userId || 0);
     const [localFirstName, setLocalFirstName] = useState(userName || '');
     const [localLastName, setLocalLastName] = useState(userSurname || '');
     const [localAddress, setLocalAddress] = useState(userAddress || '');
     const [localPostalCode, setLocalPostalCode] = useState(userPostalCode || '');
     const [localCity, setLocalCity] = useState(userCity || '');
-    const [locatlCountry, setLocalCountry] = useState(userCountry || '');
+    const [localCountry, setLocalCountry] = useState(userCountry || '');
     const { t } = useTranslation();
 
     function handleIconClick() {
@@ -129,6 +142,25 @@ export const Address: React.FC<AddressProps> = ({
     }
 
 
+    const handleUpdateAddressBook = async () => {
+        if (localId &&
+            localFirstName &&
+            localLastName &&
+            localAddress &&
+            localPostalCode &&
+            localCity &&
+            localCountry) {
+
+            await updateAddressBook(
+                localId,
+                localFirstName,
+                localLastName,
+                localAddress,
+                localPostalCode,
+                localCity,
+                localCountry);
+        }
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -362,7 +394,7 @@ export const Address: React.FC<AddressProps> = ({
                         <CustomButton
                             label={"Zapisz"}
                             // disabled={!isEmailValid || !isPasswordValid}
-                            // onClick={combinedHandleLogin}
+                            onClick={handleUpdateAddressBook}
                         />
 
                     </ProfileImageContainer>

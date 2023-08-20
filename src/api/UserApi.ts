@@ -3,7 +3,7 @@ import {UserRegistrationData} from "../models/api/UserRegistrationData";
 import {BaseUrl} from '../constants/constants';
 import {UserResponse} from "../models/api/UserResponse";
 import {authorizedApi} from "../hooks/withAxiosIntercepted";
-import {AddressUpdateRequest} from "../models/api/AddressUpdateRequest";
+import {AddressBookUpdateRequest} from "../models/api/AddressBookUpdateRequest";
 export class UserApi {
     static registerUser = async (request: UserRegistrationData) =>
         await axios.post(`${BaseUrl}/api/auth/register`, request);
@@ -15,8 +15,23 @@ export class UserApi {
     static updatePassword = async (userId: number, newPassword: string) =>
         await axios.patch(`${BaseUrl}/api/users/${userId}/password`, {password: newPassword});
 
-    static updateAddress = async (userId: number, addressRequest: AddressUpdateRequest) =>
-        await authorizedApi.patch(`${BaseUrl}/api/users/${userId}/address`, addressRequest);
+    static updateAddressBook = async (
+        userId: number,
+        newFirstName: string,
+        newLastName: string,
+        newAddress: string,
+        newPostalCode: string,
+        newCity: string,
+        newCountry: string) =>
+        await axios.patch(`${BaseUrl}/api/users/${userId}/address-book`,
+            {
+                firstName: newFirstName,
+                lastName: newLastName,
+                address: newAddress,
+                postalCode: newPostalCode,
+                city: newCity,
+                country: newCountry
+            });
 
     static updateFirstName = async (userId: number, newFirstName: string) =>
         await axios.patch(`${BaseUrl}/api/users/${userId}/firstName`, { firstName: newFirstName });

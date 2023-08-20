@@ -1,4 +1,4 @@
-export type AddressUpdateRequest = {
+export type AddressBookUpdateRequest = {
     firstName: string,
     lastName: string,
     address: string,
