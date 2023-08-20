@@ -188,20 +188,21 @@ export const Employee: React.FC<EditEmployeeProps> = ({
 
             </MyProfileLeftContainer>
 
-            <MenuWrapper>
-                <WrapperMenuButton
-                    edge="start"
-                    aria-label="menu"
-                    onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                    onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
-                    disableRipple
-                    onClick={handleIconClick}
-                >
-                    <StyledMenuIcon />
-                </WrapperMenuButton>
-            </MenuWrapper>
+
 
             <Container>
+                <MenuWrapper>
+                    <WrapperMenuButton
+                        edge="start"
+                        aria-label="menu"
+                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
+                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        disableRipple
+                        onClick={handleIconClick}
+                    >
+                        <StyledMenuIcon />
+                    </WrapperMenuButton>
+                </MenuWrapper>
                 <TitleContainer>
                     <Title>Pracownicy</Title>
                 </TitleContainer>

@@ -16,6 +16,9 @@ import {Graphics} from "./pages/graphic/Graphic";
 import {Address} from "./pages/adress/Address";
 import {UserApi} from "./api/UserApi";
 import {AddressBookUpdateRequest} from "./models/api/AddressBookUpdateRequest";
+import {CategoryNavbar} from "./components/categoryNavbar/CategoryNavbar";
+import { CategoryContext } from './context/CategoryContexts';
+import CategoryType from "./models/CategoryType";
 
 
 const UserContext = createContext<{
@@ -66,6 +69,9 @@ const App = () => {
     const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false);
     const [isLeftProfileDrawerOpen, setIsLeftProfileDrawerOpen] = useState(false);
     const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
+
+    // categories
+    const [categories, setCategories] = useState<CategoryType[]>([]);
 
     function handleLogin(
         userIdFromServer: number,
@@ -151,6 +157,10 @@ const App = () => {
             // Możesz również wyświetlić komunikat o błędzie dla użytkownika
         }
     }
+
+    const addCategory = (category: CategoryType) => {
+        setCategories(prevCategories => [...prevCategories, category]);
+    };
 
     const updatePassword = async (userId: number, newPassword: string) => {
         try {
@@ -247,116 +257,106 @@ const App = () => {
                 updateFirstName,
                 updateAddressBook
             }}>
-                <Navbar
-                    isLoggedIn={isLoggedIn}
-                    onLogin={handleLogin}
-                    onLogout={handleLogout}
-                    openProfileDrawer={openProfileDrawer}
-                    openLoginDrawer={openLoginDrawer}
-                    setIsLoggedIn={setIsLoggedIn}
-                    setIsProfileDrawerOpen={setIsProfileDrawerOpen}
+                <CategoryContext.Provider value={{ categories, addCategory, setCategories }}>
+                    <Navbar
+                        isLoggedIn={isLoggedIn}
+                        onLogin={handleLogin}
+                        onLogout={handleLogout}
+                        openProfileDrawer={openProfileDrawer}
+                        openLoginDrawer={openLoginDrawer}
+                        setIsLoggedIn={setIsLoggedIn}
+                        setIsProfileDrawerOpen={setIsProfileDrawerOpen}
                     />
+                    <CategoryNavbar />
 
-                <Routes>
-                    <Route path="/" element={<MainPage
-                                userName={userName}
-                    />} />
-                    <Route path="/address-book"
-                           element={<Address
-                               open={isProfileDrawerOpen}
-                               onClose={() => setIsProfileDrawerOpen(false)}
-                               onLogoutClick={handleLogout}
-                               openLeftProfileDrawer={openLeftProfileDrawer}
-                               updateAddressBook={updateAddressBook}
-                               userId={userId}
-                               userName={userName}
-                               userSurname={userSurname}
-                               userAddress={userAddress}
-                               userPostalCode={userPostalCode}
-                               userCity={userCity}
-                               userCountry={userCountry}
-                               userEmail={userEmail}
-                               userRole={userRole}
-                           />} />
-                    <Route path="/edit-profile"
-                           element={<EditProfile
-                                open={isProfileDrawerOpen}
-                                onClose={() => setIsProfileDrawerOpen(false)}
-                                onLogoutClick={handleLogout}
-                                openLeftProfileDrawer={openLeftProfileDrawer}
-                                updateUserEmail={updateUserEmail}
-                                updatePassword={updatePassword}
-                                updateFirstName={updateFirstName}
-                                userId={userId}
-                                userName={userName}
-                                userSurname={userSurname}
-                                userEmail={userEmail}
-                                userPassword={userPassword}
-                                userRole={userRole}
-                    />} />
-                    <Route path="/product-center" element={<Product
-                                open={isProfileDrawerOpen}
-                                onClose={() => setIsProfileDrawerOpen(false)}
-                                onLogoutClick={handleLogout}
-                                openLeftProfileDrawer={openLeftProfileDrawer}
-                                userId={userId}
-                                userName={userName}
-                                userSurname={userSurname}
-                                userEmail={userEmail}
-                                userRole={userRole}
-                    />} />
-                    <Route path="/employee-center" element={<Employee
-                                open={isProfileDrawerOpen}
-                                onClose={() => setIsProfileDrawerOpen(false)}
-                                onLogoutClick={handleLogout}
-                                openLeftProfileDrawer={openLeftProfileDrawer}
-                                userId={userId}
-                                userName={userName}
-                                userSurname={userSurname}
-                                userEmail={userEmail}
-                                userRole={userRole}
-                    />} />
-                    <Route path="/categories-center" element={<Categories
-                                open={isProfileDrawerOpen}
-                                onClose={() => setIsProfileDrawerOpen(false)}
-                                onLogoutClick={handleLogout}
-                                openLeftProfileDrawer={openLeftProfileDrawer}
-                                userId={userId}
-                                userName={userName}
-                                userSurname={userSurname}
-                                userEmail={userEmail}
-                                userRole={userRole}
-                    />} />
-                    <Route path="/graphic" element={<Graphics
-                                open={isProfileDrawerOpen}
-                                onClose={() => setIsProfileDrawerOpen(false)}
-                                onLogoutClick={handleLogout}
-                                openLeftProfileDrawer={openLeftProfileDrawer}
-                                userId={userId}
-                                userName={userName}
-                                userSurname={userSurname}
-                                userEmail={userEmail}
-                                userRole={userRole}
-                    />} />
-                </Routes>
+                    <Routes>
+                        <Route path="/" element={<MainPage
+                                    userName={userName}
+                        />} />
+                        <Route path="/address-book"
+                               element={<Address
+                                   open={isProfileDrawerOpen}
+                                   onClose={() => setIsProfileDrawerOpen(false)}
+                                   onLogoutClick={handleLogout}
+                                   openLeftProfileDrawer={openLeftProfileDrawer}
+                                   updateAddressBook={updateAddressBook}
+                                   userId={userId}
+                                   userName={userName}
+                                   userSurname={userSurname}
+                                   userAddress={userAddress}
+                                   userPostalCode={userPostalCode}
+                                   userCity={userCity}
+                                   userCountry={userCountry}
+                                   userEmail={userEmail}
+                                   userRole={userRole}
+                               />} />
+                        <Route path="/edit-profile"
+                               element={<EditProfile
+                                    open={isProfileDrawerOpen}
+                                    onClose={() => setIsProfileDrawerOpen(false)}
+                                    onLogoutClick={handleLogout}
+                                    openLeftProfileDrawer={openLeftProfileDrawer}
+                                    updateUserEmail={updateUserEmail}
+                                    updatePassword={updatePassword}
+                                    updateFirstName={updateFirstName}
+                                    userId={userId}
+                                    userName={userName}
+                                    userSurname={userSurname}
+                                    userEmail={userEmail}
+                                    userPassword={userPassword}
+                                    userRole={userRole}
+                        />} />
+                        <Route path="/product-center" element={<Product
+                                    open={isProfileDrawerOpen}
+                                    onClose={() => setIsProfileDrawerOpen(false)}
+                                    onLogoutClick={handleLogout}
+                                    openLeftProfileDrawer={openLeftProfileDrawer}
+                                    userId={userId}
+                                    userName={userName}
+                                    userSurname={userSurname}
+                                    userEmail={userEmail}
+                                    userRole={userRole}
+                        />} />
+                        <Route path="/employee-center" element={<Employee
+                                    open={isProfileDrawerOpen}
+                                    onClose={() => setIsProfileDrawerOpen(false)}
+                                    onLogoutClick={handleLogout}
+                                    openLeftProfileDrawer={openLeftProfileDrawer}
+                                    userId={userId}
+                                    userName={userName}
+                                    userSurname={userSurname}
+                                    userEmail={userEmail}
+                                    userRole={userRole}
+                        />} />
+                        <Route path="/categories-center" element={<Categories
+                                    open={isProfileDrawerOpen}
+                                    onClose={() => setIsProfileDrawerOpen(false)}
+                                    onLogoutClick={handleLogout}
+                                    openLeftProfileDrawer={openLeftProfileDrawer}
+                                    userId={userId}
+                                    userName={userName}
+                                    userSurname={userSurname}
+                                    userEmail={userEmail}
+                                    userRole={userRole}
+                        />} />
+                        <Route path="/graphic" element={<Graphics
+                                    open={isProfileDrawerOpen}
+                                    onClose={() => setIsProfileDrawerOpen(false)}
+                                    onLogoutClick={handleLogout}
+                                    openLeftProfileDrawer={openLeftProfileDrawer}
+                                    userId={userId}
+                                    userName={userName}
+                                    userSurname={userSurname}
+                                    userEmail={userEmail}
+                                    userRole={userRole}
+                        />} />
+                    </Routes>
 
-                {isLoginDrawerOpen &&
-                    <LoginDrawer
-                        open={isLoginDrawerOpen}
-                        onClose={() => setIsLoginDrawerOpen(false)}
-                        handleLogin={(
-                            userIdFromServer,
-                            userNameFromServer,
-                            userSurnameFromServer,
-                            userAddressFromServer,
-                            userPostalCodeFromServer,
-                            userCityFromServer,
-                            userCountryFromServer,
-                            userEmailFromServer,
-                            userPasswordFromServer,
-                            userRoleFromServer
-                        ) => {
-                            handleLogin(
+                    {isLoginDrawerOpen &&
+                        <LoginDrawer
+                            open={isLoginDrawerOpen}
+                            onClose={() => setIsLoginDrawerOpen(false)}
+                            handleLogin={(
                                 userIdFromServer,
                                 userNameFromServer,
                                 userSurnameFromServer,
@@ -366,45 +366,58 @@ const App = () => {
                                 userCountryFromServer,
                                 userEmailFromServer,
                                 userPasswordFromServer,
-                                userRoleFromServer);
-                        }}
-                        onRegisterClick={() => {
-                            setIsLoginDrawerOpen(false);
-                            setIsRegistrationDrawerOpen(true);
-                        }}
-                    />}
-                {isProfileDrawerOpen &&
-                    <ProfileDrawer
-                        open={isProfileDrawerOpen}
-                        onClose={() => setIsProfileDrawerOpen(false)}
-                        onLogoutClick={handleLogout}
-                        userId={userId}
-                        userName={userName}
-                        userSurname={userSurname}
-                        userEmail={userEmail}
-                        userRole={userRole}
-                    />}
-                {isRegistrationDrawerOpen &&
-                    <RegistrationDrawer
-                        open={isRegistrationDrawerOpen}
-                        onClose={() => setIsRegistrationDrawerOpen(false)}
-                        onLoginClick={() => {
-                            setIsLoginDrawerOpen(true);
-                            setIsRegistrationDrawerOpen(false);
-                        }}
-                    />}
-                {isLeftProfileDrawerOpen &&
-                    <LeftProfileDrawer
-                        open={isLeftProfileDrawerOpen}
-                        onClose={() => setIsLeftProfileDrawerOpen(false)}
-                        onLogoutClick={handleLogout}
-                        userId={userId}
-                        userName={userName}
-                        userSurname={userSurname}
-                        userEmail={userEmail}
-                        userRole={userRole}
+                                userRoleFromServer
+                            ) => {
+                                handleLogin(
+                                    userIdFromServer,
+                                    userNameFromServer,
+                                    userSurnameFromServer,
+                                    userAddressFromServer,
+                                    userPostalCodeFromServer,
+                                    userCityFromServer,
+                                    userCountryFromServer,
+                                    userEmailFromServer,
+                                    userPasswordFromServer,
+                                    userRoleFromServer);
+                            }}
+                            onRegisterClick={() => {
+                                setIsLoginDrawerOpen(false);
+                                setIsRegistrationDrawerOpen(true);
+                            }}
+                        />}
+                    {isProfileDrawerOpen &&
+                        <ProfileDrawer
+                            open={isProfileDrawerOpen}
+                            onClose={() => setIsProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
+                        />}
+                    {isRegistrationDrawerOpen &&
+                        <RegistrationDrawer
+                            open={isRegistrationDrawerOpen}
+                            onClose={() => setIsRegistrationDrawerOpen(false)}
+                            onLoginClick={() => {
+                                setIsLoginDrawerOpen(true);
+                                setIsRegistrationDrawerOpen(false);
+                            }}
+                        />}
+                    {isLeftProfileDrawerOpen &&
+                        <LeftProfileDrawer
+                            open={isLeftProfileDrawerOpen}
+                            onClose={() => setIsLeftProfileDrawerOpen(false)}
+                            onLogoutClick={handleLogout}
+                            userId={userId}
+                            userName={userName}
+                            userSurname={userSurname}
+                            userEmail={userEmail}
+                            userRole={userRole}
 
-                    />}
+                        />}
+                </CategoryContext.Provider>
             </UserContext.Provider>
     );
 }

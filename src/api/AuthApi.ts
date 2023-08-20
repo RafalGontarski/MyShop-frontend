@@ -1,6 +1,6 @@
 import axios from "axios";
-import {SignInRequest} from "../models/api/SignInRequest";
-import {SignInResponse} from "../models/api/SignInResponse";
+import {SignInRequest} from "../models/api/auth/SignInRequest";
+import {SignInResponse} from "../models/api/auth/SignInResponse";
 import {BaseUrl} from "../constants/constants";
 
 

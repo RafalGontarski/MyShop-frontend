@@ -122,6 +122,15 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
 
                         <ProfileDrawerLink
                             as={Link}
+                            to="/address-book"
+                            underline="none"
+                            onClick={onClose}
+                        >
+                            Książka adresowa
+                        </ProfileDrawerLink>
+
+                        <ProfileDrawerLink
+                            as={Link}
                             to="/edit-profile"
                             underline="none"
                             onClick={onClose}

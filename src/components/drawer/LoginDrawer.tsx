@@ -91,7 +91,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                 password: user.data.password,
                 roles: user.data.roles,
             });
-            console.log(user.data.password);
+            // console.log(user.data.password);
             localStorage.setItem(ACCESS_TOKEN, user.data.token);
             navigate("/");
             onClose();

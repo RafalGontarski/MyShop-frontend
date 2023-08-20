@@ -60,6 +60,35 @@ export const StyledLinkButton = styled(Button)`
   }
 `;
 
+export const StyledCategoryNavbarLinkButton = styled(Button)`
+  && {
+    //display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    //margin-top: 1rem;
+    background-color: #000;
+    padding: 0.4em 1em; // Dodaje elastyczny padding do przycisku
+    //height: 30px;
+    position: relative;
+    border-radius: 0.7rem;
+    text-decoration: none; // Usuwa podkreślenie linku
+    color: #fff; // Dziedziczy kolor tekstu z rodzica
+    display: inline-flex;
+    &:hover {
+      background-image: linear-gradient(to right, blue, green);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+`;
+
 export const GoogleStyledButton = styled(Button)`
   && {
     font-weight: initial;

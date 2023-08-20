@@ -40,7 +40,6 @@ import {
 
 
 import Visibility from "@mui/icons-material/Visibility";
-import { UserContext } from "../../context/UserContexts";
 import InputAdornment from "@mui/material/InputAdornment";
 import CustomButton from "../../components/button/Button";
 import LinkButton from "../../components/button/LinkButton";
@@ -549,7 +548,10 @@ export const EditProfile: React.FC<EditProfileProps> = ({
                             <WelcomeText variant="h4" gutterBottom>
                                 Zmień adres
                             </WelcomeText>
-                            <WelcomeText variant="subtitle1" gutterBottom>
+                            <WelcomeText
+                                variant="subtitle1"
+                                gutterBottom
+                            >
                                 Przejdź do książki adresowej
                             </WelcomeText>
                             {/*<StyledHandIcon/>*/}
