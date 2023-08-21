@@ -19,6 +19,13 @@ import {AddressBookUpdateRequest} from "./models/api/AddressBookUpdateRequest";
 import {CategoryNavbar} from "./components/categoryNavbar/CategoryNavbar";
 import { CategoryContext } from './context/CategoryContexts';
 import CategoryType from "./models/CategoryType";
+import Carousel from "./components/imageCarousel/ImageCarousel";
+
+import CarouselImg1 from './resources/carouselPng/carousel1.png';
+import CarouselImg2 from './resources/carouselPng/carousel2.png';
+import CarouselImg3 from './resources/carouselPng/carousel3.png';
+import CarouselImg4 from './resources/carouselPng/carousel4.png';
+import CarouselImg5 from './resources/carouselPng/carousel5.png';
 
 
 const UserContext = createContext<{
@@ -268,6 +275,7 @@ const App = () => {
                         setIsProfileDrawerOpen={setIsProfileDrawerOpen}
                     />
                     <CategoryNavbar />
+
 
                     <Routes>
                         <Route path="/" element={<MainPage
