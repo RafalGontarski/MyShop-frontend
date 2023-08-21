@@ -31,7 +31,10 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
     const offset = (window.innerWidth - 785) / 2;
 
     return (
-        <div style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
+        <div style={{
+            position: 'relative', overflow: 'hidden', width: '100%',
+            marginTop: '2rem'
+        }}>
             <div style={{ position: 'absolute', top: '50%', left: `calc(50% - 395px)`, zIndex: 1 }}>
                 <Button onClick={goLeft}>{"<"}</Button>
             </div>
