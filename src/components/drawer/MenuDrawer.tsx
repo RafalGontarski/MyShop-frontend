@@ -48,8 +48,10 @@ export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
 
                 <Box
                     display="flex"
+                    alignItems="center"
                     justifyContent="flex-start"
                     marginLeft={5}
+                    gap={3}
                 >
                     <MenuLink
                         href={"#"}
@@ -67,11 +69,6 @@ export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
                         onClick={undefined}/>
                 </Box>
                 <Box
-                    // display="flex"
-                    // flexDirection="column"  // Ustaw kierunek na "column"
-                    // justifyContent="flex-start"
-                    // marginLeft={5}
-                    // marginTop={4}  // Dodaj margines górny, aby przesunąć linki niżej
                     display="flex"
                     justifyContent="left"
                     alignItems="flex-start"

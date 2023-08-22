@@ -24,12 +24,12 @@ import {
     UserDataContainer,
     ProfileDrawerLink,
 } from "../../components/drawer/ProfileDrawer.styles";
-import {CategoryFormInput, CategoryTitleContainer, ValidateText} from "./Category.styles";
-import {FormContainer, ProfileImageContainer, ProfilePageWelcome} from "../adress/Adress.styles";
+import {CategoryFormInput, CategoryTitleContainer, ValidateText} from "./CategoryEditPanel.styles";
+import {FormContainer, ProfileImageContainer, ProfilePageWelcome} from "../bookAdressEditPanel/AdressBookEditPanel.styles";
 import {StyledTextField, WelcomeText} from "../../components/drawer/Drawer.styles";
 import CountrySelector from "../../components/selectors/CountrySelect";
 import CustomButton from "../../components/button/Button";
-import {EditLine} from "../editProfile/EditProfile.styles";
+import {EditLine} from "../profileEditPanel/ProfileEditPanel.styles";
 import CategoryType from "../../models/CategoryType";
 import {CategoryApi} from "../../api/CategoryApi";
 
@@ -46,7 +46,7 @@ type EditCategoriesProps = {
     userRole: string[] | null;
 };
 
-export const Categories: React.FC<EditCategoriesProps> = ({
+export const CategoriesEditPanel: React.FC<EditCategoriesProps> = ({
                                     open,
                                     onClose,
                                     onLogoutClick,
@@ -86,7 +86,7 @@ export const Categories: React.FC<EditCategoriesProps> = ({
         } catch (error) {
             console.error("Błąd podczas dodawania kategorii:", error);
         }
-        window.location.href = '/categories-center';
+        window.location.href = '/categoriesEditPanel-center';
     };
 
 

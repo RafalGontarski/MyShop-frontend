@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {MainPageContainer} from "./mainPage.styles";
-import CarouselImg1 from "../../resources/carouselPng/carousel1.png";
-import CarouselImg2 from "../../resources/carouselPng/carousel2.png";
-import CarouselImg3 from "../../resources/carouselPng/carousel3.png";
-import CarouselImg4 from "../../resources/carouselPng/carousel4.png";
-import CarouselImg5 from "../../resources/carouselPng/carousel5.png";
-import Carousel from "../../components/imageCarousel/ImageCarousel";
+import Carousel from "../../components/carousel/Carousel";
 import {CarouselImageApi} from "../../api/CarouselImageApi";
+import {DisplayCategoriesInMainPage} from "../../components/categories/DisplayCategoriesInMainPage";
+
+
+
 
 type MainPageProps = {
     userName: string | null;
@@ -37,6 +36,8 @@ const MainPage: React.FC<MainPageProps> = ({userName}) => {
             {userName && <h1>Witaj, {userName}!</h1>}
 
             <Carousel images={carouselImages} />
+            <DisplayCategoriesInMainPage />
+
         </MainPageContainer>
     );
 }

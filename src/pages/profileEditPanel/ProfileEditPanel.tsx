@@ -29,7 +29,7 @@ import {
     FormContainer,
     ProfilePageWelcome,
     ProfileImageContainer,
-} from "./EditProfile.styles";
+} from "./ProfileEditPanel.styles";
 
 import {
     WelcomeText,
@@ -64,7 +64,7 @@ type EditProfileProps = {
     userRole: string[] | null;
 };
 
-export const EditProfile: React.FC<EditProfileProps> = ({
+export const ProfileEditPanel: React.FC<EditProfileProps> = ({
                         open,
                         onClose,
                         onLogoutClick,

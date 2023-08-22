@@ -4,16 +4,20 @@ import {useTranslation} from "react-i18next";
 import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
 
 import {
+    Title,
     Container,
     MenuWrapper,
-    MyProfileCenterText,
+    TitleContainer,
+    WrapperMenuButton,
     MyProfileContainer,
-    MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
+    MyProfileCenterText,
+    MyProfileLeftContainer,
+
 } from "../myprofile.styles";
 
 import {
-    LineText,
     UserData,
+    LineText,
     ProfileLine,
     LineContainer,
     LinksContainer,
@@ -23,7 +27,7 @@ import {
 } from "../../components/drawer/ProfileDrawer.styles";
 
 
-type EditProductProps = {
+type EditEmployeeProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
@@ -35,7 +39,7 @@ type EditProductProps = {
     userRole: string[] | null;
 };
 
-export const Product: React.FC<EditProductProps> = ({
+export const EmployeeEditPanel: React.FC<EditEmployeeProps> = ({
                                 open,
                                 onClose,
                                 onLogoutClick,
@@ -200,7 +204,7 @@ export const Product: React.FC<EditProductProps> = ({
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <TitleContainer>
-                    <Title>Produkty</Title>
+                    <Title>Pracownicy</Title>
                 </TitleContainer>
             </Container>
 

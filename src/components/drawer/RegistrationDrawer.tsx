@@ -19,7 +19,7 @@ import Divider from "@mui/material/Divider";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import {IconClose, StyledIconClose} from "./Drawer.styles";
+import {IconClose, LinkCon, StyledIconClose} from "./Drawer.styles";
 
 type DrawerProps = {
     open: boolean;
@@ -612,10 +612,13 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                     }}>
                     {t('registrationDrawer.previousShoppingQuestion')}
                 </Typography>
+
+                <LinkCon>
                 <CustomLink
                     href={"#"}
                     label={t('registrationDrawer.login')}
                     onClick={onLoginClick}/>
+                </LinkCon>
             </Box>
         </Drawer>
     );

@@ -23,6 +23,7 @@ import GoogleLoginButton from '../button/GoogleLoginButton';
 import {
     Line,
     Welcome,
+    LinkCon,
     IconClose,
     RememberMe,
     WelcomeText,
@@ -33,7 +34,6 @@ import {
     StyledTextField,
     ValidationError,
     StyledIconClose,
-    ForgotPasswordCon,
     RememberMeCheckBox,
     LoginFormContainer,
     HiddenStyledTextField,
@@ -250,18 +250,35 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                     />
 
                 </LoginFormContainer>
-                <ForgotPasswordCon>
-                    <CustomLink href={"#"} label={t('loginDrawer.forgotPassword')} onClick={undefined}/>
-                </ForgotPasswordCon>
+
+                <LinkCon>
+                    <CustomLink
+                        href={"#"}
+                        label={t('loginDrawer.forgotPassword')}
+                        onClick={undefined}
+                    />
+                </LinkCon>
+
                 <Line/>
-                <RegisterLink variant="body1" gutterBottom>
+
+                <RegisterLink
+                    variant="body1"
+                    gutterBottom
+                >
                     {t('loginDrawer.newHere')}
                 </RegisterLink>
-                <CustomLink href={"#"} label={t('loginDrawer.register')}
-                            onClick={() => {
-                                onClose();  // zamknij LoginDrawer
-                                onRegisterClick();  // otwórz RegistrationDrawer
-                            }}/>
+
+                <LinkCon>
+                    <CustomLink
+                        href={"#"}
+                        label={t('loginDrawer.register')}
+                        onClick={() => {
+                            onClose();  // zamknij LoginDrawer
+                            onRegisterClick();  // otwórz RegistrationDrawer
+                        }}
+                    />
+                </LinkCon>
+
             </MainContainer>
             <Box>
                 {/*<GoogleLoginButton*/}

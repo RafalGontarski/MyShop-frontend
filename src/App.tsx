@@ -1,25 +1,28 @@
 import React, {createContext, useEffect, useState} from 'react';
+import {Route, Routes} from "react-router-dom";
+
 import Navbar from './components/navbar/Navbar';
 import {LoginDrawer} from "./components/drawer/LoginDrawer";
 import {ProfileDrawer} from "./components/drawer/ProfileDrawer";
-import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
+
 import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
 import {LeftProfileDrawer} from "./components/drawer/LeftProfileDrawer"
-import MainPage from "./pages/main/MainPage";
-import {Route, Routes} from "react-router-dom";
-import { Link } from 'react-router-dom';
-import {EditProfile} from "./pages/editProfile/EditProfile";
-import {Product} from "./pages/product/Product";
-import {Employee} from "./pages/employee/Employee";
-import {Categories} from "./pages/categories/Categories";
-import {Graphics} from "./pages/graphic/Graphic";
-import {Address} from "./pages/adress/Address";
+import MainPage from "./pages/mainPage/MainPage";
+
+import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
+
+import {ProfileEditPanel} from "./pages/profileEditPanel/ProfileEditPanel";
+import {ProductEditPanel} from "./pages/productEditPanel/ProductEditPanel";
+import {EmployeeEditPanel} from "./pages/employeeEditPanel/EmployeeEditPanel";
+import {CategoriesEditPanel} from "./pages/categoriesEditPanel/CategoriesEditPanel";
+import {Graphics} from "./pages/graphicEditPanel/GraphicEditPanel";
+import {AddressBookEditPanel} from "./pages/bookAdressEditPanel/AddressBookEditPanel";
 import {UserApi} from "./api/UserApi";
 import {AddressBookUpdateRequest} from "./models/api/AddressBookUpdateRequest";
 import {CategoryNavbar} from "./components/categoryNavbar/CategoryNavbar";
 import { CategoryContext } from './context/CategoryContexts';
 import CategoryType from "./models/CategoryType";
-import Carousel from "./components/imageCarousel/ImageCarousel";
+import Carousel from "./components/carousel/Carousel";
 
 import CarouselImg1 from './resources/carouselPng/carousel1.png';
 import CarouselImg2 from './resources/carouselPng/carousel2.png';
@@ -77,7 +80,7 @@ const App = () => {
     const [isLeftProfileDrawerOpen, setIsLeftProfileDrawerOpen] = useState(false);
     const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
 
-    // categories
+    // categoriesEditPanel
     const [categories, setCategories] = useState<CategoryType[]>([]);
 
     function handleLogin(
@@ -227,7 +230,7 @@ const App = () => {
                     newCity,
                     newCountry
                 );
-            console.log('Address updated successfully');
+            console.log('AddressBookEditPanel updated successfully');
             setUserName(newFirstName);
             setUserSurname(newLastName);
             setUserAddress(newAddress);
@@ -282,7 +285,7 @@ const App = () => {
                                     userName={userName}
                         />} />
                         <Route path="/address-book"
-                               element={<Address
+                               element={<AddressBookEditPanel
                                    open={isProfileDrawerOpen}
                                    onClose={() => setIsProfileDrawerOpen(false)}
                                    onLogoutClick={handleLogout}
@@ -299,7 +302,7 @@ const App = () => {
                                    userRole={userRole}
                                />} />
                         <Route path="/edit-profile"
-                               element={<EditProfile
+                               element={<ProfileEditPanel
                                     open={isProfileDrawerOpen}
                                     onClose={() => setIsProfileDrawerOpen(false)}
                                     onLogoutClick={handleLogout}
@@ -314,7 +317,7 @@ const App = () => {
                                     userPassword={userPassword}
                                     userRole={userRole}
                         />} />
-                        <Route path="/product-center" element={<Product
+                        <Route path="/product-center" element={<ProductEditPanel
                                     open={isProfileDrawerOpen}
                                     onClose={() => setIsProfileDrawerOpen(false)}
                                     onLogoutClick={handleLogout}
@@ -325,7 +328,7 @@ const App = () => {
                                     userEmail={userEmail}
                                     userRole={userRole}
                         />} />
-                        <Route path="/employee-center" element={<Employee
+                        <Route path="/employee-center" element={<EmployeeEditPanel
                                     open={isProfileDrawerOpen}
                                     onClose={() => setIsProfileDrawerOpen(false)}
                                     onLogoutClick={handleLogout}
@@ -336,7 +339,7 @@ const App = () => {
                                     userEmail={userEmail}
                                     userRole={userRole}
                         />} />
-                        <Route path="/categories-center" element={<Categories
+                        <Route path="/categories-center" element={<CategoriesEditPanel
                                     open={isProfileDrawerOpen}
                                     onClose={() => setIsProfileDrawerOpen(false)}
                                     onLogoutClick={handleLogout}

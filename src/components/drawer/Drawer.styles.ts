@@ -204,9 +204,13 @@ export const RememberMeCheckBox = styled(CheckBox)<CheckboxProps>`
     }
   }
 `;
-export const ForgotPasswordCon = styled(Box)`
+export const LinkCon = styled(Box)`
   && {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 1rem;
+    
   }
 `
 export const Line = styled(Divider)`

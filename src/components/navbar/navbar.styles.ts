@@ -154,7 +154,7 @@ export const StyledShoppingCartIcon = styled(ShoppingCartIcon)`
   }
 `
 
-// main containers
+// mainPage containers
 export const NavbarContainer = styled(AppBar)`
   && {
     background-color: #F8F8F8;

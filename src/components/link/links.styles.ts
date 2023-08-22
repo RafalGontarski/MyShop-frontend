@@ -36,7 +36,7 @@ export const Custom = styled(Link)`
     text-decoration: none;
     position: relative;
     width: fit-content;
-    margin: 0 auto;
+    //margin: 0 auto;
     color: #000000;
 
     &:hover {
