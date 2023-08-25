@@ -7,21 +7,21 @@ import {ProfileDrawer} from "./components/drawer/ProfileDrawer";
 
 import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
 import {LeftProfileDrawer} from "./components/drawer/LeftProfileDrawer"
-import MainPage from "./pages/mainPage/MainPage";
+import MainPage from "./components/mainPage/MainPage";
 
 import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
 
-import {ProfileEditPanel} from "./pages/profileEditPanel/ProfileEditPanel";
-import {ProductEditPanel} from "./pages/productEditPanel/ProductEditPanel";
-import {EmployeeEditPanel} from "./pages/employeeEditPanel/EmployeeEditPanel";
-import {CategoriesEditPanel} from "./pages/categoriesEditPanel/CategoriesEditPanel";
-import {Graphics} from "./pages/graphicEditPanel/GraphicEditPanel";
-import {AddressBookEditPanel} from "./pages/bookAdressEditPanel/AddressBookEditPanel";
+import {ProfileEditPanel} from "./components/editPages/profileEditPanel/ProfileEditPanel";
+import {ProductEditPanel} from "./components/editPages/productEditPanel/ProductEditPanel";
+import {EmployeeEditPanel} from "./components/editPages/employeeEditPanel/EmployeeEditPanel";
+import {CategoriesEditPanel} from "./components/editPages/categoriesEditPanel/CategoriesEditPanel";
+import {Graphics} from "./components/editPages/graphicEditPanel/GraphicEditPanel";
+import {AddressBookEditPanel} from "./components/editPages/bookAdressEditPanel/AddressBookEditPanel";
 import {UserApi} from "./api/UserApi";
-import {AddressBookUpdateRequest} from "./models/api/AddressBookUpdateRequest";
-import {CategoryNavbar} from "./components/categoryNavbar/CategoryNavbar";
-import { CategoryContext } from './context/CategoryContexts';
-import CategoryType from "./models/CategoryType";
+import {AddressBookUpdateRequest} from "./api/user/AddressBookUpdateRequest";
+import {CategoryNavbar} from "./components/categories/categoryNavbar/CategoryNavbar";
+import { CategoryContext } from './models/context/CategoryContexts';
+import CategoryType from "./models/types/CategoryType";
 import Carousel from "./components/carousel/Carousel";
 
 import CarouselImg1 from './resources/carouselPng/carousel1.png';
@@ -29,6 +29,8 @@ import CarouselImg2 from './resources/carouselPng/carousel2.png';
 import CarouselImg3 from './resources/carouselPng/carousel3.png';
 import CarouselImg4 from './resources/carouselPng/carousel4.png';
 import CarouselImg5 from './resources/carouselPng/carousel5.png';
+import {SelectedCategoryProvider} from "./models/providers/SelectedCategoryProvider";
+import {Category} from "./components/categories/category/Category";
 
 
 const UserContext = createContext<{
@@ -154,7 +156,7 @@ const App = () => {
         try {
             // Sprawdzamy, czy userId istnieje
             if (!userId) {
-                throw new Error("User ID is missing");
+                throw new Error("UserType ID is missing");
             }
             // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
             await UserApi.updateUserEmail(userId, newEmail);
@@ -176,7 +178,7 @@ const App = () => {
         try {
             // Sprawdzamy, czy userId istnieje
             if (!userId) {
-                throw new Error("User ID is missing");
+                throw new Error("UserType ID is missing");
             }
             // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
             await UserApi.updatePassword(userId, newPassword);
@@ -194,7 +196,7 @@ const App = () => {
         try {
             // Sprawdzamy, czy userId istnieje
             if (!userId) {
-                throw new Error("User ID is missing");
+                throw new Error("UserType ID is missing");
             }
             // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
             await UserApi.updateFirstName(userId, newFirstName);
@@ -218,7 +220,7 @@ const App = () => {
         newCountry: string)=> {
         try {
             if (!userId) {
-                throw new Error("User ID is missing");
+                throw new Error("UserType ID is missing");
             }
             await UserApi
                 .updateAddressBook(
@@ -277,91 +279,98 @@ const App = () => {
                         setIsLoggedIn={setIsLoggedIn}
                         setIsProfileDrawerOpen={setIsProfileDrawerOpen}
                     />
-                    <CategoryNavbar />
+                    <SelectedCategoryProvider>
+                        <CategoryNavbar />
 
+                        <Routes>
+                            <Route path="/" element={<MainPage
+                                        userName={userName}
+                            />} />
+                            <Route path="/address-book"
+                                   element={<AddressBookEditPanel
+                                       open={isProfileDrawerOpen}
+                                       onClose={() => setIsProfileDrawerOpen(false)}
+                                       onLogoutClick={handleLogout}
+                                       openLeftProfileDrawer={openLeftProfileDrawer}
+                                       updateAddressBook={updateAddressBook}
+                                       userId={userId}
+                                       userName={userName}
+                                       userSurname={userSurname}
+                                       userAddress={userAddress}
+                                       userPostalCode={userPostalCode}
+                                       userCity={userCity}
+                                       userCountry={userCountry}
+                                       userEmail={userEmail}
+                                       userRole={userRole}
+                                   />} />
+                            <Route path="/edit-profile"
+                                   element={<ProfileEditPanel
+                                        open={isProfileDrawerOpen}
+                                        onClose={() => setIsProfileDrawerOpen(false)}
+                                        onLogoutClick={handleLogout}
+                                        openLeftProfileDrawer={openLeftProfileDrawer}
+                                        updateUserEmail={updateUserEmail}
+                                        updatePassword={updatePassword}
+                                        updateFirstName={updateFirstName}
+                                        userId={userId}
+                                        userName={userName}
+                                        userSurname={userSurname}
+                                        userEmail={userEmail}
+                                        userPassword={userPassword}
+                                        userRole={userRole}
+                            />} />
+                            <Route path="/product-center" element={<ProductEditPanel
+                                        open={isProfileDrawerOpen}
+                                        onClose={() => setIsProfileDrawerOpen(false)}
+                                        onLogoutClick={handleLogout}
+                                        openLeftProfileDrawer={openLeftProfileDrawer}
+                                        userId={userId}
+                                        userName={userName}
+                                        userSurname={userSurname}
+                                        userEmail={userEmail}
+                                        userRole={userRole}
+                            />} />
+                            <Route path="/employee-center" element={<EmployeeEditPanel
+                                        open={isProfileDrawerOpen}
+                                        onClose={() => setIsProfileDrawerOpen(false)}
+                                        onLogoutClick={handleLogout}
+                                        openLeftProfileDrawer={openLeftProfileDrawer}
+                                        userId={userId}
+                                        userName={userName}
+                                        userSurname={userSurname}
+                                        userEmail={userEmail}
+                                        userRole={userRole}
+                            />} />
+                            <Route path="/categories-center" element={<CategoriesEditPanel
+                                        open={isProfileDrawerOpen}
+                                        onClose={() => setIsProfileDrawerOpen(false)}
+                                        onLogoutClick={handleLogout}
+                                        openLeftProfileDrawer={openLeftProfileDrawer}
+                                        userId={userId}
+                                        userName={userName}
+                                        userSurname={userSurname}
+                                        userEmail={userEmail}
+                                        userRole={userRole}
+                            />} />
+                            <Route path="/graphic" element={<Graphics
+                                        open={isProfileDrawerOpen}
+                                        onClose={() => setIsProfileDrawerOpen(false)}
+                                        onLogoutClick={handleLogout}
+                                        openLeftProfileDrawer={openLeftProfileDrawer}
+                                        userId={userId}
+                                        userName={userName}
+                                        userSurname={userSurname}
+                                        userEmail={userEmail}
+                                        userRole={userRole}
+                            />} />
+                            <Route path="/categories/:categoryName"
+                                   element={
 
-                    <Routes>
-                        <Route path="/" element={<MainPage
-                                    userName={userName}
-                        />} />
-                        <Route path="/address-book"
-                               element={<AddressBookEditPanel
-                                   open={isProfileDrawerOpen}
-                                   onClose={() => setIsProfileDrawerOpen(false)}
-                                   onLogoutClick={handleLogout}
-                                   openLeftProfileDrawer={openLeftProfileDrawer}
-                                   updateAddressBook={updateAddressBook}
-                                   userId={userId}
-                                   userName={userName}
-                                   userSurname={userSurname}
-                                   userAddress={userAddress}
-                                   userPostalCode={userPostalCode}
-                                   userCity={userCity}
-                                   userCountry={userCountry}
-                                   userEmail={userEmail}
-                                   userRole={userRole}
-                               />} />
-                        <Route path="/edit-profile"
-                               element={<ProfileEditPanel
-                                    open={isProfileDrawerOpen}
-                                    onClose={() => setIsProfileDrawerOpen(false)}
-                                    onLogoutClick={handleLogout}
-                                    openLeftProfileDrawer={openLeftProfileDrawer}
-                                    updateUserEmail={updateUserEmail}
-                                    updatePassword={updatePassword}
-                                    updateFirstName={updateFirstName}
-                                    userId={userId}
-                                    userName={userName}
-                                    userSurname={userSurname}
-                                    userEmail={userEmail}
-                                    userPassword={userPassword}
-                                    userRole={userRole}
-                        />} />
-                        <Route path="/product-center" element={<ProductEditPanel
-                                    open={isProfileDrawerOpen}
-                                    onClose={() => setIsProfileDrawerOpen(false)}
-                                    onLogoutClick={handleLogout}
-                                    openLeftProfileDrawer={openLeftProfileDrawer}
-                                    userId={userId}
-                                    userName={userName}
-                                    userSurname={userSurname}
-                                    userEmail={userEmail}
-                                    userRole={userRole}
-                        />} />
-                        <Route path="/employee-center" element={<EmployeeEditPanel
-                                    open={isProfileDrawerOpen}
-                                    onClose={() => setIsProfileDrawerOpen(false)}
-                                    onLogoutClick={handleLogout}
-                                    openLeftProfileDrawer={openLeftProfileDrawer}
-                                    userId={userId}
-                                    userName={userName}
-                                    userSurname={userSurname}
-                                    userEmail={userEmail}
-                                    userRole={userRole}
-                        />} />
-                        <Route path="/categories-center" element={<CategoriesEditPanel
-                                    open={isProfileDrawerOpen}
-                                    onClose={() => setIsProfileDrawerOpen(false)}
-                                    onLogoutClick={handleLogout}
-                                    openLeftProfileDrawer={openLeftProfileDrawer}
-                                    userId={userId}
-                                    userName={userName}
-                                    userSurname={userSurname}
-                                    userEmail={userEmail}
-                                    userRole={userRole}
-                        />} />
-                        <Route path="/graphic" element={<Graphics
-                                    open={isProfileDrawerOpen}
-                                    onClose={() => setIsProfileDrawerOpen(false)}
-                                    onLogoutClick={handleLogout}
-                                    openLeftProfileDrawer={openLeftProfileDrawer}
-                                    userId={userId}
-                                    userName={userName}
-                                    userSurname={userSurname}
-                                    userEmail={userEmail}
-                                    userRole={userRole}
-                        />} />
-                    </Routes>
+                                    <Category/>
+
+                            } />
+                        </Routes>
+                    </SelectedCategoryProvider>
 
                     {isLoginDrawerOpen &&
                         <LoginDrawer

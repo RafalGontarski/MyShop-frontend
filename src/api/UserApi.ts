@@ -1,9 +1,9 @@
 import axios from "axios";
-import {UserRegistrationData} from "../models/api/user/UserRegistrationData";
+import {UserRegistrationData} from "./user/UserRegistrationData";
 import {BaseUrl} from '../constants/constants';
-import {UserResponse} from "../models/api/user/UserResponse";
+import {UserResponse} from "./user/UserResponse";
 import {authorizedApi} from "../hooks/withAxiosIntercepted";
-import {AddressBookUpdateRequest} from "../models/api/AddressBookUpdateRequest";
+import {AddressBookUpdateRequest} from "./user/AddressBookUpdateRequest";
 export class UserApi {
     static registerUser = async (request: UserRegistrationData) =>
         await axios.post(`${BaseUrl}/api/auth/register`, request);

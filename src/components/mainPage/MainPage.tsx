@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {MainPageContainer} from "./mainPage.styles";
-import Carousel from "../../components/carousel/Carousel";
+import Carousel from "../carousel/Carousel";
 import {CarouselImageApi} from "../../api/CarouselImageApi";
-import {DisplayCategoriesInMainPage} from "../../components/categories/DisplayCategoriesInMainPage";
+import {DisplayCategoriesInMainPage} from "../categories/DisplayCategoriesInMainPage/DisplayCategoriesInMainPage";
 
 
 

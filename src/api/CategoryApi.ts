@@ -1,8 +1,8 @@
 import {BaseUrl} from '../constants/constants';
 import axios from "axios";
-import {AddCategoryRequest} from "../models/api/category/AddCategoryRequest";
-import AddCategoryResponse from "../models/api/category/AddCategoryResponse";
-import CategoryType from "../models/CategoryType";
+import {AddCategoryRequest} from "./category/AddCategoryRequest";
+import AddCategoryResponse from "./category/AddCategoryResponse";
+import CategoryType from "../models/types/CategoryType";
 
 export class CategoryApi {
     static addCategory = async (request: AddCategoryRequest) =>

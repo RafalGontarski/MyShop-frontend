@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/navbar.styles";
 
 import {
     Title,
@@ -12,7 +12,7 @@ import {
     MyProfileContainer,
     MyProfileCenterText,
     MyProfileLeftContainer,
-} from "../myprofile.styles";
+} from "../editPages.styles";
 
 import {
     UserData,
@@ -23,7 +23,7 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../components/drawer/ProfileDrawer.styles";
+} from "../../drawer/ProfileDrawer.styles";
 import {
     EditLine,
     FormContainer,
@@ -36,13 +36,13 @@ import {
     StyledTextField,
     HiddenStyledTextField,
     TogglePasswordVisibility,
-} from "../../components/drawer/Drawer.styles";
+} from "../../drawer/Drawer.styles";
 
 
 import Visibility from "@mui/icons-material/Visibility";
 import InputAdornment from "@mui/material/InputAdornment";
-import CustomButton from "../../components/button/Button";
-import LinkButton from "../../components/button/LinkButton";
+import CustomButton from "../../button/Button";
+import LinkButton from "../../button/LinkButton";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 

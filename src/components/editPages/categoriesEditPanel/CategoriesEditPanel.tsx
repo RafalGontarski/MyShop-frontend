@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/navbar.styles";
 
 import {
     Title,
@@ -12,7 +12,7 @@ import {
     MyProfileContainer,
     MyProfileCenterText,
     MyProfileLeftContainer,
-} from "../myprofile.styles";
+} from "../editPages.styles";
 
 import {
     UserData,
@@ -23,15 +23,15 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../components/drawer/ProfileDrawer.styles";
+} from "../../drawer/ProfileDrawer.styles";
 import {CategoryFormInput, CategoryTitleContainer, ValidateText} from "./CategoryEditPanel.styles";
 import {FormContainer, ProfileImageContainer, ProfilePageWelcome} from "../bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledTextField, WelcomeText} from "../../components/drawer/Drawer.styles";
-import CountrySelector from "../../components/selectors/CountrySelect";
-import CustomButton from "../../components/button/Button";
+import {StyledTextField, WelcomeText} from "../../drawer/Drawer.styles";
+import CountrySelector from "../../selectors/CountrySelect";
+import CustomButton from "../../button/Button";
 import {EditLine} from "../profileEditPanel/ProfileEditPanel.styles";
-import CategoryType from "../../models/CategoryType";
-import {CategoryApi} from "../../api/CategoryApi";
+import CategoryType from "../../../models/types/CategoryType";
+import {CategoryApi} from "../../../api/CategoryApi";
 
 
 type EditCategoriesProps = {

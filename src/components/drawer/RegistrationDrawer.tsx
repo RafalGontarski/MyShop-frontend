@@ -12,7 +12,7 @@ import CustomLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {UserRegistrationData} from "../../models/api/user/UserRegistrationData";
+import {UserRegistrationData} from "../../api/user/UserRegistrationData";
 import {UserApi} from "../../api/UserApi";
 import {toast} from "react-toastify";
 import Divider from "@mui/material/Divider";

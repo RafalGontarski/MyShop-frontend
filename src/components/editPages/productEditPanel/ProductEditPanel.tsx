@@ -1,33 +1,29 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/navbar.styles";
 
 import {
-    Title,
     Container,
     MenuWrapper,
-    TitleContainer,
-    WrapperMenuButton,
-    MyProfileContainer,
     MyProfileCenterText,
-    MyProfileLeftContainer,
-
-} from "../myprofile.styles";
+    MyProfileContainer,
+    MyProfileLeftContainer, Title, TitleContainer, WrapperMenuButton
+} from "../editPages.styles";
 
 import {
-    UserData,
     LineText,
+    UserData,
     ProfileLine,
     LineContainer,
     LinksContainer,
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../components/drawer/ProfileDrawer.styles";
+} from "../../drawer/ProfileDrawer.styles";
 
 
-type EditEmployeeProps = {
+type EditProductProps = {
     open: boolean;
     onClose: () => void;
     onLogoutClick: () => void;
@@ -39,7 +35,7 @@ type EditEmployeeProps = {
     userRole: string[] | null;
 };
 
-export const EmployeeEditPanel: React.FC<EditEmployeeProps> = ({
+export const ProductEditPanel: React.FC<EditProductProps> = ({
                                 open,
                                 onClose,
                                 onLogoutClick,
@@ -204,7 +200,7 @@ export const EmployeeEditPanel: React.FC<EditEmployeeProps> = ({
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <TitleContainer>
-                    <Title>Pracownicy</Title>
+                    <Title>Produkty</Title>
                 </TitleContainer>
             </Container>
 

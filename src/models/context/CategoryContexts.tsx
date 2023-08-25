@@ -1,6 +1,6 @@
-import {CategoryContextType} from "../models/context/CategoryContextType";
+import {CategoryContextType} from "../../models/types/contextType/CategoryContextType";
 import {createContext} from "react";
-import CategoryType from "../models/CategoryType";
+import CategoryType from "../../models/types/CategoryType";
 
 
 const defaultCategorySettings: CategoryContextType = {

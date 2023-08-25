@@ -5,7 +5,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import {ACCESS_TOKEN} from "../../constants/constants";
-import {UserContext} from "../../context/UserContexts";
+import {UserContext} from "../../models/context/UserContexts";
 
 import Drawer from '@mui/material/Drawer';
 import CustomLink from '../link/CustomLink';

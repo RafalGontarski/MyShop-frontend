@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../components/navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/navbar.styles";
 
 import {
     Title,
@@ -12,7 +12,7 @@ import {
     MyProfileContainer,
     MyProfileCenterText,
     MyProfileLeftContainer,
-} from "../myprofile.styles";
+} from "../editPages.styles";
 
 import {
     UserData,
@@ -23,7 +23,7 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../components/drawer/ProfileDrawer.styles";
+} from "../../drawer/ProfileDrawer.styles";
 import {
     AddressTitleContainer,
     EditLine,
@@ -36,7 +36,7 @@ import {
     SubmitButton,
     UploadButton
 } from "./AdressBookEditPanel.styles";
-import CustomButton from "../../components/button/Button";
+import CustomButton from "../../button/Button";
 import {
     HiddenStyledTextField,
     StyledHandIcon,
@@ -44,12 +44,12 @@ import {
     TogglePasswordVisibility,
     Welcome,
     WelcomeText
-} from "../../components/drawer/Drawer.styles";
+} from "../../drawer/Drawer.styles";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import CountrySelector from "../../components/selectors/CountrySelect";
-import {AddressBookUpdateRequest} from "../../models/api/AddressBookUpdateRequest";
+import CountrySelector from "../../selectors/CountrySelect";
+import {AddressBookUpdateRequest} from "../../../api/user/AddressBookUpdateRequest";
 
 
 type AddressProps = {

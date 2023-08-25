@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { CategoryNavbarContainer } from "./CategoryNavbar.styles";
-import { CategoryContext } from "../../context/CategoryContexts";
-import { CategoryApi } from "../../api/CategoryApi";
-import CategoryNavbarLinkButton from "../button/CategoryNavbarLinkButton";
+import { CategoryContext } from "../../../models/context/CategoryContexts";
+import { CategoryApi } from "../../../api/CategoryApi";
+import CategoryNavbarLinkButton from "../../button/CategoryNavbarLinkButton";
 import {Link} from "react-router-dom";
+import {useSelectedCategory} from "../../../models/context/SelectedCategoryContext";
 
 // Zakładam, że CategoryType został już zdefiniowany wcześniej
 type CategoryType = {
@@ -11,23 +12,26 @@ type CategoryType = {
     // ... inne pola kategorii, jeśli są potrzebne
 };
 
-export const CategoryNavbar: React.FC = () => {
+const CategoryNavbarComponent: React.FC = () => {
+    console.log("Renderowanie CategoryNavbar");
+
     const { categories, setCategories } = useContext(CategoryContext);
+    const { setSelectedCategory } = useSelectedCategory();
 
     useEffect(() => {
         async function fetchCategories() {
             try {
                 const categoriesFromApi: CategoryType[] = await CategoryApi.getAllCategoriesName();
-                console.log("Ustawiam kategorie na:", categoriesFromApi);
+                console.log("Pobrane kategorie z API:", categoriesFromApi);
                 setCategories(categoriesFromApi);
-                console.log("Po ustawieniu kategorii:", categories);
+                console.log("Kategorie po aktualizacji:", categories);
             } catch (error) {
                 console.error("Błąd podczas pobierania kategorii:", error);
             }
         }
 
         fetchCategories();
-    }, [setCategories]);
+    }, []);
 
     return (
         <CategoryNavbarContainer>
@@ -37,15 +41,18 @@ export const CategoryNavbar: React.FC = () => {
                     label={category.name}
                     as={Link}
                     to={`/categories/${category.name}`}
-                    // Jeśli chcesz, żeby przycisk miał jakąś funkcję onClick, możesz ją tutaj dodać
-                    // onClick={() => handleCategoryClick(category)}
-                    // Jeśli chcesz, żeby przycisk przekierowywał do jakiegoś URL, możesz użyć atrybutu "to"
-                    // to={`/category/${category.name}`}
+                    onClick={() => {
+                        console.log("Kliknięto w kategorię:", category.name);
+                        setSelectedCategory(category.name);
+                    }}
                 />
             ))}
         </CategoryNavbarContainer>
     );
 };
+
+export const CategoryNavbar = React.memo(CategoryNavbarComponent);
+
 
 
 
