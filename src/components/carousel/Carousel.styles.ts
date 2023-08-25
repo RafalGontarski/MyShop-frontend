@@ -7,7 +7,7 @@ export const LeftButtonContainer = styled.div`
   && {
     position: absolute;
     top: 50%; // Ustawia kontener na środku poziomo
-    left: calc(50% - 395px);
+    left: calc(49% - 395px);
     transform: translateY(-50%); // Wyśrodkowuje kontener pionowo
     z-index: 1;
   }
@@ -17,7 +17,7 @@ export const RightButtonContainer = styled.div`
   && {
     position: absolute;
     top: 50%; // Ustawia kontener na środku poziomo
-    right: calc(50% - 395px);
+    right: calc(49% - 395px);
     transform: translateY(-50%); // Wyśrodkowuje kontener pionowo
     z-index: 1;
   }

@@ -1,4 +1,5 @@
 import {
+    CategoriesChildrenDiv, ChildDiv, ChildImg,
     DisplayCategoriesInMainPageContainer,
     DisplayCategoriesInMainPageTitle
 } from "./DisplayCategoriesInMainPage.styles";
@@ -9,6 +10,7 @@ import CategoryType from "../../models/CategoryType";
 import MenuLink from "../link/MenuLink";
 import {ProfileDrawerLink} from "../drawer/ProfileDrawer.styles";
 import { Link } from "react-router-dom";
+import CatfishIcon from "../../resources/categoriesIcon/catfishIcon.png";
 
 
 export const DisplayCategoriesInMainPage: React.FC = () => {
@@ -34,29 +36,27 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
             </DisplayCategoriesInMainPageTitle>
 
 
-            <div style={{
-                display: 'flex',
-                flexWrap: 'wrap'
-            }}>
+            <CategoriesChildrenDiv>
                 {categories.map(category => (
-                    <div style={{
-                        flex: '1 1 calc(33.333% - 10px)', // Odejmujemy trochę miejsca na marginesy
-                        margin: '5px',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}>
-                        <ProfileDrawerLink
-                            key={category.name}
-                            as={Link}
-                            to={`/categories/${category.name}`}  // Przykładowy URL dla kategorii
-                            underline="none"
-                            // onClick={onClose}  // Zamknij szufladę po kliknięciu w kategorię
-                        >
-                            {category.name}
-                        </ProfileDrawerLink>
-                    </div>
+                    <ChildDiv>
+                            <ChildImg
+                                src={CatfishIcon}
+                                alt="Catfish Icon"
+                                style={{ width: '7rem', height: 'auto' }}
+                            />
+
+                            <ProfileDrawerLink
+                                key={category.name}
+                                as={Link}
+                                to={`/categories/${category.name}`}  // Przykładowy URL dla kategorii
+                                underline="none"
+                                // onClick={onClose}  // Zamknij szufladę po kliknięciu w kategorię
+                            >
+                                {category.name}
+                            </ProfileDrawerLink>
+                    </ChildDiv>
                 ))}
-            </div>
+            </CategoriesChildrenDiv>
 
 
 
