@@ -9,10 +9,9 @@ import CategoryType from "../../../models/types/CategoryType";
 
 export const Category: React.FC = () => {
     const { categoryName, subCategoryName } = useParams<{ categoryName: string; subCategoryName?: string }>();
-
     const { selectedCategory, setSelectedCategory } = useSelectedCategory();
     const [currentCategory, setCurrentCategory] = useState<CategoryType | null>(null);
-    const [subCategoriesNames, setSubCategoriesNames] = useState<string[]>([]);
+    const [, setSubCategoriesNames] = useState<string[]>([]);
 
     useEffect(() => {
         if (categoryName && categoryName !== selectedCategory) {
@@ -31,7 +30,7 @@ export const Category: React.FC = () => {
 
     useEffect(() => {
         if (currentCategory) {
-            CategoryApi.getSubCategoriesNames(currentCategory.categoryId)
+            CategoryApi.getAllSubCategoriesNames(currentCategory.categoryId)
                 .then(names => setSubCategoriesNames(names))
                 .catch(error => console.error("Błąd podczas pobierania podkategorii:", error));
         }

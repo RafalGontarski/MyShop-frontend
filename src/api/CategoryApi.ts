@@ -18,11 +18,18 @@ export class CategoryApi {
         return response.data;
     }
 
-    static getSubCategoriesNames = async (categoryId: number | undefined): Promise<string[]> => {
+    static getAllSubCategoriesNames = async (categoryId: number | undefined): Promise<string[]> => {
         const response = await axios.get<string[]>(`${BaseUrl}/api/categories/${categoryId}/subcategories/names`);
 
         console.log(`Odpowiedź z API dla /api/categories/${categoryId}/subcategories/names:`, response.data);
 
+        return response.data;
+    }
+
+    static getSubCategoryIdByName = async (subCategoryName: string): Promise<number> => {
+        const response =
+            await axios.get<number>(
+                `${BaseUrl}/api/categories/subcategories/id?name=${subCategoryName}`);
         return response.data;
     }
 

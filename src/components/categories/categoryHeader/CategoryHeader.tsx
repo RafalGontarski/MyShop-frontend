@@ -17,12 +17,14 @@ import WhiteButton from "../../tools/button/WhiteButton";
 interface CategoryHeaderProps {
     categoryName: string;
     subCategoryName?: string;
+    productName?: string;
 }
+
 
 export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                                       categoryName ,
-                                      subCategoryName
-
+                                      subCategoryName,
+                                      productName
                                 }) => {
     console.log("categoryName:", categoryName);
     console.log("subCategoryName:", subCategoryName);
@@ -43,11 +45,17 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                                 <Link to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</Link>
                             </>
                         )}
+                        {productName && (
+                            <>
+                                <span>{"> "}</span>
+                                <span>{productName}</span>
+                            </>
+                        )}
                     </Breadcrumbs>
 
 
                 </BreadcrumbContainer>
-                <CategoryName>{subCategoryName ? subCategoryName : categoryName}</CategoryName>
+                <CategoryName>{productName || subCategoryName || categoryName}</CategoryName>
                 <ActionsContainer>
                     <LinksContainer>
                         <Link to="#">NOWOŚCI</Link>

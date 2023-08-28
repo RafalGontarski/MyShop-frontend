@@ -37,6 +37,7 @@ import {FreeShipping} from "./components/helpDesk/FreeShipping";
 import {Example} from "./components/helpDesk/Example";
 import {Guarantee} from "./components/helpDesk/Guarantee";
 import {SubCategory} from "./components/categories/category/SubCategory";
+import {Product} from "./components/products/Product";
 
 
 const UserContext = createContext<{
@@ -383,6 +384,8 @@ const App = () => {
                             />} />
                             <Route path="/categories/:categoryName" element={<Category />} />
                             <Route path="/categories/:categoryName/:subCategoryName" element={<SubCategory />} />
+                            <Route path="/categories/:categoryName/:subCategoryName/:productName" element={<Product />} />
+
 
 
 

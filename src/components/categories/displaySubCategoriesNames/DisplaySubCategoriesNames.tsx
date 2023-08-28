@@ -21,7 +21,7 @@ export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesNamesProps>
 
     useEffect(() => {
         if (categoryId !== undefined) {
-            CategoryApi.getSubCategoriesNames(categoryId)
+            CategoryApi.getAllSubCategoriesNames(categoryId)
                 .then(names => setSubCategoriesNames(names))
                 .catch(error => console.error("Błąd podczas pobierania podkategorii:", error));
         }
