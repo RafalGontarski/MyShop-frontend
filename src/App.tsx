@@ -32,7 +32,9 @@ import {TopSeller} from "./components/navbar/linksComponents/sales/topSeller/Top
 import {Occasions} from "./components/navbar/linksComponents/sales/occasions/Occasions";
 import {WishList} from "./components/navbar/iconComponents/WishList";
 import {Basket} from "./components/navbar/iconComponents/Basket";
-import {HelpDesk} from "./components/helpDesk/HelpDesk";
+import {Contact} from "./components/helpDesk/Contact";
+import {Advantages} from "./components/helpDesk/Advantages";
+import {Example} from "./components/helpDesk/Example";
 
 
 const UserContext = createContext<{
@@ -368,7 +370,9 @@ const App = () => {
                             <Route path="/categories/:categoryName"
                                    element={<Category/>} />
 
-                            <Route path={'/helpDesk'} element={<HelpDesk />} />
+                            <Route path={'/helpDesk/contact'} element={<Contact />} />
+                            <Route path={'/helpDesk/advantages'} element={<Advantages />}/>
+                            <Route path={'/helpDesk/example'} element={<Example />}/>
 
                             <Route path="/hotDeals" element={<HotDeals />}/>
                             <Route path="/newest" element={<Newest />}/>

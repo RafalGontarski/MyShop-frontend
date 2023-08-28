@@ -31,6 +31,7 @@ import {
     TikTokIconButton, WishListLink,
     YouTubeIconButton
 } from "./Navbar.styles";
+
 import {Link, useNavigate} from "react-router-dom";
 import {MenuDrawer} from "../tools/drawer/MenuDrawer";
 import Logo from "../../resources/img/jedziemy.png";
@@ -46,6 +47,8 @@ import ItalyIcon from "../../resources/icons/italyFlagIcon.png";
 import UcraineIcon from "../../resources/icons/ukraineFlagIcon.png";
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { SelectedMenuType } from '../tools/drawer/MenuDrawer';
+
 
 
 type NormalSizeScreenTypes = {
@@ -60,24 +63,14 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
     const [languageDrawerOpen, setLanguageDrawerOpen] = React.useState(false);
     const [languageCode, setLanguageCode] = useState('PL');
     const [countryCode, setCountryCode] = useState('pl');
-    const [currencyCode, setCurrencyCode] = useState('zł');
+    const [currencyCode] = useState('zł');
     const [selectedCurrencySymbol, setSelectedCurrencySymbol] = useState<string>('zł');
+    const [selectedTab, setSelectedTab] = useState<SelectedMenuType | null>(null);
+
 
     const { t, i18n } = useTranslation();
-    const [currentLanguage, setCurrentLanguage] = useState(t.language);
-    const navigate = useNavigate();
+    const [setCurrentLanguage] = useState(t.language);
 
-    useEffect(() => {
-        // Nasłuchuj na zmiany języka
-        i18n.on('languageChanged', (lang: string) => {
-            setCurrentLanguage(lang);
-        });
-
-        // Wyłącz nasłuchiwanie na zmiany języka, gdy komponent jest odmontowywany
-        return () => {
-            i18n.off('languageChanged');
-        };
-    }, [i18n]);
 
     let currencySymbol;
     switch (currencyCode) {
@@ -98,6 +91,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
             break;
         // Dodaj tutaj inne przypadki dla innych walut
         default:
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             currencySymbol = 'zł';
     }
 
@@ -127,16 +121,42 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
     }
 
 
+    useEffect(() => {
+        // Nasłuchuj na zmiany języka
+        i18n.on('languageChanged', (lang: string) => {
+            setCurrentLanguage(lang);
+        });
+
+        // Wyłącz nasłuchiwanie na zmiany języka, gdy komponent jest odmontowywany
+        return () => {
+            i18n.off('languageChanged');
+        };
+    }, [i18n]);
+
+
+
     const handleCurrencyChange = (currencySymbol: string) => {
         setSelectedCurrencySymbol(currencySymbol);
     };
 
     // Drawer
     const handleMenuDrawerOpen = () => {
+        setSelectedTab('products');
         setMenuDrawerOpen(true);
     };
     const handleMenuDrawerClose = () => {
         setMenuDrawerOpen(false);
+        setSelectedTab(null);
+    };
+
+    const handleServiceClick = () => {
+        setSelectedTab('service');
+        setMenuDrawerOpen(true);
+    };
+
+    const handleAboutClick = () => {
+        setSelectedTab('about');
+        setMenuDrawerOpen(true);
     };
     const handleLanguageDrawerOpen = () => {
         setLanguageDrawerOpen(true);
@@ -163,21 +183,21 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                 <LeftSideFullScreenNavbar>
                     <LeftSideLinksAndIcons>
                         <LeftSideStyledLink
-                            href="#"
                             underline="none"
+                            onClick={handleServiceClick}
                         >
                             {t('navbar.service')}
                         </LeftSideStyledLink>
                         <LeftSideStyledLink
                             as={Link}
-                            to={"/helpDesk"}
+                            to={"/helpDesk/contact"}
                             underline="none"
                         >
                             {t('navbar.contact')}
                         </LeftSideStyledLink>
                         <LeftSideStyledLink
-                            href="#"
                             underline="none"
+                            onClick={handleAboutClick}
                         >
                             {t('navbar.about')}
                         </LeftSideStyledLink>
@@ -219,7 +239,11 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                         >
                             <StyledMenuIcon />
                         </StyledMenuButton>
-                        <MenuDrawer open={menuDrawerOpen} onClose={handleMenuDrawerClose} />
+                        <MenuDrawer
+                            open={menuDrawerOpen}
+                            onClose={handleMenuDrawerClose}
+                            initialSelectedMenu={selectedTab} />
+
                         <LeftSideStyledBoldLink
                             as={Link}
                             to={"/hotDeals"}

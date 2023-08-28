@@ -14,7 +14,7 @@ export const Category: React.FC = () => {
         }
     }, [categoryName]);
 
-    console.log("selectedCategory w komponencie Category:", selectedCategory);
+    // console.log("selectedCategory w komponencie Category:", selectedCategory);
 
     return (
         <div>

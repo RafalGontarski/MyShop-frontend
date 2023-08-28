@@ -237,7 +237,10 @@ export const NavWrapper: React.FC<SmallScreenTypes> = ({ isLoggedIn, openProfile
                     >
                         <StyledMenuIcon />
                     </StyledMenuButton>
-                    <MenuDrawer open={menuDrawerOpen} onClose={handleMenuDrawerClose} />
+                    <MenuDrawer
+                        open={menuDrawerOpen}
+                        onClose={handleMenuDrawerClose}
+                        initialSelectedMenu="products" />
                 </RightElement>
             </DownNavWraperContainer>
         </SmallScreenNavbar>

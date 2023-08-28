@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import {useContext, useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
 import MenuLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 import {IconClose, StyledIconClose} from "./Drawer.styles";
@@ -12,16 +11,32 @@ import {ProfileDrawerLink} from "./ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 
 
+export type SelectedMenuType = 'products' | 'service' | 'about' | null;
 
 type DrawerProps = {
     open: boolean;
     onClose: () => void;
 };
 
-export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
+type MenuDrawerProps = DrawerProps & {
+    initialSelectedMenu?: SelectedMenuType;
+};
+
+export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSelectedMenu = null }) => {
     const { categories } = useContext(CategoryContext);
     const { t } = useTranslation();
 
+    // const [selectedMenu, setSelectedMenu] = useState<SelectedMenuType>(initialSelectedMenu);
+
+    const [selectedMenu, setSelectedMenu] = useState<SelectedMenuType>(null);
+
+    useEffect(() => {
+        setSelectedMenu(initialSelectedMenu);
+    }, [initialSelectedMenu]);
+
+
+    console.log("initialSelectedMenu: ", initialSelectedMenu);
+    console.log("selectedMenu: ", selectedMenu);
 
 
     return (
@@ -48,48 +63,60 @@ export const MenuDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
 
                 <Box
                     display="flex"
-                    alignItems="center"
                     justifyContent="flex-start"
+                    alignItems="center"
                     marginLeft={5}
                     gap={3}
                 >
                     <MenuLink
-                        href={"#"}
+                        href="#"
                         label={t('menu.products.label')}
-                        onClick={undefined}
+                        onClick={() => setSelectedMenu('products')}
                     />
                     <MenuLink
-                        href={"#"}
+                        href="#"
                         label={t('menu.service.label')}
-                        onClick={undefined}
+                        onClick={() => setSelectedMenu('service')}
                     />
                     <MenuLink
-                        href={"#"}
+                        href="#"
                         label={t('menu.about.label')}
-                        onClick={undefined}/>
+                        onClick={() => setSelectedMenu('about')}
+                    />
                 </Box>
+
                 <Box
                     display="flex"
-                    justifyContent="left"
-                    alignItems="flex-start"
                     flexDirection="column"
                     marginLeft="2.5rem"
                     marginTop="2.5rem"
                     gap="1.5rem"
-
-
                 >
-                    {categories.map((category) => (
+                    {selectedMenu === 'products' && categories.map((category) => (
                         <ProfileDrawerLink
                             key={category.name}
                             as={Link}
-                            to={`/categories/${category.name}`}  // Przykładowy URL dla kategorii
+                            to={`/categories/${category.name}`}
                             underline="none"
-                            onClick={onClose}  // Zamknij szufladę po kliknięciu w kategorię
+                            onClick={onClose}
                         >
                             {category.name}
                         </ProfileDrawerLink>
                     ))}
+
+                    {selectedMenu === 'service' && (
+                        // Tutaj możesz wstawić linki dla "service"
+                        <ProfileDrawerLink>
+                            Serivce Link Example
+                        </ProfileDrawerLink>
+                    )}
+
+                    {selectedMenu === 'about' && (
+                        // Tutaj możesz wstawić linki dla "about"
+                        <ProfileDrawerLink>
+                            About Link Example
+                        </ProfileDrawerLink>
+                    )}
                 </Box>
             </Box>
         </Drawer>
