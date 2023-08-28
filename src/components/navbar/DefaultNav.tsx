@@ -315,13 +315,15 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                 <RightSideFullScreenNavbar>
                     <RightSideLinksContainer>
                         <StyledRightSideFreeShippingLink
-                            href="#"
+                            as={Link}
+                            to="/helpDesk/freeShipping"
                             underline="none"
                         >
                             {t('navbar.freeShipping')}
                         </StyledRightSideFreeShippingLink>
                         <StyledRightSideGuaranteeLink
-                            href="#"
+                            as={Link}
+                            to="/helpDesk/guarantee"
                             underline="none"
                         >
                             {t('navbar.guarantee')}

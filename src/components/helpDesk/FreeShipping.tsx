@@ -1,65 +1,76 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
+
+import {StyledMenuIcon} from "../navbar/Navbar.styles";
+
 import {
     Container,
     MenuWrapper,
-    MyProfileCenterText, MyProfileContainer,
-    MyProfileLeftContainer, Title,
+    MyProfileContainer,
+    MyProfileLeftContainer,
+    Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
+
 import {
-    LineContainer, LineText,
+    ProfileLine,
     LinksContainer,
-    ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    UserData,
-    UserDataContainer
+    ProfileDrawerLink,
 } from "../tools/drawer/ProfileDrawer.styles";
-import {Link} from "react-router-dom";
-import {StyledMenuIcon} from "../navbar/Navbar.styles";
+
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
+
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
-import CustomButton from "../tools/button/Button";
-import {EditLine} from "../editPages/profileEditPanel/ProfileEditPanel.styles";
+
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
-export const Contact: React.FC = () => {
+interface FreeShippingProps {
+    isExpanded: boolean;
+    toggleExpanded: () => void;
+}
 
-    const [isExpanded, setIsExpanded] = useState(false);
+export const FreeShipping: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
+
+    const location = useLocation();
+
+
+    // useEffect(() => {
+    //     // Definiujemy ścieżki, dla których menu "Atuty" powinno pozostać rozwinięte
+    //     const atutyPaths = ['/helpDesk/freeShipping', '/helpDesk/guarantee'];
+    //
+    //     // Jeśli aktualna ścieżka jest jednym z powyższych, wykonaj funkcję toggleExpanded
+    //     if (atutyPaths.includes(location.pathname)) {
+    //         toggleExpanded();
+    //     }
+    //     // Jeśli chcesz, żeby menu zwijało się dla innych ścieżek, odkomentuj poniższą linię
+    //     // else { toggleExpanded(); } // Chociaż wydaje się, że może to nie działać zgodnie z oczekiwaniami w pewnych przypadkach.
+    // }, [location.pathname, toggleExpanded]);
 
     return (
         <MyProfileContainer>
-
             <MyProfileLeftContainer>
-
-
                 <LinksContainer>
-
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Kontakt
                     </ProfileDrawerLink>
-
                     <ProfileDrawerLink
                         underline="none"
-                        onClick={() => setIsExpanded(!isExpanded)}
+                        onClick={toggleExpanded}
                     >
                         Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
-
                     {isExpanded && (
                         <>
                             <HelpDeskAdvantageChildLink
@@ -84,7 +95,7 @@ export const Contact: React.FC = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/"
+                        to="/helpDesk/example"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -112,11 +123,11 @@ export const Contact: React.FC = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Kontakt</Title>
+                    <Title>Darmowa wysyłka od 300 zł</Title>
                 </CategoryTitleContainer>
 
                 <WelcomeText variant="h6" gutterBottom>
-                    Jako klient naszego sklepu możesz skontaktować się z naszymi konsultantami.
+                    Darmowa przesyłka to nasz atut
                 </WelcomeText>
 
                 <FormContainer
@@ -126,20 +137,9 @@ export const Contact: React.FC = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Kontakt
+                                Przeczytaj o naszej darmowej przesyłce
                             </WelcomeText>
-                            <WelcomeText variant="button" gutterBottom>
-                                Tutaj możesz skontaktować się z konsultantem
-                            </WelcomeText>
-                            {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
-
-
-                        <CustomButton
-                            label={"Skontaktuj się"}
-                            // type="submit"
-                            // disabled={!isEmailValid || !isPasswordValid}
-                        />
 
                     </ProfileImageContainer>
 

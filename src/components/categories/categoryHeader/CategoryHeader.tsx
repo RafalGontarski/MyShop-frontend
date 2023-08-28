@@ -16,11 +16,17 @@ import WhiteButton from "../../tools/button/WhiteButton";
 
 interface CategoryHeaderProps {
     categoryName: string;
+    subCategoryName?: string;
 }
 
-export const CategoryHeader: React.FC<CategoryHeaderProps> = ({ categoryName }) => {
-    console.log("Komponent Category Header jest renderowany");
-    console.log(categoryName);
+export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
+                                      categoryName ,
+                                      subCategoryName
+
+                                }) => {
+    console.log("categoryName:", categoryName);
+    console.log("subCategoryName:", subCategoryName);
+
     return (
         <HeaderContainer>
             <InnerContainer>
@@ -30,10 +36,18 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({ categoryName }) 
                         <span>{"> "}</span>
                         <Link to="/categories">Wszystkie Kategorie</Link>
                         <span>{"> "}</span>
-                        <span>{categoryName}</span>
+                        <Link to={`/categories/${categoryName}`}>{categoryName}</Link>
+                        {subCategoryName && (
+                            <>
+                                <span>{"> "}</span>
+                                <Link to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</Link>
+                            </>
+                        )}
                     </Breadcrumbs>
+
+
                 </BreadcrumbContainer>
-                <CategoryName>{categoryName}</CategoryName>
+                <CategoryName>{subCategoryName ? subCategoryName : categoryName}</CategoryName>
                 <ActionsContainer>
                     <LinksContainer>
                         <Link to="#">NOWOŚCI</Link>

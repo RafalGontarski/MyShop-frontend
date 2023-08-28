@@ -8,6 +8,7 @@ export const MyProfileContainer = styled.div`
 export const MyProfileLeftContainer = styled(Box)`
   && {
     width: 30%;
+
     display: flex;
     justify-content: left;
     align-items: flex-start;

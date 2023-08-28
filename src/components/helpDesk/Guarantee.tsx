@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 import CustomButton from "../tools/button/Button";
 import {StyledMenuIcon} from "../navbar/Navbar.styles";
+import { useLocation } from 'react-router-dom';
+
 
 import {
     Container,
@@ -33,36 +35,66 @@ import {
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
 
 import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
+
+interface GuaranteeProps {
+    isExpanded: boolean;
+    toggleExpanded: () => void;
+}
+
+export const Guarantee: React.FC<GuaranteeProps> = ({ isExpanded, toggleExpanded }) => {
+
+    const location = useLocation();
 
 
-export const Advantages: React.FC = () => {
+    // useEffect(() => {
+    //     // Definiujemy ścieżki, dla których menu "Atuty" powinno pozostać rozwinięte
+    //     const atutyPaths = ['/helpDesk/freeShipping', '/helpDesk/guarantee'];
+    //
+    //     // Jeśli aktualna ścieżka jest jednym z powyższych, wykonaj funkcję toggleExpanded
+    //     if (atutyPaths.includes(location.pathname)) {
+    //         toggleExpanded();
+    //     }
+    //     // Jeśli chcesz, żeby menu zwijało się dla innych ścieżek, odkomentuj poniższą linię
+    //     // else { toggleExpanded(); } // Chociaż wydaje się, że może to nie działać zgodnie z oczekiwaniami w pewnych przypadkach.
+    // }, [location.pathname, toggleExpanded]);
+
+
     return (
         <MyProfileContainer>
-
             <MyProfileLeftContainer>
-
-                <UserDataContainer>
-                </UserDataContainer>
-
                 <LinksContainer>
-
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Kontakt
                     </ProfileDrawerLink>
-
                     <ProfileDrawerLink
-                        as={Link}
-                        to="/helpDesk/advantages"
                         underline="none"
-                        // onClick={onClose}
+                        onClick={toggleExpanded}
                     >
-                        Atuty
+                        Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
+                    {isExpanded && (
+                        <>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/freeShipping"
+                                underline="none"
+                            >
+                                Darmowa wysyłka od 300 zł
+                            </HelpDeskAdvantageChildLink>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/guarantee"
+                                underline="none"
+                            >
+                                Gwarancja Satysfakcji
+                            </HelpDeskAdvantageChildLink>
+                        </>
+                    )}
 
 
                     <ProfileLine/>
@@ -97,11 +129,11 @@ export const Advantages: React.FC = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Atuty</Title>
+                    <Title>Gwarancja Satysfakcji</Title>
                 </CategoryTitleContainer>
 
                 <WelcomeText variant="h6" gutterBottom>
-                    Oto nasze atuty
+                    Gwarancja satysfakcji to nasz atut
                 </WelcomeText>
 
                 <FormContainer
@@ -111,7 +143,7 @@ export const Advantages: React.FC = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Przeczytaj o naszych atutach
+                                Przeczytaj o naszej gwarancji
                             </WelcomeText>
                         </ProfilePageWelcome>
 

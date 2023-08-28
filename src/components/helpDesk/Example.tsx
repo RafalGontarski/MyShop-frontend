@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
 import CustomButton from "../tools/button/Button";
@@ -33,16 +33,17 @@ import {
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
 
 import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
 export const Example: React.FC = () => {
+
+    const [isExpanded, setIsExpanded] = useState(false);
+
     return (
         <MyProfileContainer>
 
             <MyProfileLeftContainer>
-
-                <UserDataContainer>
-                </UserDataContainer>
 
                 <LinksContainer>
 
@@ -56,13 +57,30 @@ export const Example: React.FC = () => {
                     </ProfileDrawerLink>
 
                     <ProfileDrawerLink
-                        as={Link}
-                        to="/helpDesk/advantages"
                         underline="none"
-                        // onClick={onClose}
+                        onClick={() => setIsExpanded(!isExpanded)}
                     >
-                        Atuty
+                        Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
+
+                    {isExpanded && (
+                        <>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/freeShipping"
+                                underline="none"
+                            >
+                                Darmowa wysyłka od 300 zł
+                            </HelpDeskAdvantageChildLink>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/guarantee"
+                                underline="none"
+                            >
+                                Gwarancja Satysfakcji
+                            </HelpDeskAdvantageChildLink>
+                        </>
+                    )}
 
 
                     <ProfileLine/>

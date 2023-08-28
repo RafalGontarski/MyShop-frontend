@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState} from 'react';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 
 import Navbar from './components/navbar/Navbar';
 import {LoginDrawer} from "./components/tools/drawer/LoginDrawer";
@@ -33,8 +33,10 @@ import {Occasions} from "./components/navbar/linksComponents/sales/occasions/Occ
 import {WishList} from "./components/navbar/iconComponents/WishList";
 import {Basket} from "./components/navbar/iconComponents/Basket";
 import {Contact} from "./components/helpDesk/Contact";
-import {Advantages} from "./components/helpDesk/Advantages";
+import {FreeShipping} from "./components/helpDesk/FreeShipping";
 import {Example} from "./components/helpDesk/Example";
+import {Guarantee} from "./components/helpDesk/Guarantee";
+import {SubCategory} from "./components/categories/category/SubCategory";
 
 
 const UserContext = createContext<{
@@ -85,6 +87,9 @@ const App = () => {
     const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false);
     const [isLeftProfileDrawerOpen, setIsLeftProfileDrawerOpen] = useState(false);
     const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
+
+    const [isExpanded, setIsExpanded] = useState(false);
+    const location = useLocation();
 
     // categoriesEditPanel
     const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -146,6 +151,15 @@ const App = () => {
             setUserRole(user.userRole);
         }
     }, []);
+
+    useEffect(() => {
+        if (location.pathname === '/helpDesk/freeShipping' || location.pathname === '/helpDesk/guarantee') {
+            setIsExpanded(true);
+        } else {
+            setIsExpanded(false);
+        }
+    }, [location.pathname]);
+
     function openProfileDrawer() {
         setIsProfileDrawerOpen(true);
     }
@@ -367,11 +381,23 @@ const App = () => {
                                         userEmail={userEmail}
                                         userRole={userRole}
                             />} />
-                            <Route path="/categories/:categoryName"
-                                   element={<Category/>} />
+                            <Route path="/categories/:categoryName" element={<Category />} />
+                            <Route path="/categories/:categoryName/:subCategoryName" element={<SubCategory />} />
+
+
 
                             <Route path={'/helpDesk/contact'} element={<Contact />} />
-                            <Route path={'/helpDesk/advantages'} element={<Advantages />}/>
+                            <Route path={'/helpDesk/freeShipping'}
+                                   element={
+                                <FreeShipping
+                                    isExpanded={isExpanded}
+                                    toggleExpanded={() => setIsExpanded(!isExpanded)}
+                                />}/>
+                            <Route path={'/helpDesk/guarantee'}
+                                   element={<Guarantee
+                                       isExpanded={isExpanded}
+                                       toggleExpanded={() => setIsExpanded(!isExpanded)}
+                                   />}/>
                             <Route path={'/helpDesk/example'} element={<Example />}/>
 
                             <Route path="/hotDeals" element={<HotDeals />}/>
