@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Link from "@mui/material/Link";
+import MuiLink from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -140,6 +141,7 @@ export const StyledAccountCircle = styled(AccountCircle)`
 export const StyledFavoriteIcon = styled(FavoriteIcon)`
   && {
     font-size: 30px;
+    cursor: pointer;
     @media (max-width: 750px) {
       font-size: 20px;
     }
@@ -221,7 +223,7 @@ export const LeftSideFullScreenNavbar = styled.div`
 
 export const LeftSideLinksAndIcons = styled.div``
 export const LeftSideMenuIconAndLinks = styled.div``
-export const LeftSideStyledLink = styled(Link)`
+export const LeftSideStyledLink = styled(MuiLink)`
   && {
     color: #000;
     margin-right: 20px;
@@ -237,7 +239,7 @@ export const LeftSideStyledLink = styled(Link)`
     }
   }
 `
-export const LeftSideStyledBoldLink = styled(Link)`
+export const LeftSideStyledBoldLink = styled(MuiLink)`
   && {
     color: #000;
     font-weight: bold;
@@ -317,7 +319,7 @@ export const MiddleSideFullScreenNavbar = styled.div`
   }
 `
 export const MiddleSideLogoContainer = styled.div``
-export const LogoLink = styled(Link)``
+export const LogoLink = styled(MuiLink)``
 export const MiddleSideSearchContainer = styled.div``
 export const MiddleSideImageContainer = styled.img`
   && {
@@ -442,7 +444,7 @@ export const RightSideIconsContainer = styled.div`
     display: flex;
   }
 `
-export const RightSideFreeShippingLink = styled(Link)`
+export const RightSideFreeShippingLink = styled(MuiLink)`
   && {
     color: #000;
     font-size: 0.8rem;
@@ -472,7 +474,7 @@ export const StyledRightSideFreeShippingLink = styled(RightSideFreeShippingLink)
   }
   
 `
-export const RightSideStyledLink = styled(Link)`
+export const RightSideStyledLink = styled(MuiLink)`
   && {
     color: #000;
     margin-right: 20px;
@@ -484,7 +486,7 @@ export const RightSideStyledLink = styled(Link)`
     }
   }
 `
-export const RightSideGuaranteeLink = styled(Link)`
+export const RightSideGuaranteeLink = styled(MuiLink)`
   && {
     color: #000;
     font-size: 0.8rem;
@@ -632,6 +634,10 @@ export const ProfileImagePlaceholder = styled.div`
     
   }
 `
+export const WishListLink = styled(RouterLink)``
+export const CartLink = styled(RouterLink)``
+
+
 
 // wraper
 export const SmallScreenNavbar = styled.div`

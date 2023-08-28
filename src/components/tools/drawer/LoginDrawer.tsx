@@ -4,8 +4,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import {ACCESS_TOKEN} from "../../constants/constants";
-import {UserContext} from "../../models/context/UserContexts";
+import {ACCESS_TOKEN} from "../../../constants/constants";
+import {UserContext} from "../../../models/context/UserContexts";
 
 import Drawer from '@mui/material/Drawer';
 import CustomLink from '../link/CustomLink';
@@ -15,7 +15,7 @@ import {toast} from 'react-toastify';
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
-import {AuthApi} from "../../api/AuthApi";
+import {AuthApi} from "../../../api/AuthApi";
 
 import GoogleLoginButton from '../button/GoogleLoginButton';
 

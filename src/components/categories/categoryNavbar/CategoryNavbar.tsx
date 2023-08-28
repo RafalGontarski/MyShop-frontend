@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { CategoryNavbarContainer } from "./CategoryNavbar.styles";
 import { CategoryContext } from "../../../models/context/CategoryContexts";
 import { CategoryApi } from "../../../api/CategoryApi";
-import CategoryNavbarLinkButton from "../../button/CategoryNavbarLinkButton";
+import CategoryNavbarLinkButton from "../../tools/button/CategoryNavbarLinkButton";
 import {Link} from "react-router-dom";
 import {useSelectedCategory} from "../../../models/context/SelectedCategoryContext";
 

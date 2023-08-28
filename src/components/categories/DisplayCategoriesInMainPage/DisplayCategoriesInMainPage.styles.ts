@@ -2,7 +2,23 @@ import styled from "styled-components";
 
 
 export const DisplayCategoriesInMainPageContainer = styled.div`
+  margin-left: 8rem;
+  margin-right: 8rem;
 
+  @media (max-width: 1350px) {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  @media (max-width: 1100px) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 `
 
 export const DisplayCategoriesInMainPageTitle = styled.h1`
@@ -16,6 +32,7 @@ export const CategoriesChildrenDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  
 `
 
 export const ChildDiv = styled.div`

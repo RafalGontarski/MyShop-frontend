@@ -2,11 +2,11 @@ import React, {createContext, useEffect, useState} from 'react';
 import {Route, Routes} from "react-router-dom";
 
 import Navbar from './components/navbar/Navbar';
-import {LoginDrawer} from "./components/drawer/LoginDrawer";
-import {ProfileDrawer} from "./components/drawer/ProfileDrawer";
+import {LoginDrawer} from "./components/tools/drawer/LoginDrawer";
+import {ProfileDrawer} from "./components/tools/drawer/ProfileDrawer";
 
-import {RegistrationDrawer} from "./components/drawer/RegistrationDrawer";
-import {LeftProfileDrawer} from "./components/drawer/LeftProfileDrawer"
+import {RegistrationDrawer} from "./components/tools/drawer/RegistrationDrawer";
+import {LeftProfileDrawer} from "./components/tools/drawer/LeftProfileDrawer"
 import MainPage from "./components/mainPage/MainPage";
 
 import {withAxiosIntercepted} from "./hooks/withAxiosIntercepted";
@@ -22,15 +22,17 @@ import {AddressBookUpdateRequest} from "./api/user/AddressBookUpdateRequest";
 import {CategoryNavbar} from "./components/categories/categoryNavbar/CategoryNavbar";
 import { CategoryContext } from './models/context/CategoryContexts';
 import CategoryType from "./models/types/CategoryType";
-import Carousel from "./components/carousel/Carousel";
+import Carousel from "./components/mainPage/carousel/Carousel";
 
-import CarouselImg1 from './resources/carouselPng/carousel1.png';
-import CarouselImg2 from './resources/carouselPng/carousel2.png';
-import CarouselImg3 from './resources/carouselPng/carousel3.png';
-import CarouselImg4 from './resources/carouselPng/carousel4.png';
-import CarouselImg5 from './resources/carouselPng/carousel5.png';
 import {SelectedCategoryProvider} from "./models/providers/SelectedCategoryProvider";
 import {Category} from "./components/categories/category/Category";
+import {HotDeals} from "./components/navbar/linksComponents/sales/hotDeals/HotDeals";
+import {Newest} from "./components/navbar/linksComponents/sales/newest/Newest";
+import {TopSeller} from "./components/navbar/linksComponents/sales/topSeller/TopSeller";
+import {Occasions} from "./components/navbar/linksComponents/sales/occasions/Occasions";
+import {WishList} from "./components/navbar/iconComponents/WishList";
+import {Basket} from "./components/navbar/iconComponents/Basket";
+import {HelpDesk} from "./components/helpDesk/HelpDesk";
 
 
 const UserContext = createContext<{
@@ -364,11 +366,16 @@ const App = () => {
                                         userRole={userRole}
                             />} />
                             <Route path="/categories/:categoryName"
-                                   element={
+                                   element={<Category/>} />
 
-                                    <Category/>
+                            <Route path={'/helpDesk'} element={<HelpDesk />} />
 
-                            } />
+                            <Route path="/hotDeals" element={<HotDeals />}/>
+                            <Route path="/newest" element={<Newest />}/>
+                            <Route path="/topSeller" element={<TopSeller />}/>
+                            <Route path="/occasions" element={<Occasions />}/>
+                            <Route path="/wishList" element={<WishList />}/>
+                            <Route path="/basket" element={<Basket />}/>
                         </Routes>
                     </SelectedCategoryProvider>
 

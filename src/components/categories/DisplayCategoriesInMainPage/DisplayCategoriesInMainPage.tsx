@@ -7,8 +7,8 @@ import React, {useEffect, useState} from 'react';
 import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
 
-import MenuLink from "../../link/MenuLink";
-import {ProfileDrawerLink} from "../../drawer/ProfileDrawer.styles";
+import MenuLink from "../../tools/link/menuLink/MenuLink";
+import {ProfileDrawerLink} from "../../tools/drawer/ProfileDrawer.styles";
 import { Link } from "react-router-dom";
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
 

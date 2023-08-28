@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/Navbar.styles";
 
 import {
     Title,
@@ -23,12 +23,12 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../drawer/ProfileDrawer.styles";
+} from "../../tools/drawer/ProfileDrawer.styles";
 import {CategoryFormInput, CategoryTitleContainer, ValidateText} from "./CategoryEditPanel.styles";
 import {FormContainer, ProfileImageContainer, ProfilePageWelcome} from "../bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledTextField, WelcomeText} from "../../drawer/Drawer.styles";
-import CountrySelector from "../../selectors/CountrySelect";
-import CustomButton from "../../button/Button";
+import {StyledTextField, WelcomeText} from "../../tools/drawer/Drawer.styles";
+import CountrySelector from "../../tools/selectors/CountrySelect";
+import CustomButton from "../../tools/button/Button";
 import {EditLine} from "../profileEditPanel/ProfileEditPanel.styles";
 import CategoryType from "../../../models/types/CategoryType";
 import {CategoryApi} from "../../../api/CategoryApi";
@@ -86,7 +86,7 @@ export const CategoriesEditPanel: React.FC<EditCategoriesProps> = ({
         } catch (error) {
             console.error("Błąd podczas dodawania kategorii:", error);
         }
-        window.location.href = '/categoriesEditPanel-center';
+        window.location.href = '/';
     };
 
 

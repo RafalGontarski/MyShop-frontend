@@ -1,5 +1,5 @@
 import React from 'react';
-import {Country} from "./links.styles";
+import {Country} from "../links.styles";
 import CheckIcon from "@mui/icons-material/Check";
 
 interface CountryLinkProps {

@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/Navbar.styles";
 
 
 
@@ -25,11 +25,11 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../drawer/ProfileDrawer.styles";
+} from "../../tools/drawer/ProfileDrawer.styles";
 import {FormContainer, ProfileImageContainer, ProfilePageWelcome} from "../bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledTextField, WelcomeText} from "../../drawer/Drawer.styles";
+import {StyledTextField, WelcomeText} from "../../tools/drawer/Drawer.styles";
 import {CategoryFormInput, ValidateText} from "../categoriesEditPanel/CategoryEditPanel.styles";
-import CustomButton from "../../button/Button";
+import CustomButton from "../../tools/button/Button";
 import {CarouselImageApi} from "../../../api/CarouselImageApi";
 
 type GraphicProps = {

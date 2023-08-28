@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledMenuIcon} from "../../navbar/navbar.styles";
+import {StyledMenuIcon} from "../../navbar/Navbar.styles";
 
 import {
     Container,
@@ -20,7 +20,7 @@ import {
     ProfileWelcome,
     UserDataContainer,
     ProfileDrawerLink,
-} from "../../drawer/ProfileDrawer.styles";
+} from "../../tools/drawer/ProfileDrawer.styles";
 
 
 type EditProductProps = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckIcon from '@mui/icons-material/Check';
-import { FlagCountry } from './links.styles';
+import { FlagCountry } from '../links.styles';
 
 interface FlagCountryLinkProps {
     href: string,

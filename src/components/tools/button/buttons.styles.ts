@@ -31,6 +31,35 @@ export const StyledButton = styled(Button)`
   }
 `;
 
+export const StyledWhiteButton = styled(Button)`
+  && {
+    //display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    //margin-top: 1rem;
+    background-color: #fff;
+    padding: 0.5em 1em; // Dodaje elastyczny padding do przycisku
+    //height: 40px;
+    position: relative;
+    border-radius: 1.5rem;
+    text-decoration: none; // Usuwa podkreślenie linku
+    color: #000; // Dziedziczy kolor tekstu z rodzica
+    display: inline-flex;
+    //&:hover {
+    //  background-image: linear-gradient(to right, blue, green);
+    //
+    //  &::after {
+    //    content: "";
+    //    position: absolute;
+    //    bottom: 0;
+    //    left: 0;
+    //    right: 0;
+    //  }
+    //}
+  }
+`;
+
 export const StyledLinkButton = styled(Button)`
   && {
     //display: flex;

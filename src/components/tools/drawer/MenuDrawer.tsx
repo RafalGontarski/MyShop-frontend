@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 import {IconClose, StyledIconClose} from "./Drawer.styles";
-import {CategoryContext} from "../../models/context/CategoryContexts";
+import {CategoryContext} from "../../../models/context/CategoryContexts";
 import {ProfileDrawerLink} from "./ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 
