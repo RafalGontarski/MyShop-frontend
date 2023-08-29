@@ -32,7 +32,7 @@ import {
     YouTubeIconButton
 } from "./Navbar.styles";
 
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {MenuDrawer} from "../tools/drawer/MenuDrawer";
 import Logo from "../../resources/img/jedziemy.png";
 import {InputAdornment} from "@mui/material";

@@ -7,6 +7,7 @@ import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
 
 
+
 export const Category: React.FC = () => {
     const { categoryName, subCategoryName } = useParams<{ categoryName: string; subCategoryName?: string }>();
     const { selectedCategory, setSelectedCategory } = useSelectedCategory();

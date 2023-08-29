@@ -26,13 +26,4 @@ export class CategoryApi {
         return response.data;
     }
 
-    static getSubCategoryIdByName = async (subCategoryName: string): Promise<number> => {
-        const response =
-            await axios.get<number>(
-                `${BaseUrl}/api/categories/subcategories/id?name=${subCategoryName}`);
-        return response.data;
-    }
-
-
-
 }

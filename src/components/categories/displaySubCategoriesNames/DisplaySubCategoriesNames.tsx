@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {CategoryApi} from "../../../api/CategoryApi";
 import {SubCatChildDiv, SubCategoriesContainer, SubCatLink} from "./DisplaySubCategoriesNames.styles";
 import {
     CategoriesChildrenDiv,
-    ChildDiv, ChildImg
+    ChildImg
 } from "../DisplayCategoriesInMainPage/DisplayCategoriesInMainPage.styles";
 import {Link} from "react-router-dom";
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
+import {CategoryApi} from "../../../api/CategoryApi";
 
 
 type DisplaySubCategoriesNamesProps = {
