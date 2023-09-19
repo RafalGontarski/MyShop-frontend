@@ -1,7 +1,5 @@
 import React from "react";
-import {useSelectedCategory} from "../../../models/context/SelectedCategoryContext";
 import {
-    ActionButton,
     ActionsContainer,
     BreadcrumbContainer,
     CategoryName,
@@ -12,6 +10,7 @@ import {
 } from "./CategoryHeader.styles";
 import {Link} from "react-router-dom";
 import WhiteButton from "../../tools/button/WhiteButton";
+import HomeIcon from '@mui/icons-material/Home';
 
 
 interface CategoryHeaderProps {
@@ -34,7 +33,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
             <InnerContainer>
                 <BreadcrumbContainer>
                     <Breadcrumbs>
-                        <Link to="/">powrót</Link>
+                        <Link to="/"><HomeIcon /></Link>
                         <span>{"> "}</span>
                         <Link to="/categories">Wszystkie Kategorie</Link>
                         <span>{"> "}</span>

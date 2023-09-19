@@ -46,7 +46,6 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
                             />
 
                             <ProfileDrawerLink
-
                                 as={Link}
                                 to={`/categories/${category.name}`}  // Przykładowy URL dla kategorii
                                 underline="none"

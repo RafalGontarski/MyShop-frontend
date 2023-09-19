@@ -44,6 +44,11 @@ export const ChildDiv = styled.div`
   flex-direction: row;
   border-bottom: 1px solid #e0e0e0;
   width: 100%;  // Pogrubienie na dolnej krawędzi sięga do końca kontenera
+
+  @media (max-width: 600px) {
+    flex: 1 1 100%; // Zmieniamy na pełną szerokość
+    margin-right: 0; // Usuwamy margines po prawej stronie
+  }
 `
 
 export const ChildImg = styled.img`

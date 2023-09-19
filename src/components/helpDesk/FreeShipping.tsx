@@ -39,21 +39,6 @@ interface FreeShippingProps {
 
 export const FreeShipping: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
 
-    const location = useLocation();
-
-
-    // useEffect(() => {
-    //     // Definiujemy ścieżki, dla których menu "Atuty" powinno pozostać rozwinięte
-    //     const atutyPaths = ['/helpDesk/freeShipping', '/helpDesk/guarantee'];
-    //
-    //     // Jeśli aktualna ścieżka jest jednym z powyższych, wykonaj funkcję toggleExpanded
-    //     if (atutyPaths.includes(location.pathname)) {
-    //         toggleExpanded();
-    //     }
-    //     // Jeśli chcesz, żeby menu zwijało się dla innych ścieżek, odkomentuj poniższą linię
-    //     // else { toggleExpanded(); } // Chociaż wydaje się, że może to nie działać zgodnie z oczekiwaniami w pewnych przypadkach.
-    // }, [location.pathname, toggleExpanded]);
-
     return (
         <MyProfileContainer>
             <MyProfileLeftContainer>

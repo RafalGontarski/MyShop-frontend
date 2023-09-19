@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import Grid from "@mui/material/Grid";
 import {
     CartLink,
-    FaceBookIconButton, IconContainer,
+    FaceBookIconButton,
+    IconContainer,
     InstagramIconButton,
     LeftSideFullScreenNavbar,
     LeftSideLinksAndIcons,
@@ -13,22 +14,31 @@ import {
     MiddleSideFullScreenNavbar,
     MiddleSideImageContainer,
     MiddleSideLogoContainer,
-    MiddleSideSearchContainer, ProfileImagePlaceholder,
+    MiddleSideSearchContainer,
+    ProfileImagePlaceholder,
     RightSideFullScreenNavbar,
     RightSideIconsContainer,
-    RightSideLanguageIconStyled, RightSideLanguageTypographyStyled,
-    RightSideLinksContainer, StyledAccountCircle,
-    StyledFaceBookIcon, StyledFavoriteIcon,
+    RightSideLanguageIconStyled,
+    RightSideLanguageTypographyStyled,
+    RightSideLinksContainer,
+    StyledAccountCircle,
+    StyledFaceBookIcon,
+    StyledFavoriteIcon,
     StyledInputLabel,
-    StyledInstagramIcon, StyledMainGrid,
+    StyledInstagramIcon,
+    StyledMainGrid,
     StyledMenuButton,
     StyledMenuIcon,
     StyledRightSideFreeShippingLink,
-    StyledRightSideGuaranteeLink, StyledRightSideLastIcon, StyledRightSideMiddleIcon, StyledShoppingCartIcon,
+    StyledRightSideGuaranteeLink,
+    StyledRightSideLastIcon,
+    StyledRightSideMiddleIcon,
+    StyledShoppingCartIcon,
     StyledTextField,
     StyledTikTokIcon,
     StyledYouTubeIcon,
-    TikTokIconButton, WishListLink,
+    TikTokIconButton,
+    WishListLink,
     YouTubeIconButton
 } from "./Navbar.styles";
 
@@ -69,7 +79,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
 
 
     const { t, i18n } = useTranslation();
-    const [setCurrentLanguage] = useState(t.language);
+    const [,setCurrentLanguage] = useState(t.language);
 
 
     let currencySymbol;

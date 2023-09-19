@@ -14,6 +14,7 @@ import WhiteButton from "../../tools/button/WhiteButton";
 import FilterIcon from '@mui/icons-material/FilterList';
 import Typography from "@mui/material/Typography";
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
 
 interface CategoryHeaderProps {
     categoryName: string;
@@ -41,7 +42,10 @@ export const SubCategoryHeader: React.FC<CategoryHeaderProps> = ({
             <SubCatInnerContainer>
                 <BreadcrumbContainer>
                     <SubCatBreadcrumbs>
-                        <Link to="/">powrót</Link>
+                        <Link to="/" style={{justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                            <HomeIcon />
+                        </Link>
+
                         <SubCatSpan>{"> "}</SubCatSpan>
                         <Link to="/categories">Wszystkie Kategorie</Link>
                         <SubCatSpan>{"> "}</SubCatSpan>
