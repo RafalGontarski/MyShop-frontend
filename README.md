@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Fishing Store Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This repository contains the frontend component of the Fishing Store application. Built with a modern stack, it offers a dynamic and responsive interface for users to browse products, manage their profiles, and more.
 
-In the project directory, you can run:
+## Technical Stack
 
-### `npm start`
+- **Programming Language**: Typescript
+- **Framework**: React
+- **Libraries**: 
+  - Material-UI (MUI)
+  - styled-components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Dynamic Product Display**: Showcase fishing products with detailed descriptions, images, and pricing.
+2. **User Profile Management**: Allows users to manage their profiles, view order history, and manage preferences.
+3. **Responsive Design**: Ensures a seamless user experience across devices of all sizes.
 
-### `npm test`
+## Setup & Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Dependencies**: Ensure you have Node.js and npm installed on your machine.
+2. **Installing Packages**: Navigate to the root directory and run:
+   ```
+   npm install
+   ```
+3. **Running the Application**: In the root directory, execute:
+   ```
+   npm start
+   ```
+4. The application will start, and it will be accessible at `http://localhost:3000/` or another port if specified.
 
-### `npm run build`
+## Component Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Layout Components**: Define the main structure, including headers, footers, and main content areas.
+- **Product Components**: Handle the display, filtering, and sorting of fishing products.
+- **User Components**: Manage user login, registration, and profile views.
+- **Integration**: Integration with the backend component for real-time data synchronization.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Theming and Styling
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Material-UI (MUI)**: Used as the primary component library, offering a wide range of pre-designed components.
+- **styled-components**: Allows for additional customization and theming beyond MUI components. Ensures a consistent look and feel across the application.
 
-### `npm run eject`
+## Future Improvements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Implement additional features such as reviews, ratings, and a shopping cart.
+- Improve performance and implement lazy-loading for images and components.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Contributions are welcome! Please fork this repository, make your changes, and submit a pull request. For major changes or new feature requests, please open an issue first to discuss.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
+MIT License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Copyright (c) 2023 Rafal Gontarski
