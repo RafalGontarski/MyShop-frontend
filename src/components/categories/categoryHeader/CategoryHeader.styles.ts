@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const HeaderContainer = styled.div`
-    background-color: black; // Tymczasowo czarne tło
+    //background-color: black; // Tymczasowo czarne tło
     padding: 20px;
     color: white;
 `;

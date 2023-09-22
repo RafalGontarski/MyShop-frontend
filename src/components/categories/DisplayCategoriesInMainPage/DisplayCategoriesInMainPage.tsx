@@ -40,9 +40,9 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
                 {categories.map(category => (
                     <ChildDiv key={category.name}>
                             <ChildImg
-                                src={CatfishIcon}
-                                alt="Catfish Icon"
-                                style={{ width: '7rem', height: 'auto' }}
+                                src={`http://localhost:8080${category.iconUrl}`}
+                                alt={category.name + " Icon"}
+                                style={{ width: '7rem', height: 'auto', paddingRight: '2rem' }}
                             />
 
                             <ProfileDrawerLink

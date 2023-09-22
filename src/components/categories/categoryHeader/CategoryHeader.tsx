@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
     ActionsContainer,
     BreadcrumbContainer,
@@ -11,6 +11,8 @@ import {
 import {Link} from "react-router-dom";
 import WhiteButton from "../../tools/button/WhiteButton";
 import HomeIcon from '@mui/icons-material/Home';
+import {CategoryApi} from "../../../api/CategoryApi";
+import CategoryType from "../../../models/types/CategoryType";
 
 
 interface CategoryHeaderProps {
@@ -25,11 +27,35 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                                       subCategoryName,
                                       productName
                                 }) => {
-    console.log("categoryName:", categoryName);
-    console.log("subCategoryName:", subCategoryName);
+    // console.log("categoryName:", categoryName);
+    // console.log("subCategoryName:", subCategoryName);
+
+    const [categories, setCategories] = useState<CategoryType[]>([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const fetchedCategories = await CategoryApi.getAllCategoriesName();
+                setCategories(fetchedCategories);
+                console.log("Fetched categories:", JSON.stringify(fetchedCategories, null, 2));
+
+            } catch (error) {
+                console.error("Błąd podczas pobierania kategorii:", error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    const currentCategory = categories.find(cat => cat.name === categoryName);
+    const imageUrl = currentCategory?.imageUrl || ''; // jeśli nie znajdzie kategorii, domyślnie imageUrl będzie puste
+
+    console.log('ImageURL: ' + imageUrl);
 
     return (
-        <HeaderContainer>
+        <HeaderContainer style={{
+            backgroundImage: `url(http://localhost:8080${imageUrl})`
+        }}>
             <InnerContainer>
                 <BreadcrumbContainer>
                     <Breadcrumbs>

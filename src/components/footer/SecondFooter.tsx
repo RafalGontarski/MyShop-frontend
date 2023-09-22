@@ -1,8 +1,19 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {StyledBlackLink, StyledLinksDiv, StyledSecondFooter, StyledWhiteLink} from "./footer.styles";
+
+import {
+    StyledLinksDiv,
+    StyledWhiteLink,
+    StyledYouTubeIcon,
+    StyledTwitterIcon,
+    StyledSecondFooter,
+    StyledFacebookIcon,
+    StyledInstagramIcon,
+    StyledPinterestIcon,
+    StyledSocialMediaIconDiv, StyledFaTiktok,
+} from "./footer.styles";
+
+
 
 export const SecondFooter = () => {
     return (
@@ -16,17 +27,25 @@ export const SecondFooter = () => {
                 <StyledWhiteLink>Odpowiedzialność cywilna</StyledWhiteLink>
             </StyledLinksDiv>
             <StyledLinksDiv>
-                <div>
 
-                </div>
+                <StyledSocialMediaIconDiv>
+                    <StyledFacebookIcon />
+                    <StyledYouTubeIcon />
+                    <StyledInstagramIcon />
+                    <StyledTwitterIcon />
+                    <StyledPinterestIcon />
+                    <StyledFaTiktok />
+
+                </StyledSocialMediaIconDiv>
+
                 <StyledWhiteLink>O nas</StyledWhiteLink>
                 <StyledWhiteLink>Kariera</StyledWhiteLink>
                 <StyledWhiteLink>Blog</StyledWhiteLink>
                 <StyledWhiteLink>Ogłoszenia</StyledWhiteLink>
             </StyledLinksDiv>
             <div>
-                <Typography fontSize={12} width={450} >© 2023 Copywrite reserved.</Typography>
-                <Typography fontSize={12} width={450} >Będzie Łowione, jedziemy!</Typography>
+                <Typography fontSize={12}>© 2023 Copyright reserved.</Typography>
+                <Typography fontSize={12}>Będzie Łowione, jedziemy!</Typography>
             </div>
         </StyledSecondFooter>
     );

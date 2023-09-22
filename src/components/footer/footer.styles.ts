@@ -2,6 +2,12 @@ import styled from "styled-components";
 import AppBar from "@mui/material/AppBar";
 import MuiLink from "@mui/material/Link";
 import CheckIcon from "@mui/icons-material/Check";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import {FaTiktok} from "react-icons/fa";
 
 
 export const StyledFirstFooter = styled(AppBar)`
@@ -70,6 +76,15 @@ export const StyledIconsDiv = styled.div`
   }
 `
 
+export const StyledSocialMediaIconDiv = styled.div`
+  && {
+    margin-bottom: 1rem;
+    & > * {  // Dla każdego bezpośredniego potomka
+      padding-right: 10px; 
+    }
+  }
+`
+
 
 export const StyledBlackLink = styled(MuiLink)`
   && {
@@ -123,6 +138,54 @@ export const StyledCheckIcon = styled(CheckIcon)`
   }
 `;
 
+export const StyledFacebookIcon = styled(FacebookIcon)`
+  && {
+    &:hover {
+      color: blue;
+    }
+  }
+`
+
+export const StyledYouTubeIcon = styled(YouTubeIcon)`
+  && {
+    &:hover {
+      color: red;
+    }
+  }
+`
+
+export const StyledInstagramIcon = styled(InstagramIcon)`
+  && {
+    &:hover {
+      color: deeppink;
+    }
+  }
+`
+
+export const StyledTwitterIcon = styled(TwitterIcon)`
+  && {
+    &:hover {
+      color: deepskyblue;
+    }
+  }
+`
+
+export const StyledPinterestIcon = styled(PinterestIcon)`
+  && {
+    &:hover {
+      color: darkred;
+    }
+  }
+`
+export const StyledFaTiktok = styled(FaTiktok)`
+  && {
+    font-size: 21px;
+    
+    &:hover {
+      color: red;
+    }
+  }
+`
 
 
 
