@@ -7,46 +7,50 @@ import {
 import {Link} from "react-router-dom";
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
 import {CategoryApi} from "../../../api/CategoryApi";
+import SubCategoryType from "../../../models/types/SubCategoryType";
 
 
-type DisplaySubCategoriesNamesProps = {
+type DisplaySubCategoriesProps = {
     categoryId: number | undefined;
-    categoryName: string;
+    subCategoryName: string;
 };
 
-export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesNamesProps> = ({
+export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesProps> = ({
                                                                                         categoryId,
-                                                                                        categoryName}) => {
-    const [subCategoriesNames, setSubCategoriesNames] = useState<string[]>([]);
+                                                                                   subCategoryName}) => {
+    const [subCategories, setSubCategories] = useState<SubCategoryType[]>([]);
 
     useEffect(() => {
         if (categoryId !== undefined) {
-            CategoryApi.getAllSubCategoriesNames(categoryId)
-                .then(names => setSubCategoriesNames(names))
+            CategoryApi.getAllSubCategories(categoryId)
+                .then(names => setSubCategories(names))
                 .catch(error => console.error("Błąd podczas pobierania podkategorii:", error));
         }
+        console.log('SubCategories from DisplaySubCategoriesNames:', JSON.stringify(subCategories, null, 2));
+
     }, [categoryId]);
+
 
 
     return (
         <SubCategoriesContainer>
             <CategoriesChildrenDiv>
-                {subCategoriesNames.map(name => (
-                    <SubCatChildDiv key={name}>
+                {subCategories.map(subCat => (
+                    <SubCatChildDiv key={subCat.name}>
                         <ChildImg
-                            src={CatfishIcon}
-                            alt="Catfish Icon"
-                            // style={{ width: '7rem', height: 'auto' }}
+                            src={subCat.iconUrl ? `http://localhost:8080${subCat.iconUrl}` : CatfishIcon}
+                            alt={subCat.name + " Icon"}
                         />
                         <SubCatLink
                             as={Link}
-                            to={`/categories/${categoryName}/${name}`}  // Zaktualizowany URL dla subkategorii
+                            to={`/categories/${subCategoryName}/${subCat.name}`}  // Zaktualizowany URL dla subkategorii
                             underline="none"
                         >
-                            {name}
+                            {subCat.name}
                         </SubCatLink>
                     </SubCatChildDiv>
                 ))}
+
             </CategoriesChildrenDiv>
         </SubCategoriesContainer>
     );

@@ -64,8 +64,8 @@
     "refund": "30-Dniowa Gwarancja Zwrotu Pieniędzy"
   },
   "menu": {
-    "products": {
-      "label": "Produkty",
+    "categories": {
+      "label": "Kategorie",
       "subcategories": {
         "electronics": "Elektronika",
         "clothing": "Odzież",

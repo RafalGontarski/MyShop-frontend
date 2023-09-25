@@ -1,10 +1,20 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
+
 
 
 export const HeaderContainer = styled.div`
-    //background-color: black; // Tymczasowo czarne tło
-    padding: 20px;
-    color: white;
+    && {
+      //background-color: black; // Tymczasowo czarne tło
+      background-color: rgba(0, 0, 0, 0.5);
+      //position: relative;
+      padding: 20px;
+      color: white;
+      
+      @media (max-width: 940px) {
+        
+      }
+    }
 `;
 
 export const SubCatHeaderContainer = styled.div`
@@ -17,30 +27,106 @@ export const BreadcrumbContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+  @media (max-width: 940px) {
+    display: none;
+  }
+  
 `;
 
 export const Breadcrumbs = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     > a {
-        margin-right: 5px;
-        color: white;
-        text-decoration: none;
+      position: relative;
+      margin-right: 0.1px;
+      color: white;
+      text-decoration: none;
+      height: 2rem;
+      padding: 0 15px; // dodałem padding, aby tekst nie był za blisko krawędzi
+      background-color: #686868;
+      //background-image: linear-gradient(to right, transparent 0%, darkgrey 10%, darkgrey 90%, transparent 100%);
+      border-radius: 0.2rem;
+      clip-path: polygon(97.5% 0, 100% 50%, 97.5% 100%, 0% 100%, 2.5% 50%, 0% 0);
+      transition: background-color 0.3s;
+
+      &:first-child {
+        border-radius: 0.2rem;
+        clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 0% 0%, 0% 0);
+      }
+      
+      &:nth-child(3) {
+        border-radius: 0.2rem;
+        clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
+      }
+      
 
         &:hover {
-            text-decoration: underline;
+          background-color: #909090;
         }
     }
 `;
 
-export const SubCatBreadcrumbs = styled.div`
-    > a {
-        margin-right: 5px;
-        color: black;
-        text-decoration: none;
+export const StyledLink = styled(Link)`
+  && {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+`
 
-        &:hover {
-            text-decoration: underline;
-        }
+export const StyledOtherLink = styled(Link)`
+  && {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-decoration: none;
+
+    @media (max-width: 600px) {
+      font-weight: bold;
+      font-size: 0.8rem;
     }
+    
+  }
+`
+
+export const SubCatBreadcrumbs = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > a {
+    position: relative;
+    margin-right: 0.1px;
+    color: white;
+    text-decoration: none;
+    height: 2rem;
+    padding: 0 15px; // dodałem padding, aby tekst nie był za blisko krawędzi
+    background-color: #686868;
+    //background-image: linear-gradient(to right, transparent 0%, darkgrey 10%, darkgrey 90%, transparent 100%);
+    border-radius: 0.2rem;
+    clip-path: polygon(97.5% 0, 100% 50%, 97.5% 100%, 0% 100%, 2.5% 50%, 0% 0);
+    transition: background-color 0.3s;
+
+    &:first-child {
+      border-radius: 0.2rem;
+      clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 0% 0%, 0% 0);
+    }
+
+    &:nth-child(3) {
+      border-radius: 0.2rem;
+      clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
+    }
+
+
+    &:hover {
+      background-color: #909090;
+    }
+  }
 `;
 
 export const SubCatSpan = styled.span`
@@ -50,6 +136,20 @@ export const SubCatSpan = styled.span`
 export const CategoryName = styled.h1`
     text-align: left;
     margin: 20px 0;
+    font-size: 48px;
+  
+  @media (max-width: 940px) {
+    font-size: 38px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 600px) {
+    //font-weight: bold;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 export const SubCategoryName = styled.h1`
@@ -127,4 +227,22 @@ export const ActionButton = styled.button`
     &:hover {
         background-color: #f0f0f0;
     }
+`;
+
+export const VideoBackground = styled.div`
+  && {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 `;

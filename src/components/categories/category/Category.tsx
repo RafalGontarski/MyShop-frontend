@@ -46,7 +46,7 @@ export const Category: React.FC = () => {
 
             {currentCategory ? <DisplaySubCategoriesNames
                 categoryId={currentCategory.categoryId}
-                categoryName={selectedCategory || ''}
+                subCategoryName={selectedCategory || ''}
             /> : null}
         </div>
     );

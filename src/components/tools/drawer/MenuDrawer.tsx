@@ -70,7 +70,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                 >
                     <MenuLink
                         href="#"
-                        label={t('menu.products.label')}
+                        label={t('menu.categories.label')}
                         onClick={() => setSelectedMenu('products')}
                     />
                     <MenuLink

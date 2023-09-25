@@ -7,7 +7,7 @@ import {
     SubCatBreadcrumbs,
     SubCatSpan,
     SubCategoryName,
-    SubCatInnerContainer
+    SubCatInnerContainer, StyledLink
 } from "./CategoryHeader.styles";
 import {Link} from "react-router-dom";
 import WhiteButton from "../../tools/button/WhiteButton";
@@ -42,23 +42,19 @@ export const SubCategoryHeader: React.FC<CategoryHeaderProps> = ({
             <SubCatInnerContainer>
                 <BreadcrumbContainer>
                     <SubCatBreadcrumbs>
-                        <Link to="/" style={{justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                        <StyledLink to="/">
                             <HomeIcon />
-                        </Link>
+                        </StyledLink>
 
-                        <SubCatSpan>{"> "}</SubCatSpan>
-                        <Link to="/categories">Wszystkie Kategorie</Link>
-                        <SubCatSpan>{"> "}</SubCatSpan>
-                        <Link to={`/categories/${categoryName}`}>{categoryName}</Link>
+                        <StyledLink to="/categories">Wszystkie Kategorie</StyledLink>
+                        <StyledLink to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
                         {subCategoryName && (
                             <>
-                                <SubCatSpan>{"> "}</SubCatSpan>
-                                <Link to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</Link>
+                                <StyledLink to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledLink>
                             </>
                         )}
                         {productName && (
                             <>
-                                <SubCatSpan>{"> "}</SubCatSpan>
                                 <SubCatSpan>{productName}</SubCatSpan>
                             </>
                         )}

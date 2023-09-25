@@ -64,8 +64,8 @@
     "refund": "Garanzia di rimborso di 30 giorni"
   },
   "menu": {
-    "products": {
-      "label": "Prodotti",
+    "categories": {
+      "label": "Categorie",
       "subcategories": {
         "electronics": "Elettronica",
         "clothing": "Abbigliamento",

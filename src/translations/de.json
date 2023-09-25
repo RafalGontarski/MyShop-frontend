@@ -72,8 +72,8 @@
     "refund": "30-Tage Geld-zurück-Garantie"
   },
   "menu": {
-    "products": {
-      "label": "Produkte",
+    "categories": {
+      "label": "Kategorien",
       "subcategories": {
         "electronics": "Elektronik",
         "clothing": "Kleidung",

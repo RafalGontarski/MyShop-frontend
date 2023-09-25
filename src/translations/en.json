@@ -64,8 +64,8 @@
     "refund": "30-Day Money Back Guarantee"
   },
   "menu": {
-    "products": {
-      "label": "Products",
+    "categories": {
+      "label": "Categories",
       "subcategories": {
         "electronics": "Electronics",
         "clothing": "Clothing",

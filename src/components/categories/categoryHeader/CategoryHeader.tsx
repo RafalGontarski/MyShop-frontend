@@ -6,13 +6,14 @@ import {
     HeaderContainer,
     LinksContainer,
     Breadcrumbs,
-    InnerContainer
+    InnerContainer, StyledLink, StyledOtherLink
 } from "./CategoryHeader.styles";
 import {Link} from "react-router-dom";
 import WhiteButton from "../../tools/button/WhiteButton";
 import HomeIcon from '@mui/icons-material/Home';
 import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
+import styled from "styled-components";
 
 
 interface CategoryHeaderProps {
@@ -52,27 +53,90 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
 
     console.log('ImageURL: ' + imageUrl);
 
+    const VideoBackground = styled.div`
+      && {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25.6rem;
+        overflow: hidden;
+        z-index: -1;
+    
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+    
+        background: url(http://localhost:8080${imageUrl}) no-repeat center center fixed;
+        background-size: cover;
+
+        @media (max-width: 1750px) {
+          height: 25.3rem;
+        }
+
+        @media (max-width: 1550px) {
+          height: 25.1rem;
+        }
+
+        @media (max-width: 1300px) {
+          height: 24.8rem;
+        }
+
+        @media (max-width: 1250px) {
+          height: 24rem;
+        }
+
+        @media (max-width: 1050px) {
+          height: 23.7rem;
+        }
+
+        @media (max-width: 940px) {
+          height: 16rem;
+        }
+
+        @media (max-width: 750px) {
+          height: 15.2rem;
+        }
+
+        @media (max-width: 600px) {
+          height: 13.2rem;
+        }
+
+        @media (max-width: 500px) {
+          height: 13rem;
+        }
+      
+      }
+      
+      
+    `;
+
     return (
-        <HeaderContainer style={{
-            backgroundImage: `url(http://localhost:8080${imageUrl})`
-        }}>
+        <HeaderContainer>
+            <VideoBackground>
+                <video playsInline autoPlay muted loop>
+                    <source src={`http://localhost:8080${imageUrl}`} type="video/mp4" />
+                </video>
+            </VideoBackground>
             <InnerContainer>
                 <BreadcrumbContainer>
                     <Breadcrumbs>
-                        <Link to="/"><HomeIcon /></Link>
-                        <span>{"> "}</span>
-                        <Link to="/categories">Wszystkie Kategorie</Link>
-                        <span>{"> "}</span>
-                        <Link to={`/categories/${categoryName}`}>{categoryName}</Link>
+                        <StyledLink to="/"><HomeIcon /></StyledLink>
+                        <StyledLink to="/categories">Wszystkie Kategorie</StyledLink>
+                        <StyledLink to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
                         {subCategoryName && (
                             <>
-                                <span>{"> "}</span>
-                                <Link to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</Link>
+                                <StyledLink
+                                    to={`/categories/${categoryName}/${subCategoryName}`}
+                                >
+                                    {subCategoryName}
+                                </StyledLink>
                             </>
                         )}
                         {productName && (
                             <>
-                                <span>{"> "}</span>
                                 <span>{productName}</span>
                             </>
                         )}
@@ -83,9 +147,10 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                 <CategoryName>{productName || subCategoryName || categoryName}</CategoryName>
                 <ActionsContainer>
                     <LinksContainer>
-                        <Link to="#">NOWOŚCI</Link>
-                        <Link to="#">MARKI</Link>
-                        <Link to="#">PORADNIK</Link>
+                        <StyledOtherLink to="#">NOWOŚCI</StyledOtherLink>
+                        <StyledOtherLink to="#">MARKI</StyledOtherLink>
+                        <StyledOtherLink to="#">WIEDZA</StyledOtherLink>
+                        <StyledOtherLink to="#">KONSULTACJE</StyledOtherLink>
                     </LinksContainer>
                     <WhiteButton label={'Doradztwo'}/>
                     {/*<ActionButton>Przycisk</ActionButton>*/}

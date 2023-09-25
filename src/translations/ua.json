@@ -64,8 +64,8 @@
     "refund": "30-денна гарантія повернення грошей"
   },
   "menu": {
-    "products": {
-      "label": "Продукти",
+    "categories": {
+      "label": "Категорії",
       "subcategories": {
         "electronics": "Електроніка",
         "clothing": "Одяг",
