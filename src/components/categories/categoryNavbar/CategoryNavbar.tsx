@@ -21,7 +21,7 @@ const CategoryNavbarComponent: React.FC = () => {
     useEffect(() => {
         async function fetchCategories() {
             try {
-                const categoriesFromApi: CategoryType[] = await CategoryApi.getAllCategoriesName();
+                const categoriesFromApi: CategoryType[] = await CategoryApi.getAllCategories();
                 console.log("Pobrane kategorie z API:", categoriesFromApi);
                 setCategories(categoriesFromApi);
                 console.log("Kategorie po aktualizacji:", categories);

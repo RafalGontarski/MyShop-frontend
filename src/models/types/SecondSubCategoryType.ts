@@ -1,4 +1,4 @@
-type SubCategoryType = {
+type SecondSubCategoryType = {
     id?: number; // Opcjonalne, ponieważ podczas tworzenia nowej kategorii ID może jeszcze nie istnieć
     name: string;
     // description?: string; // Opcjonalne, jeśli nie każda kategoria musi mieć opis
@@ -9,4 +9,4 @@ type SubCategoryType = {
     // Możesz dodać inne pola, które uważasz za potrzebne
 };
 
-export default SubCategoryType;
+export default SecondSubCategoryType;

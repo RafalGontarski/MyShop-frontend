@@ -46,6 +46,12 @@ export const ChildDiv = styled.div`
   width: 100%;  // Pogrubienie na dolnej krawędzi sięga do końca kontenera
   cursor: pointer;
 
+  &:hover {
+    border-radius: 1rem;
+    background-color: #f3f3f3; 
+    transition: 0.05s;
+  }
+
   @media (max-width: 600px) {
     flex: 1 1 100%; // Zmieniamy na pełną szerokość
     margin-right: 0; // Usuwamy margines po prawej stronie

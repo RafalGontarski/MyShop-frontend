@@ -41,6 +41,7 @@ import {SecondFooter} from "./components/footer/SecondFooter";
 import {FirstFooter} from "./components/footer/FirstFooter";
 
 import './App.css';
+import {SecondSubCategory} from "./components/categories/category/SecondSubCategory";
 
 
 const UserContext = createContext<{

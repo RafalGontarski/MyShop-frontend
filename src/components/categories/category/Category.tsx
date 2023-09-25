@@ -21,7 +21,7 @@ export const Category: React.FC = () => {
     }, [categoryName]);
 
     useEffect(() => {
-        CategoryApi.getAllCategoriesName()
+        CategoryApi.getAllCategories()
             .then(categories => {
                 const category = categories.find(cat => cat.name === selectedCategory);
                 setCurrentCategory(category || null);
@@ -36,6 +36,14 @@ export const Category: React.FC = () => {
                 .catch(error => console.error("Błąd podczas pobierania podkategorii:", error));
         }
     }, [currentCategory]);
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            // behavior: 'smooth'
+        });
+    }, []);
 
     console.log("selectedCategory w komponencie Category:", selectedCategory);
 

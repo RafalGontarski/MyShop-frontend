@@ -229,6 +229,7 @@ export const LeftSideStyledLink = styled(MuiLink)`
     margin-right: 20px;
     text-decoration: none;
     font-size: 0.8rem;
+    cursor: pointer;
 
     &:hover {
       color: #008000;

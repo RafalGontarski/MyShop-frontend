@@ -73,6 +73,7 @@ export const StyledIconsDiv = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: row;
+    cursor: pointer;
   }
 `
 
@@ -93,6 +94,7 @@ export const StyledBlackLink = styled(MuiLink)`
     font-size: 0.8rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    cursor: pointer;
 
     &:hover {
       color: #008000;
@@ -111,6 +113,7 @@ export const StyledWhiteLink = styled(MuiLink)`
     font-size: 0.8rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    cursor: pointer;
 
     &:hover {
       color: #fff;
@@ -140,6 +143,7 @@ export const StyledCheckIcon = styled(CheckIcon)`
 
 export const StyledFacebookIcon = styled(FacebookIcon)`
   && {
+    cursor: pointer;
     &:hover {
       color: blue;
     }
@@ -148,6 +152,7 @@ export const StyledFacebookIcon = styled(FacebookIcon)`
 
 export const StyledYouTubeIcon = styled(YouTubeIcon)`
   && {
+    cursor: pointer;
     &:hover {
       color: red;
     }
@@ -156,6 +161,7 @@ export const StyledYouTubeIcon = styled(YouTubeIcon)`
 
 export const StyledInstagramIcon = styled(InstagramIcon)`
   && {
+    cursor: pointer;
     &:hover {
       color: deeppink;
     }
@@ -164,6 +170,7 @@ export const StyledInstagramIcon = styled(InstagramIcon)`
 
 export const StyledTwitterIcon = styled(TwitterIcon)`
   && {
+    cursor: pointer;
     &:hover {
       color: deepskyblue;
     }
@@ -172,6 +179,7 @@ export const StyledTwitterIcon = styled(TwitterIcon)`
 
 export const StyledPinterestIcon = styled(PinterestIcon)`
   && {
+    cursor: pointer;
     &:hover {
       color: darkred;
     }
@@ -179,6 +187,7 @@ export const StyledPinterestIcon = styled(PinterestIcon)`
 `
 export const StyledFaTiktok = styled(FaTiktok)`
   && {
+    cursor: pointer;
     font-size: 21px;
     
     &:hover {

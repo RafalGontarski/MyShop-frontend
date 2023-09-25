@@ -36,7 +36,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const fetchedCategories = await CategoryApi.getAllCategoriesName();
+                const fetchedCategories = await CategoryApi.getAllCategories();
                 setCategories(fetchedCategories);
                 console.log("Fetched categories:", JSON.stringify(fetchedCategories, null, 2));
 

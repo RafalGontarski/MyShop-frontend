@@ -49,7 +49,7 @@ export const SubCatChildDiv = styled.div`
 export const SubCatLink = styled(Link)`
   && {
     color: #000;
-    margin-right: 20px;
+    //margin-right: 20px;
     text-decoration: none;
     font-size: 1.2rem;
 

@@ -21,7 +21,7 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const fetchedCategories = await CategoryApi.getAllCategoriesName();
+                const fetchedCategories = await CategoryApi.getAllCategories();
                 setCategories(fetchedCategories);
             } catch (error) {
                 console.error("Błąd podczas pobierania kategorii:", error);
@@ -30,6 +30,8 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
 
         fetchCategories();
     }, []);
+
+
 
     const handleCategoryClick = (categoryName: string) => {
         navigate(`/categories/${categoryName}`);
