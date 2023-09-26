@@ -1,34 +1,34 @@
 import React, {useState} from "react";
+import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {
     ActionsContainer,
-    BreadcrumbContainer,
-    LinksContainer,
+    BreadcrumbContainer, LinksContainer, StyledLink,
+    SubCatBreadcrumbs, SubCategoryName,
     SubCatHeaderContainer,
-    SubCatBreadcrumbs,
-    SubCatSpan,
-    SubCategoryName,
-    SubCatInnerContainer, StyledLink, StyledOtherLink
+    SubCatInnerContainer, SubCatSpan
 } from "./CategoryHeader.styles";
-
-import WhiteButton from "../../tools/button/WhiteButton";
-import FilterIcon from '@mui/icons-material/FilterList';
-import Typography from "@mui/material/Typography";
-import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
+import WhiteButton from "../../tools/button/WhiteButton";
+import FilterIcon from "@mui/icons-material/FilterList";
+import Typography from "@mui/material/Typography";
 
 interface CategoryHeaderProps {
     categoryName: string;
     subCategoryName?: string;
-    // productName?: string;
+    secondSubCategoryName?: string;
+    productName?: string;
 }
 
-export const SubCategoryHeader: React.FC<CategoryHeaderProps> = ({
-                                      categoryName ,
-                                      subCategoryName,
-                                      // productName
-                                }) => {
-    // console.log("categoryName:", categoryName);
-    // console.log("subCategoryName:", subCategoryName);
+export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
+             categoryName ,
+             subCategoryName,
+             secondSubCategoryName,
+             productName
+                                                                 }) => {
+    console.log("categoryName:", categoryName);
+    console.log("subCategoryName:", subCategoryName);
+    console.log("secondSubCategoryName:", secondSubCategoryName);
+
 
     const [value, setValue] = useState('');
 
@@ -53,30 +53,37 @@ export const SubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                                 <StyledLink to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledLink>
                             </>
                         )}
-                        {/*{productName && (*/}
-                        {/*    <>*/}
-                        {/*        <SubCatSpan>{productName}</SubCatSpan>*/}
-                        {/*    </>*/}
-                        {/*)}*/}
+                        {secondSubCategoryName && (
+                            <>
+                                <StyledLink to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{secondSubCategoryName}</StyledLink>
+                            </>
+                        )}
+                        {productName && (
+                            <>
+                                <SubCatSpan>{productName}</SubCatSpan>
+                            </>
+                        )}
                     </SubCatBreadcrumbs>
 
 
                 </BreadcrumbContainer>
                 <ActionsContainer>
                     <LinksContainer>
-                        {/*<SubCategoryName>{productName || subCategoryName || categoryName}</SubCategoryName>*/}
-                        <SubCategoryName>{subCategoryName || categoryName}</SubCategoryName>
+                        <SubCategoryName>{productName || secondSubCategoryName || subCategoryName || categoryName}</SubCategoryName>
                     </LinksContainer>
                     <WhiteButton label={'Doradztwo'}/>
                 </ActionsContainer>
 
                 <ActionsContainer>
-                    <LinksContainer style={{backgroundColor: 'grey'}}>
-                        <StyledOtherLink to="#">NOWOŚCI</StyledOtherLink>
-                        <StyledOtherLink to="#">MARKI</StyledOtherLink>
-                        <StyledOtherLink to="#">WIEDZA</StyledOtherLink>
-                        <StyledOtherLink to="#">KONSULTACJE</StyledOtherLink>
-                    </LinksContainer>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 5,
+                        // marginBottom: '1rem'
+                    }}>
+                        <FilterIcon style={{color: 'black'}}/>
+                        <Typography style={{color: 'black'}}>Filtr</Typography>
+                    </div>
 
                     <div style={{
                         display: 'flex',

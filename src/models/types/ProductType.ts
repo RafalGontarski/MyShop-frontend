@@ -1,9 +1,10 @@
 import CategoryType from "./CategoryType";
+import SubCategoryType from "./SubCategoryType";
 
-export type SubCategoryType = {
+export type SecondSubCategoryType = {
     id: number;
     name: string;
-    category: CategoryType;
+    subCategory: SubCategoryType;
 }
 
 export type ProductType = {
@@ -13,4 +14,5 @@ export type ProductType = {
     price: number;
     imageUrl: string | null;
     subCategory: SubCategoryType;
+    secondSubCategory: SecondSubCategoryType;
 }

@@ -8,7 +8,6 @@ import {
     Breadcrumbs,
     InnerContainer, StyledLink, StyledOtherLink
 } from "./CategoryHeader.styles";
-import {Link} from "react-router-dom";
 import WhiteButton from "../../tools/button/WhiteButton";
 import HomeIcon from '@mui/icons-material/Home';
 import {CategoryApi} from "../../../api/CategoryApi";

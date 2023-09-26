@@ -51,7 +51,6 @@ export const Category: React.FC = () => {
         <div>
             <CategoryHeader categoryName={selectedCategory || ''} subCategoryName={subCategoryName || ''}/>
 
-
             {currentCategory ? <DisplaySubCategoriesNames
                 categoryId={currentCategory.categoryId}
                 subCategoryName={selectedCategory || ''}

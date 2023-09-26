@@ -23,7 +23,6 @@ import { CategoryContext } from './models/context/CategoryContexts';
 import CategoryType from "./models/types/CategoryType";
 
 import {SelectedCategoryProvider} from "./models/providers/SelectedCategoryProvider";
-import {Category} from "./components/categories/category/Category";
 import {HotDeals} from "./components/navbar/linksComponents/sales/hotDeals/HotDeals";
 import {Newest} from "./components/navbar/linksComponents/sales/newest/Newest";
 import {TopSeller} from "./components/navbar/linksComponents/sales/topSeller/TopSeller";
@@ -34,15 +33,16 @@ import {Contact} from "./components/helpDesk/Contact";
 import {FreeShipping} from "./components/helpDesk/FreeShipping";
 import {Example} from "./components/helpDesk/Example";
 import {Guarantee} from "./components/helpDesk/Guarantee";
-import {SubCategory} from "./components/categories/category/SubCategory";
+
 import {Product} from "./components/products/Product";
 import {AllCategories} from "./components/categories/category/AllCategories";
 import {SecondFooter} from "./components/footer/SecondFooter";
 import {FirstFooter} from "./components/footer/FirstFooter";
 
-import './App.css';
+import {Category} from "./components/categories/category/Category";
+import {SubCategory} from "./components/categories/category/SubCategory";
 import {SecondSubCategory} from "./components/categories/category/SecondSubCategory";
-
+import './App.css';
 
 const UserContext = createContext<{
     isLoggedIn: boolean,
@@ -391,7 +391,11 @@ const App = () => {
                                 <Route path="/categories" element={<AllCategories />}/>
                                 <Route path="/categories/:categoryName" element={<Category />} />
                                 <Route path="/categories/:categoryName/:subCategoryName" element={<SubCategory />} />
-                                <Route path="/categories/:categoryName/:subCategoryName/:productName" element={<Product />} />
+                                <Route
+                                    path="/categories/:categoryName/:subCategoryName/:secondSubCategoryName"
+                                    element={<SecondSubCategory />} />
+                                <Route path="/categories/:categoryName/:subCategoryName/:secondSubCategoryName/:productName" element={<Product />} />
+
                                 <Route path={'/helpDesk/contact'} element={<Contact />} />
                                 <Route path={'/helpDesk/freeShipping'}
                                        element={

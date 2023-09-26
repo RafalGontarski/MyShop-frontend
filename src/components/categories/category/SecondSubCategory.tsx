@@ -1,34 +1,34 @@
 import React, {useEffect, useState} from "react";
-import {CategoryHeader} from "../categoryHeader/CategoryHeader";
 import {useParams} from "react-router-dom";
 import {ProductType} from "../../../models/types/ProductType";
-import {CategoryApi} from "../../../api/CategoryApi";
 import {ProductApi} from "../../../api/ProductApi";
-import {SubCategoryHeader} from "../categoryHeader/SubCategoryHeader";
 import { Grid, Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import ProductImg from '../../../resources/categoriesIcon/catfishIcon.png';
+import {SecondSubCategoryHeader} from "../categoryHeader/SecondSubCategoryHeader";
 
 type RouteParams = {
     categoryName: string;
     subCategoryName: string;
+    secondSubCategoryName?: string;
 };
 
 export const SecondSubCategory: React.FC = () => {
-    const { categoryName, subCategoryName } = useParams<RouteParams>();
+    const { categoryName, subCategoryName, secondSubCategoryName } = useParams<RouteParams>();
     const [products, setProducts] = useState<ProductType[]>([]);
 
     useEffect(() => {
         ProductApi.getAllProducts()
             .then(fetchedProducts => {
                 const filteredProducts = fetchedProducts.filter(product =>
-                    product.subCategory && product.subCategory.name === subCategoryName
+                    product.secondSubCategory && product.secondSubCategory.name === secondSubCategoryName
                 );
-                console.log('Filtered Products' + filteredProducts);
+                console.log('Filtered Products:', filteredProducts);
                 setProducts(filteredProducts);
             })
             .catch(error => console.error("Błąd podczas pobierania produktów:", error));
-    }, [subCategoryName]);
+    }, [secondSubCategoryName]);
+
 
 
     if (!categoryName || !subCategoryName) {
@@ -37,7 +37,11 @@ export const SecondSubCategory: React.FC = () => {
 
     return (
         <div>
-            <SubCategoryHeader categoryName={categoryName} subCategoryName={subCategoryName} />
+            <SecondSubCategoryHeader
+                categoryName={categoryName}
+                subCategoryName={subCategoryName}
+                secondSubCategoryName={secondSubCategoryName}
+            />
 
             <div style={{
                 display: 'flex',

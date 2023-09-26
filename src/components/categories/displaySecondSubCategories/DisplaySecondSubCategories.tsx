@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
-import SubCategoryType from "../../../models/types/SubCategoryType";
-import {CategoryApi} from "../../../api/CategoryApi";
+import React, {useState} from "react";
+
 import {
     SubCatChildDiv,
     SubCategoriesContainer,
@@ -12,27 +11,19 @@ import {Link} from "react-router-dom";
 import SecondSubCategoryType from "../../../models/types/SecondSubCategoryType";
 
 type DisplaySecondSubCategoriesProps = {
-    categoryId: number | null | undefined;
-    subCategoryId: number | null | undefined;
+    categoryName: string;
+    secondSubCategories: SecondSubCategoryType[]; // Dodane
     subCategoryName: string;
 };
 
 
 export const DisplaySecondSubCategories: React.FC<DisplaySecondSubCategoriesProps> = ({
-                                                                                          categoryId,
-                                                                                          subCategoryId,
-                                                                                          subCategoryName
+          categoryName,
+          secondSubCategories: incomingSecondSubCategories,
+          subCategoryName
                                                                                       }) => {
-    const [secondSubCategories, setSecondSubCategories] = useState<SecondSubCategoryType[]>([]);
+    const [secondSubCategories, ] = useState<SecondSubCategoryType[]>(incomingSecondSubCategories);
 
-    useEffect(() => {
-        if (categoryId !== undefined && subCategoryId !== undefined) {
-            CategoryApi.getAllSecondSubCategories(categoryId ?? undefined, subCategoryId ?? undefined)
-                .then(data => setSecondSubCategories(data))
-                .catch(error => console.error("Błąd podczas pobierania drugorzędnych podkategorii:", error));
-        }
-        console.log('SecondSubCategories from DisplaySecondSubCategories:', JSON.stringify(secondSubCategories, null, 2));
-    }, [categoryId, subCategoryId]);
 
     return (
         <SubCategoriesContainer>
@@ -45,7 +36,7 @@ export const DisplaySecondSubCategories: React.FC<DisplaySecondSubCategoriesProp
                         />
                         <SubCatLink
                             as={Link}
-                            to={`/categories/${subCategoryName}/${secondSubCat.name}`}
+                            to={`/categories/${categoryName}/${subCategoryName}/${secondSubCat.name}`} // Dodane categoryName
                             underline="none"
                         >
                             {secondSubCat.name}

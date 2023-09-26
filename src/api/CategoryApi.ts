@@ -44,6 +44,16 @@ export class CategoryApi {
         }
     }
 
+    //SubCategories
+    static getAllSubCategoriesNames = async (categoryId: number | undefined): Promise<string[]> => {
+        const response = await axios.get<string[]>(`${BaseUrl}/api/categories/${categoryId}/subcategories/names`);
+
+        console.log(`Odpowiedź z API dla /api/categories/${categoryId}/subcategories/names:`, response.data);
+
+        return response.data;
+    }
+
+    //SecondSubCategories
     static getAllSecondSubCategories = async (categoryId: number | undefined, subCategoryId: number | undefined): Promise<SecondSubCategoryType[]> => {
         if (typeof categoryId === 'undefined' || typeof subCategoryId === 'undefined') {
             // Obsługuje sytuację, gdy categoryId lub subCategoryId jest undefined, na przykład rzucając błąd:
@@ -61,12 +71,6 @@ export class CategoryApi {
     }
 
 
-    static getAllSubCategoriesNames = async (categoryId: number | undefined): Promise<string[]> => {
-        const response = await axios.get<string[]>(`${BaseUrl}/api/categories/${categoryId}/subcategories/names`);
 
-        console.log(`Odpowiedź z API dla /api/categories/${categoryId}/subcategories/names:`, response.data);
-
-        return response.data;
-    }
 
 }

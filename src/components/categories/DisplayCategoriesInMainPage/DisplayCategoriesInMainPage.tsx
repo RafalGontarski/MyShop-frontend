@@ -7,11 +7,8 @@ import React, {useEffect, useState} from 'react';
 import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
 
-import MenuLink from "../../tools/link/menuLink/MenuLink";
 import {ProfileDrawerLink} from "../../tools/drawer/ProfileDrawer.styles";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
 
 
 export const DisplayCategoriesInMainPage: React.FC = () => {
