@@ -58,7 +58,12 @@ export const Breadcrumbs = styled.div`
       
       &:nth-child(3) {
         border-radius: 0.2rem;
-        clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
+        //clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
+      }
+
+      &:nth-child(4) {
+        border-radius: 0.2rem;
+        //clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
       }
       
 
@@ -73,8 +78,6 @@ export const StyledLink = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
   }
 `
 
@@ -94,8 +97,10 @@ export const StyledOtherLink = styled(Link)`
     
   }
 `
-
-export const SubCatBreadcrumbs = styled.div`
+interface BreadcrumbProps {
+    hasSubCategories?: boolean;
+}
+export const SubCatBreadcrumbs = styled.div<BreadcrumbProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,6 +126,63 @@ export const SubCatBreadcrumbs = styled.div`
       border-radius: 0.2rem;
       clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
     }
+    
+
+    ${props => props.hasSubCategories ? `
+        &:last-of-type {
+            border-radius: 0.2rem;
+        }
+    ` : `
+        &:last-of-type {
+            border-radius: 0.2rem;
+            clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
+        }
+    `}
+
+
+    &:hover {
+      background-color: #909090;
+    }
+  }
+`;
+
+export const SecondSubCatBreadcrumbs = styled.div<BreadcrumbProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > a {
+    position: relative;
+    margin-right: 0.1px;
+    color: white;
+    text-decoration: none;
+    height: 2rem;
+    padding: 0 15px; // dodałem padding, aby tekst nie był za blisko krawędzi
+    background-color: #686868;
+    //background-image: linear-gradient(to right, transparent 0%, darkgrey 10%, darkgrey 90%, transparent 100%);
+    border-radius: 0.2rem;
+    clip-path: polygon(97.5% 0, 100% 50%, 97.5% 100%, 0% 100%, 2.5% 50%, 0% 0);
+    transition: background-color 0.3s;
+
+    &:first-child {
+      border-radius: 0.2rem;
+      clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 0% 0%, 0% 0);
+    }
+
+    &:nth-child(3) {
+      border-radius: 0.2rem;
+      clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0);
+    }
+    
+
+    ${props => props.hasSubCategories ? `
+        &:last-of-type {
+            border-radius: 0.2rem;
+        }
+    ` : `
+        &:last-of-type {
+            border-radius: 0.2rem;
+        }
+    `}
 
 
     &:hover {

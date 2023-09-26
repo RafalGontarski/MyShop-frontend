@@ -19,6 +19,8 @@ export const SubCategory: React.FC = () => {
     const [, setSubCategoryId] = useState<number | null>(null);
     const [, setCurrentSubCategory] = useState<SubCategoryType | null>(null);
     const [secondSubCategories, setSecondSubCategories] = useState<SecondSubCategoryType[]>([]);
+    const [hasSecondSubCategories, setHasSecondSubCategories] = useState<boolean>(false);
+
 
     useEffect(() => {
         CategoryApi.getAllCategories()
@@ -48,6 +50,7 @@ export const SubCategory: React.FC = () => {
             })
             .then(fetchedSecondSubCategories => {
                 setSecondSubCategories(fetchedSecondSubCategories);
+                setHasSecondSubCategories(fetchedSecondSubCategories.length > 0);
             })
             .catch(error => console.error(error));
     }, [categoryName, subCategoryName]);
@@ -59,7 +62,11 @@ export const SubCategory: React.FC = () => {
 
     return (
         <div>
-            <SubCategoryHeader categoryName={categoryName} subCategoryName={subCategoryName} />
+            <SubCategoryHeader
+                categoryName={categoryName}
+                subCategoryName={subCategoryName}
+                hasSecondSubCategories={hasSecondSubCategories}
+            />
 
             {secondSubCategories.length > 0 ? (
                 <DisplaySecondSubCategories

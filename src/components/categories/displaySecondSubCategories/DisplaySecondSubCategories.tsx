@@ -29,7 +29,7 @@ export const DisplaySecondSubCategories: React.FC<DisplaySecondSubCategoriesProp
         <SubCategoriesContainer>
             <CategoriesChildrenDiv>
                 {secondSubCategories.map(secondSubCat => (
-                    <SubCatChildDiv key={secondSubCat.name}>
+                    <SubCatChildDiv key={secondSubCat.id?.toString() || secondSubCat.name}>
                         <ChildImg
                             src={secondSubCat.iconUrl ? `http://localhost:8080${secondSubCat.iconUrl}` : CatfishIcon}
                             alt={secondSubCat.name + " Icon"}

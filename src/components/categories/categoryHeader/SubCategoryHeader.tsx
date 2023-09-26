@@ -5,26 +5,26 @@ import {
     LinksContainer,
     SubCatHeaderContainer,
     SubCatBreadcrumbs,
-    SubCatSpan,
     SubCategoryName,
     SubCatInnerContainer, StyledLink, StyledOtherLink
 } from "./CategoryHeader.styles";
 
 import WhiteButton from "../../tools/button/WhiteButton";
-import FilterIcon from '@mui/icons-material/FilterList';
-import Typography from "@mui/material/Typography";
+
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 
 interface CategoryHeaderProps {
     categoryName: string;
     subCategoryName?: string;
+    hasSecondSubCategories?: boolean;
     // productName?: string;
 }
 
 export const SubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                                       categoryName ,
                                       subCategoryName,
+                                      hasSecondSubCategories,
                                       // productName
                                 }) => {
     // console.log("categoryName:", categoryName);
@@ -41,7 +41,7 @@ export const SubCategoryHeader: React.FC<CategoryHeaderProps> = ({
         <SubCatHeaderContainer>
             <SubCatInnerContainer>
                 <BreadcrumbContainer>
-                    <SubCatBreadcrumbs>
+                    <SubCatBreadcrumbs hasSubCategories={hasSecondSubCategories}>
                         <StyledLink to="/">
                             <HomeIcon />
                         </StyledLink>

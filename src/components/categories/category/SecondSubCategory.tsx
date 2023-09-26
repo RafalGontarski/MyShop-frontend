@@ -16,6 +16,7 @@ type RouteParams = {
 export const SecondSubCategory: React.FC = () => {
     const { categoryName, subCategoryName, secondSubCategoryName } = useParams<RouteParams>();
     const [products, setProducts] = useState<ProductType[]>([]);
+    // const [hasSecondSubCategories, setHasSecondSubCategories] = useState<boolean>(false);
 
     useEffect(() => {
         ProductApi.getAllProducts()

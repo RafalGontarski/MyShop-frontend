@@ -6,7 +6,7 @@ import {
     HeaderContainer,
     LinksContainer,
     Breadcrumbs,
-    InnerContainer, StyledLink, StyledOtherLink
+    InnerContainer, StyledLink, StyledOtherLink, SubCatBreadcrumbs
 } from "./CategoryHeader.styles";
 import WhiteButton from "../../tools/button/WhiteButton";
 import HomeIcon from '@mui/icons-material/Home';
@@ -121,7 +121,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
             </VideoBackground>
             <InnerContainer>
                 <BreadcrumbContainer>
-                    <Breadcrumbs>
+                    <SubCatBreadcrumbs>
                         <StyledLink to="/"><HomeIcon /></StyledLink>
                         <StyledLink to="/categories">Wszystkie Kategorie</StyledLink>
                         <StyledLink to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
@@ -139,7 +139,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                                 <span>{productName}</span>
                             </>
                         )}
-                    </Breadcrumbs>
+                    </SubCatBreadcrumbs>
 
 
                 </BreadcrumbContainer>

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {
     ActionsContainer,
-    BreadcrumbContainer, LinksContainer, StyledLink,
+    BreadcrumbContainer, LinksContainer, SecondSubCatBreadcrumbs, StyledLink,
     SubCatBreadcrumbs, SubCategoryName,
     SubCatHeaderContainer,
     SubCatInnerContainer, SubCatSpan
@@ -41,7 +41,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
         <SubCatHeaderContainer>
             <SubCatInnerContainer>
                 <BreadcrumbContainer>
-                    <SubCatBreadcrumbs>
+                    <SecondSubCatBreadcrumbs >
                         <StyledLink to="/">
                             <HomeIcon />
                         </StyledLink>
@@ -63,7 +63,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                                 <SubCatSpan>{productName}</SubCatSpan>
                             </>
                         )}
-                    </SubCatBreadcrumbs>
+                    </SecondSubCatBreadcrumbs>
 
 
                 </BreadcrumbContainer>
