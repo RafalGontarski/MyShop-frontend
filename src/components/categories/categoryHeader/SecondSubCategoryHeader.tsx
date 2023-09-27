@@ -2,10 +2,17 @@ import React, {useState} from "react";
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {
     ActionsContainer,
-    BreadcrumbContainer, LinksContainer, SecondSubCatBreadcrumbs, StyledLink,
-    SubCatBreadcrumbs, SubCategoryName,
+    BreadcrumbContainer,
+    LinksContainer,
+    SecondSubCatBreadcrumbs, SecondSubCategoryName,
+    SecondSubCatHeaderContainer,
+    SecondSubCatInnerContainer,
+    StyledLink,
+    SubCatBreadcrumbs,
+    SubCategoryName,
     SubCatHeaderContainer,
-    SubCatInnerContainer, SubCatSpan
+    SubCatInnerContainer,
+    SubCatSpan
 } from "./CategoryHeader.styles";
 import HomeIcon from "@mui/icons-material/Home";
 import WhiteButton from "../../tools/button/WhiteButton";
@@ -38,8 +45,8 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
 
 
     return (
-        <SubCatHeaderContainer>
-            <SubCatInnerContainer>
+        <SecondSubCatHeaderContainer>
+            <SecondSubCatInnerContainer>
                 <BreadcrumbContainer>
                     <SecondSubCatBreadcrumbs >
                         <StyledLink to="/">
@@ -69,7 +76,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                 </BreadcrumbContainer>
                 <ActionsContainer>
                     <LinksContainer>
-                        <SubCategoryName>{productName || secondSubCategoryName || subCategoryName || categoryName}</SubCategoryName>
+                        <SecondSubCategoryName>{productName || secondSubCategoryName || subCategoryName || categoryName}</SecondSubCategoryName>
                     </LinksContainer>
                     <WhiteButton label={'Doradztwo'}/>
                 </ActionsContainer>
@@ -120,7 +127,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                     </div>
                 </ActionsContainer>
 
-            </SubCatInnerContainer>
-        </SubCatHeaderContainer>
+            </SecondSubCatInnerContainer>
+        </SecondSubCatHeaderContainer>
     );
 };

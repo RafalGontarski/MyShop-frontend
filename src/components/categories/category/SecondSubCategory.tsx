@@ -30,7 +30,13 @@ export const SecondSubCategory: React.FC = () => {
             .catch(error => console.error("Błąd podczas pobierania produktów:", error));
     }, [secondSubCategoryName]);
 
-
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            // behavior: 'smooth'
+        });
+    }, []);
 
     if (!categoryName || !subCategoryName) {
         return <div>Brak kategorii lub podkategorii w URL</div>;

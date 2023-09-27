@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ProfileDrawerLink} from "../../tools/drawer/ProfileDrawer.styles";
 
 
 export const DisplayCategoriesInMainPageContainer = styled.div`
@@ -50,6 +51,10 @@ export const ChildDiv = styled.div`
     border-radius: 1rem;
     background-color: #f3f3f3; 
     transition: 0.05s;
+
+    ${ProfileDrawerLink} {
+      color: #008000;
+    }
   }
 
   @media (max-width: 600px) {

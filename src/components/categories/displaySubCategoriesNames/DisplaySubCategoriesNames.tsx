@@ -4,7 +4,7 @@ import {
     CategoriesChildrenDiv,
     ChildImg
 } from "../DisplayCategoriesInMainPage/DisplayCategoriesInMainPage.styles";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
 import {CategoryApi} from "../../../api/CategoryApi";
 import SubCategoryType from "../../../models/types/SubCategoryType";
@@ -19,6 +19,8 @@ export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesProps> = ({
                                                                                         categoryId,
                                                                                    subCategoryName}) => {
     const [subCategories, setSubCategories] = useState<SubCategoryType[]>([]);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         if (categoryId !== undefined) {
@@ -30,13 +32,20 @@ export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesProps> = ({
 
     }, [categoryId]);
 
+    const handleSubCategoryClick = (categoryName: string, subCatName: string) => {
+        navigate(`/categories/${categoryName}/${subCatName}`);
+    };
 
 
     return (
         <SubCategoriesContainer>
             <CategoriesChildrenDiv>
                 {subCategories.map(subCat => (
-                    <SubCatChildDiv key={subCat.name}>
+                    <SubCatChildDiv
+                        key={subCat.name}
+                        onClick={() => handleSubCategoryClick(subCategoryName, subCat.name)}
+
+                    >
                         <ChildImg
                             src={subCat.iconUrl ? `http://localhost:8080${subCat.iconUrl}` : CatfishIcon}
                             alt={subCat.name + " Icon"}
@@ -50,7 +59,6 @@ export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesProps> = ({
                         </SubCatLink>
                     </SubCatChildDiv>
                 ))}
-
             </CategoriesChildrenDiv>
         </SubCategoriesContainer>
     );

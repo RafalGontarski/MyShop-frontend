@@ -21,15 +21,29 @@ export const SubCategoriesContainer = styled.div`
     margin-right: 1rem;
   }
 `
+export const SubCatLink = styled(Link)`
+  && {
+    color: #000;
+    //margin-right: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+
+    //&:hover {
+    //  color: #008000;
+    //}
+
+    //@media (max-width: 1250px) {
+    //  font-size: 0.6rem;
+    //}
+  }
+`
 
 export const SubCatChildDiv = styled.div`
   flex: 1 1 calc(18% - 1px); // Odejmujemy trochę miejsca na marginesy
-  //margin-right: 10px;  // Dodaje odstęp między kontenerami
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  //border-bottom: 1px solid #e0e0e0;
   width: 100%;  // Pogrubienie na dolnej krawędzi sięga do końca kontenera
   margin: 5px;
 
@@ -43,22 +57,12 @@ export const SubCatChildDiv = styled.div`
     flex-direction: row;
     
   }
-  
-`
-
-export const SubCatLink = styled(Link)`
-  && {
-    color: #000;
-    //margin-right: 20px;
-    text-decoration: none;
-    font-size: 1.2rem;
-
-    &:hover {
-      color: #008000;
+  &:hover {
+    border-radius: 1rem;
+    background-color: #f3f3f3;  // Szary kolor tła podczas najechania myszką
+    
+    ${SubCatLink} {
+      color: #008000; // To będzie aktywowane, kiedy najedziesz na SubCatChildDiv
     }
-
-    //@media (max-width: 1250px) {
-    //  font-size: 0.6rem;
-    //}
   }
 `

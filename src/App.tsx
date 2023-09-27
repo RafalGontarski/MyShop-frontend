@@ -18,7 +18,7 @@ import {CategoriesEditPanel} from "./components/editPages/categoriesEditPanel/Ca
 import {Graphics} from "./components/editPages/graphicEditPanel/GraphicEditPanel";
 import {AddressBookEditPanel} from "./components/editPages/bookAdressEditPanel/AddressBookEditPanel";
 import {UserApi} from "./api/UserApi";
-import {CategoryNavbar} from "./components/categories/categoryNavbar/CategoryNavbar";
+import {CategoryNavbar} from "./components/navbar/categoryNavbar/CategoryNavbar";
 import { CategoryContext } from './models/context/CategoryContexts';
 import CategoryType from "./models/types/CategoryType";
 

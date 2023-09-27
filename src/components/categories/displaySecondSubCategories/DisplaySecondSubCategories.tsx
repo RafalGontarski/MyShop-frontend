@@ -7,7 +7,7 @@ import {
 } from "../displaySubCategoriesNames/DisplaySubCategoriesNames.styles";
 import {CategoriesChildrenDiv, ChildImg} from "../DisplayCategoriesInMainPage/DisplayCategoriesInMainPage.styles";
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import SecondSubCategoryType from "../../../models/types/SecondSubCategoryType";
 
 type DisplaySecondSubCategoriesProps = {
@@ -23,13 +23,24 @@ export const DisplaySecondSubCategories: React.FC<DisplaySecondSubCategoriesProp
           subCategoryName
                                                                                       }) => {
     const [secondSubCategories, ] = useState<SecondSubCategoryType[]>(incomingSecondSubCategories);
+    const navigate = useNavigate();
 
+    const handleSecondSubCategoryClick = (categoryName: string, subCategoryName: string, secondSubCat: string) => {
+        navigate(`/categories/${categoryName}/${subCategoryName}/${secondSubCat}`);
+    };
 
     return (
         <SubCategoriesContainer>
             <CategoriesChildrenDiv>
                 {secondSubCategories.map(secondSubCat => (
-                    <SubCatChildDiv key={secondSubCat.id?.toString() || secondSubCat.name}>
+                    <SubCatChildDiv
+                        key={secondSubCat.id?.toString() || secondSubCat.name}
+                        onClick={() => handleSecondSubCategoryClick(
+                            categoryName,
+                            subCategoryName,
+                            secondSubCat.name
+                        )}
+                    >
                         <ChildImg
                             src={secondSubCat.iconUrl ? `http://localhost:8080${secondSubCat.iconUrl}` : CatfishIcon}
                             alt={secondSubCat.name + " Icon"}

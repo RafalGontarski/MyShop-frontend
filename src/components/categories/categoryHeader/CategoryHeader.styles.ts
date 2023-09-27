@@ -5,23 +5,27 @@ import {Link} from "react-router-dom";
 
 export const HeaderContainer = styled.div`
     && {
-      //background-color: black; // Tymczasowo czarne tło
       background-color: rgba(0, 0, 0, 0.5);
-      //position: relative;
       padding: 20px;
       color: white;
-      
-      @media (max-width: 940px) {
-        
-      }
     }
 `;
 
 export const SubCatHeaderContainer = styled.div`
+    && {
+      background-color: grey; // Tymczasowo czarne tło
+      padding: 20px;
+      color: white;
+    }
+`;
+
+export const SecondSubCatHeaderContainer = styled.div`
     background-color: white; // Tymczasowo czarne tło
     padding: 20px;
     color: white;
 `;
+
+
 
 export const BreadcrumbContainer = styled.div`
     display: flex;
@@ -217,6 +221,26 @@ export const CategoryName = styled.h1`
 export const SubCategoryName = styled.h1`
     text-align: left;
     margin: 20px 0;
+    font-size: 48px;
+    color: white;
+  
+  @media (max-width: 940px) {
+    font-size: 38px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 600px) {
+    //font-weight: bold;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+`;
+
+export const SecondSubCategoryName = styled.h1`
+    text-align: left;
+    margin: 20px 0;
     color: black;
 `;
 
@@ -260,6 +284,29 @@ export const SubCatInnerContainer = styled.div`
     //margin-right: 8.7%;
     margin-left: 10rem;
     margin-right: 10rem;
+    //border-bottom: 1px solid #e0e0e0;
+
+    @media (max-width: 1350px) {
+      margin-left: 4rem;
+      margin-right: 4rem;
+    }
+
+    @media (max-width: 1100px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+`;
+
+export const SecondSubCatInnerContainer = styled.div`
+    //margin-left: 8.7%;
+    //margin-right: 8.7%;
+    margin-left: 10rem;
+    margin-right: 10rem;
     border-bottom: 1px solid #e0e0e0;
 
     @media (max-width: 1350px) {
@@ -289,22 +336,4 @@ export const ActionButton = styled.button`
     &:hover {
         background-color: #f0f0f0;
     }
-`;
-
-export const VideoBackground = styled.div`
-  && {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
 `;

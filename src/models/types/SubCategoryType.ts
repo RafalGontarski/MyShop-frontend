@@ -1,3 +1,5 @@
+import CategoryType from "./CategoryType";
+
 type SubCategoryType = {
     id?: number; // Opcjonalne, ponieważ podczas tworzenia nowej kategorii ID może jeszcze nie istnieć
     name: string;
@@ -7,6 +9,7 @@ type SubCategoryType = {
     // slug?: string;        // Opcjonalne, może służyć do tworzenia przyjaznych URL dla kategorii
     // displayOrder?: number; // Opcjonalne, jeśli chcesz kontrolować kolejność wyświetlania kategorii
     // Możesz dodać inne pola, które uważasz za potrzebne
+    category: CategoryType;
 };
 
 export default SubCategoryType;
