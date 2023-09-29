@@ -3,7 +3,12 @@ import React, {useEffect, useState} from 'react';
 import {
     LeftButtonContainer,
     CarouselContainer,
-    RightButtonContainer, CarouselBtn, SlimArrowLeft, SlimArrowRight, CarouselImage, CarouselImgContainer
+    RightButtonContainer,
+    CarouselBtn,
+    SlimArrowLeft,
+    SlimArrowRight,
+    CarouselImage,
+    CarouselImgContainer
 } from "./Carousel.styles";
 
 interface CarouselProps {

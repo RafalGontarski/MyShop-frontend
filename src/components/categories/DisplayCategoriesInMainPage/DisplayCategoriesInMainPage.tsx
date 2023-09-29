@@ -8,29 +8,38 @@ import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
 
 import {ProfileDrawerLink} from "../../tools/drawer/ProfileDrawer.styles";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import { useSelectedCategory } from "../../../models/context/SelectedCategoryContext";
 
 
 export const DisplayCategoriesInMainPage: React.FC = () => {
     const [categories, setCategories] = useState<CategoryType[]>([]);
+    const { setSelectedCategory } = useSelectedCategory();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchCategories = async () => {
+        async function fetchCategories() {
             try {
-                const fetchedCategories = await CategoryApi.getAllCategories();
-                setCategories(fetchedCategories);
+                const categoriesFromApi: CategoryType[] = await CategoryApi.getAllCategories();
+                console.log("Pobrane kategorie z API:", categoriesFromApi);
+                setCategories(categoriesFromApi);
             } catch (error) {
                 console.error("Błąd podczas pobierania kategorii:", error);
             }
-        };
+        }
 
         fetchCategories();
     }, []);
 
+    useEffect(() => {
+        console.log("Categories from DisplayCategoriesInMainPage: ", categories);
+    }, [categories]);
+
+
 
 
     const handleCategoryClick = (categoryName: string) => {
+        setSelectedCategory(categoryName);
         navigate(`/categories/${categoryName}`);
     };
 
@@ -42,13 +51,17 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
 
             <CategoriesChildrenDiv>
                 {categories.map(category => (
-                    <ChildDiv key={category.name} onClick={() => handleCategoryClick(category.name)}>
+                    <ChildDiv
+                        key={category.name}
+                        onClick={() => handleCategoryClick(category.name)}>
                         <ChildImg
                             src={`http://localhost:8080${category.iconUrl}`}
                             alt={category.name + " Icon"}
                         />
                         <ProfileDrawerLink
-                            // to={`/categories/${category.name}`}  // Jest nadal użyteczne dla dostępności i SEO
+                            key={category.name}
+                            as={Link}
+                            to={`/categories/${category.name}`}  // Jest nadal użyteczne dla dostępności i SEO
                             underline="none"
                         >
                             {category.name}

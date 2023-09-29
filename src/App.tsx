@@ -389,8 +389,9 @@ const App = () => {
                                             userRole={userRole}
                                 />} />
                                 <Route path="/categories" element={<AllCategories />}/>
-                                <Route path="/categories/:categoryName" element={<Category />} />
-                                <Route path="/categories/:categoryName/:subCategoryName" element={<SubCategory />} />
+                                <Route path="/categories/:categoryName" Component={Category} />
+
+                                <Route path="/categories/:categoryName/:subCategoryName" Component={SubCategory} />
                                 <Route
                                     path="/categories/:categoryName/:subCategoryName/:secondSubCategoryName"
                                     element={<SecondSubCategory />} />

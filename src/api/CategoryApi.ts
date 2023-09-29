@@ -9,6 +9,7 @@ import SecondSubCategoryType from "../models/types/SecondSubCategoryType";
 
 
 export class CategoryApi {
+    // Categories
     static addCategory = async (request: AddCategoryRequest) => {
         try {
             return await axios.post<AddCategoryResponse>(`${BaseUrl}/api/categories`, request);
@@ -17,7 +18,6 @@ export class CategoryApi {
             throw error;
         }
     }
-
     static getAllCategories = async (): Promise<CategoryType[]> => {
         try {
             const response = await axios.get<CategoryType[]>(`${BaseUrl}/api/categories`);
@@ -28,7 +28,6 @@ export class CategoryApi {
             throw error;
         }
     }
-
     static getAllSubCategories = async (categoryId: number | undefined): Promise<SubCategoryType[]> => {
         if (typeof categoryId === 'undefined') {
             // Obsługuje sytuację, gdy categoryId jest undefined, na przykład rzucając błąd:
@@ -44,7 +43,7 @@ export class CategoryApi {
         }
     }
 
-    //SubCategories
+    //S ubCategories
     static getAllSubCategoriesNames = async (categoryId: number | undefined): Promise<string[]> => {
         const response = await axios.get<string[]>(`${BaseUrl}/api/categories/${categoryId}/subcategories/names`);
 
@@ -53,7 +52,7 @@ export class CategoryApi {
         return response.data;
     }
 
-    //SecondSubCategories
+    // SecondSubCategories
     static getAllSecondSubCategories = async (categoryId: number | undefined, subCategoryId: number | undefined): Promise<SecondSubCategoryType[]> => {
         if (typeof categoryId === 'undefined' || typeof subCategoryId === 'undefined') {
             // Obsługuje sytuację, gdy categoryId lub subCategoryId jest undefined, na przykład rzucając błąd:

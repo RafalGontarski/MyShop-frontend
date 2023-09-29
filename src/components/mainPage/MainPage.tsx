@@ -38,8 +38,6 @@ const MainPage: React.FC<MainPageProps> = ({userName}) => {
             <Carousel images={carouselImages} />
             <DisplayCategoriesInMainPage />
 
-
-
         </MainPageContainer>
     );
 }

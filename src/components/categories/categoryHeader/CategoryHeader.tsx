@@ -16,7 +16,7 @@ import styled from "styled-components";
 
 
 interface CategoryHeaderProps {
-    categoryName: string;
+    categoryName?: string;
     subCategoryName?: string;
     productName?: string;
 }

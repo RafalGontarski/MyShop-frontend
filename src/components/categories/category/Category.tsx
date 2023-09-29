@@ -10,32 +10,42 @@ import CategoryType from "../../../models/types/CategoryType";
 
 export const Category: React.FC = () => {
     const { categoryName, subCategoryName } = useParams<{ categoryName: string; subCategoryName?: string }>();
-    const { selectedCategory, setSelectedCategory } = useSelectedCategory();
-    const [currentCategory, setCurrentCategory] = useState<CategoryType | null>(null);
-    const [, setSubCategoriesNames] = useState<string[]>([]);
+    const { selectedCategory } = useSelectedCategory();
 
-    useEffect(() => {
-        if (categoryName && categoryName !== selectedCategory) {
-            setSelectedCategory(categoryName);
-        }
-    }, [categoryName]);
+    const initialCategory: CategoryType | null = JSON.parse(localStorage.getItem('currentCategory') || 'null');
+    const initialSubCategoriesNames: string[] = JSON.parse(localStorage.getItem('subCategoriesNames') || '[]');
+
+    const [currentCategory, setCurrentCategory] = useState<CategoryType | null>(initialCategory);
+    const [subCategoriesNames, setSubCategoriesNames] = useState<string[]>(initialSubCategoriesNames);
 
     useEffect(() => {
         CategoryApi.getAllCategories()
             .then(categories => {
-                const category = categories.find(cat => cat.name === selectedCategory);
+                const category = categories.find(cat => cat.name === categoryName);
                 setCurrentCategory(category || null);
             })
             .catch(error => console.error("Błąd podczas pobierania kategorii:", error));
-    }, [selectedCategory]);
+    }, [categoryName]);
 
     useEffect(() => {
         if (currentCategory) {
             CategoryApi.getAllSubCategoriesNames(currentCategory.categoryId)
-                .then(names => setSubCategoriesNames(names))
+                .then(names => {
+                    console.log("Pobrane nazwy podkategorii:", names); // dodaj ten log
+                    setSubCategoriesNames(names);
+                })
                 .catch(error => console.error("Błąd podczas pobierania podkategorii:", error));
         }
     }, [currentCategory]);
+
+
+    useEffect(() => {
+        localStorage.setItem('currentCategory', JSON.stringify(currentCategory));
+    }, [currentCategory]);
+
+    useEffect(() => {
+        localStorage.setItem('subCategoriesNames', JSON.stringify(subCategoriesNames));
+    }, [subCategoriesNames]);
 
     useEffect(() => {
         window.scrollTo({
@@ -48,13 +58,15 @@ export const Category: React.FC = () => {
     console.log("selectedCategory w komponencie Category:", selectedCategory);
 
     return (
-        <div>
-            <CategoryHeader categoryName={selectedCategory || ''} subCategoryName={subCategoryName || ''}/>
+        <>
+            {categoryName && <CategoryHeader
+                categoryName={categoryName}
+                subCategoryName={subCategoryName || ''} />}
 
-            {currentCategory ? <DisplaySubCategoriesNames
+
+            {currentCategory && <DisplaySubCategoriesNames
                 categoryId={currentCategory.categoryId}
-                subCategoryName={selectedCategory || ''}
-            /> : null}
-        </div>
+                subCategoryName={categoryName || ''} />}
+        </>
     );
 };
