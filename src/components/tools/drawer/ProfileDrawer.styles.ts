@@ -12,6 +12,7 @@ export const ProfileDrawerLink = styled(Link)`
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
+    cursor: pointer;
 
     &:hover {
       color: #008000;

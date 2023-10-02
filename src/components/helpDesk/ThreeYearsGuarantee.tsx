@@ -1,48 +1,36 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-
-import CustomButton from "../tools/button/Button";
-import {StyledMenuIcon} from "../navbar/Navbar.styles";
-import { useLocation } from 'react-router-dom';
-
-
 import {
     Container,
     MenuWrapper,
     MyProfileContainer,
-    MyProfileLeftContainer,
-    Title,
+    MyProfileLeftContainer, Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
-
 import {
     LinksContainer,
-    ProfileDrawerLink,
-    ProfileLine,
-    UserDataContainer
+    ProfileDrawerLink, ProfileLine,
 } from "../tools/drawer/ProfileDrawer.styles";
-
+import {Link} from "react-router-dom";
+import {StyledMenuIcon} from "../navbar/Navbar.styles";
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
-
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-
-import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import CustomButton from "../tools/button/Button";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
-interface GuaranteeProps {
+
+interface FreeShippingProps {
     // isExpanded: boolean;
     // toggleExpanded: () => void;
 }
 
-export const Guarantee: React.FC<GuaranteeProps> = () => {
+export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(
         () => window.sessionStorage.getItem("isExpanded") === "true"
@@ -54,7 +42,6 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
         window.sessionStorage.setItem("isExpanded", String(newValue));
     };
 
-
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -63,15 +50,19 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
         });
     }, []);
 
-
     return (
         <MyProfileContainer>
+
             <MyProfileLeftContainer>
+
+
                 <LinksContainer>
+
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
+                        // onClick={onClose}
                     >
                         Kontakt
                     </ProfileDrawerLink>
@@ -99,12 +90,14 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     >
                         Zwrot produktu
                     </ProfileDrawerLink>
+
                     <ProfileDrawerLink
                         underline="none"
                         onClick={toggleExpanded}
                     >
                         Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
+
                     {isExpanded && (
                         <>
                             <HelpDeskAdvantageChildLink
@@ -150,7 +143,7 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/example"
+                        to="/"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -178,11 +171,11 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Gwarancja Satysfakcji</Title>
+                    <Title>3 lata gwarancji</Title>
                 </CategoryTitleContainer>
 
                 <WelcomeText variant="h6" gutterBottom>
-                    Gwarancja satysfakcji to nasz atut
+                    Produkty kupione w sklepie muzycznym Thomann podlegają 3 letniej gwarancji Thomann. Przedłużamy na nasz koszt gwarancję producentów z 24 na pełne 36 miesięcy - bez żadnych kosztów na Twój rachunek.
                 </WelcomeText>
 
                 <FormContainer
@@ -192,9 +185,20 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Przeczytaj o naszej gwarancji
+                                Nasza obietnica
                             </WelcomeText>
+                            <WelcomeText variant="button" gutterBottom>
+                                Tutaj możesz skontaktować się z konsultantem
+                            </WelcomeText>
+                            {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
+
+
+                        <CustomButton
+                            label={"Zwrot produktu"}
+                            // type="submit"
+                            // disabled={!isEmailValid || !isPasswordValid}
+                        />
 
                     </ProfileImageContainer>
 

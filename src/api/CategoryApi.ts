@@ -68,8 +68,4 @@ export class CategoryApi {
             throw error;
         }
     }
-
-
-
-
 }

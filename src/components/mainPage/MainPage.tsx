@@ -3,6 +3,7 @@ import {MainPageContainer} from "./mainPage.styles";
 import Carousel from "./carousel/Carousel";
 import {CarouselImageApi} from "../../api/CarouselImageApi";
 import {DisplayCategoriesInMainPage} from "../categories/DisplayCategoriesInMainPage/DisplayCategoriesInMainPage";
+import {MainPageLinksUnderCarousel} from "./MainPageLinksUnderCarousel";
 
 
 
@@ -34,8 +35,8 @@ const MainPage: React.FC<MainPageProps> = ({userName}) => {
     return (
         <MainPageContainer>
             {userName && <h1>Witaj, {userName}!</h1>}
-
             <Carousel images={carouselImages} />
+            {!userName && <MainPageLinksUnderCarousel />}
             <DisplayCategoriesInMainPage />
 
         </MainPageContainer>

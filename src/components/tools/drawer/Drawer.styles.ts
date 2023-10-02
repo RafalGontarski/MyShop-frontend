@@ -8,6 +8,30 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import CheckBox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+
+
+
+export const StyledDrawer = styled(Drawer)`
+  & > div {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #000 0%, #000 35%, #fff 35%, #fff 100%);
+      min-height: 50px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #fff;
+    }
+  }
+`;
+
+
+
 
 
 export const ValidationError = styled.div`

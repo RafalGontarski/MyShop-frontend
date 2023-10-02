@@ -33,11 +33,29 @@ import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
 interface FreeShippingProps {
-    isExpanded: boolean;
-    toggleExpanded: () => void;
+    // isExpanded: boolean;
+    // toggleExpanded: () => void;
 }
 
-export const FreeShipping: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
+export const FreeShipping: React.FC<FreeShippingProps> = () => {
+
+    const [isExpanded, setIsExpanded] = useState<boolean>(
+        () => window.sessionStorage.getItem("isExpanded") === "true"
+    );
+
+    const toggleExpanded = () => {
+        const newValue = !isExpanded;
+        setIsExpanded(newValue);
+        window.sessionStorage.setItem("isExpanded", String(newValue));
+    };
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            // behavior: 'smooth'
+        });
+    }, []);
 
     return (
         <MyProfileContainer>
@@ -51,6 +69,30 @@ export const FreeShipping: React.FC<FreeShippingProps> = ({ isExpanded, toggleEx
                         Kontakt
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/contact"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Często zadawane pytania
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/contact"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Koszt dostaw i czas oczekiwania
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/contact"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Zwrot produktu
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
                         underline="none"
                         onClick={toggleExpanded}
                     >
@@ -60,10 +102,17 @@ export const FreeShipping: React.FC<FreeShippingProps> = ({ isExpanded, toggleEx
                         <>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
-                                to="/helpDesk/freeShipping"
+                                to="/helpDesk/refund"
                                 underline="none"
                             >
-                                Darmowa wysyłka od 300 zł
+                                30-dniowa gwarancja zwrotu pieniędzy
+                            </HelpDeskAdvantageChildLink>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/threeYearsGuarantee"
+                                underline="none"
+                            >
+                                3-letnia gwarancja Thomann
                             </HelpDeskAdvantageChildLink>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
@@ -72,6 +121,21 @@ export const FreeShipping: React.FC<FreeShippingProps> = ({ isExpanded, toggleEx
                             >
                                 Gwarancja Satysfakcji
                             </HelpDeskAdvantageChildLink>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/securePayments"
+                                underline="none"
+                            >
+                                Bezpieczne płatności
+                            </HelpDeskAdvantageChildLink>
+                            <HelpDeskAdvantageChildLink
+                                as={Link}
+                                to="/helpDesk/warehouse"
+                                underline="none"
+                            >
+                                Największy magazyn logistyczny w Europie
+                            </HelpDeskAdvantageChildLink>
+
                         </>
                     )}
 

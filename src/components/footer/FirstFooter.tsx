@@ -14,6 +14,7 @@ import PayPalIcon from '../../resources/icons/PayPal.png';
 import VisaIcon from '../../resources/icons/Visa.png';
 import MastercardIcon from '../../resources/icons/MasterCard2.png';
 import MoneyPaymentIcon from '../../resources/icons/MoneyPayment.png';
+import {Link} from "react-router-dom";
 
 
 export const FirstFooter = () => {
@@ -21,12 +22,14 @@ export const FirstFooter = () => {
         <StyledFirstFooter position="static">
             <div>
                 <h4>Kupuj i płać bezpiecznie</h4>
-                <StyledIconsDiv>
-                    <StyledIcon src={PayPalIcon} alt="PayPal" width={35} height={35}/>
-                    <StyledIcon src={VisaIcon} alt="Visa" />
-                    <StyledIcon src={MastercardIcon} alt="Mastercard" />
-                    <StyledIcon src={MoneyPaymentIcon} alt="PayPal" />
-                </StyledIconsDiv>
+                <Link to="/helpDesk/securePayments">
+                    <StyledIconsDiv>
+                        <StyledIcon src={PayPalIcon} alt="PayPal" width={35} height={35}/>
+                        <StyledIcon src={VisaIcon} alt="Visa" />
+                        <StyledIcon src={MastercardIcon} alt="Mastercard" />
+                        <StyledIcon src={MoneyPaymentIcon} alt="PayPal" />
+                    </StyledIconsDiv>
+                </Link>
                 <Typography
                     color={"grey"}
                     marginTop={2}
@@ -37,19 +40,34 @@ export const FirstFooter = () => {
             </div>
             <StyledLinksDiv>
                 <h4>Twoje korzyści</h4>
-                <StyledBlackLink><StyledCheckIcon />2-letnia Gwarancja</StyledBlackLink>
-                <StyledBlackLink><StyledCheckIcon />30-dniowa gwarancja zwrotu pieniędzy</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/threeYearsGuarantee"
+                ><StyledCheckIcon />3-letnia Gwarancja</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/refund"
+                ><StyledCheckIcon />30-dniowa gwarancja zwrotu pieniędzy</StyledBlackLink>
                 <StyledBlackLink><StyledCheckIcon />Serwis Naprawczy</StyledBlackLink>
                 <StyledBlackLink><StyledCheckIcon />Porada naszych ekspertów</StyledBlackLink>
-                <StyledBlackLink><StyledCheckIcon />Gwarancja Satysfakcji</StyledBlackLink>
-                <StyledBlackLink><StyledCheckIcon />Duży asortyment</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/guarantee"
+                ><StyledCheckIcon />Gwarancja Satysfakcji</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/warehouse"
+                ><StyledCheckIcon />Duży asortyment</StyledBlackLink>
             </StyledLinksDiv>
             <StyledLinksDiv>
                 <h4>Serwis</h4>
                 <StyledBlackLink>Koszty dostawy i czas oczekiwania</StyledBlackLink>
                 <StyledBlackLink>Centrum pomocy</StyledBlackLink>
                 <StyledBlackLink>Bony towarowe</StyledBlackLink>
-                <StyledBlackLink>Kontakt</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/contact"
+                >Kontakt</StyledBlackLink>
                 <StyledBlackLink>Sklep</StyledBlackLink>
                 <StyledBlackLink>Serwis</StyledBlackLink>
             </StyledLinksDiv>

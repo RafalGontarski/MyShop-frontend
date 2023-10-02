@@ -1,48 +1,41 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-
-import CustomButton from "../tools/button/Button";
-import {StyledMenuIcon} from "../navbar/Navbar.styles";
-import { useLocation } from 'react-router-dom';
-
-
 import {
     Container,
     MenuWrapper,
-    MyProfileContainer,
-    MyProfileLeftContainer,
-    Title,
+    MyProfileCenterText, MyProfileContainer,
+    MyProfileLeftContainer, Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
-
 import {
+    LineContainer, LineText,
     LinksContainer,
-    ProfileDrawerLink,
-    ProfileLine,
+    ProfileDrawerLink, ProfileLine,
+    ProfileWelcome,
+    UserData,
     UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
-
+import {Link} from "react-router-dom";
+import {StyledMenuIcon} from "../navbar/Navbar.styles";
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
-
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-
-import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import CustomButton from "../tools/button/Button";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
-interface GuaranteeProps {
-    // isExpanded: boolean;
-    // toggleExpanded: () => void;
+
+interface FreeShippingProps {
+    isExpanded: boolean;
+    toggleExpanded: () => void;
 }
 
-export const Guarantee: React.FC<GuaranteeProps> = () => {
+// export const Refund: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
+export const Refund: React.FC = () => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(
         () => window.sessionStorage.getItem("isExpanded") === "true"
@@ -55,6 +48,7 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
     };
 
 
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -63,11 +57,14 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
         });
     }, []);
 
-
     return (
         <MyProfileContainer>
+
             <MyProfileLeftContainer>
+
+
                 <LinksContainer>
+
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
@@ -79,7 +76,6 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Często zadawane pytania
                     </ProfileDrawerLink>
@@ -87,7 +83,6 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Koszt dostaw i czas oczekiwania
                     </ProfileDrawerLink>
@@ -95,16 +90,18 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Zwrot produktu
                     </ProfileDrawerLink>
+
                     <ProfileDrawerLink
                         underline="none"
+                        // onClick={() => setIsExpanded(!isExpanded)}
                         onClick={toggleExpanded}
                     >
                         Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
+
                     {isExpanded && (
                         <>
                             <HelpDeskAdvantageChildLink
@@ -150,9 +147,8 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/example"
+                        to="/"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Przykład
                     </ProfileDrawerLink>
@@ -178,11 +174,11 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Gwarancja Satysfakcji</Title>
+                    <Title>30-dniowa gwarancja zwrotu pieniędzy</Title>
                 </CategoryTitleContainer>
 
                 <WelcomeText variant="h6" gutterBottom>
-                    Gwarancja satysfakcji to nasz atut
+                    Jako klient naszego sklepu możesz skontaktować się z naszymi konsultantami.
                 </WelcomeText>
 
                 <FormContainer
@@ -192,9 +188,20 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Przeczytaj o naszej gwarancji
+                                Nasza obietnica
                             </WelcomeText>
+                            <WelcomeText variant="button" gutterBottom>
+                                Tutaj możesz skontaktować się z konsultantem
+                            </WelcomeText>
+                            {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
+
+
+                        <CustomButton
+                            label={"Zwrot produktu"}
+                            // type="submit"
+                            // disabled={!isEmailValid || !isPasswordValid}
+                        />
 
                     </ProfileImageContainer>
 

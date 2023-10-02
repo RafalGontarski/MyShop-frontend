@@ -43,6 +43,10 @@ import {Category} from "./components/categories/category/Category";
 import {SubCategory} from "./components/categories/category/SubCategory";
 import {SecondSubCategory} from "./components/categories/category/SecondSubCategory";
 import './App.css';
+import {Refund} from "./components/helpDesk/Refund";
+import {ThreeYearsGuarantee} from "./components/helpDesk/ThreeYearsGuarantee";
+import {SecurePayments} from "./components/helpDesk/SecurePayments";
+import {Warehouse} from "./components/helpDesk/Warehouse";
 
 const UserContext = createContext<{
     isLoggedIn: boolean,
@@ -388,29 +392,21 @@ const App = () => {
                                             userEmail={userEmail}
                                             userRole={userRole}
                                 />} />
+
                                 <Route path="/categories" element={<AllCategories />}/>
                                 <Route path="/categories/:categoryName" Component={Category} />
-
                                 <Route path="/categories/:categoryName/:subCategoryName" Component={SubCategory} />
-                                <Route
-                                    path="/categories/:categoryName/:subCategoryName/:secondSubCategoryName"
-                                    element={<SecondSubCategory />} />
+                                <Route path="/categories/:categoryName/:subCategoryName/:secondSubCategoryName" element={<SecondSubCategory />} />
                                 <Route path="/categories/:categoryName/:subCategoryName/:secondSubCategoryName/:productName" element={<Product />} />
-
                                 <Route path={'/helpDesk/contact'} element={<Contact />} />
-                                <Route path={'/helpDesk/freeShipping'}
-                                       element={
-                                    <FreeShipping
-                                        isExpanded={isExpanded}
-                                        toggleExpanded={() => setIsExpanded(!isExpanded)}
-                                    />}/>
-                                <Route path={'/helpDesk/guarantee'}
-                                       element={<Guarantee
-                                           isExpanded={isExpanded}
-                                           toggleExpanded={() => setIsExpanded(!isExpanded)}
-                                       />}/>
-                                <Route path={'/helpDesk/example'} element={<Example />}/>
+                                <Route path={'/helpDesk/refund'} element={<Refund/>}/>
+                                <Route path={'helpDesk/threeYearsGuarantee'} element={<ThreeYearsGuarantee/>}/>
+                                <Route path={'/helpDesk/freeShipping'} element={<FreeShipping/>}/>
+                                <Route path={'/helpDesk/guarantee'} element={<Guarantee/>}/>
+                                <Route path={'/helpDesk/securePayments'} element={<SecurePayments/>}/>
+                                <Route path={'/helpDesk/warehouse'} element={<Warehouse />}/>
 
+                                <Route path={'/helpDesk/example'} element={<Example />}/>
                                 <Route path="/hotDeals" element={<HotDeals />}/>
                                 <Route path="/newest" element={<Newest />}/>
                                 <Route path="/topSeller" element={<TopSeller />}/>
