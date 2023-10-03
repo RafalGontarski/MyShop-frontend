@@ -163,6 +163,27 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                                 Produkty
                             </ProfileDrawerLink>
                         )}
+                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                            <ProfileDrawerLink
+                                as={Link}
+                                to="/analytic-data"
+                                underline="none"
+                                onClick={onClose}
+                            >
+                                Statystyki klikalności
+                            </ProfileDrawerLink>
+                        )}
+                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                            <ProfileDrawerLink
+                                as={Link}
+                                to="/categories-center"
+                                underline="none"
+                                onClick={onClose}
+                            >
+                                Kategorie
+                            </ProfileDrawerLink>
+                        )}
+
                         {userRole && (userRole.includes("ADMIN")) && (
                             <LineContainer>
                                 <LineText>Panel Właściciela</LineText>
@@ -177,17 +198,6 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                                 onClick={onClose}
                             >
                                 Pracownicy
-                            </ProfileDrawerLink>
-                        )}
-                        {userRole && (userRole.includes("ADMIN")) && (
-
-                            <ProfileDrawerLink
-                                as={Link}
-                                to="/categories-center"
-                                underline="none"
-                                onClick={onClose}
-                            >
-                                Kategorie
                             </ProfileDrawerLink>
                         )}
 

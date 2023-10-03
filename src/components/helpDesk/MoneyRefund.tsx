@@ -1,44 +1,53 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-
-import CustomButton from "../tools/button/Button";
-import {StyledMenuIcon} from "../navbar/Navbar.styles";
-
 import {
     Container,
     MenuWrapper,
-    MyProfileContainer,
-    MyProfileLeftContainer,
-    Title,
+    MyProfileCenterText, MyProfileContainer,
+    MyProfileLeftContainer, Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
-
 import {
+    LineContainer, LineText,
     LinksContainer,
-    ProfileDrawerLink,
-    ProfileLine,
+    ProfileDrawerLink, ProfileLine,
+    ProfileWelcome,
+    UserData,
     UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
-
+import {Link} from "react-router-dom";
+import {StyledMenuIcon} from "../navbar/Navbar.styles";
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
-
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-
-import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import CustomButton from "../tools/button/Button";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
-export const Example: React.FC = () => {
+interface FreeShippingProps {
+    isExpanded: boolean;
+    toggleExpanded: () => void;
+}
 
-    const [isExpanded, setIsExpanded] = useState(false);
+// export const Refund: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
+export const MoneyRefund: React.FC = () => {
+
+    const [isExpanded, setIsExpanded] = useState<boolean>(
+        () => window.sessionStorage.getItem("isExpanded") === "true"
+    );
+
+    const toggleExpanded = () => {
+        const newValue = !isExpanded;
+        setIsExpanded(newValue);
+        window.sessionStorage.setItem("isExpanded", String(newValue));
+    };
+
+
 
     useEffect(() => {
         window.scrollTo({
@@ -53,44 +62,57 @@ export const Example: React.FC = () => {
 
             <MyProfileLeftContainer>
 
-                <LinksContainer>
 
+                <LinksContainer>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/service"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Zestawienie
+                    </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Kontakt
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/questions"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Często zadawane pytania
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/delivery"
                         underline="none"
-                        // onClick={onClose}
                     >
                         Koszt dostaw i czas oczekiwania
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/repairService"
                         underline="none"
                         // onClick={onClose}
+                    >
+                        Serwis i naprawa asortymentu
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/productRefund"
+                        underline="none"
                     >
                         Zwrot produktu
                     </ProfileDrawerLink>
 
                     <ProfileDrawerLink
                         underline="none"
-                        onClick={() => setIsExpanded(!isExpanded)}
+                        // onClick={() => setIsExpanded(!isExpanded)}
+                        onClick={toggleExpanded}
                     >
                         Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
@@ -99,7 +121,7 @@ export const Example: React.FC = () => {
                         <>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
-                                to="/helpDesk/refund"
+                                to="/helpDesk/moneyRefund"
                                 underline="none"
                             >
                                 30-dniowa gwarancja zwrotu pieniędzy
@@ -140,11 +162,11 @@ export const Example: React.FC = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/example"
+                        to="/helpDesk/guide"
                         underline="none"
                         // onClick={onClose}
                     >
-                        Przykład
+                        Poradniki
                     </ProfileDrawerLink>
 
 
@@ -168,11 +190,11 @@ export const Example: React.FC = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Przykład</Title>
+                    <Title>30-dniowa gwarancja zwrotu pieniędzy</Title>
                 </CategoryTitleContainer>
 
                 <WelcomeText variant="h6" gutterBottom>
-                    Przykład komponentu
+                    Jako klient naszego sklepu możesz skontaktować się z naszymi konsultantami.
                 </WelcomeText>
 
                 <FormContainer
@@ -182,9 +204,20 @@ export const Example: React.FC = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Zobacz przykład komponentu
+                                Nasza obietnica
                             </WelcomeText>
+                            <WelcomeText variant="button" gutterBottom>
+                                Tutaj możesz skontaktować się z konsultantem
+                            </WelcomeText>
+                            {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
+
+
+                        <CustomButton
+                            label={"Zwrot produktu"}
+                            // type="submit"
+                            // disabled={!isEmailValid || !isPasswordValid}
+                        />
 
                     </ProfileImageContainer>
 

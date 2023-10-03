@@ -29,7 +29,7 @@ export const Country = styled(Link)`
   }
 `;
 
-export const Custom = styled(Link)`
+export const Custom = styled(Link)<{ isActive?: boolean }>`
   && {
     display: block;
     text-align: center;
@@ -37,7 +37,7 @@ export const Custom = styled(Link)`
     position: relative;
     width: fit-content;
     //margin: 0 auto;
-    color: #000000;
+    color: ${props => props.isActive ? '#008000' : '#000000'};
 
     &:hover {
       color: #008000;
@@ -50,8 +50,8 @@ export const Custom = styled(Link)`
       left: 0;
       right: auto;
       width: 100%;
-      height: 1px;
-      background-color: #000000;
+      height: ${props => props.isActive ? '3px' : '1px'};
+      background-color: ${props => props.isActive ? '#008000' : '#000000'};
       transform: scaleY(0.5);
       transition: transform 0.15s ease, bottom 0.15s ease;
     }

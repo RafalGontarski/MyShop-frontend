@@ -168,12 +168,7 @@ export const CategoriesEditPanel: React.FC<EditCategoriesProps> = ({
                             Produkty
                         </ProfileDrawerLink>
                     )}
-                    {userRole && (userRole.includes("ADMIN")) && (
-                        <LineContainer>
-                            <LineText>Panel Właściciela</LineText>
-                        </LineContainer>
-                    )}
-                    {userRole && (userRole.includes("ADMIN")) && (
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
                             as={Link}
                             to="/categories-center"
@@ -184,6 +179,23 @@ export const CategoriesEditPanel: React.FC<EditCategoriesProps> = ({
                             Kategorie
                         </ProfileDrawerLink>
                     )}
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                        <ProfileDrawerLink
+                            as={Link}
+                            to="/analytic-data"
+                            underline="none"
+                            onClick={onClose}
+                        >
+                            Statystyki klikalności
+                        </ProfileDrawerLink>
+                    )}
+
+                    {userRole && (userRole.includes("ADMIN")) && (
+                        <LineContainer>
+                            <LineText>Panel Właściciela</LineText>
+                        </LineContainer>
+                    )}
+
                     {userRole && (userRole.includes("ADMIN")) && (
 
                         <ProfileDrawerLink

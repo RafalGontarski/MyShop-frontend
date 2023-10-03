@@ -51,7 +51,14 @@ export const Contact: React.FC = () => {
 
 
                 <LinksContainer>
-
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/service"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Zestawienie
+                    </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
@@ -62,7 +69,7 @@ export const Contact: React.FC = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/questions"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -70,7 +77,7 @@ export const Contact: React.FC = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/delivery"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -78,7 +85,15 @@ export const Contact: React.FC = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/repairService"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Serwis i naprawa asortymentu
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/productRefund"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -96,7 +111,7 @@ export const Contact: React.FC = () => {
                         <>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
-                                to="/helpDesk/refund"
+                                to="/helpDesk/moneyRefund"
                                 underline="none"
                             >
                                 30-dniowa gwarancja zwrotu pieniędzy
@@ -137,15 +152,7 @@ export const Contact: React.FC = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/"
-                        underline="none"
-                        // onClick={onClose}
-                    >
-                        Przykład
-                    </ProfileDrawerLink>
-                    <ProfileDrawerLink
-                        as={Link}
-                        to="/"
+                        to="/helpDesk/guide"
                         underline="none"
                         // onClick={onClose}
                     >

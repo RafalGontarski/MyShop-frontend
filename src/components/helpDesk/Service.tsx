@@ -2,45 +2,39 @@ import React, {useEffect, useState} from "react";
 import {
     Container,
     MenuWrapper,
-    MyProfileContainer,
+    MyProfileCenterText, MyProfileContainer,
     MyProfileLeftContainer, Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
 import {
+    LineContainer, LineText,
     LinksContainer,
     ProfileDrawerLink, ProfileLine,
+    ProfileWelcome,
+    UserData,
+    UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 import {StyledMenuIcon} from "../navbar/Navbar.styles";
 import {
+    CategoryFormInput,
     CategoryTitleContainer,
+    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledSubtitle, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {StyledSubtitle, StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
 import CustomButton from "../tools/button/Button";
+import {EditLine} from "../editPages/profileEditPanel/ProfileEditPanel.styles";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
-interface FreeShippingProps {
-    // isExpanded: boolean;
-    // toggleExpanded: () => void;
-}
+export const Service: React.FC = () => {
 
-export const Warehouse: React.FC<FreeShippingProps> = () => {
-
-    const [isExpanded, setIsExpanded] = useState<boolean>(
-        () => window.sessionStorage.getItem("isExpanded") === "true"
-    );
-
-    const toggleExpanded = () => {
-        const newValue = !isExpanded;
-        setIsExpanded(newValue);
-        window.sessionStorage.setItem("isExpanded", String(newValue));
-    };
+    const [isExpanded, setIsExpanded] = useState(false);
 
     useEffect(() => {
         window.scrollTo({
@@ -57,7 +51,6 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
 
 
                 <LinksContainer>
-
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/service"
@@ -109,7 +102,7 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
 
                     <ProfileDrawerLink
                         underline="none"
-                        onClick={toggleExpanded}
+                        onClick={() => setIsExpanded(!isExpanded)}
                     >
                         Atuty {isExpanded ? '-' : '+'}
                     </ProfileDrawerLink>
@@ -157,6 +150,7 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
 
                     <ProfileLine/>
 
+
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/guide"
@@ -187,15 +181,12 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Największy magazyn logistyczny w Europie</Title>
+                    <Title>Najlepszy europejski serwis</Title>
                 </CategoryTitleContainer>
 
-                <StyledSubtitle
-                    variant="subtitle2"
-                    gutterBottom>
-                    Jako jeden z największych światowych sklepów wysyłkowych sprzętu muzycznego jesteśmy dumni z największego asortymentu i najlepszjej dostępności towarów. Stale rozbudowujemy nasze magazyny i system logistyczny. Zatrudniamy również na miejscu coraz więcej specjalistów, którzy służą radą i pomocą.
+                <StyledSubtitle variant="subtitle1" gutterBottom>
+                    Jak możemy pomóc? W naszym mniemaniu dobry serwis nie polega jedynie na naprawie sprzętu, nasze wsparcie zaczyna się już przy wyborze artykułu.
                 </StyledSubtitle>
-
                 <FormContainer
                     // onSubmit={handleAddCategory}
                 >
@@ -203,17 +194,16 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Nasza obietnica
+                                Przed zakupem
                             </WelcomeText>
                             <WelcomeText variant="button" gutterBottom>
-                                Tutaj możesz skontaktować się z konsultantem
-                            </WelcomeText>
+                                Według nas dobry serwis powinien być już świadczony przed złożeniem zamówienia. Jesteśmy dostępni telefonicznie, mailowo oraz na miejscu w sklepie, aby zapewnić pomoc w wyborze odpowiedniego artykułu.                            </WelcomeText>
                             {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
 
 
                         <CustomButton
-                            label={"Zwrot produktu"}
+                            label={"Skontaktuj się"}
                             // type="submit"
                             // disabled={!isEmailValid || !isPasswordValid}
                         />

@@ -20,7 +20,7 @@ import {
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledSubtitle, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
 import CustomButton from "../tools/button/Button";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
@@ -30,7 +30,7 @@ interface FreeShippingProps {
     // toggleExpanded: () => void;
 }
 
-export const Warehouse: React.FC<FreeShippingProps> = () => {
+export const Delivery: React.FC<FreeShippingProps> = () => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(
         () => window.sessionStorage.getItem("isExpanded") === "true"
@@ -187,14 +187,11 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Największy magazyn logistyczny w Europie</Title>
+                    <Title>Koszty dostawy i czas oczekiwania</Title>
                 </CategoryTitleContainer>
 
-                <StyledSubtitle
-                    variant="subtitle2"
-                    gutterBottom>
-                    Jako jeden z największych światowych sklepów wysyłkowych sprzętu muzycznego jesteśmy dumni z największego asortymentu i najlepszjej dostępności towarów. Stale rozbudowujemy nasze magazyny i system logistyczny. Zatrudniamy również na miejscu coraz więcej specjalistów, którzy służą radą i pomocą.
-                </StyledSubtitle>
+                <WelcomeText variant="h6" gutterBottom>
+                    Poniżej znajduje się tabela przedstawiająca koszty wysyłki oraz średni czas dostawy do poszczególnych krajów. Proszę pamiętać, że w niektórych krajach mogą być naliczane dodatkowe koszta jak cło itp.                </WelcomeText>
 
                 <FormContainer
                     // onSubmit={handleAddCategory}
@@ -203,11 +200,10 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Nasza obietnica
+                                Wysyłamy na cały świat
                             </WelcomeText>
                             <WelcomeText variant="button" gutterBottom>
-                                Tutaj możesz skontaktować się z konsultantem
-                            </WelcomeText>
+                                Wybierz kraj, aby dowiedziec się o czasie dostawy, kosztach wysyłki, maksymalnej wadze i dalszych informacjach.                            </WelcomeText>
                             {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
 

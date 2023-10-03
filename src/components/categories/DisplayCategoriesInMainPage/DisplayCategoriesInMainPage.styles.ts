@@ -48,8 +48,6 @@ export const ChildDiv = styled.div`
   cursor: pointer;
 
   &:hover {
-    border-radius: 1rem;
-    background-color: #f3f3f3; 
     transition: 0.05s;
 
     ${ProfileDrawerLink} {

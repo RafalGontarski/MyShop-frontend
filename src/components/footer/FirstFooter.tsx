@@ -46,10 +46,16 @@ export const FirstFooter = () => {
                 ><StyledCheckIcon />3-letnia Gwarancja</StyledBlackLink>
                 <StyledBlackLink
                     as={Link}
-                    to="/helpDesk/refund"
+                    to="/helpDesk/moneyRefund"
                 ><StyledCheckIcon />30-dniowa gwarancja zwrotu pieniędzy</StyledBlackLink>
-                <StyledBlackLink><StyledCheckIcon />Serwis Naprawczy</StyledBlackLink>
-                <StyledBlackLink><StyledCheckIcon />Porada naszych ekspertów</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/service"
+                ><StyledCheckIcon />Serwis Naprawczy</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/contact"
+                ><StyledCheckIcon />Porada naszych ekspertów</StyledBlackLink>
                 <StyledBlackLink
                     as={Link}
                     to="/helpDesk/guarantee"
@@ -61,7 +67,10 @@ export const FirstFooter = () => {
             </StyledLinksDiv>
             <StyledLinksDiv>
                 <h4>Serwis</h4>
-                <StyledBlackLink>Koszty dostawy i czas oczekiwania</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/delivery"
+                >Koszty dostawy i czas oczekiwania</StyledBlackLink>
                 <StyledBlackLink>Centrum pomocy</StyledBlackLink>
                 <StyledBlackLink>Bony towarowe</StyledBlackLink>
                 <StyledBlackLink
@@ -69,7 +78,10 @@ export const FirstFooter = () => {
                     to="/helpDesk/contact"
                 >Kontakt</StyledBlackLink>
                 <StyledBlackLink>Sklep</StyledBlackLink>
-                <StyledBlackLink>Serwis</StyledBlackLink>
+                <StyledBlackLink
+                    as={Link}
+                    to="/helpDesk/service"
+                >Serwis</StyledBlackLink>
             </StyledLinksDiv>
         </StyledFirstFooter>
     );

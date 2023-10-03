@@ -105,8 +105,8 @@ export const StyledCategoryNavbarLinkButton = styled(Button)`
     color: #fff; // Dziedziczy kolor tekstu z rodzica
     display: inline-flex;
     &:hover {
-      background-image: linear-gradient(to right, blue, green);
-
+      //background-image: linear-gradient(to right, blue, green);
+      background-color: green;
       &::after {
         content: "";
         position: absolute;

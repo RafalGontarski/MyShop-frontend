@@ -13,13 +13,13 @@ export const MainPageLinksUnderCarousel = () => {
         <StyledLinksContainer>
             <StyledUnderCarouselLink
                 as={Link}
-                to="/helpDesk/freeShipping"
+                to="/helpDesk/moneyRefund"
                 underline="none">
                 <StyledImg src={ZwrotIcon} alt={'zwrot'}/>
                 Dni Zwrotu Pieniędzy</StyledUnderCarouselLink>
             <StyledUnderCarouselLink
                 as={Link}
-                to="/helpDesk/guarantee"
+                to="/helpDesk/threeYearsGuarantee"
                 underline="none">
                 <StyledImg src={GwarancjaIcon} alt={'gwarancja'}/>
                 Lata Gwarancji</StyledUnderCarouselLink>
@@ -30,12 +30,14 @@ export const MainPageLinksUnderCarousel = () => {
                 <StyledImg src={TransportIcon} alt={'transport'}/>
                 Darmowa Wysyłka od 300 zł</StyledUnderCarouselLink>
             <StyledUnderCarouselLink
-
+                as={Link}
+                to="/helpDesk/service"
                 underline={'none'}>
                 <StyledImg src={ObslugaIcon} alt={'obsluga'}/>
                 Najlepsza obsługa w Polsce</StyledUnderCarouselLink>
             <StyledUnderCarouselLink
-
+                as={Link}
+                to="/helpDesk/warehouse"
                 underline={'none'}>
                 <StyledImg src={MagazynIcon} alt={'magazyn'}/>
                 Najlepszy Magazyn Dropshippingowy</StyledUnderCarouselLink>

@@ -7,7 +7,6 @@ import {
     Title,
     Container,
     MenuWrapper,
-    TitleContainer,
     WrapperMenuButton,
     MyProfileContainer,
     MyProfileCenterText,
@@ -26,31 +25,16 @@ import {
 } from "../../tools/drawer/ProfileDrawer.styles";
 import {
     AddressTitleContainer,
-    EditLine,
     FormContainer,
-    InputContainer,
-    InputField,
-    InputLabel,
-    ProfileImage,
-    ProfileImageContainer, ProfilePageWelcome,
-    SubmitButton,
-    UploadButton
+    ProfileImageContainer,
+    ProfilePageWelcome,
 } from "./AdressBookEditPanel.styles";
 import CustomButton from "../../tools/button/Button";
 import {
-    HiddenStyledTextField,
-    StyledHandIcon,
     StyledTextField,
-    TogglePasswordVisibility,
-    Welcome,
     WelcomeText
 } from "../../tools/drawer/Drawer.styles";
-import InputAdornment from "@mui/material/InputAdornment";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CountrySelector from "../../tools/selectors/CountrySelect";
-import {AddressBookUpdateRequest} from "../../../api/user/AddressBookUpdateRequest";
-
 
 type AddressProps = {
     open: boolean;
@@ -173,9 +157,6 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
         });
     }
 
-// ...
-
-
 
     return (
         <MyProfileContainer>
@@ -254,12 +235,7 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                             Produkty
                         </ProfileDrawerLink>
                     )}
-                    {userRole && (userRole.includes("ADMIN")) && (
-                        <LineContainer>
-                            <LineText>Panel Właściciela</LineText>
-                        </LineContainer>
-                    )}
-                    {userRole && (userRole.includes("ADMIN")) && (
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <ProfileDrawerLink
                             as={Link}
                             to="/categories-center"
@@ -270,6 +246,23 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                             Kategorie
                         </ProfileDrawerLink>
                     )}
+                    {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                        <ProfileDrawerLink
+                            as={Link}
+                            to="/analytic-data"
+                            underline="none"
+                            onClick={onClose}
+                        >
+                            Statystyki klikalności
+                        </ProfileDrawerLink>
+                    )}
+
+                    {userRole && (userRole.includes("ADMIN")) && (
+                        <LineContainer>
+                            <LineText>Panel Właściciela</LineText>
+                        </LineContainer>
+                    )}
+
                     {userRole && (userRole.includes("ADMIN")) && (
 
                         <ProfileDrawerLink

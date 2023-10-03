@@ -70,6 +70,14 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                 <LinksContainer>
                     <ProfileDrawerLink
                         as={Link}
+                        to="/helpDesk/service"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Zestawienie
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
                         to="/helpDesk/contact"
                         underline="none"
                     >
@@ -77,7 +85,7 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/questions"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -85,7 +93,7 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/delivery"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -93,7 +101,15 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/repairService"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Serwis i naprawa asortymentu
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/productRefund"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -109,7 +125,7 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
                         <>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
-                                to="/helpDesk/refund"
+                                to="/helpDesk/moneyRefund"
                                 underline="none"
                             >
                                 30-dniowa gwarancja zwrotu pieniędzy
@@ -150,11 +166,11 @@ export const Guarantee: React.FC<GuaranteeProps> = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/example"
+                        to="/helpDesk/guide"
                         underline="none"
                         // onClick={onClose}
                     >
-                        Przykład
+                        Poradniki
                     </ProfileDrawerLink>
 
 

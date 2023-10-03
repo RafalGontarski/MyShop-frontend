@@ -46,6 +46,7 @@ export const SubCatChildDiv = styled.div`
   flex-direction: column;
   width: 100%;  // Pogrubienie na dolnej krawędzi sięga do końca kontenera
   margin: 5px;
+  cursor: pointer;
 
   @media (max-width: 940px) {
     flex: 1 1 calc(25% - 1px);
@@ -58,8 +59,8 @@ export const SubCatChildDiv = styled.div`
     
   }
   &:hover {
-    border-radius: 1rem;
-    background-color: #f3f3f3;  // Szary kolor tła podczas najechania myszką
+    //border-radius: 1rem;
+    //background-color: #f3f3f3;  // Szary kolor tła podczas najechania myszką
     
     ${SubCatLink} {
       color: #008000; // To będzie aktywowane, kiedy najedziesz na SubCatChildDiv

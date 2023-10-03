@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import Grid from "@mui/material/Grid";
 import {
     CartLink,
@@ -58,6 +58,7 @@ import UcraineIcon from "../../resources/icons/ukraineFlagIcon.png";
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { SelectedMenuType } from '../tools/drawer/MenuDrawer';
+import {useClickContext} from "../../models/providers/ClickProvider";
 
 
 
@@ -66,6 +67,7 @@ type NormalSizeScreenTypes = {
     openProfileDrawer: () => void;
     openLoginDrawer: () => void;
 }
+
 
 export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openProfileDrawer, openLoginDrawer}) => {
 
@@ -80,7 +82,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
 
     const { t, i18n } = useTranslation();
     const [,setCurrentLanguage] = useState(t.language);
-
+    const { linkClicks, incrementLinkClickCount } = useClickContext();
 
     let currencySymbol;
     switch (currencyCode) {
@@ -162,11 +164,13 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
     const handleServiceClick = () => {
         setSelectedTab('service');
         setMenuDrawerOpen(true);
+        incrementLinkClickCount('service');
     };
 
     const handleAboutClick = () => {
         setSelectedTab('about');
         setMenuDrawerOpen(true);
+        incrementLinkClickCount('about');
     };
     const handleLanguageDrawerOpen = () => {
         setLanguageDrawerOpen(true);
@@ -202,6 +206,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                             as={Link}
                             to={"/helpDesk/contact"}
                             underline="none"
+                            onClick={() => incrementLinkClickCount('contact')}
                         >
                             {t('navbar.contact')}
                         </LeftSideStyledLink>
@@ -258,6 +263,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                             as={Link}
                             to={"/hotDeals"}
                             underline="none"
+                            onClick={() => incrementLinkClickCount('hotDeals')}
                         >
                             Hot Deals
                         </LeftSideStyledBoldLink>
@@ -266,6 +272,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                             as={Link}
                             to={"/newest"}
                             underline="none"
+                            onClick={() => incrementLinkClickCount('newest')}  // Using the context function
                         >
                             {t('navbar.new')}
                         </LeftSideStyledBoldLink>
@@ -275,6 +282,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                                 as={Link}
                                 to={"/topSeller"}
                                 underline="none"
+                                onClick={() => incrementLinkClickCount('topSeller')}
                             >
                                 Top-Seller
                             </LeftSideStyledBoldLink>
@@ -284,6 +292,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                                 as={Link}
                                 to={"/occasions"}
                                 underline="none"
+                                onClick={() => incrementLinkClickCount('occasions')}
                             >
                                 {t('navbar.bargains')}
                             </LeftSideStyledBoldLink>

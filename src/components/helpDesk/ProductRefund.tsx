@@ -35,7 +35,7 @@ interface FreeShippingProps {
 }
 
 // export const Refund: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
-export const Refund: React.FC = () => {
+export const ProductRefund: React.FC = () => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(
         () => window.sessionStorage.getItem("isExpanded") === "true"
@@ -64,7 +64,14 @@ export const Refund: React.FC = () => {
 
 
                 <LinksContainer>
-
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/service"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Zestawienie
+                    </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
@@ -74,21 +81,29 @@ export const Refund: React.FC = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/questions"
                         underline="none"
                     >
                         Często zadawane pytania
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/delivery"
                         underline="none"
                     >
                         Koszt dostaw i czas oczekiwania
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/repairService"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Serwis i naprawa asortymentu
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/productRefund"
                         underline="none"
                     >
                         Zwrot produktu
@@ -106,7 +121,7 @@ export const Refund: React.FC = () => {
                         <>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
-                                to="/helpDesk/refund"
+                                to="/helpDesk/moneyRefund"
                                 underline="none"
                             >
                                 30-dniowa gwarancja zwrotu pieniędzy
@@ -147,10 +162,11 @@ export const Refund: React.FC = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/"
+                        to="/helpDesk/guide"
                         underline="none"
+                        // onClick={onClose}
                     >
-                        Przykład
+                        Poradniki
                     </ProfileDrawerLink>
 
 
@@ -174,13 +190,12 @@ export const Refund: React.FC = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>30-dniowa gwarancja zwrotu pieniędzy</Title>
+                    <Title>Zwróć produkt lub zgłoś problem</Title>
                 </CategoryTitleContainer>
 
                 <WelcomeText variant="h6" gutterBottom>
-                    Jako klient naszego sklepu możesz skontaktować się z naszymi konsultantami.
+                    Chcesz zwrócić nam produkt, zgłosić reklamację lub masz problemy z dostawą? Tutaj znajdziesz proste rozwiązanie.
                 </WelcomeText>
-
                 <FormContainer
                     // onSubmit={handleAddCategory}
                 >
@@ -188,7 +203,7 @@ export const Refund: React.FC = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Nasza obietnica
+                                Wybierz swoje produkty
                             </WelcomeText>
                             <WelcomeText variant="button" gutterBottom>
                                 Tutaj możesz skontaktować się z konsultantem

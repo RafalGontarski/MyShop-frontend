@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import IconButton from "@mui/material/IconButton";
 import MenuLink from '../link/CustomLink';
 import {useTranslation} from "react-i18next";
 import {IconClose, StyledDrawer, StyledIconClose} from "./Drawer.styles";
 import {CategoryContext} from "../../../models/context/CategoryContexts";
-import {ProfileDrawerLink, ProfileLine} from "./ProfileDrawer.styles";
+import {ProfileDrawerLink, ProfileLine, StyledArrowBackIcon, StyledArrowForwardIcon} from "./ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 import SubCategoryType from "../../../models/types/SubCategoryType";
 import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
+
 
 
 export type SelectedMenuType = 'products' | 'service' | 'about' | null;
@@ -22,12 +22,7 @@ type DrawerProps = {
 };
 
 type MenuDrawerProps = DrawerProps & {
-    initialSelectedMenu?: SelectedMenuType;
-};
-
-type Category = {
-    name: string;
-    subcategories?: Array<string>; // Załóżmy, że podkategorie są po prostu tablicą stringów
+    initialSelectedMenu: SelectedMenuType | null;
 };
 
 
@@ -35,14 +30,19 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
     const { categories } = useContext(CategoryContext);
     const [subCategories, setSubCategories] = useState<SubCategoryType[]>([]);
 
-
     const { t } = useTranslation();
-
-    // const [selectedMenu, setSelectedMenu] = useState<SelectedMenuType>(initialSelectedMenu);
 
     const [selectedMenu, setSelectedMenu] = useState<SelectedMenuType>(null);
     const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+
+
+    useEffect(() => {
+        setSelectedMenu(initialSelectedMenu);
+        if (initialSelectedMenu === 'products') {
+            setSelectedCategory(null);
+        }
+    }, [initialSelectedMenu]);
 
 
     const handleCategoryClick = async (categoryId: number) => {
@@ -115,17 +115,23 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                     <MenuLink
                         href="#"
                         label={t('menu.categories.label')}
-                        onClick={() => setSelectedMenu('products')}
+                        onClick={() => {
+                            setSelectedMenu('products');
+                            setSelectedCategory(null);
+                        }}
+                        isActive={selectedMenu === 'products'}
                     />
                     <MenuLink
                         href="#"
                         label={t('menu.service.label')}
                         onClick={() => setSelectedMenu('service')}
+                        isActive={selectedMenu === 'service'}
                     />
                     <MenuLink
                         href="#"
                         label={t('menu.about.label')}
                         onClick={() => setSelectedMenu('about')}
+                        isActive={selectedMenu === 'about'}
                     />
                 </Box>
 
@@ -142,15 +148,30 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                 <>
                                     <ProfileDrawerLink
                                         onClick={() => setSelectedCategory(null)}
-                                        style={{fontWeight: 'normal'}}
+                                        style={{fontWeight: 'normal',
+                                            fontSize: '0.9rem',
+                                            display: 'flex',
+                                            alignItems: 'center'
+                                        }}
                                     >
-                                        Wróć do wszystkich kategorii
+                                       <StyledArrowBackIcon /> Powrót do kategorii
                                     </ProfileDrawerLink>
+
+                                    <ProfileDrawerLink
+                                        key={selectedCategory.categoryId} // Zakładam, że SubCategoryType ma pole id
+                                        as={Link}
+                                        to={`/categories/${selectedCategory.name}`} // Zakładam, że to jest prawidłowy URL
+                                        underline="none"
+                                        onClick={onClose}
+                                    >
+                                        {selectedCategory.name}
+                                    </ProfileDrawerLink>
+
                                     {subCategories.map(subCategory => (
                                         <ProfileDrawerLink
                                             key={subCategory.id} // Zakładam, że SubCategoryType ma pole id
                                             as={Link}
-                                            to={`/categories/${selectedCategory}/subcategories/${subCategory.id}`} // Zakładam, że to jest prawidłowy URL
+                                            to={`/categories/${selectedCategory.name}/${subCategory.name}`} // Zakładam, że to jest prawidłowy URL
                                             underline="none"
                                             onClick={onClose}
                                         >
@@ -174,8 +195,10 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                             }}
                                         >
                                             {category.name}
+                                            <StyledArrowForwardIcon />
                                         </ProfileDrawerLink>
                                     ))}
+
 
                                     <ProfileLine />
 
@@ -227,7 +250,11 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                     {selectedMenu === 'service' && (
                         // Tutaj możesz wstawić linki dla "service"
                         <>
-                            <ProfileDrawerLink>
+                            <ProfileDrawerLink
+                                as={Link}
+                                to="/helpDesk/contact"
+                                onClick={onClose}
+                            >
                                 Kontakt
                             </ProfileDrawerLink>
                             <ProfileDrawerLink>
@@ -236,7 +263,11 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                             <ProfileDrawerLink>
                                 Koszt dostaw i czas oczekiwania
                             </ProfileDrawerLink>
-                            <ProfileDrawerLink>
+                            <ProfileDrawerLink
+                                as={Link}
+                                to="/helpDesk/productRefund"
+                                onClick={onClose}
+                            >
                                 Zwrot produktu
                             </ProfileDrawerLink>
                             <ProfileDrawerLink>

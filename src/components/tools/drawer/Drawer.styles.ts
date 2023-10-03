@@ -98,6 +98,13 @@ export const WelcomeText = styled(Typography)`
     font-weight: bold;
   }
 `
+
+export const StyledSubtitle = styled(Typography)`
+  && {
+    font-weight: normal;
+    font-family: Open Sans, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  }
+`
 export const StyledHandIcon = styled(HandIcon)`
   && {
     color: #008000;

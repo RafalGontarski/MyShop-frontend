@@ -3,8 +3,26 @@ import styled from "styled-components";
 import {Box} from "@mui/system";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
+export const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
+  && {
+    width: 16px;
+    margin-left: 0.4rem;
+    transition: margin-left 0.3s ease;
+  }
+`
 
+export const StyledArrowBackIcon = styled(ArrowBackIcon)`
+  && {
+    width: 16px;
+    margin-right: 0.4rem;
+    margin-left: 0.3rem;
+    transition: transform 0.3s ease;
+    font-weight: normal;
+  }
+`
 export const ProfileDrawerLink = styled(Link)`
   && {
     color: #000;
@@ -13,9 +31,19 @@ export const ProfileDrawerLink = styled(Link)`
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    
 
     &:hover {
       color: #008000;
+
+      ${StyledArrowForwardIcon} {
+        margin-left: 0.7rem;
+      }
+      ${StyledArrowBackIcon} {
+        //margin-left: 0.7rem;
+            transform: translateX(-0.4rem);
+      }
     }
 
     //@media (max-width: 1250px) {
@@ -23,6 +51,8 @@ export const ProfileDrawerLink = styled(Link)`
     //}
   }
 `
+
+
 
 export const ProfileContainer = styled(Box)`
   && {

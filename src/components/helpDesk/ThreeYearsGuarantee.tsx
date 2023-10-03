@@ -20,7 +20,7 @@ import {
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import {StyledSubtitle, WelcomeText} from "../tools/drawer/Drawer.styles";
 import CustomButton from "../tools/button/Button";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
@@ -57,7 +57,14 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
 
 
                 <LinksContainer>
-
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/service"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Zestawienie
+                    </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
                         to="/helpDesk/contact"
@@ -68,7 +75,7 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/questions"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -76,7 +83,7 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/delivery"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -84,7 +91,15 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
                     </ProfileDrawerLink>
                     <ProfileDrawerLink
                         as={Link}
-                        to="/helpDesk/contact"
+                        to="/helpDesk/repairService"
+                        underline="none"
+                        // onClick={onClose}
+                    >
+                        Serwis i naprawa asortymentu
+                    </ProfileDrawerLink>
+                    <ProfileDrawerLink
+                        as={Link}
+                        to="/helpDesk/productRefund"
                         underline="none"
                         // onClick={onClose}
                     >
@@ -102,7 +117,7 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
                         <>
                             <HelpDeskAdvantageChildLink
                                 as={Link}
-                                to="/helpDesk/refund"
+                                to="/helpDesk/moneyRefund"
                                 underline="none"
                             >
                                 30-dniowa gwarancja zwrotu pieniędzy
@@ -143,11 +158,11 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
 
                     <ProfileDrawerLink
                         as={Link}
-                        to="/"
+                        to="/helpDesk/guide"
                         underline="none"
                         // onClick={onClose}
                     >
-                        Przykład
+                        Poradniki
                     </ProfileDrawerLink>
 
 
@@ -174,9 +189,9 @@ export const ThreeYearsGuarantee: React.FC<FreeShippingProps> = () => {
                     <Title>3 lata gwarancji</Title>
                 </CategoryTitleContainer>
 
-                <WelcomeText variant="h6" gutterBottom>
+                <StyledSubtitle variant="subtitle2" gutterBottom>
                     Produkty kupione w sklepie muzycznym Thomann podlegają 3 letniej gwarancji Thomann. Przedłużamy na nasz koszt gwarancję producentów z 24 na pełne 36 miesięcy - bez żadnych kosztów na Twój rachunek.
-                </WelcomeText>
+                </StyledSubtitle>
 
                 <FormContainer
                     // onSubmit={handleAddCategory}

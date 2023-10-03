@@ -30,7 +30,7 @@ interface FreeShippingProps {
     // toggleExpanded: () => void;
 }
 
-export const Warehouse: React.FC<FreeShippingProps> = () => {
+export const RepairService: React.FC<FreeShippingProps> = () => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(
         () => window.sessionStorage.getItem("isExpanded") === "true"
@@ -187,14 +187,22 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
                     </WrapperMenuButton>
                 </MenuWrapper>
                 <CategoryTitleContainer>
-                    <Title>Największy magazyn logistyczny w Europie</Title>
+                    <Title>Serwis gwarancyjny</Title>
                 </CategoryTitleContainer>
 
                 <StyledSubtitle
                     variant="subtitle2"
                     gutterBottom>
-                    Jako jeden z największych światowych sklepów wysyłkowych sprzętu muzycznego jesteśmy dumni z największego asortymentu i najlepszjej dostępności towarów. Stale rozbudowujemy nasze magazyny i system logistyczny. Zatrudniamy również na miejscu coraz więcej specjalistów, którzy służą radą i pomocą.
+                    W naszym nowym centurm serwisowym przeprowadzane są przeglądy i naprawy sprzętu.
                 </StyledSubtitle>
+                <StyledSubtitle
+                    variant="subtitle2"
+                    gutterBottom>
+                    Produkty które ulegną uszkodzeniu w przeciagu 30 dni od daty dostawy wymieniane są na nowe, o ile są dostępne w magazynie. Aktualnie zatrudniamy w centrum serwisowym 173 pracowników, aby zapewnić sprawne załatwienie reklamacji.                </StyledSubtitle>
+                <StyledSubtitle
+                    variant="subtitle2"
+                    gutterBottom>
+                    Uszkodzony sprzęt rozsyłany jest tutaj do autoryzowanych punktów naprawy.                </StyledSubtitle>
 
                 <FormContainer
                     // onSubmit={handleAddCategory}
@@ -203,17 +211,17 @@ export const Warehouse: React.FC<FreeShippingProps> = () => {
                     <ProfileImageContainer>
                         <ProfilePageWelcome>
                             <WelcomeText variant="h4" gutterBottom>
-                                Nasza obietnica
+                                Serwis gwarancyjny
                             </WelcomeText>
                             <WelcomeText variant="button" gutterBottom>
-                                Tutaj możesz skontaktować się z konsultantem
+                                Serwis gwarancyjny
                             </WelcomeText>
                             {/*<StyledHandIcon/>*/}
                         </ProfilePageWelcome>
 
 
                         <CustomButton
-                            label={"Zwrot produktu"}
+                            label={"Serwis gwarancyjny"}
                             // type="submit"
                             // disabled={!isEmailValid || !isPasswordValid}
                         />

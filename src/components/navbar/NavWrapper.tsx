@@ -32,13 +32,17 @@ import DeutschlandIcon from "../../resources/icons/deutschlandFlagIcon.png";
 import FranceIcon from "../../resources/icons/franceFlagIcon.png";
 import ItalyIcon from "../../resources/icons/italyFlagIcon.png";
 import UcraineIcon from "../../resources/icons/ukraineFlagIcon.png";
+import CategoryType from "../../models/types/CategoryType";
 
+export type SelectedMenuType = 'products' | 'service' | 'about' | null;
 
 type SmallScreenTypes = {
     isLoggedIn: boolean;
     openProfileDrawer: () => void;
     openLoginDrawer: () => void;
 }
+
+
 
 export const NavWrapper: React.FC<SmallScreenTypes> = ({ isLoggedIn, openProfileDrawer, openLoginDrawer}) => {
 
@@ -49,9 +53,18 @@ export const NavWrapper: React.FC<SmallScreenTypes> = ({ isLoggedIn, openProfile
     const [currencyCode, setCurrencyCode] = useState('zł');
     const [selectedCurrencySymbol, setSelectedCurrencySymbol] = useState<string>('zł');
 
+    const [selectedMenu, setSelectedMenu] = useState<SelectedMenuType>(null);
+    const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(null);
+
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(t.language);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setSelectedMenu(selectedMenu);
+        setSelectedCategory(null); // Resetowanie kategorii również, jeśli masz taki stan
+    }, [selectedMenu]);
+
 
     useEffect(() => {
         // Nasłuchuj na zmiany języka
@@ -65,7 +78,7 @@ export const NavWrapper: React.FC<SmallScreenTypes> = ({ isLoggedIn, openProfile
         };
     }, [i18n]);
 
-    let currencySymbol;
+    let currencySymbol  = 'zł';
     switch (currencyCode) {
         case 'zł':
             currencySymbol = 'zł';
