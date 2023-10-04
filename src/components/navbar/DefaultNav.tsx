@@ -59,6 +59,7 @@ import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { SelectedMenuType } from '../tools/drawer/MenuDrawer';
 import {useClickContext} from "../../models/providers/ClickProvider";
+import {useMenuContext} from "../../models/providers/MenuProvider";
 
 
 
@@ -83,6 +84,8 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
     const { t, i18n } = useTranslation();
     const [,setCurrentLanguage] = useState(t.language);
     const { linkClicks, incrementLinkClickCount } = useClickContext();
+    const { selectedAdvantage, setSelectedAdvantage } = useMenuContext();
+
 
     let currencySymbol;
     switch (currencyCode) {
@@ -162,9 +165,10 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
     };
 
     const handleServiceClick = () => {
-        setSelectedTab('service');
+        setSelectedTab('service' as SelectedMenuType);
         setMenuDrawerOpen(true);
         incrementLinkClickCount('service');
+        setSelectedAdvantage(false);
     };
 
     const handleAboutClick = () => {

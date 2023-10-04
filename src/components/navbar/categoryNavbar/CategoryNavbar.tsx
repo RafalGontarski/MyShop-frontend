@@ -5,6 +5,7 @@ import { CategoryApi } from "../../../api/CategoryApi";
 import CategoryNavbarLinkButton from "../../tools/button/CategoryNavbarLinkButton";
 import {Link} from "react-router-dom";
 import {useSelectedCategory} from "../../../models/context/SelectedCategoryContext";
+import {LinkClicksState, polishToEnglishMap, useClickContext} from "../../../models/providers/ClickProvider";
 
 // Zakładam, że CategoryType został już zdefiniowany wcześniej
 type CategoryType = {
@@ -17,6 +18,7 @@ const CategoryNavbarComponent: React.FC = () => {
 
     const { categories, setCategories } = useContext(CategoryContext);
     const { setSelectedCategory } = useSelectedCategory();
+    const { linkClicks, incrementLinkClickCount } = useClickContext();
 
     useEffect(() => {
         async function fetchCategories() {
@@ -42,8 +44,13 @@ const CategoryNavbarComponent: React.FC = () => {
                     as={Link}
                     to={`/categories/${category.name}`}
                     onClick={() => {
-                        console.log("Kliknięto w kategorię:", category.name);
                         setSelectedCategory(category.name);
+                        const englishName = polishToEnglishMap[category.name];
+                        if (englishName) {
+                            incrementLinkClickCount(englishName);
+                        } else {
+                            console.error(`${category.name} does not map to an English name!`);
+                        }
                     }}
                 />
             ))}

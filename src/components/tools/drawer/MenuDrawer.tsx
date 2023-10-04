@@ -11,7 +11,23 @@ import {Link} from "react-router-dom";
 import SubCategoryType from "../../../models/types/SubCategoryType";
 import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
+import {useMenuContext} from "../../../models/providers/MenuProvider";
 
+
+
+interface Advantage {
+    id: string;
+    name: string;
+    link: string;
+}
+
+const advantages: Advantage[] = [
+    {id: '1', name: '30-dniowa gwarancja zwrotu pieniędzy', link: 'helpDesk/moneyRefund'},
+    {id: '2', name: '3-letnia gwarancja Thomann', link: '/helpDesk/threeYearsGuarantee'},
+    {id: '3', name: 'Gwarancja Satysfakcji', link: '/helpDesk/guarantee'},
+    {id: '4', name: 'Bezpieczne płatności', link: '/helpDesk/securePayments'},
+    {id: '5', name: 'Największy magazyn logistyczny w Europie', link: '/helpDesk/warehouse'},
+]
 
 
 export type SelectedMenuType = 'products' | 'service' | 'about' | null;
@@ -35,6 +51,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
     const [selectedMenu, setSelectedMenu] = useState<SelectedMenuType>(null);
     const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+    const { selectedAdvantage, setSelectedAdvantage } = useMenuContext();
 
 
     useEffect(() => {
@@ -79,8 +96,8 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
     }, [initialSelectedMenu]);
 
 
-    console.log("initialSelectedMenu: ", initialSelectedMenu);
-    console.log("selectedMenu: ", selectedMenu);
+    // console.log("initialSelectedMenu: ", initialSelectedMenu);
+    // console.log("selectedMenu: ", selectedMenu);
 
 
     return (
@@ -124,7 +141,10 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                     <MenuLink
                         href="#"
                         label={t('menu.service.label')}
-                        onClick={() => setSelectedMenu('service')}
+                        onClick={() => {
+                            setSelectedMenu('service');
+                            setSelectedAdvantage(false);
+                        }}
                         isActive={selectedMenu === 'service'}
                     />
                     <MenuLink
@@ -250,35 +270,67 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                     {selectedMenu === 'service' && (
                         // Tutaj możesz wstawić linki dla "service"
                         <>
-                            <ProfileDrawerLink
-                                as={Link}
-                                to="/helpDesk/contact"
-                                onClick={onClose}
-                            >
-                                Kontakt
-                            </ProfileDrawerLink>
-                            <ProfileDrawerLink>
-                                Często zadawane pytania
-                            </ProfileDrawerLink>
-                            <ProfileDrawerLink>
-                                Koszt dostaw i czas oczekiwania
-                            </ProfileDrawerLink>
-                            <ProfileDrawerLink
-                                as={Link}
-                                to="/helpDesk/productRefund"
-                                onClick={onClose}
-                            >
-                                Zwrot produktu
-                            </ProfileDrawerLink>
-                            <ProfileDrawerLink>
-                                Atuty
-                            </ProfileDrawerLink>
+                            {selectedAdvantage ? (
+                                <>
+
+                                    <ProfileDrawerLink
+                                        onClick={() => setSelectedAdvantage(false)}
+                                        style={{ fontWeight: 'normal',
+                                            fontSize: '0.9rem',
+                                            display: 'flex',
+                                            alignItems: 'center' }}
+                                    >
+                                        <StyledArrowBackIcon /> Powrót
+                                    </ProfileDrawerLink>
+
+                                    {advantages.map(advantage => (
+                                        <ProfileDrawerLink
+                                            key={advantage.id}
+                                            as={Link}
+                                            to={advantage.link}
+                                            onClick={onClose}
+                                        >
+                                            {advantage.name}
+                                        </ProfileDrawerLink>
+                                    ))}
+
+                                </>
+                            ) : (
+                                <>
+                                    <ProfileDrawerLink
+                                        as={Link}
+                                        to="/helpDesk/contact"
+                                        onClick={onClose}
+                                    >
+                                        Kontakt
+                                    </ProfileDrawerLink>
+                                    <ProfileDrawerLink>
+                                        Często zadawane pytania
+                                    </ProfileDrawerLink>
+                                    <ProfileDrawerLink>
+                                        Koszt dostaw i czas oczekiwania
+                                    </ProfileDrawerLink>
+                                    <ProfileDrawerLink
+                                        as={Link}
+                                        to="/helpDesk/productRefund"
+                                        onClick={onClose}
+                                    >
+                                        Zwrot produktu
+                                    </ProfileDrawerLink>
+                                    <ProfileDrawerLink
+                                        onClick={() => setSelectedAdvantage(true)}
+                                    >
+                                        Atuty <StyledArrowForwardIcon />
+                                    </ProfileDrawerLink>
+                                </>
+                            )}
                         </>
                     )}
 
                     {selectedMenu === 'about' && (
                         // Tutaj możesz wstawić linki dla "about"
                         <>
+
                             <ProfileDrawerLink>
                                 Informacje o firmie
                             </ProfileDrawerLink>
@@ -291,8 +343,8 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                             <ProfileDrawerLink>
                                 Drobnym druczkiem
                             </ProfileDrawerLink>
-                        </>
 
+                        </>
                     )}
                 </Box>
             </Box>

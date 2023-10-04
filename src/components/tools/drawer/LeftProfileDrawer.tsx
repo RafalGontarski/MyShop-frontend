@@ -1,5 +1,5 @@
 import { Drawer } from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 
@@ -45,7 +45,7 @@ type DrawerProps = {
 
 export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userId, userName,userSurname, userEmail, userRole }) => {
     const { t } = useTranslation();
-
+    const [isExpanded, setIsExpanded] = useState(false);
     function handleLogout() {
         console.log("logout xd");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
@@ -166,21 +166,21 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <ProfileDrawerLink
                                 as={Link}
-                                to="/analytic-data"
-                                underline="none"
-                                onClick={onClose}
-                            >
-                                Statystyki klikalności
-                            </ProfileDrawerLink>
-                        )}
-                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
-                            <ProfileDrawerLink
-                                as={Link}
                                 to="/categories-center"
                                 underline="none"
                                 onClick={onClose}
                             >
                                 Kategorie
+                            </ProfileDrawerLink>
+                        )}
+                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                            <ProfileDrawerLink
+                                as={Link}
+                                to="/analytic-data"
+                                underline="none"
+                                onClick={onClose}
+                            >
+                                Statystyki klikalności
                             </ProfileDrawerLink>
                         )}
 

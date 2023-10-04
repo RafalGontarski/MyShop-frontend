@@ -37,6 +37,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CustomButton from "../../tools/button/Button";
 import LinkButton from "../../tools/button/LinkButton";
 import {DefaultNavClickData} from "./DefaultNavClickData";
+import {CategoryNavClickData} from "./CategoryNavClickData";
 
 type AnalitycalDataProps = {
     open: boolean;
@@ -238,55 +239,16 @@ export const AnalitycalData: React.FC<AnalitycalDataProps> = ({
                                     Główny Pasek Nawigacyjny (górny navbar)
                                 </WelcomeText>
                                 <DefaultNavClickData linkClicks={linkClicks}/>
-                                {/*<StyledHandIcon/>*/}
                             </ProfilePageWelcome>
 
                             <EditLine/>
 
                             <ProfilePageWelcome>
                                 <WelcomeText variant="h4" gutterBottom>
-                                    Zmień hasło
+                                    Pasek Nawigacyjny Kategorii
                                 </WelcomeText>
-                                <WelcomeText variant="subtitle1" gutterBottom>
-                                    Tutaj możesz zmienić hasło
-                                </WelcomeText>
-                                {/*<StyledHandIcon/>*/}
+                                <CategoryNavClickData linkClicks={linkClicks} />
                             </ProfilePageWelcome>
-
-                            <EditLine/>
-
-                            <ProfilePageWelcome>
-                                <WelcomeText variant="h4" gutterBottom>
-                                    Zmień nazwę
-                                </WelcomeText>
-                                <WelcomeText variant="subtitle1" gutterBottom>
-                                    Tutaj możesz zmienić nazwę użytkownika
-                                </WelcomeText>
-                                {/*<StyledHandIcon/>*/}
-                            </ProfilePageWelcome>
-
-                            <EditLine/>
-
-                            <ProfilePageWelcome>
-                                <WelcomeText variant="h4" gutterBottom>
-                                    Zmień adres
-                                </WelcomeText>
-                                <WelcomeText
-                                    variant="subtitle1"
-                                    gutterBottom
-                                >
-                                    Przejdź do książki adresowej
-                                </WelcomeText>
-                                {/*<StyledHandIcon/>*/}
-                            </ProfilePageWelcome>
-
-                            <LinkButton
-                                as={Link}
-                                to={'/address-book'}
-                                label={'KSIĄŻKA ADRESOWA'}
-                                // disabled={!isEmailValid || !isPasswordValid}
-                                // onClick={combinedHandleLogin}
-                            />
 
                         </ProfileImageContainer>
                     </FormContainer>

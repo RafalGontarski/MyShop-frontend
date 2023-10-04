@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import {ProfilePageWelcome} from "../profileEditPanel/ProfileEditPanel.styles";
+import {StyledPaper} from "./AnalyticalData.styles";
 
 export const DefaultNavClickData: React.FC<{
     linkClicks: {
@@ -15,12 +16,12 @@ export const DefaultNavClickData: React.FC<{
         linkClicks
         }) => (
     <ProfilePageWelcome>
-        <TableContainer component={Paper}>
+        <TableContainer component={StyledPaper}>
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Nazwa przycisku</TableCell>
-                        <TableCell align="right">Ilość kliknięć</TableCell>
+                        <TableCell align="center">Nazwa przycisku</TableCell>
+                        <TableCell align="center">Ilość kliknięć</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

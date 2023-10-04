@@ -167,21 +167,21 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <ProfileDrawerLink
                                 as={Link}
-                                to="/analytic-data"
-                                underline="none"
-                                onClick={onClose}
-                            >
-                                Statystyki klikalności
-                            </ProfileDrawerLink>
-                        )}
-                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
-                            <ProfileDrawerLink
-                                as={Link}
                                 to="/categories-center"
                                 underline="none"
                                 onClick={onClose}
                             >
                                 Kategorie
+                            </ProfileDrawerLink>
+                        )}
+                        {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
+                            <ProfileDrawerLink
+                                as={Link}
+                                to="/analytic-data"
+                                underline="none"
+                                onClick={onClose}
+                            >
+                                Statystyki klikalności
                             </ProfileDrawerLink>
                         )}
 
