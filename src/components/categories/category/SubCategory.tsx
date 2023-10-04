@@ -11,7 +11,9 @@ import {ProductApi} from "../../../api/ProductApi";
 import {ProductType} from "../../../models/types/ProductType";
 import {Card, CardContent, CardMedia, Grid, IconButton, Typography} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
-import ProductImg from "../../../resources/categoriesIcon/catfishIcon.png";
+import ProductImg from "../../../resources/categoriesIcon/Akcesoria.png";
+import {DisplayProducts} from "../../products/DisplayProductsInSubCategory/DisplayProducts";
+import {SecondSubCategoryHeader} from "../categoryHeader/SecondSubCategoryHeader";
 
 type RouteParams = {
     categoryName: string;
@@ -98,11 +100,20 @@ export const SubCategory: React.FC = () => {
 
     return (
         <div>
-            <SubCategoryHeader
-                categoryName={categoryName}
-                subCategoryName={subCategoryName}
-                hasSecondSubCategories={hasSecondSubCategories}
-            />
+            {hasSecondSubCategories ? (
+                <SubCategoryHeader
+                    categoryName={categoryName}
+                    subCategoryName={subCategoryName}
+                    hasSecondSubCategories={hasSecondSubCategories}
+                />
+            ) : (
+                <SecondSubCategoryHeader
+                    categoryName={categoryName}
+                    subCategoryName={subCategoryName}
+                    // Jeśli nie masz secondSubCategoryName, przekaż null lub pusty string
+                    secondSubCategoryName={undefined}
+                />
+            )}
 
             {hasSecondSubCategories ? (
                 <DisplaySecondSubCategories
@@ -110,54 +121,7 @@ export const SubCategory: React.FC = () => {
                     secondSubCategories={secondSubCategories}
                     subCategoryName={subCategoryName} />
             ) : (
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    marginLeft: '11rem',
-                    marginRight: '10%'
-                }}>
-                    <div style={{
-                        width: '30%',
-                    }}>
-                        <h3>Producent</h3>
-                        <h3>Przedział cenowy</h3>
-                        <h3>Dostępność</h3>
-                        <h3>Oceny</h3>
-                        <h3>Wybrane dla Ciebie</h3>
-                    </div>
-                    <Grid container spacing={2} justifyContent="center">
-                        {products.map((product) => (
-                            <Grid item xs={3} key={product.id}>
-                                <Card style={{ position: 'relative' }}>
-                                    <IconButton
-                                        style={{ position: 'absolute', top: '8px', right: '8px', zIndex: 1 }}
-                                        onClick={() => console.log('Zapisano w ulubionych')}
-                                    >
-                                        <FavoriteIcon style={{color: 'black'}}/>
-                                    </IconButton>
-                                    <CardMedia
-                                        component="img"
-                                        height="300"
-                                        image={ProductImg}
-                                        alt={product.name}
-                                    />
-                                    <CardContent>
-                                        <Typography variant="body1" component="div">
-                                            {product.name}
-                                        </Typography>
-                                        <Typography variant="body2" color="green">
-                                            {/*{product.status}*/}
-                                            Dostępny w magazynie
-                                        </Typography>
-                                        <Typography variant="h6" component="div">
-                                            {product.price} zł
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </div>
+                <DisplayProducts products={products} />
             )}
         </div>
     );
