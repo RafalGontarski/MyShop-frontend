@@ -28,6 +28,8 @@ export class CategoryApi {
             throw error;
         }
     }
+
+    //SubCategories
     static getAllSubCategories = async (categoryId: number | undefined): Promise<SubCategoryType[]> => {
         if (typeof categoryId === 'undefined') {
             // Obsługuje sytuację, gdy categoryId jest undefined, na przykład rzucając błąd:
@@ -43,7 +45,6 @@ export class CategoryApi {
         }
     }
 
-    //S ubCategories
     static getAllSubCategoriesNames = async (categoryId: number | undefined): Promise<string[]> => {
         const response = await axios.get<string[]>(`${BaseUrl}/api/categories/${categoryId}/subcategories/names`);
 

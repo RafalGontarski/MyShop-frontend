@@ -2,9 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {ProductType} from "../../../models/types/ProductType";
 import {ProductApi} from "../../../api/ProductApi";
-import { Grid, Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
-import ProductImg from "../../../resources/categoriesIcon/Akcesoria.png";
+
 import {SecondSubCategoryHeader} from "../categoryHeader/SecondSubCategoryHeader";
 import {DisplayProducts} from "../../products/DisplayProductsInSubCategory/DisplayProducts";
 
@@ -17,7 +15,6 @@ type RouteParams = {
 export const SecondSubCategory: React.FC = () => {
     const { categoryName, subCategoryName, secondSubCategoryName } = useParams<RouteParams>();
     const [products, setProducts] = useState<ProductType[]>([]);
-    // const [hasSecondSubCategories, setHasSecondSubCategories] = useState<boolean>(false);
 
     useEffect(() => {
         ProductApi.getAllProducts()

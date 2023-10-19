@@ -6,12 +6,9 @@ import {DisplaySecondSubCategories} from "../displaySecondSubCategories/DisplayS
 
 import {CategoryApi} from "../../../api/CategoryApi";
 import SecondSubCategoryType from "../../../models/types/SecondSubCategoryType";
-import SubCategoryType from "../../../models/types/SubCategoryType";
 import {ProductApi} from "../../../api/ProductApi";
 import {ProductType} from "../../../models/types/ProductType";
-import {Card, CardContent, CardMedia, Grid, IconButton, Typography} from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
-import ProductImg from "../../../resources/categoriesIcon/Akcesoria.png";
+
 import {DisplayProducts} from "../../products/DisplayProductsInSubCategory/DisplayProducts";
 import {SecondSubCategoryHeader} from "../categoryHeader/SecondSubCategoryHeader";
 
@@ -22,23 +19,20 @@ type RouteParams = {
 
 export const SubCategory: React.FC = () => {
     const { categoryName, subCategoryName } = useParams<RouteParams>();
-    const [, setCategoryId] = useState<number | null>(null);
-    const [subCategoryId, setSubCategoryId] = useState<number | null>(null);
-    const [, setCurrentSubCategory] = useState<SubCategoryType | null>(null);
     const [secondSubCategories, setSecondSubCategories] = useState<SecondSubCategoryType[]>([]);
     const [hasSecondSubCategories, setHasSecondSubCategories] = useState<boolean>(false);
     const [products, setProducts] = useState<ProductType[]>([]);
 
-    console.log("Pole secondSubCategories: " + JSON.stringify(secondSubCategories));
-    console.log("Pole hasSecondSubCategories: " + hasSecondSubCategories);
-    console.log("Producty dla SubKategori: " + products);
+    // console.log("Pole secondSubCategories: " + JSON.stringify(secondSubCategories));
+    // console.log("Pole hasSecondSubCategories: " + hasSecondSubCategories);
+    // console.log("Producty dla SubKategori: " + products);
 
     useEffect(() => {
-        console.log("Rozpoczęcie useEffect dla categoryName:", categoryName, "i subCategoryName:", subCategoryName);
+        // console.log("Rozpoczęcie useEffect dla categoryName:", categoryName, "i subCategoryName:", subCategoryName);
 
         CategoryApi.getAllCategories()
             .then(categories => {
-                console.log("Otrzymane wszystkie kategorie:", categories);
+                // console.log("Otrzymane wszystkie kategorie:", categories);
                 const category = categories.find(cat => cat.name === categoryName);
 
                 if (!category) {
@@ -48,7 +42,7 @@ export const SubCategory: React.FC = () => {
                 return Promise.all([category, CategoryApi.getAllSubCategories(category.categoryId)]);
             })
             .then(([category, subCategories]) => {
-                console.log("Otrzymane podkategorie dla kategorii:", category, "Są to:", subCategories);
+                // console.log("Otrzymane podkategorie dla kategorii:", category, "Są to:", subCategories);
                 const subCategory = subCategories.find(sub => sub.name === subCategoryName);
 
                 if (!subCategory) {
@@ -64,22 +58,22 @@ export const SubCategory: React.FC = () => {
                 ]);
             })
             .then(([fetchedSecondSubCategories, subCategory]) => {
-                console.log("Otrzymane drugorzędne podkategorie:", fetchedSecondSubCategories);
+                // console.log("Otrzymane drugorzędne podkategorie:", fetchedSecondSubCategories);
                 setSecondSubCategories(fetchedSecondSubCategories);
 
                 const hasSecondSubs = fetchedSecondSubCategories.length > 0;
                 setHasSecondSubCategories(hasSecondSubs);
 
-                console.log('HasSecondSubs: ', hasSecondSubs);
+                // console.log('HasSecondSubs: ', hasSecondSubs);
                 if (!hasSecondSubs) {
-                    console.log("Nie ma drugorzędnych podkategorii. Pobieranie produktów dla subCategory.id:", subCategory.id);
+                    // console.log("Nie ma drugorzędnych podkategorii. Pobieranie produktów dla subCategory.id:", subCategory.id);
                     return ProductApi.getProductsBySubCategoryId(subCategory.id!);
                 }
 
                 return [];
             })
             .then(fetchedProducts => {
-                console.log("Otrzymane produkty:", fetchedProducts);
+                // console.log("Otrzymane produkty:", fetchedProducts);
                 setProducts(fetchedProducts);
             })
             .catch(error => console.error("Wystąpił błąd w useEffect:", error));

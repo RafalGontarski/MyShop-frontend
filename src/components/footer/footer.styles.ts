@@ -74,6 +74,7 @@ export const StyledIconsDiv = styled.div`
     justify-content: center;
     flex-direction: row;
     cursor: pointer;
+    gap: 10%;
   }
 `
 
@@ -127,7 +128,7 @@ export const StyledWhiteLink = styled(MuiLink)`
 
 export const StyledIcon = styled.img`
   && {
-    padding-right: 4rem;
+    //padding-right: 4rem;
   }
 `
 

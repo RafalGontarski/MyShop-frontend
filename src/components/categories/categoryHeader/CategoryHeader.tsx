@@ -122,9 +122,15 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
             <InnerContainer>
                 <BreadcrumbContainer>
                     <SubCatBreadcrumbs>
-                        <StyledLink to="/"><HomeIcon /></StyledLink>
-                        <StyledLink to="/categories">Wszystkie Kategorie</StyledLink>
-                        <StyledLink to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
+                        <StyledLink
+                            to="/"
+                        ><HomeIcon /></StyledLink>
+                        <StyledLink
+                            to="/categories"
+                        >Wszystkie Kategorie</StyledLink>
+                        <StyledLink
+                            to={`/categories/${categoryName}`}
+                        >{categoryName}</StyledLink>
                         {subCategoryName && (
                             <>
                                 <StyledLink

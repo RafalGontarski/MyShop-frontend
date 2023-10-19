@@ -15,3 +15,15 @@
   /* Możesz dodać dodatkowe style dla stopki, jeśli chcesz */
 }
 
+:root {
+  font-family: 'Open Sans',Verdana,Tahoma,Arial,Helvetica,sans-serif;
+}
+
+/* app.css */
+body {
+  font-family: 'Open Sans', Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+typography {
+  font-family: 'Open Sans', Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}

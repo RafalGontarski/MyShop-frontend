@@ -32,9 +32,9 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
              secondSubCategoryName,
              productName
                                                                  }) => {
-    console.log("categoryName:", categoryName);
-    console.log("subCategoryName:", subCategoryName);
-    console.log("secondSubCategoryName:", secondSubCategoryName);
+    // console.log("categoryName:", categoryName);
+    // console.log("subCategoryName:", subCategoryName);
+    // console.log("secondSubCategoryName:", secondSubCategoryName);
 
 
     const [value, setValue] = useState('');
@@ -49,26 +49,35 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
             <SecondSubCatInnerContainer>
                 <BreadcrumbContainer>
                     <SecondSubCatBreadcrumbs >
-                        <StyledLink to="/">
+                        <StyledLink
+                            to="/">
                             <HomeIcon />
                         </StyledLink>
 
-                        <StyledLink to="/categories">Wszystkie Kategorie</StyledLink>
-                        <StyledLink to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
+                        <StyledLink
+                            to="/categories">Wszystkie Kategorie</StyledLink>
+                        <StyledLink
+                            to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
                         {subCategoryName && (
                             <>
-                                <StyledLink to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledLink>
+                                <StyledLink
+                                    to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledLink>
                             </>
                         )}
                         {secondSubCategoryName && (
                             <>
-                                <StyledLink to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{secondSubCategoryName}</StyledLink>
+                                <StyledLink
+                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{secondSubCategoryName}</StyledLink>
                             </>
                         )}
                         {productName && (
                             <>
-                                <SubCatSpan>{productName}</SubCatSpan>
+                                <StyledLink
+                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}/${productName}`}>{productName}</StyledLink>
                             </>
+                            // <>
+                            //     <SubCatSpan>{productName}</SubCatSpan>
+                            // </>
                         )}
                     </SecondSubCatBreadcrumbs>
 

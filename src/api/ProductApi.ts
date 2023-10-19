@@ -9,8 +9,18 @@ export class ProductApi {
             await axios.get<ProductType[]>(`${BaseUrl}/api/products`);
 
         console.log("Odpowiedź z API dla /api/products:", response.data);
-
         return response.data;
+    }
+
+    static getProductById = async (productId: number | undefined): Promise<ProductType> => {
+        try {
+            const response = await axios.get<ProductType>(`${BaseUrl}/api/products/${productId}`);
+            console.log(`Odpowiedź z API dla /api/products/${productId}`, response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Błąd podczas pobierania produktu:', error);
+            throw error;  // opcjonalnie, możesz chcieć rzucić błąd dalej, aby mógł być obsłużony w komponencie
+        }
     }
 
     static getProductsBySubCategoryId = async (subCategoryId: number): Promise<ProductType[]> => {
@@ -26,5 +36,11 @@ export class ProductApi {
         return response.data;
     }
 
+    static getProductByName = async (productName: string | undefined ): Promise<ProductType> => {
+        const response = await axios.get<ProductType>(`${BaseUrl}/api/products/name/${productName}`);
+
+        console.log("Odpowiedź z API dla /api/products/name/:productName", response.data);
+        return response.data;
+    }
 
 }

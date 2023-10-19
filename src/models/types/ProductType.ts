@@ -9,10 +9,12 @@ export type SecondSubCategoryType = {
 
 export type ProductType = {
     id: number;
+    producent: string;
     name: string;
     description: string;
     price: number;
     imageUrl: string | null;
+    category: CategoryType;
     subCategory: SubCategoryType;
-    secondSubCategory: SecondSubCategoryType;
+    secondSubCategory?: SecondSubCategoryType;
 }

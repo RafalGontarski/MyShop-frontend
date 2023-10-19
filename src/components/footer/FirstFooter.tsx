@@ -34,7 +34,8 @@ export const FirstFooter = () => {
                     color={"grey"}
                     marginTop={2}
                     fontSize={11}
-                    width={450} >
+                    // width={450}
+                >
                     Bezpieczna płatność przez PayPal, Karta kredytowa, Przelew bankowy zagraniczny lub UPS przesyłka pobraniowa.
                 </Typography>
             </div>
