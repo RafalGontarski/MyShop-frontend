@@ -174,7 +174,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                             alignItems: 'center'
                                         }}
                                     >
-                                       <StyledArrowBackIcon /> Powrót do kategorii
+                                       <StyledArrowBackIcon /> {t(`menuDrawer.buttons.backToCategory`)}
                                     </ProfileDrawerLink>
 
                                     <ProfileDrawerLink
@@ -195,7 +195,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                             underline="none"
                                             onClick={onClose}
                                         >
-                                            {subCategory.name}
+                                            {t(`subCategories.${subCategory.name}`)}
                                         </ProfileDrawerLink>
                                     ))}
 

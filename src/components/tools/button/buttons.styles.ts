@@ -124,6 +124,12 @@ export const StyledWhiteButton = styled(Button)`
     text-decoration: none; // Usuwa podkreślenie linku
     color: #000; // Dziedziczy kolor tekstu z rodzica
     display: inline-flex;
+
+    &:hover {
+      background-color: #fff; // Ustawia tło na białe podczas najechania
+      color: green; // Zmienia kolor tekstu na zielony podczas najechania
+    }
+    
     //&:hover {
     //  background-image: linear-gradient(to right, blue, green);
     //

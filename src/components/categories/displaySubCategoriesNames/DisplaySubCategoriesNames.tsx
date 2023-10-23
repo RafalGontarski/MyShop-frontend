@@ -8,6 +8,7 @@ import {Link, useNavigate} from "react-router-dom";
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
 import {CategoryApi} from "../../../api/CategoryApi";
 import SubCategoryType from "../../../models/types/SubCategoryType";
+import {useTranslation} from "react-i18next";
 
 
 type DisplaySubCategoriesProps = {
@@ -20,6 +21,7 @@ export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesProps> = ({
                                                                                    subCategoryName}) => {
     const [subCategories, setSubCategories] = useState<SubCategoryType[]>([]);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
 
     useEffect(() => {
@@ -55,7 +57,7 @@ export const DisplaySubCategoriesNames: React.FC<DisplaySubCategoriesProps> = ({
                             to={`/categories/${subCategoryName}/${subCat.name}`}  // Zaktualizowany URL dla subkategorii
                             underline="none"
                         >
-                            {subCat.name}
+                            {t(`subCategories.${subCat.name}`)}
                         </SubCatLink>
                     </SubCatChildDiv>
                 ))}

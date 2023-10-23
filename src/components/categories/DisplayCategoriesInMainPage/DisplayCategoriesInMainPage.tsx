@@ -10,12 +10,14 @@ import CategoryType from "../../../models/types/CategoryType";
 import {ProfileDrawerLink} from "../../tools/drawer/ProfileDrawer.styles";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import { useSelectedCategory } from "../../../models/context/SelectedCategoryContext";
+import {useTranslation} from "react-i18next";
 
 
 export const DisplayCategoriesInMainPage: React.FC = () => {
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const { setSelectedCategory } = useSelectedCategory();
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function fetchCategories() {
@@ -46,7 +48,7 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
     return (
         <DisplayCategoriesInMainPageContainer>
             <DisplayCategoriesInMainPageTitle>
-                Kategorie
+                {t(`categoryTitleInMainPage.categories`)}
             </DisplayCategoriesInMainPageTitle>
 
             <CategoriesChildrenDiv>
@@ -64,7 +66,7 @@ export const DisplayCategoriesInMainPage: React.FC = () => {
                             to={`/categories/${category.name}`}  // Jest nadal użyteczne dla dostępności i SEO
                             underline="none"
                         >
-                            {category.name}
+                            {t(`categoryNavbar.${category.name}`)}
                         </ProfileDrawerLink>
                     </ChildDiv>
                 ))}

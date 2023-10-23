@@ -4,6 +4,7 @@ import Carousel from "./carousel/Carousel";
 import {CarouselImageApi} from "../../api/CarouselImageApi";
 import {DisplayCategoriesInMainPage} from "../categories/DisplayCategoriesInMainPage/DisplayCategoriesInMainPage";
 import {MainPageLinksUnderCarousel} from "./MainPageLinksUnderCarousel";
+import {useTranslation} from "react-i18next";
 
 
 
@@ -15,6 +16,7 @@ type MainPageProps = {
 const MainPage: React.FC<MainPageProps> = ({userName}) => {
 
     const [carouselImages, setCarouselImages] = useState<string[]>([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -34,7 +36,7 @@ const MainPage: React.FC<MainPageProps> = ({userName}) => {
 
     return (
         <MainPageContainer>
-            {userName && <h1>Witaj, {userName}!</h1>}
+            {userName && <h1>{t('loginDrawer.greeting')}, {userName}!</h1>}
             <Carousel images={carouselImages} />
             {!userName && <MainPageLinksUnderCarousel />}
             <DisplayCategoriesInMainPage />

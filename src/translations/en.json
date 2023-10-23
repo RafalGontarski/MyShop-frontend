@@ -102,7 +102,7 @@
     "Karp": "Carp",
     "Amur": "Grass Carp",
     "Jesiotr": "Sturgeon",
-    "Podlodowe": "Underwater"
+    "Podlodowe": "Under-Ice"
   },
   "menuDrawer": {
     "Szczupak": "Pike",
@@ -117,11 +117,15 @@
     "Karp": "Carp",
     "Amur": "Grass Carp",
     "Jesiotr": "Sturgeon",
-    "Podlodowe": "Underwater",
+    "Podlodowe": "Under-Ice",
     "new": "Newest",
     "bestseller": "Bestsellers",
     "bargains": "Bargains",
-    "giftVoucher": "Gift Voucher"
+    "giftVoucher": "Gift Voucher",
+    "buttons": {
+      "backToCategory": "Back to category"
+    }
+
   },
   "categoryHeader": {
     "breadCrumbs": {
@@ -138,7 +142,7 @@
       "Karp": "Carp",
       "Amur": "Grass Carp",
       "Jesiotr": "Sturgeon",
-      "Podlodowe": "Underwater"
+      "Podlodowe": "Under-Ice"
     },
     "title": {
       "Szczupak": "Pike",
@@ -153,7 +157,7 @@
       "Karp": "Carp",
       "Amur": "Grass Carp",
       "Jesiotr": "Sturgeon",
-      "Podlodowe": "Underwater"
+      "Podlodowe": "Under-ice"
     },
     "links": {
       "new": "NEWS",
@@ -164,5 +168,98 @@
     "buttons": {
       "consulting": "CONSULTING"
     }
+  },
+
+  "categoryTitleInMainPage": {
+    "categories": "Categories"
+  },
+
+
+  "subCategories": {
+    "Plecionka na Szczupaka": "Braid for Pike",
+    "Kołowrotek na Szczupaka": "Reel for Pike",
+    "Multiplikator na Szczupaka": "Multiplier for Pike",
+    "Wędka na Szczupaka": "Rod for Pike",
+    "Przynęta na Szczupaka": "Bait for Pike",
+    "Akcesoria na Szczupaka": "Accessories for Pike",
+    "Echosonda": "Sonar",
+    "Stanowisko": "Stand",
+    "Ubrania": "Clothing",
+    "Plecionka na Sandacza": "Braid for Zander",
+    "Kołowrotek na Sandacza": "Reel for Zander",
+    "Multiplikator na Sandacza": "Multiplier for Zander",
+    "Wędka na Sandacza": "Rod for Zander",
+    "Przynęta na Sandacza": "Bait for Zander",
+    "Akcesoria na Sandacza": "Accessories for Zander",
+    "Plecionka na Okonia": "Braid for Perch",
+    "Kołowrotek na Okonia": "Reel for Perch",
+    "Multiplikator na Okonia": "Multiplier for Perch",
+    "Wędka na Okonia": "Rod for Perch",
+    "Przynęta na Okonia": "Bait for Perch",
+    "Akcesoria na Okonia": "Accessories for Perch",
+    "Plecionka na Suma": "Braid for Catfish",
+    "Kołowrotek na Suma": "Reel for Catfish",
+    "Multiplikator na Suma": "Multiplier for Catfish",
+    "Wędka na Suma": "Rod for Catfish",
+    "Przynęta na Suma": "Bait for Catfish",
+    "Akcesoria na Suma": "Accessories for Catfish",
+    "Plecionka na Bolenia": "Braid for Asp",
+    "Kołowrotek na Bolenia": "Reel for Asp",
+    "Multiplikator na Bolenia": "Multiplier for Asp",
+    "Wędka na Bolenia": "Rod for Asp",
+    "Przynęta na Bolenia": "Bait for Asp",
+    "Akcesoria na Bolenia": "Accessories for Asp",
+    "Plecionka na Klenia": "Braid for Chub",
+    "Kołowrotek na Klenia": "Reel for Chub",
+    "Multiplikator na Klenia": "Multiplier for Chub",
+    "Wędka na Klenia": "Rod for Chub",
+    "Przynęta na Klenia": "Bait for Chub",
+    "Akcesoria na Klenia": "Accessories for Chub",
+    "Plecionka na Jazia": "Braid for Ide",
+    "Kołowrotek na Jazia": "Reel for Ide",
+    "Multiplikator na Jazia": "Multiplier for Ide",
+    "Wędka na Jazia": "Rod for Ide",
+    "Przynęta na Jazia": "Bait for Ide",
+    "Akcesoria na Jazia": "Accessories for Ide",
+    "Plecionka na Pstrąga": "Braid for Trout",
+    "Kołowrotek na Pstrąga": "Reel for Trout",
+    "Multiplikator na Pstrąga": "Multiplier for Trout",
+    "Wędka na Pstrąga": "Rod for Trout",
+    "Przynęta Na Pstrąga": "Bait for Trout",
+    "Akcesoria na Pstrąga": "Accessories for Trout",
+    "Plecionka na Troć": "Braid for Salmon",
+    "Kołowrotek na Troć": "Reel for Salmon",
+    "Multiplikator na Troć": "Multiplier for Salmon",
+    "Wędka na Troć": "Rod for Salmon",
+    "Przynęta na Troć": "Bait for Salmon",
+    "Akcesoria na Troć": "Accessories for Salmon",
+    "Plecionka na Karpia": "Braid for Carp",
+    "Kołowrotek na Karpia": "Reel for Carp",
+    "Multiplikator na Karpia": "Multiplier for Carp",
+    "Wędka na Karpia": "Rod for Carp",
+    "Przynęta na Karpia": "Bait for Carp",
+    "Akcesoria na Karpia": "Accessories for Carp",
+    "Plecionka na Amura": "Braid for Grass Carp",
+    "Kołowrotek na Amura": "Reel for Grass Carp",
+    "Multiplikator na Amura": "Multiplier for Grass Carp",
+    "Wędka na Amura": "Rod for Grass Carp",
+    "Przynęta na Amura": "Bait for Grass Carp",
+    "Akcesoria na Amura": "Accessories for Grass Carp",
+    "Plecionka na Jesiotra": "Braid for Sturgeon",
+    "Kołowrotek na Jesiotra": "Reel for Sturgeon",
+    "Multiplikator na Jesiotra": "Multiplier for Sturgeon",
+    "Wędka na Jesiotra": "Rod for Sturgeon",
+    "Przynęta na Jesiotra": "Bait for Sturgeon",
+    "Akcesoria na Jesiotra": "Accessories for Sturgeon",
+    "Kołowrotek Podlodowy": "Ice Fishing Reel",
+    "Kiwok": "Tip-Up",
+    "Wędka Podlodowa": "Ice Fishing Rod",
+    "Żyłka Podlodowa": "Ice Fishing Line",
+    "Przynęta Podlodowa": "Ice Fishing Bait",
+    "Akcesoria Zimowe": "Winter Accessories",
+    "Echosonda Zimowa": "Winter Sonar",
+    "Stanowisko Zimowe": "Winter Stand",
+    "Ubrania Zimowe": "Winter Clothing"
   }
+
 }

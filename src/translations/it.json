@@ -121,7 +121,11 @@
     "new": "Più recenti",
     "bestseller": "Bestseller",
     "bargains": "Offerte",
-    "giftVoucher": "Buono regalo"
+    "giftVoucher": "Buono regalo",
+    "buttons": {
+      "backToCategory": "Torna alla categoria"
+    }
+
   },
   "categoryHeader": {
     "breadCrumbs": {
@@ -164,6 +168,98 @@
     "buttons": {
       "consulting": "CONSULENZA"
     }
+  },
+
+  "categoryTitleInMainPage": {
+    "categories": "Categorie"
+  },
+
+
+  "subCategories": {
+    "Plecionka na Szczupaka": "Treccia per luccio",
+    "Kołowrotek na Szczupaka": "Mulinello per luccio",
+    "Multiplikator na Szczupaka": "Moltiplicatore per luccio",
+    "Wędka na Szczupaka": "Canna da pesca per luccio",
+    "Przynęta na Szczupaka": "Esca per luccio",
+    "Akcesoria na Szczupaka": "Accessori per luccio",
+    "Echosonda": "Ecoscandaglio",
+    "Stanowisko": "Postazione",
+    "Ubrania": "Abbigliamento",
+    "Plecionka na Sandacza": "Treccia per sandre",
+    "Kołowrotek na Sandacza": "Mulinello per sandre",
+    "Multiplikator na Sandacza": "Moltiplicatore per sandre",
+    "Wędka na Sandacza": "Canna da pesca per sandre",
+    "Przynęta na Sandacza": "Esca per sandre",
+    "Akcesoria na Sandacza": "Accessori per sandre",
+    "Plecionka na Okonia": "Treccia per persico",
+    "Kołowrotek na Okonia": "Mulinello per persico",
+    "Multiplikator na Okonia": "Moltiplicatore per persico",
+    "Wędka na Okonia": "Canna da pesca per persico",
+    "Przynęta na Okonia": "Esca per persico",
+    "Akcesoria na Okonia": "Accessori per persico",
+    "Plecionka na Suma": "Treccia per siluro",
+    "Kołowrotek na Suma": "Mulinello per siluro",
+    "Multiplikator na Suma": "Moltiplicatore per siluro",
+    "Wędka na Suma": "Canna da pesca per siluro",
+    "Przynęta na Suma": "Esca per siluro",
+    "Akcesoria na Suma": "Accessori per siluro",
+    "Plecionka na Bolenia": "Treccia per aspio",
+    "Kołowrotek na Bolenia": "Mulinello per aspio",
+    "Multiplikator na Bolenia": "Moltiplicatore per aspio",
+    "Wędka na Bolenia": "Canna da pesca per aspio",
+    "Przynęta na Bolenia": "Esca per aspio",
+    "Akcesoria na Bolenia": "Accessori per aspio",
+    "Plecionka na Klenia": "Treccia per cavedano",
+    "Kołowrotek na Klenia": "Mulinello per cavedano",
+    "Multiplikator na Klenia": "Moltiplicatore per cavedano",
+    "Wędka na Klenia": "Canna da pesca per cavedano",
+    "Przynęta na Klenia": "Esca per cavedano",
+    "Akcesoria na Klenia": "Accessori per cavedano",
+    "Plecionka na Jazia": "Treccia per alborella",
+    "Kołowrotek na Jazia": "Mulinello per alborella",
+    "Multiplikator na Jazia": "Moltiplicatore per alborella",
+    "Wędka na Jazia": "Canna da pesca per alborella",
+    "Przynęta na Jazia": "Esca per alborella",
+    "Akcesoria na Jazia": "Accessori per alborella",
+    "Plecionka na Pstrąga": "Treccia per trota",
+    "Kołowrotek na Pstrąga": "Mulinello per trota",
+    "Multiplikator na Pstrąga": "Moltiplicatore per trota",
+    "Wędka na Pstrąga": "Canna da pesca per trota",
+    "Przynęta Na Pstrąga": "Esca per trota",
+    "Akcesoria na Pstrąga": "Accessori per trota",
+    "Plecionka na Troć": "Treccia per salmone",
+    "Kołowrotek na Troć": "Mulinello per salmone",
+    "Multiplikator na Troć": "Moltiplicatore per salmone",
+    "Wędka na Troć": "Canna da pesca per salmone",
+    "Przynęta na Troć": "Esca per salmone",
+    "Akcesoria na Troć": "Accessori per salmone",
+    "Plecionka na Karpia": "Treccia per carpa",
+    "Kołowrotek na Karpia": "Mulinello per carpa",
+    "Multiplikator na Karpia": "Moltiplicatore per carpa",
+    "Wędka na Karpia": "Canna da pesca per carpa",
+    "Przynęta na Karpia": "Esca per carpa",
+    "Akcesoria na Karpia": "Accessori per carpa",
+    "Plecionka na Amura": "Treccia per carpa erbivora",
+    "Kołowrotek na Amura": "Mulinello per carpa erbivora",
+    "Multiplikator na Amura": "Moltiplicatore per carpa erbivora",
+    "Wędka na Amura": "Canna da pesca per carpa erbivora",
+    "Przynęta na Amura": "Esca per carpa erbivora",
+    "Akcesoria na Amura": "Accessori per carpa erbivora",
+    "Plecionka na Jesiotra": "Treccia per storione",
+    "Kołowrotek na Jesiotra": "Mulinello per storione",
+    "Multiplikator na Jesiotra": "Moltiplicatore per storione",
+    "Wędka na Jesiotra": "Canna da pesca per storione",
+    "Przynęta na Jesiotra": "Esca per storione",
+    "Akcesoria na Jesiotra": "Accessori per storione",
+    "Kołowrotek Podlodowy": "Mulinello per pesca su ghiaccio",
+    "Kiwok": "Punta da pesca su ghiaccio",
+    "Wędka Podlodowa": "Canna da pesca su ghiaccio",
+    "Żyłka Podlodowa": "Filo da pesca su ghiaccio",
+    "Przynęta Podlodowa": "Esca da pesca su ghiaccio",
+    "Akcesoria Zimowe": "Accessori invernali",
+    "Echosonda Zimowa": "Ecoscandaglio invernale",
+    "Stanowisko Zimowe": "Posizione invernale",
+    "Ubrania Zimowe": "Abbigliamento invernale"
   }
 
 

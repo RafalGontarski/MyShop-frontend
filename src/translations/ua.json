@@ -99,10 +99,10 @@
     "Jaź": "Яз",
     "Pstrąg": "Форель",
     "Troć": "Морська форель",
-    "Karp": "Карась",
-    "Amur": "Трав'яний карась",
+    "Karp": "Короп",
+    "Amur": "Амурський",
     "Jesiotr": "Осетр",
-    "Podlodowe": "Під водою"
+    "Podlodowe": "Під льодом"
   },
   "menuDrawer": {
     "Szczupak": "Щука",
@@ -114,14 +114,17 @@
     "Jaź": "Яз",
     "Pstrąg": "Форель",
     "Troć": "Морська форель",
-    "Karp": "Карась",
-    "Amur": "Трав'яний карась",
+    "Karp": "Короп",
+    "Amur": "Амурський",
     "Jesiotr": "Осетр",
-    "Podlodowe": "Під водою",
+    "Podlodowe": "Під льодом",
     "new": "Найновіше",
     "bestseller": "Бестселери",
     "bargains": "Вигідні пропозиції",
-    "giftVoucher": "Подарунковий сертифікат"
+    "giftVoucher": "Подарунковий сертифікат",
+    "buttons": {
+      "backToCategory": "Hазад до категорії"
+    }
   },
   "categoryHeader": {
     "breadCrumbs": {
@@ -135,10 +138,10 @@
       "Jaź": "Яз",
       "Pstrąg": "Форель",
       "Troć": "Морська форель",
-      "Karp": "Карась",
-      "Amur": "Трав'яний карась",
+      "Karp": "Короп",
+      "Amur": "Амурський",
       "Jesiotr": "Осетр",
-      "Podlodowe": "Під водою"
+      "Podlodowe": "Під льодом"
     },
     "title": {
       "Szczupak": "Щука",
@@ -150,10 +153,10 @@
       "Jaź": "Яз",
       "Pstrąg": "Форель",
       "Troć": "Морська форель",
-      "Karp": "Карась",
-      "Amur": "Трав'яний карась",
+      "Karp": "Короп",
+      "Amur": "Амурський",
       "Jesiotr": "Осетр",
-      "Podlodowe": "Під водою"
+      "Podlodowe": "Під льодом"
     },
     "links": {
       "new": "НОВИНКИ",
@@ -164,5 +167,97 @@
     "buttons": {
       "consulting": "КОНСУЛЬТАЦІЯ"
     }
+  },
+
+  "categoryTitleInMainPage": {
+    "categories": "Категорії"
+  },
+
+
+  "subCategories": {
+    "Plecionka na Szczupaka": "Шнур для щуки",
+    "Kołowrotek na Szczupaka": "Котушка для щуки",
+    "Multiplikator na Szczupaka": "Мультиплікатор для щуки",
+    "Wędka na Szczupaka": "Вудка для щуки",
+    "Przynęta na Szczupaka": "Провокація для щуки",
+    "Akcesoria na Szczupaka": "Аксесуари для щуки",
+    "Echosonda": "Ехолот",
+    "Stanowisko": "Позиція",
+    "Ubrania": "Одяг",
+    "Plecionka na Sandacza": "Шнур для судака",
+    "Kołowrotek na Sandacza": "Котушка для судака",
+    "Multiplikator na Sandacza": "Мультиплікатор для судака",
+    "Wędka na Sandacza": "Вудка для судака",
+    "Przynęta na Sandacza": "Провокація для судака",
+    "Akcesoria na Sandacza": "Аксесуари для судака",
+    "Plecionka na Okonia": "Шнур для окуня",
+    "Kołowrotek na Okonia": "Котушка для окуня",
+    "Multiplikator na Okonia": "Мультиплікатор для окуня",
+    "Wędka na Okonia": "Вудка для окуня",
+    "Przynęta na Okonia": "Провокація для окуня",
+    "Akcesoria na Okonia": "Аксесуари для окуня",
+    "Plecionka na Suma": "Шнур для сома",
+    "Kołowrotek na Suma": "Котушка для сома",
+    "Multiplikator na Suma": "Мультиплікатор для сома",
+    "Wędka na Suma": "Вудка для сома",
+    "Przynęta na Suma": "Провокація для сома",
+    "Akcesoria na Suma": "Аксесуари для сома",
+    "Plecionka na Bolenia": "Шнур для білуги",
+    "Kołowrotek na Bolenia": "Котушка для білуги",
+    "Multiplikator na Bolenia": "Мультиплікатор для білуги",
+    "Wędka na Bolenia": "Вудка для білуги",
+    "Przynęta na Bolenia": "Провокація для білуги",
+    "Akcesoria na Bolenia": "Аксесуари для білуги",
+    "Plecionka na Klenia": "Шнур для чавича",
+    "Kołowrotek na Klenia": "Котушка для чавича",
+    "Multiplikator na Klenia": "Мультиплікатор для чавича",
+    "Wędka na Klenia": "Вудка для чавича",
+    "Przynęta na Klenia": "Провокація для чавича",
+    "Akcesoria na Klenia": "Аксесуари для чавича",
+    "Plecionka na Jazia": "Шнур для язі",
+    "Kołowrotek na Jazia": "Котушка для язі",
+    "Multiplikator na Jazia": "Мультиплікатор для язі",
+    "Wędka na Jazia": "Вудка для язі",
+    "Przynęta na Jazia": "Провокація для язі",
+    "Akcesoria na Jazia": "Аксесуари для язі",
+    "Plecionka na Pstrąga": "Шнур для форелі",
+    "Kołowrotek na Pstrąga": "Котушка для форелі",
+    "Multiplikator na Pstrąga": "Мультиплікатор для форелі",
+    "Wędka na Pstrąga": "Вудка для форелі",
+    "Przynęta na Pstrąga": "Провокація для форелі",
+    "Akcesoria na Pstrąga": "Аксесуари для форелі",
+    "Plecionka na Troć": "Шнур для тріски",
+    "Kołowrotek na Troć": "Котушка для тріски",
+    "Multiplikator na Troć": "Мультиплікатор для тріски",
+    "Wędka na Troć": "Вудка для тріски",
+    "Przynęta na Troć": "Провокація для тріски",
+    "Akcesoria na Troć": "Аксесуари для тріски",
+    "Plecionka na Karpia": "Шнур для коропа",
+    "Kołowrotek na Karpia": "Котушка для коропа",
+    "Multiplikator na Karpia": "Мультиплікатор для коропа",
+    "Wędka na Karpia": "Вудка для коропа",
+    "Przynęta na Karpia": "Наживка для коропа",
+    "Akcesoria na Karpia": "Аксесуари для коропа",
+    "Plecionka na Amura": "Шнур для амура",
+    "Kołowrotek na Amura": "Котушка для амура",
+    "Multiplikator na Amura": "Мультиплікатор для амура",
+    "Wędka na Amura": "Вудка для амура",
+    "Przynęta na Amura": "Наживка для амура",
+    "Akcesoria na Amura": "Аксесуари для амура",
+    "Plecionka na Jesiotra": "Шнур для осетра",
+    "Kołowrotek na Jesiotra": "Котушка для осетра",
+    "Multiplikator na Jesiotra": "Мультиплікатор для осетра",
+    "Wędka na Jesiotra": "Вудка для осетра",
+    "Przynęta na Jesiotra": "Наживка для осетра",
+    "Akcesoria na Jesiotra": "Аксесуари для осетра",
+    "Kołowrotek Podlodowy": "Підлідний котушка",
+    "Kiwok": "Маховик",
+    "Wędka Podlodowa": "Підлідна вудка",
+    "Żyłka Podlodowa": "Підлідний шнур",
+    "Przynęta Podlodowa": "Підлідна наживка",
+    "Akcesoria Zimowe": "Зимові аксесуари",
+    "Echosonda Zimowa": "Зимовий ехолот",
+    "Stanowisko Zimowe": "Зимова позиція",
+    "Ubrania Zimowe": "Зимовий одяг"
   }
 }

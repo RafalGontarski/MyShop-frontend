@@ -89,7 +89,6 @@
       }
     }
   },
-
   "categoryNavbar": {
     "Szczupak": "Szczupak",
     "Sandacz": "Sandacz",
@@ -122,7 +121,10 @@
     "new": "Nowości",
     "bestseller": "Bestsellery",
     "bargains": "Okazje",
-    "giftVoucher": "Bon Upominkowy"
+    "giftVoucher": "Bon Upominkowy",
+    "buttons": {
+      "backToCategory": "Powrót do kategorii"
+    }
   },
   "categoryHeader": {
     "breadCrumbs": {
@@ -165,6 +167,95 @@
     "buttons": {
       "consulting": "DORADZTWO"
     }
+  },
+  "categoryTitleInMainPage": {
+    "categories": "Kategorie"
+  },
 
+  "subCategories": {
+    "Plecionka na Szczupaka": "Plecionka na Szczupaka",
+    "Kołowrotek na Szczupaka": "Kołowrotek na Szczupaka",
+    "Multiplikator na Szczupaka": "Multiplikator na Szczupaka",
+    "Wędka na Szczupaka": "Wędka na Szczupaka",
+    "Przynęta na Szczupaka": "Przynęta na Szczupaka",
+    "Akcesoria na Szczupaka": "Akcesoria na Szczupaka",
+    "Echosonda": "Echosonda",
+    "Stanowisko": "Stanowisko",
+    "Ubrania": "Ubrania",
+    "Plecionka na Sandacza": "Plecionka na Sandacza",
+    "Kołowrotek na Sandacza": "Kołowrotek na Sandacza",
+    "Multiplikator na Sandacza": "Multiplikator na Sandacza",
+    "Wędka na Sandacza": "Wędka na Sandacza",
+    "Przynęta na Sandacza": "Przynęta na Sandacza",
+    "Akcesoria na Sandacza": "Akcesoria na Sandacza",
+    "Plecionka na Okonia": "Plecionka na Okonia",
+    "Kołowrotek na Okonia": "Kołowrotek na Okonia",
+    "Multiplikator na Okonia": "Multiplikator na Okonia",
+    "Wędka na Okonia": "Wędka na Okonia",
+    "Przynęta na Okonia": "Przynęta na Okonia",
+    "Akcesoria na Okonia": "Akcesoria na Okonia",
+    "Plecionka na Suma": "Plecionka na Suma",
+    "Kołowrotek na Suma": "Kołowrotek na Suma",
+    "Multiplikator na Suma": "Multiplikator na Suma",
+    "Wędka na Suma": "Wędka na Suma",
+    "Przynęta na Suma": "Przynęta na Suma",
+    "Akcesoria na Suma": "Akcesoria na Suma",
+    "Plecionka na Bolenia": "Plecionka na Bolenia",
+    "Kołowrotek na Bolenia": "Kołowrotek na Bolenia",
+    "Multiplikator na Bolenia": "Multiplikator na Bolenia",
+    "Wędka na Bolenia": "Wędka na Bolenia",
+    "Przynęta na Bolenia": "Przynęta na Bolenia",
+    "Akcesoria na Bolenia": "Akcesoria na Bolenia",
+    "Plecionka na Klenia": "Plecionka na Klenia",
+    "Kołowrotek na Klenia": "Kołowrotek na Klenia",
+    "Multiplikator na Klenia": "Multiplikator na Klenia",
+    "Wędka na Klenia": "Wędka na Klenia",
+    "Przynęta na Klenia": "Przynęta na Klenia",
+    "Akcesoria na Klenia": "Akcesoria na Klenia",
+    "Plecionka na Jazia": "Plecionka na Jazia",
+    "Kołowrotek na Jazia": "Kołowrotek na Jazia",
+    "Multiplikator na Jazia": "Multiplikator na Jazia",
+    "Wędka na Jazia": "Wędka na Jazia",
+    "Przynęta na Jazia": "Przynęta na Jazia",
+    "Akcesoria na Jazia": "Akcesoria na Jazia",
+    "Plecionka na Pstrąga": "Plecionka na Pstrąga",
+    "Kołowrotek na Pstrąga": "Kołowrotek na Pstrąga",
+    "Multiplikator na Pstrąga": "Multiplikator na Pstrąga",
+    "Wędka na Pstrąga": "Wędka na Pstrąga",
+    "Przynęta na Pstrąga": "Przynęta na Pstrąga",
+    "Akcesoria na Pstrąga": "Akcesoria na Pstrąga",
+    "Plecionka na Troć": "Plecionka na Troć",
+    "Kołowrotek na Troć": "Kołowrotek na Troć",
+    "Multiplikator na Troć": "Multiplikator na Troć",
+    "Wędka na Troć": "Wędka na Troć",
+    "Przynęta na Troć": "Przynęta na Troć",
+    "Akcesoria na Troć": "Akcesoria na Troć",
+    "Plecionka na Karpia": "Plecionka na Karpia",
+    "Kołowrotek na Karpia": "Kołowrotek na Karpia",
+    "Multiplikator na Karpia": "Multiplikator na Karpia",
+    "Wędka na Karpia": "Wędka na Karpia",
+    "Przynęta na Karpia": "Przynęta na Karpia",
+    "Akcesoria na Karpia": "Akcesoria na Karpia",
+    "Plecionka na Amura": "Plecionka na Amura",
+    "Kołowrotek na Amura": "Kołowrotek na Amura",
+    "Multiplikator na Amura": "Multiplikator na Amura",
+    "Wędka na Amura": "Wędka na Amura",
+    "Przynęta na Amura": "Przynęta na Amura",
+    "Akcesoria na Amura": "Akcesoria na Amura",
+    "Plecionka na Jesiotra": "Plecionka na Jesiotra",
+    "Kołowrotek na Jesiotra": "Kołowrotek na Jesiotra",
+    "Multiplikator na Jesiotra": "Multiplikator na Jesiotra",
+    "Wędka na Jesiotra": "Wędka na Jesiotra",
+    "Przynęta na Jesiotra": "Przynęta na Jesiotra",
+    "Akcesoria na Jesiotra": "Akcesoria na Jesiotra",
+    "Kołowrotek Podlodowy": "Kołowrotek Podlodowy",
+    "Kiwok": "Kiwok",
+    "Wędka Podlodowa": "Wędka Podlodowa",
+    "Żyłka Podlodowa": "Żyłka Podlodowa",
+    "Przynęta Podlodowa": "Przynęta Podlodowa",
+    "Akcesoria Zimowe": "Akcesoria Zimowe",
+    "Echosonda Zimowa": "Echosonda Zimowa",
+    "Stanowisko Zimowe": "Stanowisko Zimowe",
+    "Ubrania Zimowe": "Ubrania Zimowe"
   }
 }

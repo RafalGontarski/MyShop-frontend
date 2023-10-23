@@ -138,7 +138,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                                 <StyledLink
                                     to={`/categories/${categoryName}/${subCategoryName}`}
                                 >
-                                    {subCategoryName}
+                                    {t(`subCategories.${subCategoryName}`)}
                                 </StyledLink>
                             </>
                         )}
@@ -160,7 +160,6 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                         <StyledConsultationsLink to="#">{t(`categoryHeader.links.consultations`)}</StyledConsultationsLink>
                     </LinksContainer>
                     <WhiteButton label={t(`categoryHeader.buttons.consulting`)}/>
-                    {/*<ActionButton>Przycisk</ActionButton>*/}
                 </ActionsContainer>
             </InnerContainer>
         </HeaderContainer>

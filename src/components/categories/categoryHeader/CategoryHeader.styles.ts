@@ -75,9 +75,13 @@ export const StyledOtherLink = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-weight: bolder;
     color: white;
     text-decoration: none;
+    
+    &:hover {
+      color: lightgray;
+    }
 
     @media (max-width: 600px) {
       font-weight: bold;
@@ -92,9 +96,13 @@ export const StyledConsultationsLink = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-weight: bolder;
     color: white;
     text-decoration: none;
+
+    &:hover {
+      color: lightgray;
+    }
 
     @media (max-width: 600px) {
       font-weight: bold;

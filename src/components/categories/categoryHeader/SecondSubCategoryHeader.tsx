@@ -13,6 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import WhiteButton from "../../tools/button/WhiteButton";
 import FilterIcon from "@mui/icons-material/FilterList";
 import Typography from "@mui/material/Typography";
+import {useTranslation} from "react-i18next";
 
 interface CategoryHeaderProps {
     categoryName: string;
@@ -33,7 +34,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
 
 
     const [value, setValue] = useState('');
-
+    const { t } = useTranslation();
     const handleChange = (event: SelectChangeEvent<string>) => {
         setValue(event.target.value as string);
     };
@@ -50,13 +51,13 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                         </StyledProductLink>
 
                         <StyledProductLink
-                            to="/categories">Wszystkie Kategorie</StyledProductLink>
+                            to="/categories">{t(`categoryHeader.breadCrumbs.allCategories`)}</StyledProductLink>
                         <StyledProductLink
-                            to={`/categories/${categoryName}`}>{categoryName}</StyledProductLink>
+                            to={`/categories/${categoryName}`}>{t(`categoryHeader.breadCrumbs.${categoryName}`)}</StyledProductLink>
                         {subCategoryName && (
                             <>
                                 <StyledProductLink
-                                    to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledProductLink>
+                                    to={`/categories/${categoryName}/${subCategoryName}`}>{t(`subCategories.${subCategoryName}`)}</StyledProductLink>
                             </>
                         )}
                         {secondSubCategoryName && (
@@ -80,9 +81,9 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                 </BreadcrumbContainer>
                 <ActionsContainer>
                     <LinksContainer>
-                        <SecondSubCategoryName>{productName || secondSubCategoryName || subCategoryName || categoryName}</SecondSubCategoryName>
+                        <SecondSubCategoryName>{productName || secondSubCategoryName || t(`subCategories.${subCategoryName}`) || t(`categoryHeader.breadCrumbs.${categoryName}`)}</SecondSubCategoryName>
                     </LinksContainer>
-                    <WhiteButton label={'Doradztwo'}/>
+                    <WhiteButton label={t(`categoryHeader.buttons.consulting`)}/>
                 </ActionsContainer>
 
                 <ActionsContainer>

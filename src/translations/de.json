@@ -129,7 +129,11 @@
     "new": "Neueste",
     "bestseller": "Bestseller",
     "bargains": "Schnäppchen",
-    "giftVoucher": "Geschenkgutschein"
+    "giftVoucher": "Geschenkgutschein",
+    "buttons": {
+      "backToCategory": "Zurück zur Kategorie"
+    }
+
   },
   "categoryHeader": {
     "breadCrumbs": {
@@ -172,6 +176,101 @@
     "buttons": {
       "consulting": "BERATUNG"
     }
+  },
+
+  "categoryTitleInMainPage": {
+    "categories": "Kategorien"
+  },
+
+
+
+  "subCategories": {
+    "Plecionka na Szczupaka": "Geflochtene Schnur für Hecht",
+    "Kołowrotek na Szczupaka": "Angelrolle für Hecht",
+    "Multiplikator na Szczupaka": "Multiplikatorrolle für Hecht",
+    "Wędka na Szczupaka": "Angelrute für Hecht",
+    "Przynęta na Szczupaka": "Köder für Hecht",
+    "Akcesoria na Szczupaka": "Zubehör für Hecht",
+    "Echosonda": "Echolot",
+    "Stanowisko": "Stellplatz",
+    "Ubrania": "Kleidung",
+    "Plecionka na Sandacza": "Geflochtene Schnur für Zander",
+    "Kołowrotek na Sandacza": "Angelrolle für Zander",
+    "Multiplikator na Sandacza": "Multiplikatorrolle für Zander",
+    "Wędka na Sandacza": "Angelrute für Zander",
+    "Przynęta na Sandacza": "Köder für Zander",
+    "Akcesoria na Sandacza": "Zubehör für Zander",
+    "Plecionka na Okonia": "Geflochtene Schnur für Barsch",
+    "Kołowrotek na Okonia": "Angelrolle für Barsch",
+    "Multiplikator na Okonia": "Multiplikatorrolle für Barsch",
+    "Wędka na Okonia": "Angelrute für Barsch",
+    "Przynęta na Okonia": "Köder für Barsch",
+    "Akcesoria na Okonia": "Zubehör für Barsch",
+    "Plecionka na Suma": "Geflochtene Schnur für Wels",
+    "Kołowrotek na Suma": "Angelrolle für Wels",
+    "Multiplikator na Suma": "Multiplikatorrolle für Wels",
+    "Wędka na Suma": "Angelrute für Wels",
+    "Przynęta na Suma": "Köder für Wels",
+    "Akcesoria na Suma": "Zubehör für Wels",
+    "Plecionka na Bolenia": "Geflochtene Schnur für Rapfen",
+    "Kołowrotek na Bolenia": "Angelrolle für Rapfen",
+    "Multiplikator na Bolenia": "Multiplikatorrolle für Rapfen",
+    "Wędka na Bolenia": "Angelrute für Rapfen",
+    "Przynęta na Bolenia": "Köder für Rapfen",
+    "Akcesoria na Bolenia": "Zubehör für Rapfen",
+    "Plecionka na Klenia": "Geflochtene Schnur für Döbel",
+    "Kołowrotek na Klenia": "Angelrolle für Döbel",
+    "Multiplikator na Klenia": "Multiplikatorrolle für Döbel",
+    "Wędka na Klenia": "Angelrute für Döbel",
+    "Przynęta na Klenia": "Köder für Döbel",
+    "Akcesoria na Klenia": "Zubehör für Döbel",
+    "Plecionka na Jazia": "Geflochtene Schnur für Ukelei",
+    "Kołowrotek na Jazia": "Angelrolle für Ukelei",
+    "Multiplikator na Jazia": "Multiplikatorrolle für Ukelei",
+    "Wędka na Jazia": "Angelrute für Ukelei",
+    "Przynęta na Jazia": "Köder für Ukelei",
+    "Akcesoria na Jazia": "Zubehör für Ukelei",
+    "Plecionka na Pstrąga": "Geflochtene Schnur für Forelle",
+    "Kołowrotek na Pstrąga": "Angelrolle für Forelle",
+    "Multiplikator na Pstrąga": "Multiplikatorrolle für Forelle",
+    "Wędka na Pstrąga": "Angelrute für Forelle",
+    "Przynęta Na Pstrąga": "Köder für Forelle",
+    "Akcesoria na Pstrąga": "Zubehör für Forelle",
+    "Plecionka na Troć": "Geflochtene Schnur für Lachs",
+    "Kołowrotek na Troć": "Angelrolle für Lachs",
+    "Multiplikator na Troć": "Multiplikatorrolle für Lachs",
+    "Wędka na Troć": "Angelrute für Lachs",
+    "Przynęta na Troć": "Köder für Lachs",
+    "Akcesoria na Troć": "Zubehör für Lachs",
+    "Plecionka na Karpia": "Geflochtene Schnur für Karpfen",
+    "Kołowrotek na Karpia": "Angelrolle für Karpfen",
+    "Multiplikator na Karpia": "Multiplikatorrolle für Karpfen",
+    "Wędka na Karpia": "Angelrute für Karpfen",
+    "Przynęta na Karpia": "Köder für Karpfen",
+    "Akcesoria na Karpia": "Zubehör für Karpfen",
+    "Plecionka na Amura": "Geflochtene Schnur für Graskarpfen",
+    "Kołowrotek na Amura": "Angelrolle für Graskarpfen",
+    "Multiplikator na Amura": "Multiplikatorrolle für Graskarpfen",
+    "Wędka na Amura": "Angelrute für Graskarpfen",
+    "Przynęta na Amura": "Köder für Graskarpfen",
+    "Akcesoria na Amura": "Zubehör für Graskarpfen",
+    "Plecionka na Jesiotra": "Geflochtene Schnur für Stör",
+    "Kołowrotek na Jesiotra": "Angelrolle für Stör",
+    "Multiplikator na Jesiotra": "Multiplikatorrolle für Stör",
+    "Wędka na Jesiotra": "Angelrute für Stör",
+    "Przynęta na Jesiotra": "Köder für Stör",
+    "Akcesoria na Jesiotra": "Zubehör für Stör",
+    "Kołowrotek Podlodowy": "Eisangelrolle",
+    "Kiwok": "Eisangel",
+    "Wędka Podlodowa": "Eisangelrute",
+    "Żyłka Podlodowa": "Eisangelschnur",
+    "Przynęta Podlodowa": "Eisköder",
+    "Akcesoria Zimowe": "Winterzubehör",
+    "Echosonda Zimowa": "Winter-Echolot",
+    "Stanowisko Zimowe": "Winter-Stellplatz",
+    "Ubrania Zimowe": "Winterkleidung"
   }
+
+
 
 }
