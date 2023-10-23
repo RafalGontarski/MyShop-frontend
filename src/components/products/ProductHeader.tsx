@@ -8,6 +8,7 @@ import {
     StyledProductLink,
 } from "../categories/categoryHeader/CategoryHeader.styles";
 import HomeIcon from "@mui/icons-material/Home";
+import {useTranslation} from "react-i18next";
 
 
 interface ProductHeaderProps {
@@ -32,6 +33,7 @@ export const ProductHeader: React.FC<ProductHeaderProps> = ({
     const category = product?.secondSubCategory?.subCategory?.category || product?.subCategory?.category;
     const subCategory = product?.secondSubCategory?.subCategory || product?.subCategory;
     const secondSubCategory = product?.secondSubCategory;
+    const { t } = useTranslation();
 
     return (
         <ProductHeaderContainer>
@@ -44,13 +46,13 @@ export const ProductHeader: React.FC<ProductHeaderProps> = ({
                         </StyledProductLink>
 
                         <StyledProductLink
-                            to="/categories">Wszystkie Kategorie</StyledProductLink>
+                            to="/categories">{t(`categoryHeader.breadCrumbs.allCategories`)}</StyledProductLink>
                         <StyledProductLink
-                            to={`/categories/${category?.name || 'Nieznana kategoria'}`}>{category?.name || 'Nieznana kategoria'}</StyledProductLink>
+                            to={`/categories/${category?.name || 'Nieznana kategoria'}`}>{t(`categoryHeader.breadCrumbs.${category?.name}`) || 'Nieznana kategoria'}</StyledProductLink>
                         {subCategory && (
                             <>
                                 <StyledProductLink
-                                    to={`/categories/${category?.name}/${subCategory?.name}`}>{subCategory?.name}</StyledProductLink>
+                                    to={`/categories/${category?.name}/${subCategory?.name}`}>{t(`subCategories.${subCategory?.name}`)}</StyledProductLink>
                             </>
                         )}
                         {secondSubCategory && (

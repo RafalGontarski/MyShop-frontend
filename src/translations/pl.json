@@ -33,7 +33,18 @@
     "googleLogin": "Kontynuuj przez Google"
   },
   "profileDrawer": {
-    "logout": "WYLOGUJ"
+    "center": "Centrum Klienta",
+    "clientNumber": "Numer klienta",
+    "addressBook": "Książka adresowa",
+    "editAccount": "Edytuj konto",
+    "managerPanel": "Panel Managera",
+    "graphics": "Grafiki",
+    "products": "Producty",
+    "categories": "Kateogorie",
+    "clickThroughStatistics": "Statystyki klikalności",
+    "ownerPanel": "Panel Właściciela",
+    "employees": "Pracownicy",
+    "logout": "Wyloguj"
   },
   "registrationDrawer": {
     "createAccount": "Utwórz konto",
@@ -171,7 +182,6 @@
   "categoryTitleInMainPage": {
     "categories": "Kategorie"
   },
-
   "subCategories": {
     "Plecionka na Szczupaka": "Plecionka na Szczupaka",
     "Kołowrotek na Szczupaka": "Kołowrotek na Szczupaka",
@@ -257,5 +267,60 @@
     "Echosonda Zimowa": "Echosonda Zimowa",
     "Stanowisko Zimowe": "Stanowisko Zimowe",
     "Ubrania Zimowe": "Ubrania Zimowe"
+  },
+  "secondSubCategories": {
+    "Przypon": "Przypon",
+    "Cykada": "Cykada",
+    "Wahadłówka": "Wahadłówka",
+    "Obrotówka": "Obrotówka",
+    "Wobler": "Wobler",
+    "Blacha": "Blacha",
+    "Guma": "Guma",
+    "Akcesoria": "Akcesoria",
+    "Mucha": "Mucha",
+    "Mata": "Mata",
+    "Siatka": "Siatka",
+    "Podbierak": "Podbierak",
+    "Krzesło": "Krzesło",
+    "Fotel": "Fotel",
+    "Łóżko": "Łóżko",
+    "Namiot": "Namiot",
+    "Śpiwór": "Śpiwór",
+    "Parasol": "Parasol",
+    "Bielizna": "Bielizna",
+    "Bluza": "Bluza",
+    "Okrycie Głowy": "Okrycie Głowy",
+    "Czapka": "Czapka",
+    "Kalosze": "Kalosze",
+    "Kombinezon": "Kombinezon",
+    "Koszulka": "Koszulka",
+    "Kurtka": "Kurtka",
+    "Okulary": "Okulary",
+    "Pasek": "Pasek",
+    "Plecak": "Plecak",
+    "Rękawice": "Rękawice",
+    "Skarpety": "Skarpety",
+    "Spodenki": "Spodenki",
+    "Spodnie": "Spodnie",
+    "Obuwie": "Obuwie",
+    "Wodery": "Wodery",
+    "Balansówka": "Balansówka",
+    "Diabełek": "Diabełek",
+    "Koza": "Koza",
+    "Mormyszka": "Mormyszka",
+    "Wiedźma": "Wiedźma",
+    "Żuczek": "Żuczek",
+    "Bielizna Zimowa": "Bielizna Zimowa",
+    "Kurtka Zimowa": "Kurtka Zimowa",
+    "Okulary Zimowe": "Okulary Zimowe",
+    "Rękawice Zimowe": "Rękawice Zimowe",
+    "Skarpety Zimowe": "Skarpety Zimowe",
+    "Kalosze Zimowe": "Kalosze Zimowe",
+    "Obuwie Zimowe": "Obuwie Zimowe",
+    "Świder": "Świder",
+    "Nakładki Antypoślizgowe": "Nakładki Antypoślizgowe",
+    "Łyżka Podlodowa": "Łyżka Podlodowa",
+    "Skrzynia Podlodowa": "Skrzynia Podlodowa",
+    "Pudełko": "Pudełko"
   }
 }

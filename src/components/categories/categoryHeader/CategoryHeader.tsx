@@ -149,9 +149,8 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                         )}
                     </SubCatBreadcrumbs>
 
-
                 </BreadcrumbContainer>
-                <CategoryName>{productName || subCategoryName || t(`categoryHeader.breadCrumbs.${categoryName}`)}</CategoryName>
+                <CategoryName>{productName || subCategoryName || t(`categoryHeader.breadCrumbs.${categoryName}`) || t(`subCategories.${subCategoryName}`)}</CategoryName>
                 <ActionsContainer>
                     <LinksContainer>
                         <StyledOtherLink to="#">{t(`categoryHeader.links.new`)}</StyledOtherLink>

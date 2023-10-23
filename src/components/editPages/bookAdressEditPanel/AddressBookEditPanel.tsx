@@ -164,7 +164,7 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
             <MyProfileLeftContainer>
 
                 <UserDataContainer>
-                    <MyProfileCenterText>Centrum Klienta</MyProfileCenterText>
+                    <MyProfileCenterText>{t(`profileDrawer.center`)}</MyProfileCenterText>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom
                                   style={{ marginRight: '4px' }}
@@ -182,7 +182,7 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                     </ProfileWelcome>
                     <ProfileWelcome>
                         <UserData variant="body1" gutterBottom>
-                            Numer klienta {userId}
+                            {t(`profileDrawer.clientNumber`)} {userId}
                         </UserData>
                     </ProfileWelcome>
                 </UserDataContainer>
@@ -195,22 +195,21 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                         underline="none"
                         onClick={onClose}
                     >
-                        Książka adresowa
+                        {t(`profileDrawer.addressBook`)}
                     </ProfileDrawerLink>
 
                     <ProfileDrawerLink
                         as={Link}
                         to="/edit-profile"
                         underline="none"
-                        onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                        onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                        onClick={onClose}
                     >
-                        Edytuj konto
+                        {t(`profileDrawer.editAccount`)}
                     </ProfileDrawerLink>
 
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                         <LineContainer>
-                            <LineText>Panel Managera</LineText>
+                            <LineText>{t(`profileDrawer.managerPanel`)}</LineText>
                         </LineContainer>
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -218,10 +217,9 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                             as={Link}
                             to="/graphic"
                             underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            onClick={onClose}
                         >
-                            Grafiki
+                            {t(`profileDrawer.graphics`)}
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -229,10 +227,9 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                             as={Link}
                             to="/product-center"
                             underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            onClick={onClose}
                         >
-                            Produkty
+                            {t(`profileDrawer.products`)}
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -240,10 +237,9 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                             as={Link}
                             to="/categories-center"
                             underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            onClick={onClose}
                         >
-                            Kategorie
+                            {t(`profileDrawer.categories`)}
                         </ProfileDrawerLink>
                     )}
                     {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -253,39 +249,38 @@ export const AddressBookEditPanel: React.FC<AddressProps> = ({
                             underline="none"
                             onClick={onClose}
                         >
-                            Statystyki klikalności
+                            {t(`profileDrawer.clickThroughStatistics`)}
                         </ProfileDrawerLink>
                     )}
 
                     {userRole && (userRole.includes("ADMIN")) && (
                         <LineContainer>
-                            <LineText>Panel Właściciela</LineText>
+                            <LineText>{t(`profileDrawer.ownerPanel`)}</LineText>
                         </LineContainer>
                     )}
-
                     {userRole && (userRole.includes("ADMIN")) && (
 
                         <ProfileDrawerLink
                             as={Link}
                             to="/employee-center"
                             underline="none"
-                            onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
-                            onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
+                            onClick={onClose}
                         >
-                            Pracownicy
+                            {t(`profileDrawer.employees`)}
                         </ProfileDrawerLink>
                     )}
 
                     <ProfileLine/>
 
                     <ProfileDrawerLink
+                        // as={Link}
                         href="/"
                         underline="none"
                         onMouseOver={(event) => {event.currentTarget.style.color = '#008000'}}
                         onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                         onClick={handleLogout}
                     >
-                        Wyloguj
+                        {t(`profileDrawer.logout`)}
                     </ProfileDrawerLink>
 
                 </LinksContainer>

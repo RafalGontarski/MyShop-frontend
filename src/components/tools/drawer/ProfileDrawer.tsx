@@ -70,7 +70,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
 
 
                 <IconClose>
-                    <CustomerCenterText>Centrum Klienta</CustomerCenterText>
+                    <CustomerCenterText>{t(`profileDrawer.center`)}</CustomerCenterText>
                     <ButtonClose
                         onClick={onClose}
                         disableRipple
@@ -114,7 +114,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                         </ProfileWelcome>
                         <ProfileWelcome>
                             <UserData variant="body1" gutterBottom>
-                                Number klienta {userId}
+                                {t(`profileDrawer.clientNumber`)} {userId}
                             </UserData>
                         </ProfileWelcome>
                     </UserDataContainer>
@@ -127,7 +127,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                             underline="none"
                             onClick={onClose}
                         >
-                            Książka adresowa
+                            {t(`profileDrawer.addressBook`)}
                         </ProfileDrawerLink>
 
                         <ProfileDrawerLink
@@ -136,12 +136,12 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                             underline="none"
                             onClick={onClose}
                         >
-                            Edytuj konto
+                            {t(`profileDrawer.editAccount`)}
                         </ProfileDrawerLink>
 
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
                             <LineContainer>
-                                <LineText>Panel Managera</LineText>
+                                <LineText>{t(`profileDrawer.managerPanel`)}</LineText>
                             </LineContainer>
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -151,7 +151,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 underline="none"
                                 onClick={onClose}
                             >
-                                Grafiki
+                                {t(`profileDrawer.graphics`)}
                             </ProfileDrawerLink>
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -161,7 +161,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 underline="none"
                                 onClick={onClose}
                             >
-                                Produkty
+                                {t(`profileDrawer.products`)}
                             </ProfileDrawerLink>
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -171,7 +171,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 underline="none"
                                 onClick={onClose}
                             >
-                                Kategorie
+                                {t(`profileDrawer.categories`)}
                             </ProfileDrawerLink>
                         )}
                         {userRole && (userRole.includes("ADMIN") || userRole.includes("MANAGER")) && (
@@ -181,13 +181,13 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 underline="none"
                                 onClick={onClose}
                             >
-                                Statystyki klikalności
+                                {t(`profileDrawer.clickThroughStatistics`)}
                             </ProfileDrawerLink>
                         )}
 
                         {userRole && (userRole.includes("ADMIN")) && (
                             <LineContainer>
-                                <LineText>Panel Właściciela</LineText>
+                                <LineText>{t(`profileDrawer.ownerPanel`)}</LineText>
                             </LineContainer>
                         )}
                         {userRole && (userRole.includes("ADMIN")) && (
@@ -198,7 +198,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                                 underline="none"
                                 onClick={onClose}
                             >
-                                Pracownicy
+                                {t(`profileDrawer.employees`)}
                             </ProfileDrawerLink>
                         )}
 
@@ -212,7 +212,7 @@ export const ProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutCl
                             onMouseOut={(event) => {event.currentTarget.style.color = '#000'}}
                             onClick={handleLogout}
                         >
-                            Wyloguj
+                            {t(`profileDrawer.logout`)}
                         </ProfileDrawerLink>
 
                     </LinksContainer>

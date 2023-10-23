@@ -39,6 +39,23 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
         setValue(event.target.value as string);
     };
 
+    const getTranslationKey = (
+        categoryName: string,
+        subCategoryName: string | undefined | null,
+        secondSubCategoryName: string | undefined | null
+    ): string => {
+        if (secondSubCategoryName) {
+            // Jeśli secondSubCategoryName istnieje, uzyskaj tłumaczenie dla secondSubCategories
+            return `secondSubCategories.${secondSubCategoryName}`;
+        } else if (subCategoryName) {
+            // Jeśli subCategoryName istnieje, ale secondSubCategoryName nie, uzyskaj tłumaczenie dla subCategories
+            return `subCategories.${subCategoryName}`;
+        } else {
+            // W przeciwnym razie uzyskaj tłumaczenie dla categoryHeader.breadCrumbs
+            return `categoryHeader.breadCrumbs.${categoryName}`;
+        }
+    };
+
 
     return (
         <SecondSubCatHeaderContainer>
@@ -63,7 +80,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                         {secondSubCategoryName && (
                             <>
                                 <StyledProductLink
-                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{secondSubCategoryName}</StyledProductLink>
+                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{t(`secondSubCategories.${secondSubCategoryName}`)}</StyledProductLink>
                             </>
                         )}
                         {productName && (
@@ -81,7 +98,7 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                 </BreadcrumbContainer>
                 <ActionsContainer>
                     <LinksContainer>
-                        <SecondSubCategoryName>{productName || secondSubCategoryName || t(`subCategories.${subCategoryName}`) || t(`categoryHeader.breadCrumbs.${categoryName}`)}</SecondSubCategoryName>
+                        <SecondSubCategoryName>{productName || t(getTranslationKey(categoryName, subCategoryName, secondSubCategoryName))}</SecondSubCategoryName>
                     </LinksContainer>
                     <WhiteButton label={t(`categoryHeader.buttons.consulting`)}/>
                 </ActionsContainer>

@@ -9,6 +9,7 @@ import {CategoriesChildrenDiv, ChildImg} from "../DisplayCategoriesInMainPage/Di
 import CatfishIcon from "../../../resources/categoriesIcon/catfishIcon.png";
 import {Link, useNavigate} from "react-router-dom";
 import SecondSubCategoryType from "../../../models/types/SecondSubCategoryType";
+import {useTranslation} from "react-i18next";
 
 type DisplaySecondSubCategoriesProps = {
     categoryName: string;
@@ -24,6 +25,7 @@ export const DisplaySecondSubCategories: React.FC<DisplaySecondSubCategoriesProp
                                                                                       }) => {
     const [secondSubCategories, ] = useState<SecondSubCategoryType[]>(incomingSecondSubCategories);
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const handleSecondSubCategoryClick = (categoryName: string, subCategoryName: string, secondSubCat: string) => {
         navigate(`/categories/${categoryName}/${subCategoryName}/${secondSubCat}`);
@@ -50,7 +52,7 @@ export const DisplaySecondSubCategories: React.FC<DisplaySecondSubCategoriesProp
                             to={`/categories/${categoryName}/${subCategoryName}/${secondSubCat.name}`} // Dodane categoryName
                             underline="none"
                         >
-                            {secondSubCat.name}
+                            {t(`secondSubCategories.${secondSubCat.name}`)}
                         </SubCatLink>
                     </SubCatChildDiv>
                 ))}
