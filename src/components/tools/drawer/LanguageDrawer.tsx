@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from "../button/Button";
 import CurrencySelector from "../selectors/CurrencySelector";
 import CountryLink from "../link/countryLink/CountryLink";
@@ -300,7 +299,6 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                     <CustomButton label={t('save')} onClick={handleSave}/>
                 </FormContainer>
             </MainContainer>
-
         </Drawer>
     );
 }

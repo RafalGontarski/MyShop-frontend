@@ -1,5 +1,13 @@
-import React, {createContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
+// MUI
 import Grid from "@mui/material/Grid";
+import {InputAdornment} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import {useTheme} from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import {
     CartLink,
     FaceBookIconButton,
@@ -42,26 +50,32 @@ import {
     YouTubeIconButton
 } from "./Navbar.styles";
 
-import {Link} from "react-router-dom";
+// components
 import {MenuDrawer} from "../tools/drawer/MenuDrawer";
-import Logo from "../../resources/img/PlLogo.png";
-import {InputAdornment} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import {LanguageDrawer} from "../tools/drawer/LanguageDrawer";
 import {useTranslation} from "react-i18next";
+
+// icons
 import PolishIcon from "../../resources/icons/polandFlagIcon.png";
 import UnitedKingdomIcon from "../../resources/icons/unitedKingdomFlagIcon.png";
 import DeutschlandIcon from "../../resources/icons/deutschlandFlagIcon.png";
 import FranceIcon from "../../resources/icons/franceFlagIcon.png";
 import ItalyIcon from "../../resources/icons/italyFlagIcon.png";
 import UcraineIcon from "../../resources/icons/ukraineFlagIcon.png";
-import {useTheme} from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+
+
+// contexts&types
 import { SelectedMenuType } from '../tools/drawer/MenuDrawer';
 import {useClickContext} from "../../models/providers/ClickProvider";
 import {useMenuContext} from "../../models/providers/MenuProvider";
 
-
+//logos
+import Logo from "../../resources/img/PlLogo.png";
+import EnLogo from "../../resources/img/EngLogo.png";
+import GerLogo from "../../resources/img/GerLogo.png";
+import ItLogo from "../../resources/img/ItLogo.png";
+import UaLogo from '../../resources/img/UaLogo.png';
+import FrLogo from '../../resources/img/FrLogo.png';
 
 type NormalSizeScreenTypes = {
     isLoggedIn: boolean;
@@ -135,11 +149,33 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
             countryIcon = <img src={PolishIcon} alt="Poland" width={19} height={19}/>;
     }
 
+    let logoSrc;
+    switch (languageCode) {
+        case 'EN':
+            logoSrc = EnLogo;
+            break;
+        case 'DE':
+            logoSrc = GerLogo;
+            break;
+        case 'IT':
+            logoSrc = ItLogo;
+            break;
+        case 'UA':
+            logoSrc = UaLogo;
+            break;
+        case 'FR':
+            logoSrc = FrLogo;
+            break;
+        // Dodaj tutaj inne przypadki dla innych języków
+        default:
+            logoSrc = Logo;  // domyślne logo dla języka polskiego
+    }
+
 
     useEffect(() => {
         // Nasłuchuj na zmiany języka
         i18n.on('languageChanged', (lang: string) => {
-            setCurrentLanguage(lang);
+            setLanguageCode(lang.toUpperCase());
         });
 
         // Wyłącz nasłuchiwanie na zmiany języka, gdy komponent jest odmontowywany
@@ -309,7 +345,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                     <MiddleSideLogoContainer>
                         <LogoLink as={Link} to="/">
                             <MiddleSideImageContainer
-                                src={Logo}
+                                src={logoSrc}
                                 alt="Logo"
                             />
                         </LogoLink>

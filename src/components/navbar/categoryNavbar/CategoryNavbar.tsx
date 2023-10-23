@@ -6,6 +6,7 @@ import CategoryNavbarLinkButton from "../../tools/button/CategoryNavbarLinkButto
 import {Link} from "react-router-dom";
 import {useSelectedCategory} from "../../../models/context/SelectedCategoryContext";
 import {LinkClicksState, polishToEnglishMap, useClickContext} from "../../../models/providers/ClickProvider";
+import {useTranslation} from "react-i18next";
 
 // Zakładam, że CategoryType został już zdefiniowany wcześniej
 type CategoryType = {
@@ -19,6 +20,7 @@ const CategoryNavbarComponent: React.FC = () => {
     const { categories, setCategories } = useContext(CategoryContext);
     const { setSelectedCategory } = useSelectedCategory();
     const { linkClicks, incrementLinkClickCount } = useClickContext();
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function fetchCategories() {
@@ -37,23 +39,26 @@ const CategoryNavbarComponent: React.FC = () => {
 
     return (
         <CategoryNavbarContainer>
-            {categories.map((category) => (
-                <CategoryNavbarLinkButton
-                    key={category.name}
-                    label={category.name}
-                    as={Link}
-                    to={`/categories/${category.name}`}
-                    onClick={() => {
-                        setSelectedCategory(category.name);
-                        const englishName = polishToEnglishMap[category.name];
-                        if (englishName) {
-                            incrementLinkClickCount(englishName);
-                        } else {
-                            console.error(`${category.name} does not map to an English name!`);
-                        }
-                    }}
-                />
-            ))}
+            {categories.map((category) => {
+                const translatedCategoryName = t(`categoryNavbar.${category.name}`);
+                return (
+                    <CategoryNavbarLinkButton
+                        key={category.name}
+                        label={translatedCategoryName}
+                        as={Link}
+                        to={`/categories/${category.name}`}
+                        onClick={() => {
+                            setSelectedCategory(category.name);
+                            const englishName = polishToEnglishMap[category.name];
+                            if (englishName) {
+                                incrementLinkClickCount(englishName);
+                            } else {
+                                console.error(`${category.name} does not map to an English name!`);
+                            }
+                        }}
+                    />
+                );
+            })}
         </CategoryNavbarContainer>
     );
 };

@@ -88,6 +88,20 @@
         "values": "Nasze wartości"
       }
     }
+  },
+  "categoryNavbar": {
+    "Szczupak": "Szczupak",
+    "Sandacz": "Sandacz",
+    "Okoń": "Okoń",
+    "Sum": "Sum",
+    "Boleń": "Boleń",
+    "Kleń": "Kleń",
+    "Jaź": "Jaź",
+    "Pstrąg": "Pstrąg",
+    "Troć": "Troć",
+    "Karp": "Karp",
+    "Amur": "Amur",
+    "Jesiotr": "Jesiotr",
+    "Podlodowe": "Podlodowe"
   }
-
 }

@@ -96,6 +96,21 @@
         "values": "Unsere Werte"
       }
     }
+  },
+  "categoryNavbar": {
+    "Szczupak": "Hecht",
+    "Sandacz": "Zander",
+    "Okoń": "Barsch",
+    "Sum": "Wels",
+    "Boleń": "Rapfen",
+    "Kleń": "Kleiner Barsch",
+    "Jaź": "Ukelei",
+    "Pstrąg": "Forelle",
+    "Troć": "Meerforelle",
+    "Karp": "Karpfen",
+    "Amur": "Graskarpfen",
+    "Jesiotr": "Stör",
+    "Podlodowe": "Unterwasser"
   }
 
 

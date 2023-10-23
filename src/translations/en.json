@@ -88,6 +88,23 @@
         "values": "Our Values"
       }
     }
+  },
+  "categoryNavbar": {
+    "Szczupak": "Pike",
+    "Sandacz": "Zander",
+    "Okoń": "Perch",
+    "Sum": "Catfish",
+    "Boleń": "Asp",
+    "Kleń": "Chub",
+    "Jaź": "Ide",
+    "Pstrąg": "Trout",
+    "Troć": "Sea Trout",
+    "Karp": "Carp",
+    "Amur": "Grass Carp",
+    "Jesiotr": "Sturgeon",
+    "Podlodowe": "Underwater"
   }
+
+
 
 }

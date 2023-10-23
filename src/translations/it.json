@@ -88,7 +88,23 @@
         "values": "I nostri valori"
       }
     }
+  },
+  "categoryNavbar": {
+    "Szczupak": "Luccio",
+    "Sandacz": "Lucioperca",
+    "Okoń": "Persico",
+    "Sum": "Siluro",
+    "Boleń": "Aspio",
+    "Kleń": "Cavedano",
+    "Jaź": "Ide",
+    "Pstrąg": "Trota",
+    "Troć": "Trota di mare",
+    "Karp": "Carpa",
+    "Amur": "Carpa erbivora",
+    "Jesiotr": "Storione",
+    "Podlodowe": "Sott'acqua"
   }
+
 
 
 }
