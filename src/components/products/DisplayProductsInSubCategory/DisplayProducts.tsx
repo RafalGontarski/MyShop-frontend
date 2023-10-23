@@ -47,7 +47,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                 <h3>Oceny</h3>
                 <h3>Wybrane dla Ciebie</h3>
             </FilterContainer>
-            <StyledProductsGrid container spacing={2} >
+            <StyledProductsGrid container>
                 {products.map((product) => (
                     <StyledProductGrid item xs={isSmallScreen ? 5 : 3} key={product.id}>
                         <Link
@@ -55,7 +55,6 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                             style={{ textDecoration: 'none' }}
                         >
                             <StyledCard>
-
                                 <StyledCardMedia
                                     onMouseEnter={() => setIsHovered(true)}
                                     onMouseLeave={() => setIsHovered(false)}

@@ -16,7 +16,7 @@ import {
     WishListLink
 } from "./Navbar.styles";
 import {Link, useNavigate} from "react-router-dom";
-import Logo from "../../resources/img/jedziemy.png";
+import Logo from "../../resources/img/PlLogo.png";
 import {LanguageDrawer} from "../tools/drawer/LanguageDrawer";
 import {InputAdornment} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";

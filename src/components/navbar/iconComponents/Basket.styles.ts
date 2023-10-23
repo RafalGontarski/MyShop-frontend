@@ -8,7 +8,6 @@ export const BasketMainContainer = styled.div`
   @media (max-width: 940px) {
     flex-direction: column;
   }
-  
 `
 
 export const BasketTitle = styled.h1`

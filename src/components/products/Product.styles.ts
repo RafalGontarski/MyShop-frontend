@@ -6,9 +6,69 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 
 
+export const ProductMainContainer = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 940px) {
+    flex-direction: column;
+  }
+`
+
+export const ProductLeftContainer = styled.div`
+  && {
+    width: 45%;
+
+    //display: flex;
+    //justify-content: left;
+    //align-items: flex-start;
+    //flex-direction: column;
+    margin-left: 11.1rem;
+
+
+    @media (max-width: 1350px) {
+      margin-left: 5.1rem;
+    }
+    @media (max-width: 1100px) {
+      margin-left: 2.1rem;
+    }
+    
+    @media (max-width: 940px) {
+      width: 100%;
+    }
+    
+  }
+`
+
+export const ProductRightContainer = styled.div`
+  && {
+    width: 40%;
+    margin-left: auto;
+    margin-right: -3.5rem;
+
+    @media (max-width: 1500px) {
+      //margin-right: -7rem;
+    }
+    
+    @media (max-width: 1100px) {
+      width: 45%;
+      margin-right: -5rem;
+    }
+    @media (max-width: 940px) {
+      margin-left: 2rem;
+      width: 100%;
+    }
+
+  }
+`
+
+
+
 export const CardContainer = styled.div`
   overflow: hidden;
   position: relative;
+  justify-content: flex-start;
 `;
 
 export const StyledDisplayContainer = styled.div`
@@ -29,8 +89,8 @@ export const StyledDisplayContainer = styled.div`
     }
 
     @media (max-width: 600px) {
-      margin-left: 1.8rem;
-      margin-right: 1.8rem;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 `
@@ -51,8 +111,9 @@ export const StyledCardMedia: React.FC<MyCardMediaProps> = styled(CardMedia)`
   && {
     background: #f3f3f3;
     position: relative;
-    width: 100%;  // Zajmuje 100% szerokości kontenera
-    padding-bottom: 100%;  // Ustala wysokość jako procent szerokości, aby utrzymać proporcje 1:1
+    width: 90%;  // Zajmuje 100% szerokości kontenera
+    height: 85%;
+    padding-bottom: 90%;  // Ustala wysokość jako procent szerokości, aby utrzymać proporcje 1:1
     overflow: hidden;
 
     && img {
@@ -76,8 +137,6 @@ export const ZoomImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
-  
-  
 `;
 
 export const StyledHeart = styled.div`
@@ -175,7 +234,53 @@ export const StyledProductsGrid = styled(Grid)`
     justify-content: flex-start;
     
     @media (max-width: 600px) {
-      justify-content: center;
+      margin-left: 5rem;
+      //justify-content: center;
+    }
+  }
+`
+
+export const ProductPrice = styled.h1`
+  && {
+    font-size: 4rem;
+    margin: 0;
+    
+    @media (max-width: 940px) {
+      font-size: 2.5rem;
+    }
+  }
+`
+
+export const ProductName = styled.h1`
+  && {
+    font-size: 2.5rem;
+    margin: 0;
+
+    @media (max-width: 940px) {
+      padding-top: 0.5rem;
+      font-size: 1.5rem;
+    }
+  }
+`
+
+export const Information = styled.p`
+  && {
+    font-size: 0.8rem;
+    margin: 0.5rem 0 ;
+    
+    @media (max-width: 940px) {
+      font-size: 0.7rem;
+    }
+  }
+`
+export const StyledProductImg = styled.img`
+  && {
+    display: block;
+    margin: 0 auto;
+
+    @media (max-width: 940px) {
+      width: 15rem;
+      height: 15rem;
     }
   }
 `

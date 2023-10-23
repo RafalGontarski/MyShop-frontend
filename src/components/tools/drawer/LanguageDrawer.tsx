@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import { Box } from '@mui/system';
 import CustomButton from "../button/Button";
-import { IconButton } from '@mui/material';
 import CurrencySelector from "../selectors/CurrencySelector";
 import CountryLink from "../link/countryLink/CountryLink";
 import FlagCountryLink from "../link/countryLink/FlagCountryLink";
@@ -21,6 +17,17 @@ import UcraineFlag from '../../../resources/flags/ucraineFlag.png';
 
 import { useTranslation } from 'react-i18next';
 import i18n from '../../../i18n';
+import {
+    ButtonClose,
+    CloseIconContainer,
+    ElementsCont,
+    FormContainer,
+    MainContainer, NextStyledGrid,
+    StyledBox,
+    StyledDivider, StyledGrid, StyledIconClose,
+    TitleContainer,
+    WelcomeText
+} from "./Drawer.styles";
 
 type CurrencyMap = {
     [key: string]: string;
@@ -120,76 +127,34 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
             open={open}
             onClose={onClose}
         >
-            <Box
-                sx={{
-                    width: 420,
-                    padding: 2,
-                }}
-                role="presentation"
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                    }}
-                >
-                    <IconButton
+            <MainContainer role="presentation">
+                <CloseIconContainer>
+                    <ButtonClose
                         onClick={onClose}
                         disableRipple
-                        sx={{
-                            color: '#000000',
-                            '&:hover': { color: '#008000' } }}
                     >
-                        <CloseIcon style={{
-                            fontSize: 30,
-                            fontWeight: 'bold'
-                        }} />
-                    </IconButton>
-                </Box>
+                        <StyledIconClose />
+                    </ButtonClose>
+                </CloseIconContainer>
 
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                    }}
-                >
-                    <Box
-                        sx={{ display: 'flex', alignItems: 'left' }}>
-                        <Typography
+                <FormContainer>
+                    <TitleContainer>
+                        <WelcomeText
                             variant="h5"
-                            gutterBottom
-                            style={{ fontWeight: 'bold' }}>
+                            gutterBottom>
                             {`${t('languageDrawer.country')}`}
-                        </Typography>
-                    </Box>
+                        </WelcomeText>
+                    </TitleContainer>
 
-                    <Box
-                        sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '100%' }}>
-                        <Grid
+                    <StyledBox>
+                        <StyledGrid
                             container
                             spacing={2}
-                            sx={{
-                                marginTop: '1px',
-                                marginLeft: '1.1rem',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}>
+                        >
                             <Grid
                                 item
                                 xs={6}>
-                                <Box
-                                    sx={{
-                                    flexDirection: 'column',
-                                    display: 'flex',
-                                    justifyContent: 'left',
-                                    alignItems: 'left'}}>
-
+                                <ElementsCont>
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.Germany`)}
@@ -204,23 +169,18 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                         onClick={() => setSelectedCountry("Poland")}
                                         flag={PolishFlag}
                                     />
-
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.Ukraine`)}
                                         selected={selectedCountry === "Ukraine"}
                                         onClick={() => setSelectedCountry("Ukraine")}
                                         flag={UcraineFlag}/>
-                                </Box>
+                                </ElementsCont>
                             </Grid>
                             <Grid
                                 item
                                 xs={6}>
-                                <Box sx={{
-                                    flexDirection: 'column',
-                                    display: 'flex',
-                                    justifyContent: 'left',
-                                    alignItems: 'left'}}>
+                                <ElementsCont>
                                     <FlagCountryLink
                                         href={"#"}
                                         label={t(`countriesFlag.England`)}
@@ -240,64 +200,30 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                         selected={selectedCountry === "France"}
                                         onClick={() => setSelectedCountry("France")}
                                         flag={FranceFlag}/>
-                                </Box>
+                                </ElementsCont>
                             </Grid>
-                        </Grid>
-                    </Box>
-                </Box>
+                        </StyledGrid>
+                    </StyledBox>
+                </FormContainer>
 
+                <StyledDivider/>
 
+            </MainContainer>
 
-                <Divider
-                    style={{
-                        marginTop: '5%',
-                        marginRight: '8%',
-                        marginLeft: '8%',
-                        borderWidth: '0.1rem',
-                        borderColor: '#000000',
-                    }}
-                />
-
-            </Box>
-
-            <Box
-                sx={{
-                    width: 420,
-                    padding: 2,
-                }}
-                role="presentation"
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                    }}
-                >
-
-                    <Box sx={{ display: 'flex', alignItems: 'left' }}>
-                        <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
+            <MainContainer role="presentation">
+                <FormContainer>
+                    <TitleContainer>
+                        <WelcomeText variant="h5" gutterBottom>
                             {`${t('languageDrawer.language')}`}
-                        </Typography>
-                    </Box>
+                        </WelcomeText>
+                    </TitleContainer>
 
-                    <Grid
+                    <NextStyledGrid
                         container
                         spacing={2}
-                        sx={{
-                            marginTop: '1px',
-                            // marginLeft: '3.3rem',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
+                    >
                         <Grid item xs={3}>
-                            <Box sx={{
-                                flexDirection: 'column',
-                                display: 'flex',
-                                justifyContent: 'left',
-                                alignItems: 'left'}}>
-
+                            <ElementsCont>
                                 <CountryLink
                                     label={t(`languages.Poland`)}
                                     selected={selectedLanguage === "Poland"}
@@ -308,15 +234,11 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                     selected={selectedLanguage === "England"}
                                     onClick={() => setSelectedLanguage("England")}
                                 />
-                            </Box>
+                            </ElementsCont>
                         </Grid>
 
                         <Grid item xs={3}>
-                            <Box sx={{
-                                flexDirection: 'column',
-                                display: 'flex',
-                                justifyContent: 'left',
-                                alignItems: 'left'}}>
+                            <ElementsCont>
                                 <CountryLink
                                     label={t(`languages.Germany`)}
                                     selected={selectedLanguage === "Germany"}
@@ -327,15 +249,11 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                     selected={selectedLanguage === "Italy"}
                                     onClick={() => setSelectedLanguage("Italy")}
                                 />
-                            </Box>
+                            </ElementsCont>
                         </Grid>
 
                         <Grid item xs={3}>
-                            <Box sx={{
-                                flexDirection: 'column',
-                                display: 'flex',
-                                justifyContent: 'left',
-                                alignItems: 'left'}}>
+                            <ElementsCont>
                                 <CountryLink
                                     label={t(`languages.Ukraine`)}
                                     selected={selectedLanguage === "Ukraine"}
@@ -346,46 +264,24 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                                     selected={selectedLanguage === "France"}
                                     onClick={() => setSelectedLanguage("France")}
                                 />
-                            </Box>
+                            </ElementsCont>
                         </Grid>
-                    </Grid>
+                    </NextStyledGrid>
 
 
-                </Box>
+                </FormContainer>
 
-                <Divider
-                    style={{
-                        marginTop: '5%',
-                        marginRight: '8%',
-                        marginLeft: '8%',
-                        borderWidth: '0.1rem',
-                        borderColor: '#000000',
-                    }}
-                />
+                <StyledDivider/>
 
-            </Box>
+            </MainContainer>
 
-            <Box
-                sx={{
-                    width: 420,
-                    padding: 2,
-                }}
-                role="presentation"
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                    }}
-                >
-
-                    <Box sx={{ display: 'flex', alignItems: 'left' }}>
-                        <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
+            <MainContainer role="presentation">
+                <FormContainer>
+                    <TitleContainer>
+                        <WelcomeText variant="h5" gutterBottom>
                             {`${t('languageDrawer.currency')}`}
-                        </Typography>
-                    </Box>
+                        </WelcomeText>
+                    </TitleContainer>
 
                     <CurrencySelector
                         selectedValue={selectedCurrencyValue}
@@ -396,45 +292,14 @@ export const LanguageDrawer: React.FC<DrawerProps> = ({ open, onClose, onLanguag
                             updateSelectedCurrencyValue(currencySymbol);
                         }}
                     />
+                </FormContainer>
+            </MainContainer>
 
-
-
-                </Box>
-
-                <Divider
-                    style={{
-                        marginTop: '5%',
-                        marginRight: '8%',
-                        marginLeft: '8%',
-                        borderWidth: '0.1rem',
-                        borderColor: '#000000',
-                    }}
-                />
-
-            </Box>
-
-            <Box
-                sx={{
-                    width: 420,
-                    padding: 2,
-                }}
-                role="presentation"
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                    }}
-                >
-
+            <MainContainer role="presentation">
+                <FormContainer>
                     <CustomButton label={t('save')} onClick={handleSave}/>
-
-                </Box>
-
-
-            </Box>
+                </FormContainer>
+            </MainContainer>
 
         </Drawer>
     );

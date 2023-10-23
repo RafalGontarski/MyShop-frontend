@@ -7,12 +7,7 @@ import {
     SecondSubCatBreadcrumbs, SecondSubCategoryName,
     SecondSubCatHeaderContainer,
     SecondSubCatInnerContainer,
-    StyledLink,
-    SubCatBreadcrumbs,
-    SubCategoryName,
-    SubCatHeaderContainer,
-    SubCatInnerContainer,
-    SubCatSpan
+    StyledLink, StyledProductLink,
 } from "./CategoryHeader.styles";
 import HomeIcon from "@mui/icons-material/Home";
 import WhiteButton from "../../tools/button/WhiteButton";
@@ -49,31 +44,31 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
             <SecondSubCatInnerContainer>
                 <BreadcrumbContainer>
                     <SecondSubCatBreadcrumbs >
-                        <StyledLink
+                        <StyledProductLink
                             to="/">
                             <HomeIcon />
-                        </StyledLink>
+                        </StyledProductLink>
 
-                        <StyledLink
-                            to="/categories">Wszystkie Kategorie</StyledLink>
-                        <StyledLink
-                            to={`/categories/${categoryName}`}>{categoryName}</StyledLink>
+                        <StyledProductLink
+                            to="/categories">Wszystkie Kategorie</StyledProductLink>
+                        <StyledProductLink
+                            to={`/categories/${categoryName}`}>{categoryName}</StyledProductLink>
                         {subCategoryName && (
                             <>
-                                <StyledLink
-                                    to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledLink>
+                                <StyledProductLink
+                                    to={`/categories/${categoryName}/${subCategoryName}`}>{subCategoryName}</StyledProductLink>
                             </>
                         )}
                         {secondSubCategoryName && (
                             <>
-                                <StyledLink
-                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{secondSubCategoryName}</StyledLink>
+                                <StyledProductLink
+                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}`}>{secondSubCategoryName}</StyledProductLink>
                             </>
                         )}
                         {productName && (
                             <>
-                                <StyledLink
-                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}/${productName}`}>{productName}</StyledLink>
+                                <StyledProductLink
+                                    to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}/${productName}`}>{productName}</StyledProductLink>
                             </>
                             // <>
                             //     <SubCatSpan>{productName}</SubCatSpan>
@@ -135,7 +130,6 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                         </FormControl>
                     </div>
                 </ActionsContainer>
-
             </SecondSubCatInnerContainer>
         </SecondSubCatHeaderContainer>
     );

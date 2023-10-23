@@ -5,7 +5,6 @@ import {
     CategoryName,
     HeaderContainer,
     LinksContainer,
-    Breadcrumbs,
     InnerContainer, StyledLink, StyledOtherLink, SubCatBreadcrumbs
 } from "./CategoryHeader.styles";
 import WhiteButton from "../../tools/button/WhiteButton";

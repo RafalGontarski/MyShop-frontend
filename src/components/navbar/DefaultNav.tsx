@@ -44,7 +44,7 @@ import {
 
 import {Link} from "react-router-dom";
 import {MenuDrawer} from "../tools/drawer/MenuDrawer";
-import Logo from "../../resources/img/jedziemy.png";
+import Logo from "../../resources/img/PlLogo.png";
 import {InputAdornment} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import {LanguageDrawer} from "../tools/drawer/LanguageDrawer";

@@ -15,7 +15,7 @@ import {
     StyledHandIcon,
     StyledIconClose,
     RememberMeCheckBox,
-    LoginFormContainer,
+    FormContainer,
     CustomerCenterText,
     StyledFormControlLabel,
 }

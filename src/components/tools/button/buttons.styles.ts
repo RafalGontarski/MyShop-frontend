@@ -18,7 +18,8 @@ export const StyledButton = styled(Button)`
     color: #fff; // Dziedziczy kolor tekstu z rodzica
     display: inline-flex;
     &:hover {
-      background-image: linear-gradient(to right, blue, green);
+      //background-image: linear-gradient(to right, blue, green);
+      background-color: green;
 
       &::after {
         content: "";
@@ -27,6 +28,83 @@ export const StyledButton = styled(Button)`
         left: 0;
         right: 0;
       }
+    }
+  }
+`;
+
+export const StyledAddToBasketButton = styled(Button)`
+  && {
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: larger;
+    margin-top: 1rem;
+    background-color: #000;
+    padding: 0.5em 1em; // Dodaje elastyczny padding do przycisku
+    //height: 40px;
+    position: relative;
+    border-radius: 2rem;
+    text-decoration: none; // Usuwa podkreślenie linku
+    color: #fff; // Dziedziczy kolor tekstu z rodzica
+    display: inline-flex;
+    width: 80%;
+    margin-left: 10px;
+    &:hover {
+      //background-image: linear-gradient(to right, blue, green);
+      background-color: green;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (max-width: 1184px) {
+      scroll-padding: 0;
+      font-size: medium;
+    }
+    @media (max-width: 940px) {
+      font-size: small;
+    }
+  }
+`;
+
+export const QuantitySelectorButton = styled(Button)`
+  && {
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    margin-top: 1rem;
+    background-color: rgba(0,0,0,0.1);
+    padding: 0.5em 1em; // Dodaje elastyczny padding do przycisku
+    //height: 40px;
+    position: relative;
+    border-radius: 2rem;
+    text-decoration: none; // Usuwa podkreślenie linku
+    color: #000; // Dziedziczy kolor tekstu z rodzica
+    display: inline-flex;
+    &:hover {
+      //background-image: linear-gradient(to right, blue, green);
+      background-color: lightgrey;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (max-width: 1184px) {
+      font-size: medium;
+    }
+
+    @media (max-width: 940px) {
+      font-size: small;
     }
   }
 `;
@@ -88,6 +166,8 @@ export const StyledLinkButton = styled(Button)`
     }
   }
 `;
+
+
 
 export const StyledCategoryNavbarLinkButton = styled(Button)`
   && {

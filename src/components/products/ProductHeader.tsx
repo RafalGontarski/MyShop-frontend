@@ -2,13 +2,13 @@ import React from "react";
 import {ProductType} from "../../models/types/ProductType";
 import {
     BreadcrumbContainer,
-    SecondSubCatBreadcrumbs,
+    ProductBreadcrumbs, ProductHeaderContainer,
+    ProductInnerContainer,
     SecondSubCatHeaderContainer,
-    SecondSubCatInnerContainer,
-    StyledLink,
-    SubCatSpan
+    StyledProductLink,
 } from "../categories/categoryHeader/CategoryHeader.styles";
 import HomeIcon from "@mui/icons-material/Home";
+
 
 interface ProductHeaderProps {
     product: ProductType | null;
@@ -34,41 +34,41 @@ export const ProductHeader: React.FC<ProductHeaderProps> = ({
     const secondSubCategory = product?.secondSubCategory;
 
     return (
-        <SecondSubCatHeaderContainer>
-            <SecondSubCatInnerContainer>
+        <ProductHeaderContainer>
+            <ProductInnerContainer>
                 <BreadcrumbContainer>
-                    <SecondSubCatBreadcrumbs >
-                        <StyledLink
+                    <ProductBreadcrumbs >
+                        <StyledProductLink
                             to="/">
                             <HomeIcon />
-                        </StyledLink>
+                        </StyledProductLink>
 
-                        <StyledLink
-                            to="/categories">Wszystkie Kategorie</StyledLink>
-                        <StyledLink
-                            to={`/categories/${category?.name || 'Nieznana kategoria'}`}>{category?.name || 'Nieznana kategoria'}</StyledLink>
+                        <StyledProductLink
+                            to="/categories">Wszystkie Kategorie</StyledProductLink>
+                        <StyledProductLink
+                            to={`/categories/${category?.name || 'Nieznana kategoria'}`}>{category?.name || 'Nieznana kategoria'}</StyledProductLink>
                         {subCategory && (
                             <>
-                                <StyledLink
-                                    to={`/categories/${category?.name}/${subCategory?.name}`}>{subCategory?.name}</StyledLink>
+                                <StyledProductLink
+                                    to={`/categories/${category?.name}/${subCategory?.name}`}>{subCategory?.name}</StyledProductLink>
                             </>
                         )}
                         {secondSubCategory && (
                             <>
-                                <StyledLink
-                                    to={`/categories/${category?.name}/${subCategory?.name}/${secondSubCategory?.name}`}>{secondSubCategory?.name}</StyledLink>
+                                <StyledProductLink
+                                    to={`/categories/${category?.name}/${subCategory?.name}/${secondSubCategory?.name}`}>{secondSubCategory?.name}</StyledProductLink>
                             </>
                         )}
                         {productName && (
                             <>
-                                <StyledLink
-                                    to={`/categories/${category?.name}/${subCategory?.name}/${secondSubCategory?.name}/${product?.name}`}>{product?.name}</StyledLink>
+                                <StyledProductLink
+                                    to={`/categories/${category?.name}/${subCategory?.name}/${secondSubCategory?.name}/${product?.name}`}>{product?.name}</StyledProductLink>
                             </>
                         )}
-                    </SecondSubCatBreadcrumbs>
+                    </ProductBreadcrumbs>
                 </BreadcrumbContainer>
-            </SecondSubCatInnerContainer>
-        </SecondSubCatHeaderContainer>
+            </ProductInnerContainer>
+        </ProductHeaderContainer>
     );
 }
 

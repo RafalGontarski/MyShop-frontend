@@ -9,6 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import CheckBox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
+import Grid from "@mui/material/Grid";
 
 
 
@@ -29,10 +30,6 @@ export const StyledDrawer = styled(Drawer)`
     }
   }
 `;
-
-
-
-
 
 export const ValidationError = styled.div`
   && {
@@ -60,7 +57,7 @@ export const IconClose = styled(Box)`
 export const StyledIconClose = styled(CloseIcon)`
   && {
     margin: 1rem;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
   }
 `
@@ -79,12 +76,73 @@ export const MainContainer = styled(Box)`
     padding: 2px;
   }
 `
-export const LoginFormContainer = styled(Box)`
+export const FormContainer = styled(Box)`
   && {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+`
+
+export const StyledBox = styled(Box)`
+  && {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+`
+
+export const StyledGrid = styled(Grid)`
+  && {
+    margin-top: 1px;
+    margin-left: 1.1rem;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+export const NextStyledGrid = styled(Grid)`
+  && {
+    margin-top: 1px;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+export const TitleContainer = styled(Box)`
+  && {
+    display: flex;
+    align-items: flex-start;
+  }
+`
+export const CloseIconContainer = styled(Box)`
+  && {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+  }
+`
+
+export const ElementsCont = styled(Box)`
+  && {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    
+  }
+`
+
+export const StyledDivider = styled(Divider)`
+  && {
+    margin-top: 5%;
+    margin-right: 8%;
+    margin-left: 8%;
+    margin-bottom: 5%;
+    height: 0.1%;
+    border-color: #000000;
   }
 `
 export const Welcome = styled(Box)`

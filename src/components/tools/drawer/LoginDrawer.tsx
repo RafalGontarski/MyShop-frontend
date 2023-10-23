@@ -35,7 +35,7 @@ import {
     ValidationError,
     StyledIconClose,
     RememberMeCheckBox,
-    LoginFormContainer,
+    FormContainer,
     HiddenStyledTextField,
     StyledFormControlLabel,
     TogglePasswordVisibility,
@@ -185,7 +185,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                     </ButtonClose>
                 </IconClose>
 
-                <LoginFormContainer>
+                <FormContainer>
 
                     <Welcome>
                         <WelcomeText variant="h4" gutterBottom>
@@ -249,7 +249,7 @@ export const LoginDrawer: React.FC<DrawerProps> = ({open, onClose, onRegisterCli
                         onClick={combinedHandleLogin}
                     />
 
-                </LoginFormContainer>
+                </FormContainer>
 
                 <LinkCon>
                     <CustomLink
