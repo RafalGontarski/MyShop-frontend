@@ -103,6 +103,67 @@
     "Amur": "Carpa erbivora",
     "Jesiotr": "Storione",
     "Podlodowe": "Sott'acqua"
+  },
+  "menuDrawer": {
+    "Szczupak": "Luccio",
+    "Sandacz": "Lucioperca",
+    "Okoń": "Persico",
+    "Sum": "Siluro",
+    "Boleń": "Aspio",
+    "Kleń": "Cavedano",
+    "Jaź": "Ide",
+    "Pstrąg": "Trota",
+    "Troć": "Trota di mare",
+    "Karp": "Carpa",
+    "Amur": "Carpa erbivora",
+    "Jesiotr": "Storione",
+    "Podlodowe": "Sott'acqua",
+    "new": "Più recenti",
+    "bestseller": "Bestseller",
+    "bargains": "Offerte",
+    "giftVoucher": "Buono regalo"
+  },
+  "categoryHeader": {
+    "breadCrumbs": {
+      "allCategories": "Tutte le Categorie",
+      "Szczupak": "Luccio",
+      "Sandacz": "Lucioperca",
+      "Okoń": "Persico",
+      "Sum": "Siluro",
+      "Boleń": "Aspio",
+      "Kleń": "Cavedano",
+      "Jaź": "Ide",
+      "Pstrąg": "Trota",
+      "Troć": "Trota di mare",
+      "Karp": "Carpa",
+      "Amur": "Carpa erbivora",
+      "Jesiotr": "Storione",
+      "Podlodowe": "Sott'acqua"
+    },
+    "title": {
+      "Szczupak": "Luccio",
+      "Sandacz": "Lucioperca",
+      "Okoń": "Persico",
+      "Sum": "Siluro",
+      "Boleń": "Aspio",
+      "Kleń": "Cavedano",
+      "Jaź": "Ide",
+      "Pstrąg": "Trota",
+      "Troć": "Trota di mare",
+      "Karp": "Carpa",
+      "Amur": "Carpa erbivora",
+      "Jesiotr": "Storione",
+      "Podlodowe": "Sott'acqua"
+    },
+    "links": {
+      "new": "NOVITÀ",
+      "brands": "MARCHI",
+      "knowledge": "CONOSCENZA",
+      "consultations": "CONSULTAZIONI"
+    },
+    "buttons": {
+      "consulting": "CONSULENZA"
+    }
   }
 
 

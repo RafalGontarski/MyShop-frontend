@@ -184,7 +184,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                         underline="none"
                                         onClick={onClose}
                                     >
-                                        {selectedCategory.name}
+                                        {t(`menuDrawer.${selectedCategory.name}`)}
                                     </ProfileDrawerLink>
 
                                     {subCategories.map(subCategory => (
@@ -214,7 +214,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                                 setSelectedCategory(category);
                                             }}
                                         >
-                                            {category.name}
+                                            {t(`menuDrawer.${category.name}`)}
                                             <StyledArrowForwardIcon />
                                         </ProfileDrawerLink>
                                     ))}
@@ -234,21 +234,21 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                         to={"/newest"}
                                         onClick={onClose}
                                     >
-                                        Nowości
+                                        {t(`menuDrawer.new`)}
                                     </ProfileDrawerLink>
                                     <ProfileDrawerLink
                                         as={Link}
                                         to={"/topSeller"}
                                         onClick={onClose}
                                     >
-                                        Bestsellery
+                                        {t(`menuDrawer.bestseller`)}
                                     </ProfileDrawerLink>
                                     <ProfileDrawerLink
                                         as={Link}
                                         to={"/occasions"}
                                         onClick={onClose}
                                     >
-                                        Okazje
+                                        {t(`menuDrawer.bargains`)}
                                     </ProfileDrawerLink>
 
                                     <ProfileLine />
@@ -258,7 +258,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ open, onClose, initialSe
                                         to={"/occasions"}
                                         onClick={onClose}
                                     >
-                                        Bon upominkowy
+                                        {t(`menuDrawer.giftVoucher`)}
                                     </ProfileDrawerLink>
                                 </>
                             )}

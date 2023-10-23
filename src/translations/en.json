@@ -103,8 +103,66 @@
     "Amur": "Grass Carp",
     "Jesiotr": "Sturgeon",
     "Podlodowe": "Underwater"
+  },
+  "menuDrawer": {
+    "Szczupak": "Pike",
+    "Sandacz": "Zander",
+    "Okoń": "Perch",
+    "Sum": "Catfish",
+    "Boleń": "Asp",
+    "Kleń": "Chub",
+    "Jaź": "Ide",
+    "Pstrąg": "Trout",
+    "Troć": "Sea Trout",
+    "Karp": "Carp",
+    "Amur": "Grass Carp",
+    "Jesiotr": "Sturgeon",
+    "Podlodowe": "Underwater",
+    "new": "Newest",
+    "bestseller": "Bestsellers",
+    "bargains": "Bargains",
+    "giftVoucher": "Gift Voucher"
+  },
+  "categoryHeader": {
+    "breadCrumbs": {
+      "allCategories": "All Categories",
+      "Szczupak": "Pike",
+      "Sandacz": "Zander",
+      "Okoń": "Perch",
+      "Sum": "Catfish",
+      "Boleń": "Asp",
+      "Kleń": "Chub",
+      "Jaź": "Ide",
+      "Pstrąg": "Trout",
+      "Troć": "Sea Trout",
+      "Karp": "Carp",
+      "Amur": "Grass Carp",
+      "Jesiotr": "Sturgeon",
+      "Podlodowe": "Underwater"
+    },
+    "title": {
+      "Szczupak": "Pike",
+      "Sandacz": "Zander",
+      "Okoń": "Perch",
+      "Sum": "Catfish",
+      "Boleń": "Asp",
+      "Kleń": "Chub",
+      "Jaź": "Ide",
+      "Pstrąg": "Trout",
+      "Troć": "Sea Trout",
+      "Karp": "Carp",
+      "Amur": "Grass Carp",
+      "Jesiotr": "Sturgeon",
+      "Podlodowe": "Underwater"
+    },
+    "links": {
+      "new": "NEWS",
+      "brands": "BRANDS",
+      "knowledge": "KNOWLEDGE",
+      "consultations": "CONSULTATIONS"
+    },
+    "buttons": {
+      "consulting": "CONSULTING"
+    }
   }
-
-
-
 }

@@ -103,9 +103,67 @@
     "Amur": "Carpe herbivore",
     "Jesiotr": "Esturgeon",
     "Podlodowe": "Sous l'eau"
+  },
+  "menuDrawer": {
+    "Szczupak": "Brochet",
+    "Sandacz": "Sandre",
+    "Okoń": "Perche",
+    "Sum": "Silure",
+    "Boleń": "Aspe",
+    "Kleń": "Chevesne",
+    "Jaź": "Ide",
+    "Pstrąg": "Truite",
+    "Troć": "Truite de mer",
+    "Karp": "Carpe",
+    "Amur": "Carpe herbivore",
+    "Jesiotr": "Esturgeon",
+    "Podlodowe": "Sous l'eau",
+    "new": "Nouveautés",
+    "bestseller": "Meilleures ventes",
+    "bargains": "Bonnes affaires",
+    "giftVoucher": "Bon cadeau"
+  },
+  "categoryHeader": {
+    "breadCrumbs": {
+      "allCategories": "Toutes les Catégories",
+      "Szczupak": "Brochet",
+      "Sandacz": "Sandre",
+      "Okoń": "Perche",
+      "Sum": "Silure",
+      "Boleń": "Aspe",
+      "Kleń": "Chevesne",
+      "Jaź": "Ide",
+      "Pstrąg": "Truite",
+      "Troć": "Truite de mer",
+      "Karp": "Carpe",
+      "Amur": "Carpe herbivore",
+      "Jesiotr": "Esturgeon",
+      "Podlodowe": "Sous l'eau"
+    },
+    "title": {
+      "Szczupak": "Brochet",
+      "Sandacz": "Sandre",
+      "Okoń": "Perche",
+      "Sum": "Silure",
+      "Boleń": "Aspe",
+      "Kleń": "Chevesne",
+      "Jaź": "Ide",
+      "Pstrąg": "Truite",
+      "Troć": "Truite de mer",
+      "Karp": "Carpe",
+      "Amur": "Carpe herbivore",
+      "Jesiotr": "Esturgeon",
+      "Podlodowe": "Sous l'eau"
+    },
+    "links": {
+      "new": "NOUVEAUTÉS",
+      "brands": "MARQUES",
+      "knowledge": "CONNAISSANCE",
+      "consultations": "CONSULTATIONS"
+    },
+    "buttons": {
+      "consulting": "CONSEIL"
+    }
   }
-
-
-
 
 }

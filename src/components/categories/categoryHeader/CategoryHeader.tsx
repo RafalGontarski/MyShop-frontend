@@ -5,13 +5,14 @@ import {
     CategoryName,
     HeaderContainer,
     LinksContainer,
-    InnerContainer, StyledLink, StyledOtherLink, SubCatBreadcrumbs
+    InnerContainer, StyledLink, StyledOtherLink, SubCatBreadcrumbs, StyledConsultationsLink
 } from "./CategoryHeader.styles";
 import WhiteButton from "../../tools/button/WhiteButton";
 import HomeIcon from '@mui/icons-material/Home';
 import {CategoryApi} from "../../../api/CategoryApi";
 import CategoryType from "../../../models/types/CategoryType";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 
 interface CategoryHeaderProps {
@@ -30,6 +31,7 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
     // console.log("subCategoryName:", subCategoryName);
 
     const [categories, setCategories] = useState<CategoryType[]>([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -126,10 +128,11 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
                         ><HomeIcon /></StyledLink>
                         <StyledLink
                             to="/categories"
-                        >Wszystkie Kategorie</StyledLink>
+                        >{t(`categoryHeader.breadCrumbs.allCategories`)}</StyledLink>
                         <StyledLink
                             to={`/categories/${categoryName}`}
-                        >{categoryName}</StyledLink>
+                        >{t(`categoryHeader.breadCrumbs.${categoryName}`)
+                        }</StyledLink>
                         {subCategoryName && (
                             <>
                                 <StyledLink
@@ -148,15 +151,15 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
 
 
                 </BreadcrumbContainer>
-                <CategoryName>{productName || subCategoryName || categoryName}</CategoryName>
+                <CategoryName>{productName || subCategoryName || t(`categoryHeader.breadCrumbs.${categoryName}`)}</CategoryName>
                 <ActionsContainer>
                     <LinksContainer>
-                        <StyledOtherLink to="#">NOWOŚCI</StyledOtherLink>
-                        <StyledOtherLink to="#">MARKI</StyledOtherLink>
-                        <StyledOtherLink to="#">WIEDZA</StyledOtherLink>
-                        <StyledOtherLink to="#">KONSULTACJE</StyledOtherLink>
+                        <StyledOtherLink to="#">{t(`categoryHeader.links.new`)}</StyledOtherLink>
+                        <StyledOtherLink to="#">{t(`categoryHeader.links.brands`)}</StyledOtherLink>
+                        <StyledOtherLink to="#">{t(`categoryHeader.links.knowledge`)}</StyledOtherLink>
+                        <StyledConsultationsLink to="#">{t(`categoryHeader.links.consultations`)}</StyledConsultationsLink>
                     </LinksContainer>
-                    <WhiteButton label={'Doradztwo'}/>
+                    <WhiteButton label={t(`categoryHeader.buttons.consulting`)}/>
                     {/*<ActionButton>Przycisk</ActionButton>*/}
                 </ActionsContainer>
             </InnerContainer>

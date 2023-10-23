@@ -89,6 +89,7 @@
       }
     }
   },
+
   "categoryNavbar": {
     "Szczupak": "Szczupak",
     "Sandacz": "Sandacz",
@@ -103,5 +104,67 @@
     "Amur": "Amur",
     "Jesiotr": "Jesiotr",
     "Podlodowe": "Podlodowe"
+  },
+  "menuDrawer": {
+    "Szczupak": "Szczupak",
+    "Sandacz": "Sandacz",
+    "Okoń": "Okoń",
+    "Sum": "Sum",
+    "Boleń": "Boleń",
+    "Kleń": "Kleń",
+    "Jaź": "Jaź",
+    "Pstrąg": "Pstrąg",
+    "Troć": "Troć",
+    "Karp": "Karp",
+    "Amur": "Amur",
+    "Jesiotr": "Jesiotr",
+    "Podlodowe": "Podlodowe",
+    "new": "Nowości",
+    "bestseller": "Bestsellery",
+    "bargains": "Okazje",
+    "giftVoucher": "Bon Upominkowy"
+  },
+  "categoryHeader": {
+    "breadCrumbs": {
+      "allCategories": "Wszystkie Kategorie",
+      "Szczupak": "Szczupak",
+      "Sandacz": "Sandacz",
+      "Okoń": "Okoń",
+      "Sum": "Sum",
+      "Boleń": "Boleń",
+      "Kleń": "Kleń",
+      "Jaź": "Jaź",
+      "Pstrąg": "Pstrąg",
+      "Troć": "Troć",
+      "Karp": "Karp",
+      "Amur": "Amur",
+      "Jesiotr": "Jesiotr",
+      "Podlodowe": "Podlodowe"
+    },
+    "title": {
+      "Szczupak": "Szczupak",
+      "Sandacz": "Sandacz",
+      "Okoń": "Okoń",
+      "Sum": "Sum",
+      "Boleń": "Boleń",
+      "Kleń": "Kleń",
+      "Jaź": "Jaź",
+      "Pstrąg": "Pstrąg",
+      "Troć": "Troć",
+      "Karp": "Karp",
+      "Amur": "Amur",
+      "Jesiotr": "Jesiotr",
+      "Podlodowe": "Podlodowe"
+    },
+    "links": {
+      "new": "NOWOŚCI",
+      "brands": "MARKI",
+      "knowledge": "WIEDZA",
+      "consultations": "KONSULTACJE"
+    },
+    "buttons": {
+      "consulting": "DORADZTWO"
+    }
+
   }
 }

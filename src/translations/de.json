@@ -111,7 +111,67 @@
     "Amur": "Graskarpfen",
     "Jesiotr": "Stör",
     "Podlodowe": "Unterwasser"
+  },
+  "menuDrawer": {
+    "Szczupak": "Hecht",
+    "Sandacz": "Zander",
+    "Okoń": "Barsch",
+    "Sum": "Wels",
+    "Boleń": "Rapfen",
+    "Kleń": "Kleiner Barsch",
+    "Jaź": "Ukelei",
+    "Pstrąg": "Forelle",
+    "Troć": "Meerforelle",
+    "Karp": "Karpfen",
+    "Amur": "Graskarpfen",
+    "Jesiotr": "Stör",
+    "Podlodowe": "Unterwasser",
+    "new": "Neueste",
+    "bestseller": "Bestseller",
+    "bargains": "Schnäppchen",
+    "giftVoucher": "Geschenkgutschein"
+  },
+  "categoryHeader": {
+    "breadCrumbs": {
+      "allCategories": "Alle Kategorien",
+      "Szczupak": "Hecht",
+      "Sandacz": "Zander",
+      "Okoń": "Barsch",
+      "Sum": "Wels",
+      "Boleń": "Rapfen",
+      "Kleń": "Kleiner Barsch",
+      "Jaź": "Ukelei",
+      "Pstrąg": "Forelle",
+      "Troć": "Meerforelle",
+      "Karp": "Karpfen",
+      "Amur": "Graskarpfen",
+      "Jesiotr": "Stör",
+      "Podlodowe": "Unterwasser"
+    },
+    "title": {
+      "Szczupak": "Hecht",
+      "Sandacz": "Zander",
+      "Okoń": "Barsch",
+      "Sum": "Wels",
+      "Boleń": "Rapfen",
+      "Kleń": "Kleiner Barsch",
+      "Jaź": "Ukelei",
+      "Pstrąg": "Forelle",
+      "Troć": "Meerforelle",
+      "Karp": "Karpfen",
+      "Amur": "Graskarpfen",
+      "Jesiotr": "Stör",
+      "Podlodowe": "Unterwasser"
+    },
+    "links": {
+      "new": "NEUHEITEN",
+      "brands": "MARKEN",
+      "knowledge": "WISSEN",
+      "consultations": "BERATUNG"
+    },
+    "buttons": {
+      "consulting": "BERATUNG"
+    }
   }
-
 
 }

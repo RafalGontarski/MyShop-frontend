@@ -86,6 +86,26 @@ export const StyledOtherLink = styled(Link)`
     
   }
 `
+
+export const StyledConsultationsLink = styled(Link)`
+  && {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-decoration: none;
+
+    @media (max-width: 600px) {
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 530px) {
+      display: none;
+    }
+    
+  }
+`
 interface BreadcrumbProps {
     hasSubCategories?: boolean;
 }
