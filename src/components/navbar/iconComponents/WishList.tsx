@@ -53,7 +53,13 @@ export const WishList: React.FC = () => {
 
         const storedStorages = localStorage.getItem('wishListStorages');
         if (storedStorages) {
-            setStorages(JSON.parse(storedStorages));
+            const parsedStorages: string[] = JSON.parse(storedStorages);
+            setStorages(parsedStorages);
+
+            // Jeśli nie ma wybranego schowka, ustaw pierwszy schowek jako wybrany
+            if (selectedStorage === null && parsedStorages.length > 0) {
+                setSelectedStorage("0");
+            }
         }
     }, []);
 
@@ -64,28 +70,37 @@ export const WishList: React.FC = () => {
         setStorages(prevStorages => {
             const updatedStorages = [...prevStorages, formattedDate];
             localStorage.setItem('wishListStorages', JSON.stringify(updatedStorages));
+
+            // Ustawienie nowo utworzonego schowka jako wybranego schowka
+            setSelectedStorage(String(updatedStorages.length - 1));
+
             return updatedStorages;
         });
     };
+
 
     const handleStorageClick = (index: number) => {
         setSelectedStorage(index.toString());
     };
 
 
-    const handleDeleteStorage = () => {
-        if (selectedStorage !== null && selectedStorage !== "initial") {
-            const indexToDelete = parseInt(selectedStorage);
-            setStorages(prevStorages => {
-                const updatedStorages = [...prevStorages];
-                updatedStorages.splice(indexToDelete, 1);
-                localStorage.setItem('wishListStorages', JSON.stringify(updatedStorages));
-                return updatedStorages;
-            });
-            setSelectedStorage(null);
-        }
-    };
+    const handleDeleteStorage = (): void => {
+        const deletedStorageIndex: number = selectedStorage !== null ? parseInt(selectedStorage) : -1;
 
+        if (deletedStorageIndex === -1) return;
+
+        let updatedStorages: string[] = [...storages];
+        updatedStorages.splice(deletedStorageIndex, 1);
+        setStorages(updatedStorages);
+
+        if (updatedStorages.length === 0) {
+            setSelectedStorage(null);
+        } else if (deletedStorageIndex === updatedStorages.length) {
+            setSelectedStorage(String(updatedStorages.length - 1));
+        } else {
+            setSelectedStorage(String(deletedStorageIndex));
+        }
+    }
 
 
 
@@ -131,9 +146,11 @@ export const WishList: React.FC = () => {
                             </Title>
                         </CategoryTitleContainer>
 
-                        {selectedStorage !== null && (
+                        {storages.length > 0 && (
                             <DeleteStorage label={'Usuń Schowek'} onClick={handleDeleteStorage}/>
                         )}
+
+
 
                         <FormContainer>
                             <ProfileImageContainer style={{backgroundColor: '#f5f5f5'}}>
