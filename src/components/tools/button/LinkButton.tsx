@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledButton, StyledLinkButton} from './buttons.styles';
+import {StyledLinkButton} from './buttons.styles';
 
 interface CustomButtonProps {
     label: string;

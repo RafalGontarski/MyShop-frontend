@@ -5,7 +5,7 @@ import { CategoryApi } from "../../../api/CategoryApi";
 import CategoryNavbarLinkButton from "../../tools/button/CategoryNavbarLinkButton";
 import {Link} from "react-router-dom";
 import {useSelectedCategory} from "../../../models/context/SelectedCategoryContext";
-import {LinkClicksState, polishToEnglishMap, useClickContext} from "../../../models/providers/ClickProvider";
+import {polishToEnglishMap, useClickContext} from "../../../models/providers/ClickProvider";
 import {useTranslation} from "react-i18next";
 
 // Zakładam, że CategoryType został już zdefiniowany wcześniej

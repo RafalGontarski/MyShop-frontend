@@ -1,34 +1,31 @@
 import { Drawer } from "@mui/material";
 import React from "react";
 import {useTranslation} from "react-i18next";
-import CustomButton from "../button/Button";
 import {Link} from "react-router-dom";
 
 // styled component
 import {
-    Line,
     Welcome,
     IconClose,
-    RememberMe,
-    WelcomeText,
     ButtonClose,
-    MainContainer,
     StyledHandIcon,
     StyledIconClose,
-    RememberMeCheckBox,
-    FormContainer,
     CustomerCenterText,
-    StyledFormControlLabel,
 }
     from "./Drawer.styles";
 
 import {
-    LineContainer, LineText,
+    LineContainer,
+    LineText,
     LinksContainer,
     ProfileContainer,
     ProfileDrawerLink,
-    ProfileLine, ProfileMainContainer, ProfileWelcome,
-    ProfileWelcomeText, UserData, UserDataContainer
+    ProfileLine,
+    ProfileMainContainer,
+    ProfileWelcome,
+    ProfileWelcomeText,
+    UserData,
+    UserDataContainer
 } from "./ProfileDrawer.styles";
 
 

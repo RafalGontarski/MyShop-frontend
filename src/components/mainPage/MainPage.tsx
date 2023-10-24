@@ -6,9 +6,6 @@ import {DisplayCategoriesInMainPage} from "../categories/DisplayCategoriesInMain
 import {MainPageLinksUnderCarousel} from "./MainPageLinksUnderCarousel";
 import {useTranslation} from "react-i18next";
 
-
-
-
 type MainPageProps = {
     userName: string | null;
 };

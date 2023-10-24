@@ -2,33 +2,26 @@ import React, {useEffect, useState} from "react";
 import {
     Container,
     MenuWrapper,
-    MyProfileCenterText, MyProfileContainer,
+    MyProfileContainer,
     MyProfileLeftContainer, Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
 import {
-    LineContainer, LineText,
     LinksContainer,
     ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    UserData,
-    UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 import {StyledMenuIcon} from "../navbar/Navbar.styles";
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledSubtitle, StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
+import {StyledSubtitle, WelcomeText} from "../tools/drawer/Drawer.styles";
 import CustomButton from "../tools/button/Button";
-import {EditLine} from "../editPages/profileEditPanel/ProfileEditPanel.styles";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 

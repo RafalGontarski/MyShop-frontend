@@ -1,35 +1,34 @@
 import React, {useEffect, useState} from "react";
+
+import {Link} from "react-router-dom";
+import CustomButton from "../tools/button/Button";
+
+import {StyledMenuIcon} from "../navbar/Navbar.styles";
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
+
 import {
+    Title,
     Container,
     MenuWrapper,
-    MyProfileCenterText, MyProfileContainer,
-    MyProfileLeftContainer, Title,
-    WrapperMenuButton
+    WrapperMenuButton,
+    MyProfileContainer,
+    MyProfileLeftContainer,
 } from "../editPages/editPages.styles";
 import {
-    LineContainer, LineText,
     LinksContainer,
     ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    UserData,
-    UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
-import {Link} from "react-router-dom";
-import {StyledMenuIcon} from "../navbar/Navbar.styles";
+
+
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
 import {
     FormContainer,
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
-import CustomButton from "../tools/button/Button";
-import {EditLine} from "../editPages/profileEditPanel/ProfileEditPanel.styles";
-import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
 export const Contact: React.FC = () => {
@@ -46,10 +45,7 @@ export const Contact: React.FC = () => {
 
     return (
         <MyProfileContainer>
-
             <MyProfileLeftContainer>
-
-
                 <LinksContainer>
                     <ProfileDrawerLink
                         as={Link}

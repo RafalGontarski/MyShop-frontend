@@ -16,7 +16,6 @@ import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 import {AuthApi} from "../../../api/AuthApi";
-
 import GoogleLoginButton from '../button/GoogleLoginButton';
 
 // styled component

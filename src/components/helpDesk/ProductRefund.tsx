@@ -2,17 +2,13 @@ import React, {useEffect, useState} from "react";
 import {
     Container,
     MenuWrapper,
-    MyProfileCenterText, MyProfileContainer,
+    MyProfileContainer,
     MyProfileLeftContainer, Title,
     WrapperMenuButton
 } from "../editPages/editPages.styles";
 import {
-    LineContainer, LineText,
     LinksContainer,
     ProfileDrawerLink, ProfileLine,
-    ProfileWelcome,
-    UserData,
-    UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
 import {Link} from "react-router-dom";
 import {StyledMenuIcon} from "../navbar/Navbar.styles";
@@ -29,12 +25,6 @@ import CustomButton from "../tools/button/Button";
 import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 
-interface FreeShippingProps {
-    isExpanded: boolean;
-    toggleExpanded: () => void;
-}
-
-// export const Refund: React.FC<FreeShippingProps> = ({ isExpanded, toggleExpanded }) => {
 export const ProductRefund: React.FC = () => {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(

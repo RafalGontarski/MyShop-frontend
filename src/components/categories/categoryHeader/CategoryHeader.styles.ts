@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {MenuItem, Select} from "@mui/material";
+import FilterIcon from "@mui/icons-material/FilterList";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -87,8 +90,24 @@ export const StyledOtherLink = styled(Link)`
       font-weight: bold;
       font-size: 0.8rem;
     }
-    
   }
+`
+
+export const StyledSecondSubCategorySelect = styled(Select)`
+  && .MuiInput-underline:before {
+    border-bottom: none;
+  }
+
+  && .MuiInput-underline:after {
+    border-bottom: none;
+  }
+`
+
+export const StyledMenuItem = styled(MenuItem)`
+  &&.Mui-selected {
+    background-color: transparent;
+  }
+    
 `
 
 export const StyledConsultationsLink = styled(Link)`
@@ -314,6 +333,26 @@ export const ActionsContainer = styled.div`
     align-items: center;
 `;
 
+export const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+`;
+
+export const StyledFilterIcon = styled(FilterIcon)`
+  color: black;
+`;
+
+export const StyledTypography = styled(Typography)`
+  color: black;
+`;
+
+export const SelectContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 1rem;
+`;
 
 
 export const LinksContainer = styled.div`

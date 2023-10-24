@@ -4,7 +4,6 @@ import Drawer from '@mui/material/Drawer';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 import CountrySelector from '../selectors/CountrySelect';
 
 import CustomButton from '../button/Button';
@@ -569,25 +568,6 @@ export const RegistrationDrawer: React.FC<DrawerProps> = ({ open, onClose, onLog
                             ),
                         }}
                     />
-
-
-                    {/*<Box*/}
-                    {/*    sx={{*/}
-                    {/*        display: 'flex',*/}
-                    {/*        justifyContent: 'centre',*/}
-                    {/*    }}*/}
-                    {/*>*/}
-                    {/*    <Typography*/}
-                    {/*        variant="body1"*/}
-                    {/*        gutterBottom*/}
-                    {/*        style={{*/}
-                    {/*            textAlign: 'center',*/}
-                    {/*            fontSize: '10px',*/}
-                    {/*        }}*/}
-                    {/*    >*/}
-                    {/*        {t('registrationDrawer.postRegistrationInfo')}*/}
-                    {/*    </Typography>*/}
-                    {/*</Box>*/}
 
                     <CustomButton onClick={handleSubmit} label={t('registrationDrawer.createAccountButton')}/>
 

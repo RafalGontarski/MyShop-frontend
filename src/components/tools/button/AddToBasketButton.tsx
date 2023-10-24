@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledAddToBasketButton, StyledButton} from './buttons.styles';
+import {StyledAddToBasketButton} from './buttons.styles';
 
 interface CustomButtonProps {
     label: string;

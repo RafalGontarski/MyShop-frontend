@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-import CustomButton from "../tools/button/Button";
 import {StyledMenuIcon} from "../navbar/Navbar.styles";
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
 
 import {
     Container,
@@ -17,13 +18,10 @@ import {
     LinksContainer,
     ProfileDrawerLink,
     ProfileLine,
-    UserDataContainer
 } from "../tools/drawer/ProfileDrawer.styles";
 
 import {
-    CategoryFormInput,
     CategoryTitleContainer,
-    ValidateText
 } from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
 
 import {
@@ -32,8 +30,7 @@ import {
     ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
 
-import {StyledTextField, WelcomeText} from "../tools/drawer/Drawer.styles";
-import {HelpDeskAdvantageChildLink} from "./HelpDeskTools.styles";
+
 
 
 export const Guide: React.FC = () => {

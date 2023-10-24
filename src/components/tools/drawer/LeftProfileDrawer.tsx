@@ -5,19 +5,12 @@ import {Link} from "react-router-dom";
 
 // styled component
 import {
-    Line,
     Welcome,
     IconClose,
-    RememberMe,
-    WelcomeText,
     ButtonClose,
-    MainContainer,
     StyledHandIcon,
     StyledIconClose,
-    RememberMeCheckBox,
-    FormContainer,
     CustomerCenterText,
-    StyledFormControlLabel,
 }
     from "./Drawer.styles";
 
@@ -45,17 +38,11 @@ type DrawerProps = {
 
 export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogoutClick, userId, userName,userSurname, userEmail, userRole }) => {
     const { t } = useTranslation();
-    const [isExpanded, setIsExpanded] = useState(false);
+
     function handleLogout() {
         console.log("logout xd");
         onLogoutClick(); // Wywołaj funkcję przekazaną jako prop
         onClose(); // Zamknij szufladę
-    }
-
-
-    let rolesString = "";
-    if (userRole) {
-        rolesString = userRole.join(', ');
     }
 
 
@@ -86,11 +73,6 @@ export const LeftProfileDrawer: React.FC<DrawerProps> = ({ open, onClose, onLogo
                         </ProfileWelcomeText>
                         <StyledHandIcon/>
                     </Welcome>
-                    {/*<Welcome>*/}
-                    {/*    <ProfileWelcomeText variant="h6" gutterBottom>*/}
-                    {/*        {rolesString}*/}
-                    {/*    </ProfileWelcomeText>*/}
-                    {/*</Welcome>*/}
 
                     <UserDataContainer>
                         <ProfileWelcome>

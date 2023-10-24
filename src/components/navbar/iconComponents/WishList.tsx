@@ -1,14 +1,13 @@
 import React from "react";
 import {
-    Container,
-    MenuWrapper, MyProfileContainer,
-    MyProfileLeftContainer,
     Title,
-    WrapperMenuButton
+    Container,
+    MenuWrapper,
+    WrapperMenuButton,
+    MyProfileContainer,
+    MyProfileLeftContainer,
 } from "../../editPages/editPages.styles";
-import {LinksContainer, ProfileDrawerLink, ProfileLine} from "../../tools/drawer/ProfileDrawer.styles";
-import {Link} from "react-router-dom";
-import {HelpDeskAdvantageChildLink} from "../../helpDesk/HelpDeskTools.styles";
+
 import {StyledMenuIcon} from "../Navbar.styles";
 import {CategoryTitleContainer} from "../../editPages/categoriesEditPanel/CategoryEditPanel.styles";
 import {WelcomeText} from "../../tools/drawer/Drawer.styles";
@@ -29,10 +28,7 @@ export const WishList: React.FC = () => {
                     // disabled={!isEmailValid || !isPasswordValid}
                     // onClick={handleUpdateAddressBook}
                 />
-
             </MyProfileLeftContainer>
-
-
 
             <Container>
                 <MenuWrapper>

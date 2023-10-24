@@ -12,7 +12,14 @@ import {
     ZoomImage
 } from "../Product.styles";
 import {Link} from "react-router-dom";
-import {CheckboxIcon, StyledCheckbox, StyledLabel} from "./DisplayProducts.styling";
+import {
+    CheckboxIcon,
+    PriceContainer,
+    PriceInput,
+    PriceSeparator,
+    StyledCheckbox,
+    StyledLabel
+} from "./DisplayProducts.styling";
 
 
 
@@ -25,6 +32,9 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
     const [isChecked, setIsChecked] = useState(false);
     const uniqueProducents = [...new Set(products.map(product => product.producent))];
+    const [availabilityChecked, setAvailabilityChecked] = React.useState<boolean>(false);
+
+
 
     const [checkedStates, setCheckedStates] = useState(
         uniqueProducents.map(() => false)
@@ -75,9 +85,27 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                     </div>
                 ))}
                 <h3>Przedział cenowy</h3>
+                    <PriceContainer>
+                        <PriceInput type="number" placeholder="0" />
+                        <PriceSeparator>-</PriceSeparator>
+                        <PriceInput type="number" placeholder="21500" />
+                        <PriceSeparator>zł</PriceSeparator>
+                    </PriceContainer>
                 <h3>Dostępność</h3>
-                <h3>Oceny</h3>
-                <h3>Wybrane dla Ciebie</h3>
+                    <StyledCheckbox
+                        type="checkbox"
+                        id="availability-checkbox"
+                        checked={availabilityChecked}
+                        onChange={() => setAvailabilityChecked(prev => !prev)}
+                    />
+                    <StyledLabel
+                        htmlFor="availability-checkbox"
+                        className={availabilityChecked ? 'checked' : ''}
+                    >
+                        Dostępny w magazynie
+                    </StyledLabel>
+                {/*<h3>Oceny</h3>*/}
+                {/*<h3>Wybrane dla Ciebie</h3>*/}
             </FilterContainer>
             <StyledProductsGrid container>
                 {products.map((product) => (

@@ -1,19 +1,28 @@
 import React, {useState} from "react";
-import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
-import {
-    ActionsContainer,
-    BreadcrumbContainer,
-    LinksContainer,
-    SecondSubCatBreadcrumbs, SecondSubCategoryName,
-    SecondSubCatHeaderContainer,
-    SecondSubCatInnerContainer,
-    StyledLink, StyledProductLink,
-} from "./CategoryHeader.styles";
+
 import HomeIcon from "@mui/icons-material/Home";
+import {FormControl, InputLabel, SelectChangeEvent} from "@mui/material";
+
 import WhiteButton from "../../tools/button/WhiteButton";
-import FilterIcon from "@mui/icons-material/FilterList";
-import Typography from "@mui/material/Typography";
 import {useTranslation} from "react-i18next";
+
+import {
+    StyledMenuItem,
+    LinksContainer,
+    FilterContainer,
+    SelectContainer,
+    StyledTypography,
+    StyledFilterIcon,
+    ActionsContainer,
+    StyledProductLink,
+    BreadcrumbContainer,
+    SecondSubCategoryName,
+    SecondSubCatBreadcrumbs,
+    SecondSubCatInnerContainer,
+    SecondSubCatHeaderContainer,
+    StyledSecondSubCategorySelect,
+} from "./CategoryHeader.styles";
+
 
 interface CategoryHeaderProps {
     categoryName: string;
@@ -35,9 +44,10 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
 
     const [value, setValue] = useState('');
     const { t } = useTranslation();
-    const handleChange = (event: SelectChangeEvent<string>) => {
+    const handleChange = (event: SelectChangeEvent<unknown>) => {
         setValue(event.target.value as string);
     };
+
 
     const getTranslationKey = (
         categoryName: string,
@@ -88,9 +98,6 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                                 <StyledProductLink
                                     to={`/categories/${categoryName}/${subCategoryName}/${secondSubCategoryName}/${productName}`}>{productName}</StyledProductLink>
                             </>
-                            // <>
-                            //     <SubCatSpan>{productName}</SubCatSpan>
-                            // </>
                         )}
                     </SecondSubCatBreadcrumbs>
 
@@ -104,49 +111,31 @@ export const SecondSubCategoryHeader: React.FC<CategoryHeaderProps> = ({
                 </ActionsContainer>
 
                 <ActionsContainer>
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: 5,
-                        // marginBottom: '1rem'
-                    }}>
-                        <FilterIcon style={{color: 'black'}}/>
-                        <Typography style={{color: 'black'}}>Filtr</Typography>
-                    </div>
+                    <FilterContainer>
+                        <StyledFilterIcon />
+                        <StyledTypography>Filtr</StyledTypography>
+                    </FilterContainer>
 
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: 5,
-                        marginBottom: '1rem'
-                    }}>
+                    <SelectContainer>
                         <FormControl variant="standard">
                             <InputLabel id="demo-simple-select-outlined-label"></InputLabel>
-                            <Select
+                            <StyledSecondSubCategorySelect<string>
                                 labelId="demo-simple-select-outlined-label"
                                 id="demo-simple-select-outlined"
                                 value={value}
                                 onChange={handleChange}
                                 label="Wybór"
-                                sx={{
-                                    '& .MuiInput-underline:before': {
-                                        borderBottom: 'none',
-                                    },
-                                    '& .MuiInput-underline:after': {
-                                        borderBottom: 'none',
-                                    },
-                                }}
                             >
-                                <MenuItem value={0} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>dowolność</MenuItem>
-                                <MenuItem value={10} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>najtańsze</MenuItem>
-                                <MenuItem value={20} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>najdroższe</MenuItem>
-                                <MenuItem value={30} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>najwyżej oceniane</MenuItem>
-                                <MenuItem value={40} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>najnowsze produkty w pierwszej kolejności</MenuItem>
-                                <MenuItem value={50} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>alfabetycznie (A - Z)</MenuItem>
-                                <MenuItem value={60} sx={{ '&.Mui-selected': { backgroundColor: 'transparent' } }}>alfabetycznie (Z - A)</MenuItem>
-                            </Select>
+                                <StyledMenuItem value={0}>dowolność</StyledMenuItem>
+                                <StyledMenuItem value={10}>najtańsze</StyledMenuItem>
+                                <StyledMenuItem value={20}>najdroższe</StyledMenuItem>
+                                <StyledMenuItem value={30}>najwyżej oceniane</StyledMenuItem>
+                                <StyledMenuItem value={40}>najnowsze produkty w pierwszej kolejności</StyledMenuItem>
+                                <StyledMenuItem value={50}>alfabetycznie (A - Z)</StyledMenuItem>
+                                <StyledMenuItem value={60}>alfabetycznie (Z - A)</StyledMenuItem>
+                            </StyledSecondSubCategorySelect>
                         </FormControl>
-                    </div>
+                    </SelectContainer>
                 </ActionsContainer>
             </SecondSubCatInnerContainer>
         </SecondSubCatHeaderContainer>
