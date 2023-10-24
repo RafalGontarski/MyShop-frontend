@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 
+export const StorageContainer = styled.div`
+  padding-top: 1rem;
+  cursor: pointer;
+`
+
+
 export const BasketMainContainer = styled.div`
   display: flex;
   flex-direction: row;

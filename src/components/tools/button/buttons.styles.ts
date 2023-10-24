@@ -81,7 +81,7 @@ export const StyledNewStorageButton = styled(Button)`
     font-size: large;
     margin-top: 1rem;
     background-color: #000;
-    padding: 0.5em 1em; // Dodaje elastyczny padding do przycisku
+    padding: 0.5em 1rem 0.5rem 1rem; // Dodaje elastyczny padding do przycisku
     //height: 40px;
     position: relative;
     border-radius: 2rem;
@@ -89,10 +89,53 @@ export const StyledNewStorageButton = styled(Button)`
     color: #fff; // Dziedziczy kolor tekstu z rodzica
     display: inline-flex;
     width: 40%;
-    margin-left: 10px;
     &:hover {
       //background-image: linear-gradient(to right, blue, green);
       background-color: green;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (max-width: 1184px) {
+      scroll-padding: 0;
+      font-size: medium;
+    }
+    @media (max-width: 940px) {
+      font-size: small;
+    }
+  }
+`;
+
+export const StyledDeleteStorageButton = styled(Button)`
+  && {
+    text-transform: none;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    margin-top: 1rem;
+    background-color: #fff;
+    padding: 0.5em 1rem 0.5rem 1rem; // Dodaje elastyczny padding do przycisku
+    //height: 40px;
+    position: relative;
+    border-radius: 2rem;
+    border: 1px solid #000;
+    text-decoration: none; // Usuwa podkreślenie linku
+    color: #000; // Dziedziczy kolor tekstu z rodzica
+    display: inline-flex;
+    width: 20%;
+    box-shadow: none;
+    &:hover {
+      //background-image: linear-gradient(to right, blue, green);
+      background-color: #fff;
+      border: 1px solid green;
+      color: green;
+      box-shadow: none;
 
       &::after {
         content: "";

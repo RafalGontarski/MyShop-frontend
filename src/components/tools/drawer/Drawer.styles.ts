@@ -157,6 +157,22 @@ export const WelcomeText = styled(Typography)`
   }
 `
 
+export const StorageTitle = styled(Typography)`
+  && {
+    font-weight: bold;
+    color: green;
+   &:hover {
+     color: darkgreen;
+   } 
+  }
+`
+
+export const StorageSubtitle = styled(Typography)`
+  && {
+    
+  }
+`
+
 export const StyledSubtitle = styled(Typography)`
   && {
     font-weight: normal;
