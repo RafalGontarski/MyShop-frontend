@@ -16,18 +16,15 @@ import {
     ProfileImageContainer,
     ProfilePageWelcome
 } from "../../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
-import CustomButton from "../../tools/button/Button";
+
+import NewStorage from "../../tools/button/NewStorage";
 
 
 export const WishList: React.FC = () => {
     return (
         <MyProfileContainer>
             <MyProfileLeftContainer>
-                <CustomButton
-                    label={"nowy schowek"}
-                    // disabled={!isEmailValid || !isPasswordValid}
-                    // onClick={handleUpdateAddressBook}
-                />
+                <NewStorage label={'Nowy'}/>
             </MyProfileLeftContainer>
 
             <Container>
@@ -48,10 +45,10 @@ export const WishList: React.FC = () => {
                 </CategoryTitleContainer>
 
                 <FormContainer>
-                    <ProfileImageContainer>
-                        <ProfilePageWelcome>
-                            <WelcomeText variant="h4" gutterBottom>
-                                NOTHING TO SEE. SUCH EMPTY.
+                    <ProfileImageContainer style={{backgroundColor: '#f5f5f5'}}>
+                        <ProfilePageWelcome style={{backgroundColor: '#f5f5f5'}}>
+                            <WelcomeText variant="h4" gutterBottom style={{color: 'lightgray', backgroundColor: '#f5f5f5'}}>
+                                NIE MASZ NIC DO OBEJRZENIA. PUSTO.
                             </WelcomeText>
                         </ProfilePageWelcome>
                     </ProfileImageContainer>

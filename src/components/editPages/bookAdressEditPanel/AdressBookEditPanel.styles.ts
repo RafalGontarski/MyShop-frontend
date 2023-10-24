@@ -35,8 +35,8 @@ export const ProfileImageContainer = styled.div`
     margin-bottom: 20px;
     margin-right: 25%;
     margin-left: 11%;
-    border: 3px solid #e8e8e8;
-    border-radius: 4px;
+    border: 3px solid #f5f5f5;
+    border-radius: 14px;
     padding: 32px 16px 48px;
   
     @media (max-width: 940px) {

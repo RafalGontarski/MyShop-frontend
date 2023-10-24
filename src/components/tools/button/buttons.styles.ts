@@ -72,6 +72,47 @@ export const StyledAddToBasketButton = styled(Button)`
   }
 `;
 
+export const StyledNewStorageButton = styled(Button)`
+  && {
+    text-transform: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 1rem;
+    background-color: #000;
+    padding: 0.5em 1em; // Dodaje elastyczny padding do przycisku
+    //height: 40px;
+    position: relative;
+    border-radius: 2rem;
+    text-decoration: none; // Usuwa podkreślenie linku
+    color: #fff; // Dziedziczy kolor tekstu z rodzica
+    display: inline-flex;
+    width: 40%;
+    margin-left: 10px;
+    &:hover {
+      //background-image: linear-gradient(to right, blue, green);
+      background-color: green;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @media (max-width: 1184px) {
+      scroll-padding: 0;
+      font-size: medium;
+    }
+    @media (max-width: 940px) {
+      font-size: small;
+    }
+  }
+`;
+
 export const QuantitySelectorButton = styled(Button)`
   && {
     justify-content: center;
