@@ -12,6 +12,7 @@ import {
     ZoomImage
 } from "../Product.styles";
 import {Link} from "react-router-dom";
+import {CheckboxIcon, StyledCheckbox, StyledLabel} from "./DisplayProducts.styling";
 
 
 
@@ -22,6 +23,20 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
     const [, setIsHovered] = React.useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
+    const [isChecked, setIsChecked] = useState(false);
+    const uniqueProducents = [...new Set(products.map(product => product.producent))];
+
+    const [checkedStates, setCheckedStates] = useState(
+        uniqueProducents.map(() => false)
+    );
+
+    const handleCheckboxChange = (index: number) => {
+        const newCheckedStates = [...checkedStates];
+        newCheckedStates[index] = !newCheckedStates[index];
+        setCheckedStates(newCheckedStates);
+    };
+
+
 
     useEffect(() => {
         const handleResize = () => setIsSmallScreen(window.innerWidth <= 600);
@@ -40,8 +55,25 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
     return (
         <StyledDisplayContainer >
+
             <FilterContainer >
                 <h3>Producent</h3>
+                {uniqueProducents.map((producent, index) => (
+                    <div key={producent}>
+                        <StyledCheckbox
+                            type="checkbox"
+                            id={`checkbox-${producent}`}
+                            checked={checkedStates[index]} // Przekazujemy odpowiedni stan
+                            onChange={() => handleCheckboxChange(index)} // Aktualizujemy odpowiedni stan
+                        />
+                        <StyledLabel
+                            htmlFor={`checkbox-${producent}`}
+                            className={checkedStates[index] ? 'checked' : ''} // Sprawdzamy odpowiedni stan
+                        >
+                            {producent}
+                        </StyledLabel>
+                    </div>
+                ))}
                 <h3>Przedział cenowy</h3>
                 <h3>Dostępność</h3>
                 <h3>Oceny</h3>

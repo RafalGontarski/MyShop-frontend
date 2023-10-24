@@ -21,9 +21,12 @@ import {
     CloseIconContainer,
     ElementsCont,
     FormContainer,
-    MainContainer, NextStyledGrid,
+    MainContainer,
+    NextStyledGrid,
     StyledBox,
-    StyledDivider, StyledGrid, StyledIconClose,
+    StyledDivider,
+    StyledGrid,
+    StyledIconClose,
     TitleContainer,
     WelcomeText
 } from "./Drawer.styles";
