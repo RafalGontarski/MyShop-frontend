@@ -46,6 +46,16 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         setCheckedStates(newCheckedStates);
     };
 
+    const addToFavorites = (product: ProductType): void => {
+        let favorites: ProductType[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+        if (!favorites.some(favProduct => favProduct.id === product.id)) {
+            favorites.push(product);
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+        }
+    };
+
+
 
 
     useEffect(() => {
@@ -120,7 +130,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                                     onMouseLeave={() => setIsHovered(false)}
                                 >
                                     <StyledIconButton
-                                        onClick={() => console.log('Zapisano w ulubionych')}
+                                        onClick={() => addToFavorites(product)}
                                     >
                                         <StyledFavoriteIcon />
 

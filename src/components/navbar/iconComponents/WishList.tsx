@@ -37,6 +37,7 @@ import {
 import DeleteStorage from "../../tools/button/DeleteStorage";
 
 import DevImg from '../../../resources/categoriesIcon/Akcesoria.png';
+import {ProductType} from "../../../models/types/ProductType";
 
 export const WishList: React.FC = () => {
     // Lokalny stan do przechowywania daty
@@ -44,7 +45,7 @@ export const WishList: React.FC = () => {
     const [storages, setStorages] = useState<string[]>([]); // Lokalny stan przechowujący listę dat schowków
     // Lokalny stan dla aktualnie wybranego schowka
     const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
-
+    const [favorites, setFavorites] = useState<ProductType[]>([]);
 
     useEffect(() => {
         // Pobieranie daty z localStorage
@@ -77,6 +78,11 @@ export const WishList: React.FC = () => {
                 setSelectedStorage("0");
             }
         }
+    }, []);
+
+    useEffect(() => {
+        const storedFavorites: ProductType[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+        setFavorites(storedFavorites);
     }, []);
 
 
@@ -167,42 +173,47 @@ export const WishList: React.FC = () => {
                         )}
 
                         <FormContainer>
-                            <ProfileImageContainer >
-                                <ProfilePageWelcome>
-                                    <WelcomeText variant="h4" style={{color: 'lightgray', backgroundColor: '#f5f5f5'}}>
-                                        NIE MASZ NIC DO OBEJRZENIA. PUSTO.
-                                    </WelcomeText>
-                                </ProfilePageWelcome>
-                            </ProfileImageContainer>
+                            {
+                                favorites.length === 0 ? (
+                                    <ProfileImageContainer >
+                                        <ProfilePageWelcome>
+                                            <WelcomeText variant="h4" style={{color: 'lightgray', backgroundColor: '#f5f5f5'}}>
+                                                NIE MASZ NIC DO OBEJRZENIA. PUSTO.
+                                            </WelcomeText>
+                                        </ProfilePageWelcome>
+                                    </ProfileImageContainer>
+                                ) : (
+                                    favorites.map(favProduct => (
+                                        <ProductContainer key={favProduct.id}>
+                                            <ProductBox>
+                                                <StorageProductImageDiv>
+                                                    <ProductImgLink href="/">
+                                                        <ProductImg src={DevImg} alt="test" width={120} height={120}/>
+                                                    </ProductImgLink>
+                                                </StorageProductImageDiv>
 
-                            <ProductContainer>
-                                <ProductBox>
-                                    <StorageProductImageDiv>
-                                        <ProductImgLink href="/">
-                                            <ProductImg src={DevImg} alt="test" width={120} height={120}/>
-                                        </ProductImgLink>
-                                    </StorageProductImageDiv>
+                                                <ProductInformationDiv>
+                                                    <ProductManufacturerAndName>
+                                                        <ProductManufacturer>{favProduct.producent}</ProductManufacturer>
+                                                        <ProductName>{favProduct.name}</ProductName>
+                                                    </ProductManufacturerAndName>
+                                                    <StyledProductRating size={"small"} name="customized-color" defaultValue={2}/>
+                                                    <ProductDescription>{favProduct.description}</ProductDescription>
+                                                    <ProductAvailability>Dostępny w magazynie</ProductAvailability>
+                                                </ProductInformationDiv>
 
-                                    <ProductInformationDiv>
-                                        <ProductManufacturerAndName>
-                                            <ProductManufacturer>Producent</ProductManufacturer>
-                                            <ProductName>ProductName</ProductName>
-                                        </ProductManufacturerAndName>
-                                        <StyledProductRating size={"small"} name="customized-color" defaultValue={2}/>
-                                        <ProductDescription>Description</ProductDescription>
-                                        <ProductAvailability>Dostępny w magazynie</ProductAvailability>
-                                    </ProductInformationDiv>
-
-                                    <ProductPriceAndActionsDiv>
-                                        <ProductPrice>100 zł</ProductPrice>
-                                        <ProductActionsDiv>
-                                            <StyledDeleteOutlineIcon />
-                                            <StyledAddShoppingCartIcon />
-                                        </ProductActionsDiv>
-                                    </ProductPriceAndActionsDiv>
-                                </ProductBox>
-                            </ProductContainer>
-
+                                                <ProductPriceAndActionsDiv>
+                                                    <ProductPrice>{favProduct.price} zł</ProductPrice>
+                                                    <ProductActionsDiv>
+                                                        <StyledDeleteOutlineIcon />
+                                                        <StyledAddShoppingCartIcon />
+                                                    </ProductActionsDiv>
+                                                </ProductPriceAndActionsDiv>
+                                            </ProductBox>
+                                        </ProductContainer>
+                                    ))
+                                )
+                            }
                         </FormContainer>
                     </>
                 ) : (

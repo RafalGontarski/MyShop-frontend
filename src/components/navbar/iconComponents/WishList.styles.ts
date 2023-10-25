@@ -16,6 +16,7 @@ export const ProductContainer = styled.div`
     flex-direction: column;
     //align-items: center;
     //margin-bottom: 20px;
+    margin-top: 10px;
     margin-right: 25%;
     margin-left: 11%;
     border: 3px solid #f5f5f5;
