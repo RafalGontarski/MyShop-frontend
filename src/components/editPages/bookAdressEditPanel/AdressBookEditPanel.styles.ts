@@ -38,6 +38,7 @@ export const ProfileImageContainer = styled.div`
     border: 3px solid #f5f5f5;
     border-radius: 14px;
     padding: 32px 16px 48px;
+    background-color: #f5f5f5;
   
     @media (max-width: 940px) {
       margin-right: 15%;
@@ -110,6 +111,7 @@ export const ProfilePageWelcome = styled(Box)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #f5f5f5;
   }
 `
 

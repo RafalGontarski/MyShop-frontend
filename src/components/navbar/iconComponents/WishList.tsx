@@ -18,9 +18,25 @@ import {
 } from "../../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
 
 import NewStorage from "../../tools/button/NewStorage";
-import {StorageContainer} from "./Basket.styles";
+import {
+    ProductBox,
+    ProductContainer,
+    ProductImg,
+    ProductImgLink,
+    ProductInformationDiv,
+    ProductManufacturerAndName,
+    ProductManufacturer,
+    StorageContainer,
+    StorageProductImageDiv,
+    ProductName,
+    ProductDescription,
+    ProductAvailability,
+    ProductActionsDiv,
+    ProductPrice, ProductPriceAndActionsDiv, StyledProductRating, StyledDeleteOutlineIcon, StyledAddShoppingCartIcon
+} from "./WishList.styles";
 import DeleteStorage from "../../tools/button/DeleteStorage";
 
+import DevImg from '../../../resources/categoriesIcon/Akcesoria.png';
 
 export const WishList: React.FC = () => {
     // Lokalny stan do przechowywania daty
@@ -150,16 +166,43 @@ export const WishList: React.FC = () => {
                             <DeleteStorage label={'Usuń Schowek'} onClick={handleDeleteStorage}/>
                         )}
 
-
-
                         <FormContainer>
-                            <ProfileImageContainer style={{backgroundColor: '#f5f5f5'}}>
-                                <ProfilePageWelcome style={{backgroundColor: '#f5f5f5'}}>
+                            <ProfileImageContainer >
+                                <ProfilePageWelcome>
                                     <WelcomeText variant="h4" style={{color: 'lightgray', backgroundColor: '#f5f5f5'}}>
                                         NIE MASZ NIC DO OBEJRZENIA. PUSTO.
                                     </WelcomeText>
                                 </ProfilePageWelcome>
                             </ProfileImageContainer>
+
+                            <ProductContainer>
+                                <ProductBox>
+                                    <StorageProductImageDiv>
+                                        <ProductImgLink href="/">
+                                            <ProductImg src={DevImg} alt="test" width={120} height={120}/>
+                                        </ProductImgLink>
+                                    </StorageProductImageDiv>
+
+                                    <ProductInformationDiv>
+                                        <ProductManufacturerAndName>
+                                            <ProductManufacturer>Producent</ProductManufacturer>
+                                            <ProductName>ProductName</ProductName>
+                                        </ProductManufacturerAndName>
+                                        <StyledProductRating size={"small"} name="customized-color" defaultValue={2}/>
+                                        <ProductDescription>Description</ProductDescription>
+                                        <ProductAvailability>Dostępny w magazynie</ProductAvailability>
+                                    </ProductInformationDiv>
+
+                                    <ProductPriceAndActionsDiv>
+                                        <ProductPrice>100 zł</ProductPrice>
+                                        <ProductActionsDiv>
+                                            <StyledDeleteOutlineIcon />
+                                            <StyledAddShoppingCartIcon />
+                                        </ProductActionsDiv>
+                                    </ProductPriceAndActionsDiv>
+                                </ProductBox>
+                            </ProductContainer>
+
                         </FormContainer>
                     </>
                 ) : (
