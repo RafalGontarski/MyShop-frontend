@@ -27,8 +27,19 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
     // ... functions for storage manipulation
     const addNewStorage = (name: string) => {
         console.log("Adding new storage...");
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString();
+        const formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
         setStorages(prevStorages => {
-            const updatedStorages = [...prevStorages, { name, date: new Date().toLocaleDateString() }];
+            const newStorage: StorageType = {
+                name: name,
+                date: formattedDate,
+                createdAt: formattedTime,
+                editedAt: formattedTime
+            };
+
+            const updatedStorages = [...prevStorages, newStorage];
             console.log("New storages list:", updatedStorages);
             setSelectedStorage(String(updatedStorages.length - 1));
             return updatedStorages;

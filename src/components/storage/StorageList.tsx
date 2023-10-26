@@ -21,16 +21,16 @@ export const StorageList: React.FC<StorageListProps> = ({ storages, onStorageCli
     return (
         <>
             <NewStorage label={'Nowy'} onClick={handleAddNewStorage}/>
-            {storages.map((storageDate, index) => (
-                <StorageContainer key={storageDate.name} onClick={() => onStorageClick(index)}>
+            {storages.map((storage, index) => (
+                <StorageContainer key={storage.name} onClick={() => onStorageClick(index)}>
                     <StorageTitle variant="h6">
-                        Mój schowek z {storageDate.date}
+                        Mój schowek z {storage.date}
                     </StorageTitle>
                     <StorageSubtitle variant="body2" style={{color: 'grey'}}>
                         brak produktów • Data ostatniej modyfikacji
                     </StorageSubtitle>
                     <StorageSubtitle variant="body2" style={{color: 'grey'}}>
-                        {storageDate.date}
+                        {storage.createdAt} {storage.date}
                     </StorageSubtitle>
                 </StorageContainer>
             ))}
