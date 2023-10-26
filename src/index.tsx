@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
 import {BrowserRouter} from "react-router-dom";
+import {StorageProvider} from "./models/providers/StorageProvider";
 
 
 const root = ReactDOM.createRoot(
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <BrowserRouter>
+          <StorageProvider>
               <App />
+          </StorageProvider>
       </BrowserRouter>
   </React.StrictMode>
 );

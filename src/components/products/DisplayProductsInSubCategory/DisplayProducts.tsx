@@ -56,8 +56,6 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
     };
 
 
-
-
     useEffect(() => {
         const handleResize = () => setIsSmallScreen(window.innerWidth <= 600);
         window.addEventListener('resize', handleResize);

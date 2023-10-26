@@ -104,10 +104,8 @@ export const StyledNewStorageButton = styled(Button)`
 
     @media (max-width: 1184px) {
       scroll-padding: 0;
-      font-size: medium;
     }
     @media (max-width: 940px) {
-      font-size: small;
     }
   }
 `;

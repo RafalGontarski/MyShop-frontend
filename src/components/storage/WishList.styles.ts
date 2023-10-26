@@ -3,6 +3,10 @@ import {Box} from "@mui/system";
 import {Rating} from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import {Link} from "react-router-dom";
+import FilterIcon from "@mui/icons-material/FilterList";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
 export const StorageContainer = styled.div`
   padding-top: 1rem;
@@ -41,8 +45,20 @@ export const ProductBox = styled(Box)`
 
 
 
-export const ProductImgLink = styled.a`
+export const ProductLink = styled(Link)`
+  display: flex;
+`
 
+export const ProductInformationLink = styled(Link)`
+  display: flex;
+  text-decoration: none;
+  color: #000;
+`
+
+export const ProductPriceLink = styled(Link)`
+  text-decoration: none;
+  padding-top: 15px;
+  color: #000;
 `
 
 export const ProductImg = styled.img`
@@ -108,14 +124,14 @@ export const ProductDescription = styled.span`
 
 export const ProductAvailability = styled.span`
   margin-top: auto;
-  padding-bottom: 15px;
+  padding-bottom: 4%;
   color: limegreen;
 `
 
 export const ProductPrice = styled.span`
   font-size: 1.7rem;
   font-weight: bold;
-  padding-top: 15px;
+  padding-top: 4%;
   cursor: pointer;
 `
 export const ProductActionsDiv = styled.div`
@@ -144,6 +160,11 @@ export const StyledDeleteOutlineIcon = styled(DeleteOutlineIcon)`
   && {
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      color: green;
+    }
   }
 `
 
@@ -151,5 +172,52 @@ export const StyledAddShoppingCartIcon = styled(AddShoppingCartIcon)`
   && {
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
+    
+    &:hover {
+      color: green;
+    }
   }
 `
+
+export const StyledStorageFilterIcon = styled(FilterIcon)`
+  color: black;
+  padding-right: 10px;
+  
+  &:hover {
+    color: green;
+  }
+  
+`;
+
+export const StyledFilterWrapperTitle = styled(Typography)`
+  && {
+    font-size: small;
+    &:hover {
+      color: green;
+    }
+  }
+`
+
+export const StorageWrapperMenuButton = styled(IconButton)`
+  && {
+    color: #000;
+    margin-right: 20px;
+    @media (max-width: 600px) {
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: green;
+
+      ${StyledStorageFilterIcon} {
+        color: green;
+      }
+
+      ${StyledFilterWrapperTitle} {
+        color: green;
+      }
+    }
+  }
+`
+

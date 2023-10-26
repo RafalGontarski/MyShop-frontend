@@ -47,6 +47,14 @@ export const ValidationError = styled.div`
     }
   }
 `
+export const StyledDrawerBox = styled(Box)`
+  && {
+    width: 420px;
+    padding: 16px;
+  }
+`
+
+
 export const IconClose = styled(Box)`
   && {
     display: flex;
@@ -338,4 +346,14 @@ export const CustomerCenterText = styled.div`
     padding-left: 20px; // dodaje trochę odstępu od lewej krawędzi
     font-size: 1.5rem; // możesz dostosować rozmiar czcionki według potrzeb
     font-weight: bold;
+`
+
+export const StyledIconButton = styled(IconButton)`
+  && {
+    color: #000;
+    
+    &:hover {
+      color: green;
+    }
+  }
 `
