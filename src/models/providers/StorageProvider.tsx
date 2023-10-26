@@ -19,14 +19,21 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
         return storedStorageProducts ? JSON.parse(storedStorageProducts) : [];
     });
 
-    const [, setSelectedStorage] = useState<string | null>(null);
+    const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
     // ... the rest of the state
+
+
 
     // ... functions for storage manipulation
     const addNewStorage = (name: string) => {
-        const newStorage = { name, date: new Date().toLocaleDateString() };
-        setStorages(prevStorages => [...prevStorages, newStorage]);
-    }
+        console.log("Adding new storage...");
+        setStorages(prevStorages => {
+            const updatedStorages = [...prevStorages, { name, date: new Date().toLocaleDateString() }];
+            console.log("New storages list:", updatedStorages);
+            setSelectedStorage(String(updatedStorages.length - 1));
+            return updatedStorages;
+        });
+    };
 
 
     const handleStorageClick = (index: number) => {
@@ -35,16 +42,24 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
 
     useEffect(() => {
         localStorage.setItem('wishListStorages', JSON.stringify(storages));
-    }, [storages]);
-
-    useEffect(() => {
         localStorage.setItem('storageProducts', JSON.stringify(storageProducts));
-    }, [storageProducts]);
+    }, [storages, storageProducts]);
+
 
 
 
     return (
-        <StorageContext.Provider value={{ storages, storageProducts, setStorages, setStorageProducts, addNewStorage, handleStorageClick }}>
+        <StorageContext.Provider
+            value={{
+                storages,
+                storageProducts,
+                setStorages,
+                setStorageProducts,
+                addNewStorage,
+                handleStorageClick,
+                selectedStorage,
+                setSelectedStorage
+            }}>
             {children}
         </StorageContext.Provider>
     );

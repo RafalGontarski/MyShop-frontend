@@ -55,13 +55,21 @@ type StorageProps = {
 export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
 
     // Local state to store the date
-    const [date] = useState<string>('');
+    const [date] = useState<string>(new Date().toLocaleDateString());
+    const [
+        favorites,
+        setFavorites] = useState<ProductType[]>([]);
+    const {
+        storages,
+        storageProducts,
+        setStorages,
+        setStorageProducts ,
+        addNewStorage,
+        handleStorageClick,
+        selectedStorage,
+        setSelectedStorage} = useStorage();
 
-    // The local state for the currently selected clipboard
-    const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
-    const [favorites, setFavorites] = useState<ProductType[]>([]);
 
-    const { storages, storageProducts, setStorages, setStorageProducts , addNewStorage, handleStorageClick} = useStorage();
 
     useEffect(() => {
         const storedStorages = localStorage.getItem('wishListStorages');
@@ -79,7 +87,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         if (storedStorageProducts) {
             setStorageProducts(JSON.parse(storedStorageProducts));
         }
-    }, [selectedStorage, setStorageProducts, setStorages]);
+    }, []);
 
     useEffect(() => {
         const storedFavorites: ProductType[] = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -97,7 +105,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         if (selectedStorage !== null) {
             localStorage.setItem('selectedStorage', selectedStorage);
         }
-    }, [selectedStorage]);
+    }, []);
 
 
     const handleDeleteStorage = (): void => {
@@ -178,7 +186,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                     <>
                         <CategoryTitleContainer>
                             <Title style={{borderBottomColor: 'black'}}>
-                                Mój schowek z {selectedStorage === null || selectedStorage === "initial" ? date : storages[parseInt(selectedStorage)].name}
+                                Mój schowek z {(selectedStorage && storages[parseInt(selectedStorage)] && storages.length > 0) ? storages[parseInt(selectedStorage)].date : date}
                             </Title>
                         </CategoryTitleContainer>
 
@@ -241,7 +249,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                         </FormContainer>
                     </>
                 ) : (
-                    // Jeśli nie ma żadnych schowków
+                    // If there are no storage compartments
                     <>
                         <CategoryTitleContainer>
                             <Title style={{borderBottomColor: 'black'}}>

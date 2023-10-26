@@ -11,5 +11,7 @@ export type StorageContextType = {
     setStorageProducts: React.Dispatch<React.SetStateAction<ProductType[][]>>;
     addNewStorage: (newStorage: string) => void;
     handleStorageClick: (index: number) => void;
+    selectedStorage: string | null;
+    setSelectedStorage: React.Dispatch<React.SetStateAction<string | null>>;
     // ... the rest of the state and functions
 };
