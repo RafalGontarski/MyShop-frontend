@@ -230,20 +230,28 @@ export const StorageWrapperMenuButton = styled(IconButton)`
 `
 
 export const SumAndBtn = styled.div`
-      margin-right: 12%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  margin-right: 12%;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: center;
 `;
 
+export const SumAndPrice = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  //justify-content: center;
+  //align-items: center;
+`
+
 export const OtherLinks = styled.div`
-      margin-right: 12%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 1rem;
+  margin-right: 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
 `
 
 export const OtherLink = styled(Typography)`
@@ -256,7 +264,16 @@ export const OtherLink = styled(Typography)`
 
 export const Sum = styled(Typography)`
   && {
-        font-size: 0.8rem;
+    font-size: 0.8rem;
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
+  }
+`
+
+export const SumStoragePrice = styled(Typography)`
+  && {
+    font-size: 2.3rem;
+    font-weight: bold;
   }
 `
 

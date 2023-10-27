@@ -37,7 +37,7 @@ import {
     ProductPriceLink,
     StyledStorageFilterIcon,
     StorageWrapperMenuButton,
-    StyledFilterWrapperTitle, SumAndBtn, OtherLinks, OtherLink, Sum
+    StyledFilterWrapperTitle, SumAndBtn, OtherLinks, OtherLink, Sum, SumAndPrice, SumStoragePrice
 } from "./WishList.styles";
 import DeleteStorage from "../tools/button/DeleteStorage";
 
@@ -70,6 +70,8 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         handleStorageClick,
         selectedStorage,
         setSelectedStorage} = useStorage();
+
+    const totalSum: number = favorites.reduce((acc: number, product: ProductType) => acc + product.price, 0);
 
 
 
@@ -253,7 +255,10 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                             storages.length > 0 && favorites.length > 0 && (
                                 <>
                                     <SumAndBtn>
-                                        <Sum>Suma:</Sum>
+                                        <SumAndPrice>
+                                            <Sum>Suma </Sum>
+                                            <SumStoragePrice>{totalSum.toFixed(0)} zł</SumStoragePrice>
+                                        </SumAndPrice>
                                         <AddAllProductsToBasket  label={'włożyć wszystko do koszyka'}/>
                                     </SumAndBtn>
 
