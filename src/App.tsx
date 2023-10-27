@@ -58,7 +58,6 @@ import {MenuProvider} from "./models/providers/MenuProvider";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../src/components/tools/Theme';
 import {StorageDrawer} from "./components/tools/drawer/StorageDrawer/StorageDrawer";
-import {StorageProvider} from "./models/providers/StorageProvider";
 import { useStorage } from './hooks/UseStorage';
 
 const UserContext = createContext<{
@@ -111,7 +110,7 @@ const App = () => {
     const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
     const [isStorageDrawerOpen, setIsStorageDrawerOpen] = useState(false);
 
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [, setIsExpanded] = useState(false);
     const location = useLocation();
 
     // categoriesEditPanel
@@ -146,7 +145,7 @@ const App = () => {
         setUserPassword(userPasswordFromServer);
         setUserRole(userRoleFromServer);
 
-        // Zapisz dane użytkownika w localStorage
+        // Save user data in localStorage
         localStorage.setItem('user', JSON.stringify({
             userId: userIdFromServer,
             userName: userNameFromServer,
@@ -203,19 +202,20 @@ const App = () => {
 
     const updateUserEmail = async (userId: number, newEmail: string) => {
         try {
-            // Sprawdzamy, czy userId istnieje
+            // We check whether userId exists
             if (!userId) {
-                throw new Error("UserType ID is missing");
+                console.error("UserType ID is missing");
+                return; // Return early if there's an error
             }
-            // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
+            // We use the appropriate endpoint in the API to update the email
             await UserApi.updateUserEmail(userId, newEmail);
             console.log('Email updated successfully');
 
-            // Aktualizujemy stan lokalny po pomyślnej aktualizacji
+            // We update the local state after a successful update
             setUserEmail(newEmail);
         } catch (error) {
             console.error("Błąd podczas aktualizacji e-maila:", error);
-            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+            // You can also display an error message to the user
         }
     }
 
@@ -225,37 +225,39 @@ const App = () => {
 
     const updatePassword = async (userId: number, newPassword: string) => {
         try {
-            // Sprawdzamy, czy userId istnieje
+            // We check whether userId exists
             if (!userId) {
-                throw new Error("UserType ID is missing");
+                console.error("UserType ID is missing");
+                return; // Return early if there's an error
             }
-            // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
+            // We use the appropriate endpoint in the API to update the email
             await UserApi.updatePassword(userId, newPassword);
             console.log('Password updated successfully');
 
-            // Aktualizujemy stan lokalny po pomyślnej aktualizacji
+            // We update the local state after a successful update
             setUserPassword(newPassword);
         } catch (error) {
             console.error("Błąd podczas aktualizacji e-maila:", error);
-            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+            // You can also display an error message to the user
         }
     }
 
     const updateFirstName = async (userId: number, newFirstName: string) => {
         try {
-            // Sprawdzamy, czy userId istnieje
+            // We check whether userId exists
             if (!userId) {
-                throw new Error("UserType ID is missing");
+                console.error("UserType ID is missing");
+                return; // Return early if there's an error
             }
-            // Używamy odpowiedniego endpointu w API do aktualizacji e-maila
+            // We use the appropriate endpoint in the API to update the email
             await UserApi.updateFirstName(userId, newFirstName);
             console.log('Password updated successfully');
 
-            // Aktualizujemy stan lokalny po pomyślnej aktualizacji
+            // We update the local state after a successful update
             setUserName(newFirstName);
         } catch (error) {
             console.error("Błąd podczas aktualizacji e-maila:", error);
-            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+            // You can also display an error message to the user
         }
     }
 
@@ -269,7 +271,8 @@ const App = () => {
         newCountry: string)=> {
         try {
             if (!userId) {
-                throw new Error("UserType ID is missing");
+                console.error("UserType ID is missing");
+                return; // Return early if there's an error
             }
             await UserApi
                 .updateAddressBook(
@@ -293,7 +296,7 @@ const App = () => {
         }
         catch (error) {
             console.error("Błąd podczas aktualizacji książki adresowej:", error);
-            // Możesz również wyświetlić komunikat o błędzie dla użytkownika
+            // You can also display an error message to the user
         }
     }
 
@@ -302,7 +305,7 @@ const App = () => {
     function handleLogout() {
         setIsLoggedIn(false);
         setIsProfileDrawerOpen(false);
-        // Usuń dane użytkownika z localStorage
+        // Delete user data from localStorage
         localStorage.removeItem('user');
     }
 

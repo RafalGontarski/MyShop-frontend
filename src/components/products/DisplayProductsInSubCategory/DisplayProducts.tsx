@@ -1,25 +1,36 @@
 import React, {useEffect, useState} from "react";
-import {Card, CardContent, Grid, IconButton, Rating, Typography} from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
+import {Link} from "react-router-dom";
+import {CardContent, Typography} from "@mui/material";
 import ProductImg from "../../../resources/categoriesIcon/Akcesoria.png";
 import {ProductType} from "../../../models/types/ProductType";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import {
-    CardContainer, FilterContainer,
+    ZoomImage,
     StyledCard,
-    StyledCardMedia, StyledDisplayContainer,
+    StyledRating,
+    CardContainer,
+    FilterContainer,
+    StyledCardMedia,
+    StyledIconButton,
+    StyledProductGrid,
+    StyledProductsGrid,
     StyledFavoriteIcon,
-    StyledIconButton, StyledProductGrid, StyledProductsGrid, StyledRating,
-    ZoomImage
+    StyledDisplayContainer,
 } from "../Product.styles";
-import {Link} from "react-router-dom";
+
 import {
-    CheckboxIcon,
     PriceContainer,
     PriceInput,
     PriceSeparator,
     StyledCheckbox,
     StyledLabel
 } from "./DisplayProducts.styling";
+import {SuccessfullyToast} from "../../tools/toast/SuccessfullyToast";
+
 
 
 
@@ -33,7 +44,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
     const [isChecked, setIsChecked] = useState(false);
     const uniqueProducents = [...new Set(products.map(product => product.producent))];
     const [availabilityChecked, setAvailabilityChecked] = React.useState<boolean>(false);
-
+    const [showToast, setShowToast] = useState(false);
 
 
     const [checkedStates, setCheckedStates] = useState(
@@ -46,6 +57,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         setCheckedStates(newCheckedStates);
     };
 
+
     const addToFavorites = (event: React.MouseEvent<HTMLButtonElement>, product: ProductType): void => {
         event.stopPropagation();
         event.preventDefault();
@@ -54,8 +66,15 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         if (!favorites.some(favProduct => favProduct.id === product.id)) {
             favorites.push(product);
             localStorage.setItem("favorites", JSON.stringify(favorites));
+
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000); // Ukrywa toast po 3 sekundach
+        }
+        else {
+            toast.info("Produkt jest już w schowku.");
         }
     };
+
 
 
     useEffect(() => {
@@ -161,6 +180,11 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                     </StyledProductGrid>
                 ))}
             </StyledProductsGrid>
+            {showToast &&
+                <SuccessfullyToast closeToast={() => setShowToast(false)}>
+                    Produkt dodany do schowka!
+                </SuccessfullyToast>
+            }
         </StyledDisplayContainer>
     )
 }
