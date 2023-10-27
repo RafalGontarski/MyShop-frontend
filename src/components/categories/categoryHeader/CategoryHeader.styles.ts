@@ -14,6 +14,7 @@ export const HeaderContainer = styled.div`
     }
 `;
 
+
 export const SubCatHeaderContainer = styled.div`
     && {
       background-color: grey; // Tymczasowo czarne tło

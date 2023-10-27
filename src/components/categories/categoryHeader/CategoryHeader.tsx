@@ -109,8 +109,6 @@ export const CategoryHeader: React.FC<CategoryHeaderProps> = ({
         }
       
       }
-      
-      
     `;
 
     return (

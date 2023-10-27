@@ -22,7 +22,7 @@ export const StorageList: React.FC<StorageListProps> = ({ storages, onStorageCli
         <>
             <NewStorage label={'Nowy'} onClick={handleAddNewStorage}/>
             {storages.map((storage, index) => (
-                <StorageContainer key={storage.name} onClick={() => onStorageClick(index)}>
+                <StorageContainer key={index} onClick={() => onStorageClick(index)}>
                     <StorageTitle variant="h6">
                         Mój schowek z {storage.date}
                     </StorageTitle>

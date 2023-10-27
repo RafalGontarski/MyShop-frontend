@@ -158,8 +158,8 @@ export const StyledProductRating = styled(Rating)`
 
 export const StyledDeleteOutlineIcon = styled(DeleteOutlineIcon)`
   && {
-    width: 2rem;
-    height: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
     cursor: pointer;
 
     &:hover {
@@ -170,13 +170,21 @@ export const StyledDeleteOutlineIcon = styled(DeleteOutlineIcon)`
 
 export const StyledAddShoppingCartIcon = styled(AddShoppingCartIcon)`
   && {
-    width: 2rem;
-    height: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
     cursor: pointer;
     
     &:hover {
       color: green;
     }
+  }
+`;
+
+export const StyledAddAllProductsIcon = styled(AddShoppingCartIcon)`
+  && {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
   }
 `
 
@@ -218,6 +226,37 @@ export const StorageWrapperMenuButton = styled(IconButton)`
         color: green;
       }
     }
+  }
+`
+
+export const SumAndBtn = styled.div`
+      margin-right: 12%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+`;
+
+export const OtherLinks = styled.div`
+      margin-right: 12%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1rem;
+`
+
+export const OtherLink = styled(Typography)`
+  && {
+    font-size: 0.7rem;
+    color: darkgrey;
+    padding: 0.5rem 0 0 0;    
+  }
+`
+
+export const Sum = styled(Typography)`
+  && {
+        font-size: 0.8rem;
   }
 `
 

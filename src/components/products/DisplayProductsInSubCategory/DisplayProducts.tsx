@@ -46,7 +46,9 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         setCheckedStates(newCheckedStates);
     };
 
-    const addToFavorites = (product: ProductType): void => {
+    const addToFavorites = (event: React.MouseEvent<HTMLButtonElement>, product: ProductType): void => {
+        event.stopPropagation();
+        event.preventDefault();
         let favorites: ProductType[] = JSON.parse(localStorage.getItem("favorites") || "[]");
 
         if (!favorites.some(favProduct => favProduct.id === product.id)) {
@@ -128,7 +130,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                                     onMouseLeave={() => setIsHovered(false)}
                                 >
                                     <StyledIconButton
-                                        onClick={() => addToFavorites(product)}
+                                        onClick={(e) => addToFavorites(e, product)}
                                     >
                                         <StyledFavoriteIcon />
 

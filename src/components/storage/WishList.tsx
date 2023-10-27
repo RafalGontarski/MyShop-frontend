@@ -37,7 +37,7 @@ import {
     ProductPriceLink,
     StyledStorageFilterIcon,
     StorageWrapperMenuButton,
-    StyledFilterWrapperTitle
+    StyledFilterWrapperTitle, SumAndBtn, OtherLinks, OtherLink, Sum
 } from "./WishList.styles";
 import DeleteStorage from "../tools/button/DeleteStorage";
 
@@ -46,6 +46,8 @@ import {ProductType} from "../../models/types/ProductType";
 import {StorageList} from "./StorageList";
 import {useStorage} from "../../hooks/UseStorage";
 import {StorageType} from "../../models/types/StorageType";
+import Typography from "@mui/material/Typography";
+import AddAllProductsToBasket from "../tools/button/AddAllProductsToBasket";
 
 
 type StorageProps = {
@@ -247,6 +249,21 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                                 )
                             }
                         </FormContainer>
+                        {
+                            storages.length > 0 && favorites.length > 0 && (
+                                <>
+                                    <SumAndBtn>
+                                        <Sum>Suma:</Sum>
+                                        <AddAllProductsToBasket  label={'włożyć wszystko do koszyka'}/>
+                                    </SumAndBtn>
+
+                                    <OtherLinks>
+                                        <OtherLink>Darmowa wysyłka od 300 zł</OtherLink>
+                                        <OtherLink>Ceny zawierają podatek VAT</OtherLink>
+                                    </OtherLinks>
+                                </>
+                            )
+                        }
                     </>
                 ) : (
                     // If there are no storage compartments
