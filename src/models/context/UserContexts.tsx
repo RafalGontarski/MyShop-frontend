@@ -1,6 +1,6 @@
-import {UserType} from "../../models/types/UserType";
+import {UserType} from "../types/UserType";
 import {createContext} from "react";
-import {UserContextType} from "../../models/types/contextType/UserContextType";
+import {UserContextType} from "../types/contextType/UserContextType";
 
 
 

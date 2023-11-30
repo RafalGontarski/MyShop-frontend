@@ -14,7 +14,6 @@ import {
 } from "./Product.styles";
 import {Typography} from "@mui/material";
 import Skeleton from '@mui/material/Skeleton';
-import CustomButton from "../tools/button/Button";
 import {QuantitySelector} from "../tools/selectors/QuantitySelector";
 import AddToBasketButton from "../tools/button/AddToBasketButton";
 import UpDownIcon from '../../resources/icons/UpDownIcon.png';
@@ -29,7 +28,6 @@ type RouteParams = {
 export const Product: React.FC = () => {
     const { categoryName, subCategoryName, secondSubCategoryName, productName } = useParams<RouteParams>();
     const [products, setProducts] = useState<ProductType[]>([]);
-    const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
     const [product, setProduct] = useState<ProductType | null>(null);
 
     console.log('Product log: ', categoryName, subCategoryName, secondSubCategoryName, productName);
@@ -55,7 +53,7 @@ export const Product: React.FC = () => {
     );
 
     useEffect(() => {
-        // Debugowanie: Logowanie wszystkich parametrów, aby zobaczyć, co jest przekazywane
+        // Debugging: Logging all parameters to see what is being passed
         console.log('Params:', categoryName, subCategoryName, secondSubCategoryName, productName);
 
         // Rest of the code...

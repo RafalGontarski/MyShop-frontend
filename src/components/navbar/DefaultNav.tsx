@@ -118,7 +118,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
         case 'UAH':
             currencySymbol = '₴';
             break;
-        // Dodaj tutaj inne przypadki dla innych walut
+        // Add other cases for other currencies here
         default:
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             currencySymbol = 'zł';
@@ -144,7 +144,7 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
         case 'ua':
             countryIcon = <img src={UcraineIcon} alt="Ucraine" width={19} height={19}/>;
             break;
-        // Dodaj tutaj inne przypadki dla innych krajów
+        // Add other cases for other countries here
         default:
             countryIcon = <img src={PolishIcon} alt="Poland" width={19} height={19}/>;
     }
@@ -166,19 +166,19 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
         case 'FR':
             logoSrc = FrLogo;
             break;
-        // Dodaj tutaj inne przypadki dla innych języków
+        // Add other cases for other languages here
         default:
-            logoSrc = Logo;  // domyślne logo dla języka polskiego
+            logoSrc = Logo;  // default logo for Polish
     }
 
 
     useEffect(() => {
-        // Nasłuchuj na zmiany języka
+        // Listen for language changes
         i18n.on('languageChanged', (lang: string) => {
             setLanguageCode(lang.toUpperCase());
         });
 
-        // Wyłącz nasłuchiwanie na zmiany języka, gdy komponent jest odmontowywany
+        // Disable listening for language changes when the component is unmounted
         return () => {
             i18n.off('languageChanged');
         };
@@ -434,7 +434,9 @@ export const DefaultNav: React.FC<NormalSizeScreenTypes> = ({ isLoggedIn, openPr
                         </WishListLink>
 
 
-                        <CartLink as={Link} to="/basket">
+                        <CartLink
+                            as={Link}
+                            to="/basket">
                             <StyledRightSideLastIcon
                                 edge="end"
                                 aria-label="cart"

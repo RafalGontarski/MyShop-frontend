@@ -14,7 +14,7 @@ const NewStorage: React.FC<CustomButtonProps & { as?: React.ElementType; to?: st
             color="primary"
             onClick={onClick}
             startIcon={<AddIcon style={{fontSize: '30'}}/>}
-            {...props} // przekazuje wszystkie pozostałe atrybuty do StyledButton
+            {...props} // passes all other attributes to the StyledButton
         >
             {label}
         </StyledNewStorageButton>

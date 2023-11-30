@@ -1,7 +1,7 @@
+import React from "react";
 import NewStorage from "../tools/button/NewStorage";
 import {StorageContainer} from "./WishList.styles";
 import {StorageSubtitle, StorageTitle} from "../tools/drawer/Drawer.styles";
-import React from "react";
 import {StorageType} from "../../models/types/StorageType";
 
 type StorageListProps = {
@@ -12,10 +12,12 @@ type StorageListProps = {
 };
 
 
-export const StorageList: React.FC<StorageListProps> = ({ storages, onStorageClick, addNewStorage }) => {
+export const StorageList: React.FC<StorageListProps> = ({
+                        storages,
+                        onStorageClick, addNewStorage }) => {
 
     const handleAddNewStorage = () => {
-        addNewStorage(""); // Tutaj przekazujemy pusty argument
+        addNewStorage(""); // Here we pass an empty argument
     };
 
     return (

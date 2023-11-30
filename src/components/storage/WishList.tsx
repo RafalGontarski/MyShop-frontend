@@ -1,4 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+
+import {ProductType} from "../../models/types/ProductType";
+import {StorageType} from "../../models/types/StorageType";
+import DevImg from '../../resources/categoriesIcon/Akcesoria.png';
+import {StorageList} from "./StorageList";
+import {useStorage} from "../../hooks/UseStorage";
+import { UserContext } from "../../models/context/UserContexts";
+import DeleteStorage from "../tools/button/DeleteStorage";
+import AddAllProductsToBasket from "../tools/button/AddAllProductsToBasket";
+
+import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import {CategoryTitleContainer} from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
+
 import {
     Title,
     Container,
@@ -7,54 +20,49 @@ import {
     MyProfileLeftContainer,
 } from "../editPages/editPages.styles";
 
-import {CategoryTitleContainer} from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
-import {WelcomeText} from "../tools/drawer/Drawer.styles";
 import {
     FormContainer,
+    ProfilePageWelcome,
     ProfileImageContainer,
-    ProfilePageWelcome
 } from "../editPages/bookAdressEditPanel/AdressBookEditPanel.styles";
 
 import {
+    Sum,
+    OtherLink,
+    SumAndBtn,
     ProductBox,
-    ProductContainer,
+    OtherLinks,
     ProductImg,
-    ProductLink,
-    ProductInformationDiv,
-    ProductManufacturerAndName,
-    ProductManufacturer,
-    StorageProductImageDiv,
     ProductName,
-    ProductDescription,
-    ProductAvailability,
-    ProductActionsDiv,
+    ProductLink,
+    SumAndPrice,
     ProductPrice,
-    ProductPriceAndActionsDiv,
-    StyledProductRating,
-    StyledDeleteOutlineIcon,
-    StyledAddShoppingCartIcon,
-    ProductInformationLink,
+    SumStoragePrice,
     ProductPriceLink,
+    ProductContainer,
+    ProductActionsDiv,
+    ProductDescription,
+    StyledProductRating,
+    ProductManufacturer,
+    ProductAvailability,
+    ProductInformationDiv,
+    ProductInformationLink,
+    StorageProductImageDiv,
+    StyledDeleteOutlineIcon,
     StyledStorageFilterIcon,
     StorageWrapperMenuButton,
-    StyledFilterWrapperTitle, SumAndBtn, OtherLinks, OtherLink, Sum, SumAndPrice, SumStoragePrice
+    StyledFilterWrapperTitle,
+    StyledAddShoppingCartIcon,
+    ProductPriceAndActionsDiv,
+    ProductManufacturerAndName,
 } from "./WishList.styles";
-import DeleteStorage from "../tools/button/DeleteStorage";
-
-import DevImg from '../../resources/categoriesIcon/Akcesoria.png';
-import {ProductType} from "../../models/types/ProductType";
-import {StorageList} from "./StorageList";
-import {useStorage} from "../../hooks/UseStorage";
-import {StorageType} from "../../models/types/StorageType";
-import Typography from "@mui/material/Typography";
-import AddAllProductsToBasket from "../tools/button/AddAllProductsToBasket";
-
 
 type StorageProps = {
     openStorageDrawer: () => void;
+    addNewStorage: (newStorage: string) => void;
 }
 
-export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
+export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStorage}) => {
 
     // Local state to store the date
     const [date] = useState<string>(new Date().toLocaleDateString());
@@ -66,17 +74,23 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         storageProducts,
         setStorages,
         setStorageProducts ,
-        addNewStorage,
+        // addNewStorage,
         handleStorageClick,
         selectedStorage,
         setSelectedStorage} = useStorage();
 
     const totalSum: number = favorites.reduce((acc: number, product: ProductType) => acc + product.price, 0);
 
+    const { currentUser } = useContext(UserContext);
+    const userId = currentUser?.id;
+
+    const wishListStoragesKey = `wishListStorages_${userId}`;
+    const favoritesKey = `favorites_${userId}`;
+
 
 
     useEffect(() => {
-        const storedStorages = localStorage.getItem('wishListStorages');
+        const storedStorages = localStorage.getItem(wishListStoragesKey);
         if (storedStorages) {
             const parsedStorages: StorageType[] = JSON.parse(storedStorages);
             setStorages(parsedStorages);
@@ -91,10 +105,10 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         if (storedStorageProducts) {
             setStorageProducts(JSON.parse(storedStorageProducts));
         }
-    }, []);
+    }, [userId]);
 
     useEffect(() => {
-        const storedFavorites: ProductType[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+        const storedFavorites: ProductType[] = JSON.parse(localStorage.getItem(favoritesKey) || "[]");
         setFavorites(storedFavorites);
     }, []);
 
@@ -120,7 +134,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         const updatedStorages: StorageType[] = [...storages];
         updatedStorages.splice(deletedStorageIndex, 1);
         setStorages(updatedStorages);
-        localStorage.setItem('wishListStorages', JSON.stringify(updatedStorages));
+        localStorage.setItem(wishListStoragesKey, JSON.stringify(updatedStorages));
 
         const productsFromDeletedStorage = storageProducts[deletedStorageIndex] || [];
         productsFromDeletedStorage.forEach(product => {
@@ -132,10 +146,10 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         setStorageProducts(updatedStorageProducts);
         localStorage.setItem('storageProducts', JSON.stringify(updatedStorageProducts));
 
-        // Usuwanie produktów z głównego schowka
+        // Deleting products from the main clipboard
         const updatedFavorites = favorites.filter(favProduct => !productsFromDeletedStorage.some(p => p.id === favProduct.id));
         setFavorites(updatedFavorites);
-        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites));
 
         if (updatedStorages.length === 0) {
             setSelectedStorage(null);
@@ -150,7 +164,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
     const removeFromFavorites = (productId: number): void => {
         const updatedFavorites: ProductType[] = favorites.filter(favProduct => favProduct.id !== productId);
         setFavorites(updatedFavorites);
-        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites));
     };
 
 

@@ -32,7 +32,7 @@ export class CategoryApi {
     //SubCategories
     static getAllSubCategories = async (categoryId: number | undefined): Promise<SubCategoryType[]> => {
         if (typeof categoryId === 'undefined') {
-            // Obsługuje sytuację, gdy categoryId jest undefined, na przykład rzucając błąd:
+            // Handles the situation when categoryId is undefined, for example throwing an error:
             throw new Error("categoryId is required.");
         }
         try {
@@ -56,7 +56,7 @@ export class CategoryApi {
     // SecondSubCategories
     static getAllSecondSubCategories = async (categoryId: number | undefined, subCategoryId: number | undefined): Promise<SecondSubCategoryType[]> => {
         if (typeof categoryId === 'undefined' || typeof subCategoryId === 'undefined') {
-            // Obsługuje sytuację, gdy categoryId lub subCategoryId jest undefined, na przykład rzucając błąd:
+            // Handles the situation when categoryId or subCategoryId is undefined, for example throwing an error:
             throw new Error("Both categoryId and subCategoryId are required.");
         }
 

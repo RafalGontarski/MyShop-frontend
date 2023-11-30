@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import './i18n';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './i18n';
+
+import { UserProvider } from "./models/providers/UserProvider";
 import {BrowserRouter} from "react-router-dom";
+import reportWebVitals from './reportWebVitals';
 import {StorageProvider} from "./models/providers/StorageProvider";
 
 
@@ -14,14 +17,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-          <StorageProvider>
+          <UserProvider>
+            <StorageProvider>
               <App />
-          </StorageProvider>
+            </StorageProvider>
+          </UserProvider>
       </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

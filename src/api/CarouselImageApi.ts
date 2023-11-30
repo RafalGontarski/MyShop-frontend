@@ -4,13 +4,13 @@ import {BaseUrl} from "../constants/constants";
 
 type AddCarouselImgResponse = {
     id: number;
-    image: string; // zakodowany obraz w formacie Base64
+    image: string; // encoded image in Base64 format
 };
 
 type CarouselImage = {
-    id?: number; // Jeśli backend zwraca również ID obrazu
-    image: Uint8Array; // Zakładając, że obraz jest zwracany jako tablica bajtów
-    // Możesz dodać inne pola, jeśli backend zwraca dodatkowe informacje o obrazie
+    id?: number; // If the backend also returns the image ID
+    image: Uint8Array; // Assuming the image is returned as an array of bytes
+    // You can add other fields if the backend returns additional information about the image
 };
 
 

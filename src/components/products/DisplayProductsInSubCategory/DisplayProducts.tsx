@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {CardContent, Typography} from "@mui/material";
 import ProductImg from "../../../resources/categoriesIcon/Akcesoria.png";
 import {ProductType} from "../../../models/types/ProductType";
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { UserContext} from "../../../models/context/UserContexts";
+import {SuccessfullyToast} from "../../tools/toast/SuccessfullyToast";
+import {StorageContext} from "../../../models/context/StorageContext";
 
 import {
     ZoomImage,
@@ -29,9 +30,6 @@ import {
     StyledCheckbox,
     StyledLabel
 } from "./DisplayProducts.styling";
-import {SuccessfullyToast} from "../../tools/toast/SuccessfullyToast";
-
-
 
 
 type DisplayProductsProps = {
@@ -41,15 +39,18 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
     const [, setIsHovered] = React.useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
-    const [isChecked, setIsChecked] = useState(false);
-    const uniqueProducents = [...new Set(products.map(product => product.producent))];
+    const uniqueManufacturers = [...new Set(products.map(product => product.producent))];
     const [availabilityChecked, setAvailabilityChecked] = React.useState<boolean>(false);
     const [showToast, setShowToast] = useState(false);
-
-
+    const [productName, setProductName] = useState('');
     const [checkedStates, setCheckedStates] = useState(
-        uniqueProducents.map(() => false)
+        uniqueManufacturers.map(() => false)
     );
+
+    const { currentUser } = useContext(UserContext);
+    const { addProductToStorage, storages } = useContext(StorageContext);
+    const userId = currentUser?.id;
+    console.log('user id z Display Products: ', userId);
 
     const handleCheckboxChange = (index: number) => {
         const newCheckedStates = [...checkedStates];
@@ -57,25 +58,22 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         setCheckedStates(newCheckedStates);
     };
 
-
-    const addToFavorites = (event: React.MouseEvent<HTMLButtonElement>, product: ProductType): void => {
+    const addToFavorites = (event: React.MouseEvent<HTMLButtonElement>, product: ProductType) => {
         event.stopPropagation();
         event.preventDefault();
-        let favorites: ProductType[] = JSON.parse(localStorage.getItem("favorites") || "[]");
 
-        if (!favorites.some(favProduct => favProduct.id === product.id)) {
-            favorites.push(product);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
+        if (storages.length === 0) {
+            toast.error("Nie masz jeszcze żadnych schowków.");
+            return;
+        }
 
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000); // Ukrywa toast po 3 sekundach
-        }
-        else {
-            toast.info("Produkt jest już w schowku.");
-        }
+        // Add the product to the first basket
+        addProductToStorage(1, product); // 0 is the index of the first clipboard
+
+        setProductName(product.name);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 15000); // Hide toast after 3 seconds
     };
-
-
 
     useEffect(() => {
         const handleResize = () => setIsSmallScreen(window.innerWidth <= 600);
@@ -84,10 +82,10 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
     }, []);
 
 
-    // Opcjonalnie: sprawdź dane
+    // Optional: check the data
     console.log(products);
 
-    // Opcjonalnie: pokaż informację o ładowaniu, jeśli products jest undefined lub null
+    // Optional: show loading information if products is undefined or null
     if (!products) {
         return <p>Loading...</p>;
     }
@@ -97,17 +95,17 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
             <FilterContainer >
                 <h3>Producent</h3>
-                {uniqueProducents.map((producent, index) => (
+                {uniqueManufacturers.map((producent, index) => (
                     <div key={producent}>
                         <StyledCheckbox
                             type="checkbox"
                             id={`checkbox-${producent}`}
-                            checked={checkedStates[index]} // Przekazujemy odpowiedni stan
-                            onChange={() => handleCheckboxChange(index)} // Aktualizujemy odpowiedni stan
+                            checked={checkedStates[index]} // We convey the appropriate status
+                            onChange={() => handleCheckboxChange(index)} // We update the appropriate status
                         />
                         <StyledLabel
                             htmlFor={`checkbox-${producent}`}
-                            className={checkedStates[index] ? 'checked' : ''} // Sprawdzamy odpowiedni stan
+                            className={checkedStates[index] ? 'checked' : ''} // We check the appropriate condition
                         >
                             {producent}
                         </StyledLabel>
@@ -152,8 +150,8 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                                         onClick={(e) => addToFavorites(e, product)}
                                     >
                                         <StyledFavoriteIcon />
-
                                     </StyledIconButton>
+
                                     <ZoomImage
                                         src={ProductImg}
                                         alt={product.name}
@@ -182,7 +180,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
             </StyledProductsGrid>
             {showToast &&
                 <SuccessfullyToast closeToast={() => setShowToast(false)}>
-                    Produkt dodany do schowka!
+                    Artykuł {productName} jest teraz w Twoim schowku.
                 </SuccessfullyToast>
             }
         </StyledDisplayContainer>
