@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import NewStorage from "../tools/button/NewStorage";
 import {StorageContainer} from "./WishList.styles";
 import {StorageSubtitle, StorageTitle} from "../tools/drawer/Drawer.styles";
 import {StorageType} from "../../models/types/StorageType";
+import {StorageContext} from "../../models/context/StorageContext";
+import {UserContext} from "../../models/context/UserContexts";
 
 type StorageListProps = {
     storages: StorageType[];
@@ -14,11 +16,27 @@ type StorageListProps = {
 
 export const StorageList: React.FC<StorageListProps> = ({
                         storages,
-                        onStorageClick, addNewStorage }) => {
+                        onStorageClick,
+                        addNewStorage }) => {
+
+    const { setStorages } = useContext(StorageContext);
+
+    const { currentUser } = useContext(UserContext);
+    console.log('CurrentUser from StorageList: ', currentUser);
+    const userId = currentUser?.id;
+    console.log('User Id from StorageList: ', userId);
 
     const handleAddNewStorage = () => {
         addNewStorage(""); // Here we pass an empty argument
     };
+
+    useEffect(() => {
+        if (currentUser && currentUser.id) {
+            const storagesKey = `storages_${currentUser.id}`;
+            // Załaduj stan schowków z localStorage lub kontekstu
+        }
+    }, [currentUser, setStorages]);
+
 
     return (
         <>

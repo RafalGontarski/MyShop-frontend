@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Route, Routes, useLocation} from "react-router-dom";
 import './App.css';
 
@@ -63,6 +63,8 @@ import { useStorage } from './hooks/UseStorage';
 
 import { UserContext } from "./models/context/UserContexts";
 import { UserType } from './models/types/UserType';
+import {StorageType} from "./models/types/StorageType";
+import { ProductType } from './models/types/ProductType';
 
 const AppUserContext = createContext<{
     isLoggedIn: boolean,
@@ -116,7 +118,7 @@ const App = () => {
     const [isStorageDrawerOpen, setIsStorageDrawerOpen] = useState(false);
 
     const [currentUser, setCurrentUser] = useState<UserType | null>(null);
-
+    console.log('CurrentUser from App.tsx under const: ', currentUser);
     const [, setIsExpanded] = useState(false);
     const location = useLocation();
 
@@ -124,12 +126,13 @@ const App = () => {
     const [categories, setCategories] = useState<CategoryType[]>([]);
 
     // storage
-    const { storages, setStorages, addNewStorage, handleStorageClick} = useStorage();
+    const { storages, setStorages, setStorageProducts, addNewStorage, handleStorageClick} = useStorage();
 
 
     // Function to update currentUser
-    const userModifier = (user: UserType | null) => {
+    const userModifierFunction = (user: UserType | null) => {
         setCurrentUser(user);
+        console.log('User from App.tsx/ useModifier: ', user);
         // Also update localStorage if necessary
         localStorage.setItem('user', JSON.stringify(user));
     };
@@ -149,6 +152,7 @@ const App = () => {
         setIsLoggedIn(true);
         setIsLoginDrawerOpen(false);
         setUserId(userIdFromServer);
+        console.log('User Id from server after login: ', userIdFromServer);
         setUserName(userNameFromServer);
         setUserSurname(userSurnameFromServer);
         setUserAddress(userAddressFromServer);
@@ -174,36 +178,62 @@ const App = () => {
             // ... set the remaining fields of the UserType object
         };
 
-        // Update currentUser in UserContext
-        userModifier(newUser);
 
-        // Save user data in localStorage
-        localStorage.setItem('user', JSON.stringify(newUser));
+        userModifierFunction(newUser);
+
+        // Remaining status update
+        setIsLoggedIn(true);
+        setIsLoginDrawerOpen(false);
     }
+
+    const updateUserState = (user: UserType) => {
+        setUserId(user.id);
+        setUserName(user.firstName);
+        setUserSurname(user.lastName);
+        setUserAddress(user.address);
+        setUserPostalCode(user.postalCode);
+        setUserCity(user.city);
+        setUserCountry(user.country);
+        setUserEmail(user.email);
+        setUserPassword(user.password);
+        setUserRole(user.roles);
+        // ... update remaining states
+    };
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
-            const user = JSON.parse(storedUser);
-            setIsLoggedIn(true);
-            setUserId(user.userId);
-            setUserName(user.userName);
-            setUserAddress(user.userAddress);
-            setUserSurname(user.userSurname);
-            setUserPostalCode(user.userPostalCode);
-            setUserCity(user.userCity);
-            setUserCountry(user.userCountry);
-            setUserEmail(user.userEmail);
-            setUserPassword(user.userPassword);
-            setUserRole(user.userRole);
+            try {
+                const user = JSON.parse(storedUser);
+                setCurrentUser(user);
+                setIsLoggedIn(true);
+                // const user: UserType = JSON.parse(storedUser);
+                if (user && user.id) { // Check if important fields are available
+                    setIsLoggedIn(true);
+                    updateUserState(user);
 
-            // Load user-specific clipboards
-            const userStorages = localStorage.getItem(`storages_${user.userId}`);
-            if (userStorages) {
-                setStorages(JSON.parse(userStorages));
+                    // Load user-specific clipboards
+                    const userStoragesKey = `storages_${user.id}`;
+                    const userStorageProductsKey = `storageProducts_${user.id}`;
+
+                    const userStorages = localStorage.getItem(userStoragesKey);
+                    if (userStorages) {
+                        const parsedStorages: StorageType[] = JSON.parse(userStorages);
+                        setStorages(parsedStorages);
+                    }
+
+                    const userStorageProducts = localStorage.getItem(userStorageProductsKey);
+                    if (userStorageProducts) {
+                        const parsedStorageProducts: ProductType[][] = JSON.parse(userStorageProducts);
+                        setStorageProducts(parsedStorageProducts);
+                    }
+                }
+            } catch (e) {
+                console.error("Błąd podczas ładowania danych użytkownika", e);
             }
         }
-    }, [setStorages]);
+    }, [setStorages, setStorageProducts]);
+
 
     useEffect(() => {
         if (location.pathname === '/helpDesk/freeShipping' || location.pathname === '/helpDesk/guarantee') {
@@ -212,8 +242,6 @@ const App = () => {
             setIsExpanded(false);
         }
     }, [location.pathname]);
-
-
 
     function openProfileDrawer() {
         setIsProfileDrawerOpen(true);
@@ -345,7 +373,7 @@ const App = () => {
         <UserContext.Provider
             value={{
                 currentUser,
-                userModifier,
+                userModifier: userModifierFunction,
                 updateUserEmail,
             }}>
             <ThemeProvider theme={theme}>
@@ -497,10 +525,12 @@ const App = () => {
 
                                                         <Route path={'/helpDesk/guide'} element={<Guide />}/>
 
-                                                        <Route path="/wishList" element={<WishList
-                                                            openStorageDrawer={openStorageDrawer}
-                                                            addNewStorage={addNewStorage}
-                                                        />}/>
+                                                        <Route path="/wishList" element={
+                                                            <WishList
+                                                                openStorageDrawer={openStorageDrawer}
+                                                                addNewStorage={addNewStorage}
+                                                            />
+                                                        }/>
                                                         <Route path="/basket" element={<Basket />}/>
                                                     </Routes>
                                                 </div>

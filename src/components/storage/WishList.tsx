@@ -83,47 +83,26 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
 
     const { currentUser } = useContext(UserContext);
     const userId = currentUser?.id;
+    console.log('User Id from WishList: ', userId);
 
-    const wishListStoragesKey = `wishListStorages_${userId}`;
-    const favoritesKey = `favorites_${userId}`;
+    const storagesKey = `storages_${userId}`;
+    // const favoritesKey = `favorites_${userId}`;
+
+    // const storagesKey = `storages_${userId}`;
+    const storageProductsKey = `storageProducts_${userId}`;
 
 
 
-    useEffect(() => {
-        const storedStorages = localStorage.getItem(wishListStoragesKey);
-        if (storedStorages) {
-            const parsedStorages: StorageType[] = JSON.parse(storedStorages);
-            setStorages(parsedStorages);
 
-            // If there is no clipboard selected, set the first clipboard as selected
-            if (selectedStorage === null && parsedStorages.length > 0) {
-                setSelectedStorage("0");
-            }
-        }
-        // Additionally, we can upload products to stock here
-        const storedStorageProducts = localStorage.getItem('storageProducts');
-        if (storedStorageProducts) {
-            setStorageProducts(JSON.parse(storedStorageProducts));
-        }
-    }, [userId]);
+
+
 
     useEffect(() => {
-        const storedFavorites: ProductType[] = JSON.parse(localStorage.getItem(favoritesKey) || "[]");
-        setFavorites(storedFavorites);
-    }, []);
-
-    useEffect(() => {
-        const storedStorageProducts = localStorage.getItem('storageProducts');
-        if (storedStorageProducts) {
-            setStorageProducts(JSON.parse(storedStorageProducts));
+        if (currentUser && currentUser.id) {
+            const storagesKey = `storages_${currentUser.id}`;
+            // Załaduj stan schowków z localStorage lub kontekstu
         }
-    }, [setStorageProducts]);
-
-    useEffect(() => {
-        if (selectedStorage !== null) {
-            localStorage.setItem('selectedStorage', selectedStorage);
-        }
-    }, []);
+    }, [currentUser, setStorages]);
 
 
     const handleDeleteStorage = (): void => {
@@ -134,7 +113,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
         const updatedStorages: StorageType[] = [...storages];
         updatedStorages.splice(deletedStorageIndex, 1);
         setStorages(updatedStorages);
-        localStorage.setItem(wishListStoragesKey, JSON.stringify(updatedStorages));
+        localStorage.setItem(storagesKey, JSON.stringify(updatedStorages));
 
         const productsFromDeletedStorage = storageProducts[deletedStorageIndex] || [];
         productsFromDeletedStorage.forEach(product => {
@@ -149,7 +128,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
         // Deleting products from the main clipboard
         const updatedFavorites = favorites.filter(favProduct => !productsFromDeletedStorage.some(p => p.id === favProduct.id));
         setFavorites(updatedFavorites);
-        localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites));
+        localStorage.setItem(storageProductsKey, JSON.stringify(updatedFavorites));
 
         if (updatedStorages.length === 0) {
             setSelectedStorage(null);
@@ -164,7 +143,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
     const removeFromFavorites = (productId: number): void => {
         const updatedFavorites: ProductType[] = favorites.filter(favProduct => favProduct.id !== productId);
         setFavorites(updatedFavorites);
-        localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites));
+        localStorage.setItem(storageProductsKey, JSON.stringify(updatedFavorites));
     };
 
 

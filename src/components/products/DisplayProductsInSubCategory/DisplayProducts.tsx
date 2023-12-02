@@ -62,18 +62,22 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         event.stopPropagation();
         event.preventDefault();
 
+        console.log('Dodawanie produktu do schowka:', product);
+
         if (storages.length === 0) {
             toast.error("Nie masz jeszcze żadnych schowków.");
             return;
         }
 
-        // Add the product to the first basket
-        addProductToStorage(1, product); // 0 is the index of the first clipboard
+        // Dodaj produkt do pierwszego schowka
+        console.log('Indeks schowka: 0, Produkt:', product);
+        addProductToStorage(0, product); // Indeks 0 to pierwszy schowek
 
         setProductName(product.name);
         setShowToast(true);
-        setTimeout(() => setShowToast(false), 15000); // Hide toast after 3 seconds
+        setTimeout(() => setShowToast(false), 15000); // Ukryj powiadomienie po 3 sekundach
     };
+
 
     useEffect(() => {
         const handleResize = () => setIsSmallScreen(window.innerWidth <= 600);

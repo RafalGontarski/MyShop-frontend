@@ -2,35 +2,49 @@ import React, {useContext, useEffect, useState} from "react";
 import {ProductType} from "../types/ProductType";
 import {StorageContext} from "../context/StorageContext";
 import {StorageType} from "../types/StorageType";
-import {UserContext} from "../context/UserContexts";
-
+import { UserContext } from "./UserProvider";
 interface StorageProviderProps {
     children: React.ReactNode;
 }
 
 export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) => {
-    const { currentUser } = useContext(UserContext);
-    console.log("Current User:", currentUser);
-    const userId = currentUser?.id || null || undefined;
-    console.log("User ID:", userId);
 
-    const wishListStoragesKey = `wishListStorages_${userId}`;
+    const context = useContext(UserContext);
+
+    // Condition of storage compartments
+    const [storages, setStorages] = useState<StorageType[]>([]);
+    const [storageProducts, setStorageProducts] = useState<ProductType[][]>([]);
+    const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
+    // //... the rest of the state
+
+    // Declaration of userId, storagesKey and storageProductsKey
+    const userId = context?.currentUser?.id;
+    console.log('user id from Storage Provider: ', userId);
     const storagesKey = `storages_${userId}`;
     const storageProductsKey = `storageProducts_${userId}`;
 
-    const [storages, setStorages] = useState<StorageType[]>(() => {
-        const storedStorages = localStorage.getItem(wishListStoragesKey);
-        return storedStorages ? JSON.parse(storedStorages) : [];
-    });
+    // Conditional logic inside useEffect
+    useEffect(() => {
+        if (context?.currentUser) {
+            // LocalStorage key declaration
+            const userId = context.currentUser.id;
+            const storagesKey = `storages_${userId}`;
+            const storageProductsKey = `storageProducts_${userId}`;
 
-    const [storageProducts, setStorageProducts] = useState<ProductType[][]>(() => {
-        const storedStorageProducts = localStorage.getItem(storageProductsKey);
-        return storedStorageProducts ? JSON.parse(storedStorageProducts) : [];
-    });
+            console.log('user id from Storage Provider: ', userId);
 
-    const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
-    //... the rest of the state
+            // Loading clipboard data for the logged in user
+            const storedStorages = localStorage.getItem(storagesKey);
+            if (storedStorages) {
+                setStorages(JSON.parse(storedStorages));
+            }
 
+            const storedStorageProducts = localStorage.getItem(storageProductsKey);
+            if (storedStorageProducts) {
+                setStorageProducts(JSON.parse(storedStorageProducts));
+            }
+        }
+    }, [context?.currentUser]);
 
 
 
@@ -54,7 +68,11 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
                 editedAt: formattedTime
             };
 
-            return [...prevStorages, newStorage];
+            const updatedStorages = [...prevStorages, newStorage];
+            if (userId) {
+                localStorage.setItem(storagesKey, JSON.stringify(updatedStorages));
+            }
+            return updatedStorages;
         });
 
         // Add an empty product list for a new basket
@@ -96,12 +114,45 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
         setSelectedStorage(index.toString());
     };
 
+
+    useEffect(() => {
+        if (userId) {
+            const storedStorages = localStorage.getItem(storagesKey);
+            if (storedStorages) {
+                setStorages(JSON.parse(storedStorages));
+            }
+
+            const storedStorageProducts = localStorage.getItem(storageProductsKey);
+            if (storedStorageProducts) {
+                setStorageProducts(JSON.parse(storedStorageProducts));
+            }
+        }
+    }, [userId, storagesKey, storageProductsKey]);
+
     useEffect(() => {
         if (userId) {
             localStorage.setItem(storagesKey, JSON.stringify(storages));
             localStorage.setItem(storageProductsKey, JSON.stringify(storageProducts));
         }
-    }, [storages, storageProducts, userId, storagesKey, storageProductsKey]);
+    }, [storages, storageProducts, userId]);
+
+
+    useEffect(() => {
+        if (userId) {
+            const storedStorages = localStorage.getItem(`storages_${userId}`);
+            console.log('Stored Storages from Storage Provider: ', storedStorages);
+            if (storedStorages) {
+                setStorages(JSON.parse(storedStorages));
+            }
+
+            const storedStorageProducts = localStorage.getItem(`storageProducts_${userId}`);
+            console.log('Stored Storage Products from Storage Provider: ', storedStorageProducts);
+            if (storedStorageProducts) {
+                setStorageProducts(JSON.parse(storedStorageProducts));
+            }
+        }
+    }, [userId]);
+
 
     return (
         <StorageContext.Provider
