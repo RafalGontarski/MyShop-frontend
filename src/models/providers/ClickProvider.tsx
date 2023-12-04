@@ -53,10 +53,10 @@ interface ClickContextProps {
     incrementLinkClickCount: (linkName: keyof LinkClicksState) => void;
 }
 
-// Tworzymy kontekst z domyślną wartością (będzie zastąpiona przez provider)
+// We create a context with the default value (will be replaced by provider)
 const ClickContext = createContext<ClickContextProps | undefined>(undefined);
 
-// Tworzenie odwrotnego mapowania
+// Creating a reverse mapping
 export const polishToEnglishMap: { [key: string]: keyof LinkClicksState } = Object
     .entries(englishToPolishMap)
     .reduce((acc, [english, polish]) => {
@@ -65,7 +65,7 @@ export const polishToEnglishMap: { [key: string]: keyof LinkClicksState } = Obje
     }, {} as { [key: string]: keyof LinkClicksState });
 
 
-// Tworzymy dostawcę kontekstu
+// We create a context provider
 export const ClickProvider: React.FC<{children: ReactNode}> = ({ children }) => {
     // Try to load the initial state from localStorage
     const loadInitialState = () => {
@@ -162,7 +162,7 @@ export const ClickProvider: React.FC<{children: ReactNode}> = ({ children }) => 
     );
 };
 
-// Tworzymy hook
+// We create a hook
 export const useClickContext = () => {
     const context = useContext(ClickContext);
     if (!context) {

@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom/client';
 
 import './i18n';
 import './index.css';
-import App from './App';
 
-import { UserProvider } from "./models/providers/UserProvider";
 import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import {StorageProvider} from "./models/providers/StorageProvider";
+import {AppWithProviders} from "./AppWithProviders";
 
 
 const root = ReactDOM.createRoot(
@@ -17,11 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-          <UserProvider>
-            <StorageProvider>
-              <App />
-            </StorageProvider>
-          </UserProvider>
+          <AppWithProviders />
       </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,14 +1,14 @@
 
 
 type CategoryType = {
-    categoryId?: number; // Opcjonalne, ponieważ podczas tworzenia nowej kategorii ID może jeszcze nie istnieć
+    categoryId?: number; // Optional because when creating a new category the ID may not already exist
     name: string;
-    // description?: string; // Opcjonalne, jeśli nie każda kategoria musi mieć opis
-    imageUrl?: string;    // Opcjonalne, jeśli nie każda kategoria musi mieć obraz
-    iconUrl?: string;     // Opcjonalne, jeśli nie każda kategoria musi mieć ikonę
-    // slug?: string;        // Opcjonalne, może służyć do tworzenia przyjaznych URL dla kategorii
-    // displayOrder?: number; // Opcjonalne, jeśli chcesz kontrolować kolejność wyświetlania kategorii
-    // Możesz dodać inne pola, które uważasz za potrzebne
+    // description?: string; // Optional, if not every category must have a description
+    imageUrl?: string;    // Optional if not every category must have an image
+    iconUrl?: string;     // Optional if not every category must have an icon
+    // slug?: string;        // Optional, can be used to create friendly URLs for categories
+    // displayOrder?: number; // Optional if you want to control the order in which categories are displayed
+    // You can add other fields that you think are necessary
 };
 
 export default CategoryType;

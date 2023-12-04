@@ -4,12 +4,12 @@ import {ProductType} from "../../models/types/ProductType";
 import {StorageType} from "../../models/types/StorageType";
 import DevImg from '../../resources/categoriesIcon/Akcesoria.png';
 import {StorageList} from "./StorageList";
-import {useStorage} from "../../hooks/UseStorage";
-import { UserContext } from "../../models/context/UserContexts";
 import DeleteStorage from "../tools/button/DeleteStorage";
 import AddAllProductsToBasket from "../tools/button/AddAllProductsToBasket";
 
 import {WelcomeText} from "../tools/drawer/Drawer.styles";
+import { UserContext } from "../../models/context/UserContexts";
+import {StorageContext} from "../../models/context/StorageContext";
 import {CategoryTitleContainer} from "../editPages/categoriesEditPanel/CategoryEditPanel.styles";
 
 import {
@@ -57,12 +57,12 @@ import {
     ProductManufacturerAndName,
 } from "./WishList.styles";
 
+
 type StorageProps = {
     openStorageDrawer: () => void;
-    addNewStorage: (newStorage: string) => void;
 }
 
-export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStorage}) => {
+export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
 
     // Local state to store the date
     const [date] = useState<string>(new Date().toLocaleDateString());
@@ -74,10 +74,10 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
         storageProducts,
         setStorages,
         setStorageProducts ,
-        // addNewStorage,
+        addNewStorage,
         handleStorageClick,
         selectedStorage,
-        setSelectedStorage} = useStorage();
+        setSelectedStorage} = useContext(StorageContext);
 
     const totalSum: number = favorites.reduce((acc: number, product: ProductType) => acc + product.price, 0);
 
@@ -92,17 +92,34 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
     const storageProductsKey = `storageProducts_${userId}`;
 
 
-
-
-
-
-
     useEffect(() => {
-        if (currentUser && currentUser.id) {
+        if (currentUser?.id) {
+            console.log('current user from useEffect in WishList: ', currentUser.id);
+            // Klucze do przechowywania danych użytkownika
             const storagesKey = `storages_${currentUser.id}`;
-            // Załaduj stan schowków z localStorage lub kontekstu
+            const storageProductsKey = `storageProducts_${currentUser.id}`;
+            const favoritesKey = `favorites_${currentUser.id}`;
+
+            // Ładowanie schowków użytkownika
+            const storedStorages = localStorage.getItem(storagesKey);
+            if (storedStorages) {
+                setStorages(JSON.parse(storedStorages));
+            }
+
+            // Ładowanie produktów schowków
+            const storedStorageProducts = localStorage.getItem(storageProductsKey);
+            if (storedStorageProducts) {
+                setStorageProducts(JSON.parse(storedStorageProducts));
+            }
+
+            // Ładowanie ulubionych produktów użytkownika
+            const storedFavorites = localStorage.getItem(favoritesKey);
+            if (storedFavorites) {
+                setFavorites(JSON.parse(storedFavorites));
+            }
         }
-    }, [currentUser, setStorages]);
+    }, [currentUser, setStorages, setStorageProducts, setFavorites]);
+
 
 
     const handleDeleteStorage = (): void => {
@@ -218,7 +235,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer, addNewStora
                                                 >
                                                     <ProductInformationDiv>
                                                         <ProductManufacturerAndName>
-                                                            <ProductManufacturer>{favProduct.producent}</ProductManufacturer>
+                                                            <ProductManufacturer>{favProduct.manufacturer}</ProductManufacturer>
                                                             <ProductName>{favProduct.name}</ProductName>
                                                         </ProductManufacturerAndName>
                                                         <StyledProductRating size={"small"} name="customized-color" defaultValue={2}/>

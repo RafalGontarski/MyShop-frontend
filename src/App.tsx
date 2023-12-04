@@ -59,12 +59,14 @@ import {MenuProvider} from "./models/providers/MenuProvider";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../src/components/tools/Theme';
 import {StorageDrawer} from "./components/tools/drawer/StorageDrawer/StorageDrawer";
-import { useStorage } from './hooks/UseStorage';
 
-import { UserContext } from "./models/context/UserContexts";
+
 import { UserType } from './models/types/UserType';
 import {StorageType} from "./models/types/StorageType";
 import { ProductType } from './models/types/ProductType';
+
+import { UserContext } from "./models/context/UserContexts";
+import {StorageContext} from "./models/context/StorageContext";
 
 const AppUserContext = createContext<{
     isLoggedIn: boolean,
@@ -126,7 +128,7 @@ const App = () => {
     const [categories, setCategories] = useState<CategoryType[]>([]);
 
     // storage
-    const { storages, setStorages, setStorageProducts, addNewStorage, handleStorageClick} = useStorage();
+    const { storages, setStorages, setStorageProducts, addNewStorage, handleStorageClick} = useContext(StorageContext);
 
 
     // Function to update currentUser
@@ -205,12 +207,12 @@ const App = () => {
         if (storedUser) {
             try {
                 const user = JSON.parse(storedUser);
-                setCurrentUser(user);
-                setIsLoggedIn(true);
                 // const user: UserType = JSON.parse(storedUser);
                 if (user && user.id) { // Check if important fields are available
                     setIsLoggedIn(true);
                     updateUserState(user);
+                    setCurrentUser(user);
+                    console.log('current user from useEffect in app.tsx after set: ', user);
 
                     // Load user-specific clipboards
                     const userStoragesKey = `storages_${user.id}`;
@@ -232,7 +234,7 @@ const App = () => {
                 console.error("Błąd podczas ładowania danych użytkownika", e);
             }
         }
-    }, [setStorages, setStorageProducts]);
+    }, [setCurrentUser, setStorages, setStorageProducts]);
 
 
     useEffect(() => {
@@ -528,7 +530,6 @@ const App = () => {
                                                         <Route path="/wishList" element={
                                                             <WishList
                                                                 openStorageDrawer={openStorageDrawer}
-                                                                addNewStorage={addNewStorage}
                                                             />
                                                         }/>
                                                         <Route path="/basket" element={<Basket />}/>

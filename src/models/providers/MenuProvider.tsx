@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState } from 'react';
 type MenuContextType = {
     selectedAdvantage: boolean;
     setSelectedAdvantage: React.Dispatch<React.SetStateAction<boolean>>;
-    // ... możesz dodać więcej stanów/poleceń według potrzeb
+    // ...you can add more states/commands as needed
 };
 
 export const MenuContext = createContext<MenuContextType | undefined>(undefined);

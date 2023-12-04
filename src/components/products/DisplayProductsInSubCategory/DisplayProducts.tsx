@@ -39,7 +39,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
     const [, setIsHovered] = React.useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
-    const uniqueManufacturers = [...new Set(products.map(product => product.producent))];
+    const uniqueManufacturers = [...new Set(products.map(product => product.manufacturer))];
     const [availabilityChecked, setAvailabilityChecked] = React.useState<boolean>(false);
     const [showToast, setShowToast] = useState(false);
     const [productName, setProductName] = useState('');

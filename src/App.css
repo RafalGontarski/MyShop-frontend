@@ -1,19 +1,19 @@
-/* Główny kontener dla całej aplikacji */
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ustaw wysokość na całą wysokość widoku */
-}
+/*!* Główny kontener dla całej aplikacji *!*/
+/*.App {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  min-height: 100vh; !* Ustaw wysokość na całą wysokość widoku *!*/
+/*}*/
 
-/* Treść między nagłówkiem a stopką */
-.content {
-  flex: 1; /* Pozwól treści rosnąć i zajmować dostępną przestrzeń */
-}
+/*!* Treść między nagłówkiem a stopką *!*/
+/*.content {*/
+/*  flex: 1; !* Pozwól treści rosnąć i zajmować dostępną przestrzeń *!*/
+/*}*/
 
-/* Stopki */
-.FirstFooter, .SecondFooter {
-  /* Możesz dodać dodatkowe style dla stopki, jeśli chcesz */
-}
+/*!* Stopki *!*/
+/*.FirstFooter, .SecondFooter {*/
+/*  !* Możesz dodać dodatkowe style dla stopki, jeśli chcesz *!*/
+/*}*/
 
 :root {
   font-family: 'Open Sans',Verdana,Tahoma,Arial,Helvetica,sans-serif;

@@ -107,7 +107,7 @@ export const Product: React.FC = () => {
                         <ProductLeftContainer>
                             <ProductName>{product.name}</ProductName>
                             <StyledRating name="customized-color" defaultValue={2} />
-                            <Information>{product.producent}</Information>
+                            <Information>{product.manufacturer}</Information>
                             {/*<>{product.imageUrl}</>*/}
                             <StyledProductImg src={ProductImg} alt="productImg" />
                             <Information>{product.description}</Information>
