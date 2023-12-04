@@ -19,8 +19,6 @@ export const StorageList: React.FC<StorageListProps> = ({
                         onStorageClick,
                         addNewStorage }) => {
 
-    const { setStorages } = useContext(StorageContext);
-
     const { currentUser } = useContext(UserContext);
     console.log('CurrentUser from StorageList: ', currentUser);
     const userId = currentUser?.id;
@@ -30,12 +28,6 @@ export const StorageList: React.FC<StorageListProps> = ({
         addNewStorage(""); // Here we pass an empty argument
     };
 
-    useEffect(() => {
-        if (currentUser && currentUser.id) {
-            const storagesKey = `storages_${currentUser.id}`;
-            // Załaduj stan schowków z localStorage lub kontekstu
-        }
-    }, [currentUser, setStorages]);
 
 
     return (

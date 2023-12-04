@@ -39,13 +39,16 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
     const [, setIsHovered] = React.useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
-    const uniqueManufacturers = [...new Set(products.map(product => product.manufacturer))];
+    const uniqueManufacturers = [...new Set(products.map(product => product.producent))];
     const [availabilityChecked, setAvailabilityChecked] = React.useState<boolean>(false);
     const [showToast, setShowToast] = useState(false);
     const [productName, setProductName] = useState('');
     const [checkedStates, setCheckedStates] = useState(
         uniqueManufacturers.map(() => false)
     );
+
+    const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
+
 
     const { currentUser } = useContext(UserContext);
     const { addProductToStorage, storages } = useContext(StorageContext);
@@ -73,6 +76,7 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
         console.log('Indeks schowka: 0, Produkt:', product);
         addProductToStorage(0, product); // Indeks 0 to pierwszy schowek
 
+        setSelectedProduct(product);
         setProductName(product.name);
         setShowToast(true);
         setTimeout(() => setShowToast(false), 15000); // Ukryj powiadomienie po 3 sekundach
@@ -99,19 +103,19 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
 
             <FilterContainer >
                 <h3>Producent</h3>
-                {uniqueManufacturers.map((producent, index) => (
-                    <div key={producent}>
+                {uniqueManufacturers.map((manufacturer, index) => (
+                    <div key={manufacturer}>
                         <StyledCheckbox
                             type="checkbox"
-                            id={`checkbox-${producent}`}
+                            id={`checkbox-${manufacturer}`}
                             checked={checkedStates[index]} // We convey the appropriate status
                             onChange={() => handleCheckboxChange(index)} // We update the appropriate status
                         />
                         <StyledLabel
-                            htmlFor={`checkbox-${producent}`}
+                            htmlFor={`checkbox-${manufacturer}`}
                             className={checkedStates[index] ? 'checked' : ''} // We check the appropriate condition
                         >
-                            {producent}
+                            {manufacturer}
                         </StyledLabel>
                     </div>
                 ))}
@@ -182,8 +186,11 @@ export const DisplayProducts: React.FC<DisplayProductsProps> = ({ products }) =>
                     </StyledProductGrid>
                 ))}
             </StyledProductsGrid>
-            {showToast &&
-                <SuccessfullyToast closeToast={() => setShowToast(false)}>
+            {showToast && selectedProduct &&
+                <SuccessfullyToast
+                    closeToast={() => setShowToast(false)}
+                    selectedProduct={selectedProduct}
+                >
                     Artykuł {productName} jest teraz w Twoim schowku.
                 </SuccessfullyToast>
             }

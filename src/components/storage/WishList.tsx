@@ -66,9 +66,15 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
 
     // Local state to store the date
     const [date] = useState<string>(new Date().toLocaleDateString());
-    const [
-        favorites,
-        setFavorites] = useState<ProductType[]>([]);
+    // const [
+    //     favorites,
+    //     setFavorites] = useState<ProductType[]>([]);
+    //
+    //
+    //
+
+
+
     const {
         storages,
         storageProducts,
@@ -79,7 +85,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         selectedStorage,
         setSelectedStorage} = useContext(StorageContext);
 
-    const totalSum: number = favorites.reduce((acc: number, product: ProductType) => acc + product.price, 0);
+
 
     const { currentUser } = useContext(UserContext);
     const userId = currentUser?.id;
@@ -91,6 +97,11 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
     // const storagesKey = `storages_${userId}`;
     const storageProductsKey = `storageProducts_${userId}`;
 
+    const selectedStorageIndex = selectedStorage ? parseInt(selectedStorage) : -1;
+    const productsToShow = selectedStorageIndex >= 0 && storageProducts[selectedStorageIndex] ? storageProducts[selectedStorageIndex] : [];
+
+    const totalSum = productsToShow.reduce((acc, product) => acc + product.price, 0);
+
 
     useEffect(() => {
         if (currentUser?.id) {
@@ -98,7 +109,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
             // Klucze do przechowywania danych użytkownika
             const storagesKey = `storages_${currentUser.id}`;
             const storageProductsKey = `storageProducts_${currentUser.id}`;
-            const favoritesKey = `favorites_${currentUser.id}`;
+            // const favoritesKey = `favorites_${currentUser.id}`;
 
             // Ładowanie schowków użytkownika
             const storedStorages = localStorage.getItem(storagesKey);
@@ -112,13 +123,15 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                 setStorageProducts(JSON.parse(storedStorageProducts));
             }
 
-            // Ładowanie ulubionych produktów użytkownika
-            const storedFavorites = localStorage.getItem(favoritesKey);
-            if (storedFavorites) {
-                setFavorites(JSON.parse(storedFavorites));
-            }
+
+            // // Ładowanie ulubionych produktów użytkownika
+            // const storedFavorites = localStorage.getItem(favoritesKey);
+            // if (storedFavorites) {
+            //     setFavorites(JSON.parse(storedFavorites));
+            // }
         }
-    }, [currentUser, setStorages, setStorageProducts, setFavorites]);
+    // }, [currentUser, setStorages, setStorageProducts, setFavorites]);
+    }, [currentUser, setStorages, setStorageProducts]);
 
 
 
@@ -132,20 +145,10 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         setStorages(updatedStorages);
         localStorage.setItem(storagesKey, JSON.stringify(updatedStorages));
 
-        const productsFromDeletedStorage = storageProducts[deletedStorageIndex] || [];
-        productsFromDeletedStorage.forEach(product => {
-            removeFromFavorites(product.id);
-        });
-
         const updatedStorageProducts = [...storageProducts];
         updatedStorageProducts.splice(deletedStorageIndex, 1);
         setStorageProducts(updatedStorageProducts);
-        localStorage.setItem('storageProducts', JSON.stringify(updatedStorageProducts));
-
-        // Deleting products from the main clipboard
-        const updatedFavorites = favorites.filter(favProduct => !productsFromDeletedStorage.some(p => p.id === favProduct.id));
-        setFavorites(updatedFavorites);
-        localStorage.setItem(storageProductsKey, JSON.stringify(updatedFavorites));
+        localStorage.setItem(storageProductsKey, JSON.stringify(updatedStorageProducts));
 
         if (updatedStorages.length === 0) {
             setSelectedStorage(null);
@@ -156,12 +159,15 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
         }
     };
 
-
     const removeFromFavorites = (productId: number): void => {
-        const updatedFavorites: ProductType[] = favorites.filter(favProduct => favProduct.id !== productId);
-        setFavorites(updatedFavorites);
-        localStorage.setItem(storageProductsKey, JSON.stringify(updatedFavorites));
+        if (selectedStorageIndex !== null) {
+            const updatedStorageProducts = [...storageProducts];
+            updatedStorageProducts[selectedStorageIndex] = updatedStorageProducts[selectedStorageIndex].filter(product => product.id !== productId);
+            setStorageProducts(updatedStorageProducts);
+            localStorage.setItem(storageProductsKey, JSON.stringify(updatedStorageProducts));
+        }
     };
+
 
 
     function handleIconClick() {
@@ -210,7 +216,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
 
                         <FormContainer>
                             {
-                                favorites.length === 0 ? (
+                                productsToShow.length === 0 ? (
                                     <ProfileImageContainer >
                                         <ProfilePageWelcome>
                                             <WelcomeText variant="h4" style={{color: 'lightgray', backgroundColor: '#f5f5f5'}}>
@@ -219,7 +225,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                                         </ProfilePageWelcome>
                                     </ProfileImageContainer>
                                 ) : (
-                                    favorites.map(favProduct => (
+                                    productsToShow.map(favProduct => (
                                         <ProductContainer key={favProduct.id}>
                                             <ProductBox>
                                                 <StorageProductImageDiv>
@@ -235,7 +241,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                                                 >
                                                     <ProductInformationDiv>
                                                         <ProductManufacturerAndName>
-                                                            <ProductManufacturer>{favProduct.manufacturer}</ProductManufacturer>
+                                                            <ProductManufacturer>{favProduct.producent}</ProductManufacturer>
                                                             <ProductName>{favProduct.name}</ProductName>
                                                         </ProductManufacturerAndName>
                                                         <StyledProductRating size={"small"} name="customized-color" defaultValue={2}/>
@@ -262,7 +268,7 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                             }
                         </FormContainer>
                         {
-                            storages.length > 0 && favorites.length > 0 && (
+                            storages.length > 0 && productsToShow.length > 0 && (
                                 <>
                                     <SumAndBtn>
                                         <SumAndPrice>

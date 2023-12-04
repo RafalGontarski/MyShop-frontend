@@ -81,11 +81,14 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
     const addProductToStorage = (storageIndex: number, product: ProductType) => {
         setStorageProducts(prevProducts => {
             const updatedProducts = [...prevProducts];
-            // Ensure there is an array to add the product to
-            if (!updatedProducts[storageIndex]) {
+
+            // Upewnij się, że updatedProducts[storageIndex] jest tablicą
+            if (!Array.isArray(updatedProducts[storageIndex])) {
                 updatedProducts[storageIndex] = [];
             }
+
             updatedProducts[storageIndex] = [...updatedProducts[storageIndex], product];
+            localStorage.setItem(storageProductsKey, JSON.stringify(updatedProducts));
             return updatedProducts;
         });
     };
@@ -107,45 +110,6 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
     const handleStorageClick = (index: number) => {
         setSelectedStorage(index.toString());
     };
-
-
-    // useEffect(() => {
-    //     if (userId) {
-    //         const storedStorages = localStorage.getItem(storagesKey);
-    //         if (storedStorages) {
-    //             setStorages(JSON.parse(storedStorages));
-    //         }
-    //
-    //         const storedStorageProducts = localStorage.getItem(storageProductsKey);
-    //         if (storedStorageProducts) {
-    //             setStorageProducts(JSON.parse(storedStorageProducts));
-    //         }
-    //     }
-    // }, [userId, storagesKey, storageProductsKey]);
-    //
-    // useEffect(() => {
-    //     if (userId) {
-    //         localStorage.setItem(storagesKey, JSON.stringify(storages));
-    //         localStorage.setItem(storageProductsKey, JSON.stringify(storageProducts));
-    //     }
-    // }, [storages, storageProducts, userId]);
-    //
-    //
-    // useEffect(() => {
-    //     if (userId) {
-    //         const storedStorages = localStorage.getItem(`storages_${userId}`);
-    //         console.log('Stored Storages from Storage Provider: ', storedStorages);
-    //         if (storedStorages) {
-    //             setStorages(JSON.parse(storedStorages));
-    //         }
-    //
-    //         const storedStorageProducts = localStorage.getItem(`storageProducts_${userId}`);
-    //         console.log('Stored Storage Products from Storage Provider: ', storedStorageProducts);
-    //         if (storedStorageProducts) {
-    //             setStorageProducts(JSON.parse(storedStorageProducts));
-    //         }
-    //     }
-    // }, [userId]);
 
 
     return (

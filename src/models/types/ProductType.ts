@@ -10,7 +10,7 @@ import SecondSubCategoryType from "./SecondSubCategoryType";
 
 export type ProductType = {
     id: number;
-    manufacturer: string;
+    producent: string;
     name: string;
     description: string;
     price: number;

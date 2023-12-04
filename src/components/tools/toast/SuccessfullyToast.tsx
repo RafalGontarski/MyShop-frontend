@@ -1,21 +1,39 @@
 import React, {useContext} from "react";
-import {CloseButton, HeaderContainer, SelectorContainer, SuccessfullyToastCont, TextContainer} from "./toast.styles";
+
+import {
+    CloseButton,
+    TextContainer,
+    HeaderContainer,
+    SelectorContainer,
+    SuccessfullyToastCont
+    } from "./toast.styles";
+
+import {ProductType} from "../../../models/types/ProductType";
 import {StorageSelector} from "../selectors/StorageSelector";
 import {StorageContext} from "../../../models/context/StorageContext";
+
 
 interface SuccessfullyToastProps {
     closeToast: (id?: number | string) => void;
     toastId?: number | string;
     children?: React.ReactNode;
+    selectedProduct: ProductType;
 }
 
 
-export const SuccessfullyToast: React.FC<SuccessfullyToastProps> = ({ closeToast, toastId, children }) => {
+export const SuccessfullyToast: React.FC<SuccessfullyToastProps> = ({
+    closeToast,
+    toastId,
+    children ,
+    selectedProduct}) => {
 
-    const { storages, setSelectedStorage } = useContext(StorageContext);
+    const { storages, addProductToStorage } = useContext(StorageContext);
+
 
     const handleSelectStorage = (index: number) => {
-        setSelectedStorage(storages[index].name);
+        // Dodaj produkt do wybranego schowka
+        addProductToStorage(index, selectedProduct);
+        // closeToast(toastId); // Zamknij toast po wykonaniu akcji
     };
 
     const handleClose = () => {
@@ -35,7 +53,7 @@ export const SuccessfullyToast: React.FC<SuccessfullyToastProps> = ({ closeToast
                 <CloseButton onClick={handleClose}>X</CloseButton>
             </HeaderContainer>
             <SelectorContainer>
-                <StorageSelector storages={storages} onSelectStorage={handleSelectStorage}/>
+                <StorageSelector storages={storages} selectedProduct={selectedProduct} onSelectStorage={handleSelectStorage}/>
             </SelectorContainer>
         </SuccessfullyToastCont>
     );
