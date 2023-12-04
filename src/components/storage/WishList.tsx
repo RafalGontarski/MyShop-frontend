@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
 
-import {ProductType} from "../../models/types/ProductType";
 import {StorageType} from "../../models/types/StorageType";
 import DevImg from '../../resources/categoriesIcon/Akcesoria.png';
 import {StorageList} from "./StorageList";
@@ -66,14 +65,6 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
 
     // Local state to store the date
     const [date] = useState<string>(new Date().toLocaleDateString());
-    // const [
-    //     favorites,
-    //     setFavorites] = useState<ProductType[]>([]);
-    //
-    //
-    //
-
-
 
     const {
         storages,
@@ -109,12 +100,16 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
             // Klucze do przechowywania danych użytkownika
             const storagesKey = `storages_${currentUser.id}`;
             const storageProductsKey = `storageProducts_${currentUser.id}`;
-            // const favoritesKey = `favorites_${currentUser.id}`;
 
             // Ładowanie schowków użytkownika
             const storedStorages = localStorage.getItem(storagesKey);
             if (storedStorages) {
-                setStorages(JSON.parse(storedStorages));
+                const parsedStorages = JSON.parse(storedStorages);
+                setStorages(parsedStorages);
+                // Ustaw pierwszy schowek jako domyślnie wybrany, jeśli istnieje
+                if (parsedStorages.length > 0) {
+                    setSelectedStorage("0");
+                }
             }
 
             // Ładowanie produktów schowków
@@ -122,16 +117,9 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
             if (storedStorageProducts) {
                 setStorageProducts(JSON.parse(storedStorageProducts));
             }
-
-
-            // // Ładowanie ulubionych produktów użytkownika
-            // const storedFavorites = localStorage.getItem(favoritesKey);
-            // if (storedFavorites) {
-            //     setFavorites(JSON.parse(storedFavorites));
-            // }
         }
-    // }, [currentUser, setStorages, setStorageProducts, setFavorites]);
-    }, [currentUser, setStorages, setStorageProducts]);
+    }, [currentUser, setStorages, setStorageProducts, setSelectedStorage]);
+
 
 
 
@@ -307,6 +295,5 @@ export const WishList: React.FC<StorageProps> = ({openStorageDrawer}) => {
                 )}
             </Container>
         </MyProfileContainer>
-
     )
 }
