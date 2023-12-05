@@ -29,7 +29,12 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
             // Ładowanie schowków
             const storedStorages = localStorage.getItem(storagesKey);
             if (storedStorages) {
-                setStorages(JSON.parse(storedStorages));
+                const loadedStorages: StorageType[] = JSON.parse(storedStorages);
+                // Aktualizacja productCount dla każdego schowka
+                loadedStorages.forEach((storage, index) => {
+                    storage.productCount = storageProducts[index]?.length || 0;
+                });
+                setStorages(loadedStorages);
             }
 
             // Ładowanie produktów schowków
@@ -38,7 +43,7 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
                 setStorageProducts(JSON.parse(storedStorageProducts));
             }
         }
-    }, [userId]);
+    }, [userId, storageProducts]);
 
 
 
@@ -59,7 +64,8 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
                 name: name,
                 date: formattedDate,
                 createdAt: formattedTime,
-                editedAt: formattedTime
+                editedAt: formattedTime,
+                productCount: 0
             };
 
             const updatedStorages = [...prevStorages, newStorage];
@@ -77,32 +83,36 @@ export const StorageProvider: React.FC<StorageProviderProps> = ({ children }) =>
 
     };
 
+    // Dodaj tę funkcję w StorageProvider
+    const removeProductFromAllStorages = (product: ProductType) => {
+        setStorageProducts(prevProducts => prevProducts.map(storage =>
+            storage.filter(p => p.id !== product.id)
+        ));
+    };
+
     // Adding a product to a specific basket
     const addProductToStorage = (storageIndex: number, product: ProductType) => {
-        setStorageProducts(prevProducts => {
-            const updatedProducts = [...prevProducts];
-
-            // Upewnij się, że updatedProducts[storageIndex] jest tablicą
-            if (!Array.isArray(updatedProducts[storageIndex])) {
-                updatedProducts[storageIndex] = [];
+        removeProductFromAllStorages(product); // Usuń produkt ze wszystkich schowków
+        setStorages(prevStorages => {
+            const updatedStorages = [...prevStorages];
+            if (updatedStorages[storageIndex]) {
+                updatedStorages[storageIndex].productCount = (updatedStorages[storageIndex].productCount || 0) + 1;
             }
-
-            updatedProducts[storageIndex] = [...updatedProducts[storageIndex], product];
-            localStorage.setItem(storageProductsKey, JSON.stringify(updatedProducts));
-            return updatedProducts;
+            localStorage.setItem(storagesKey, JSON.stringify(updatedStorages));
+            return updatedStorages;
         });
     };
 
 
     // Delete a product from a specific basket
     const removeProductFromStorage = (storageIndex: number, productId: number | string) => {
-        setStorageProducts(prevProducts => {
-            const updatedProducts = [...prevProducts];
-            // Check if the storage at the specified index exists
-            if (updatedProducts[storageIndex]) {
-                updatedProducts[storageIndex] = updatedProducts[storageIndex].filter(p => p.id !== productId);
+        setStorages(prevStorages => {
+            const updatedStorages = [...prevStorages];
+            if (updatedStorages[storageIndex]) {
+                updatedStorages[storageIndex].productCount = Math.max(0, (updatedStorages[storageIndex].productCount || 0) - 1);
             }
-            return updatedProducts;
+            localStorage.setItem(storagesKey, JSON.stringify(updatedStorages));
+            return updatedStorages;
         });
     };
 

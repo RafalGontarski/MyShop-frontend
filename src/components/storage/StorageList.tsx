@@ -24,10 +24,14 @@ export const StorageList: React.FC<StorageListProps> = ({
     const userId = currentUser?.id;
     console.log('User Id from StorageList: ', userId);
 
+    console.log('ProductCount from Storage List: ', storages);
+
     const handleAddNewStorage = () => {
         addNewStorage(""); // Here we pass an empty argument
     };
 
+    // // Funkcja do obliczania sumy produktów we wszystkich schowkach
+    // const sumStorageProducts = storages.reduce((sum, storage) => sum + storage.productCount, 0);
 
 
     return (
@@ -39,10 +43,10 @@ export const StorageList: React.FC<StorageListProps> = ({
                         Mój schowek z {storage.date}
                     </StorageTitle>
                     <StorageSubtitle variant="body2" style={{color: 'grey'}}>
-                        brak produktów • Data ostatniej modyfikacji
+                        {storage.productCount > 0 ? `produkty: ${storage.productCount}` : 'brak produktów'} • Data ostatniej modyfikacji
                     </StorageSubtitle>
                     <StorageSubtitle variant="body2" style={{color: 'grey'}}>
-                        {storage.createdAt} {storage.date}
+                        {storage.editedAt} {storage.date}
                     </StorageSubtitle>
                 </StorageContainer>
             ))}

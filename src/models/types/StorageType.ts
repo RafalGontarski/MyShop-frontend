@@ -5,4 +5,5 @@ export type StorageType = {
     date: string;
     createdAt: string;
     editedAt: string;
+    productCount: number;
 };
